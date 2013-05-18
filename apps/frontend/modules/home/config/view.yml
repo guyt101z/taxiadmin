@@ -1,0 +1,20 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    #title:        symfony project
+    #description:  symfony project
+    #keywords:     symfony, project
+    language:     es
+    #robots:       index, follow
+
+  stylesheets:    [home.css, jquery-ui-1.8.21.custom.css]
+
+  javascripts:    [jquery-1.7.2.min.js, jquery.livequery.js, jquery-ui-1.8.21.custom.min.js, slideshow.js, fValidateUsuario.js, fValidateSesion.js, fValidateEmail.js, home_index.js, common.js, dialogs.js ]
+
+  has_layout:     false
+  layout:         layout

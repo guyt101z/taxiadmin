@@ -1,0 +1,30 @@
+var fValidateMovil = function() {
+    var bValid = true;
+    var matricula = $('#movil_matricula');
+    var marca = $('#movil_marca');
+    var modelo = $('#movil_modelo');
+    var anio = $('#movil_anio');
+    var numeroChasis = $('#movil_numeroChasis');
+    var combustible = $('#movil_combustible');
+    var numeroMovil = $('#movil_numeroMovil');
+    var idDespacho = $('#movil_idDespacho');
+    var kmIniciales = $('#movil_kmIniciales');
+    var idAseguradora = $('#movil_idAseguradora');
+    var allFields = $([]).add(matricula).add(marca).add(modelo).add(anio).add(numeroChasis).add(combustible).add(numeroMovil).add(idDespacho).add(kmIniciales).add(idAseguradora);
+    allFields.removeClass('ui-state-error');
+    bValid = bValid && checkLength(matricula, 'matrícula', 7, 15);
+    bValid = bValid && checkLength(marca, 'marca', 1, 20);
+    bValid = bValid && checkLength(modelo, 'modelo', 1, 20);
+    bValid = bValid && checkLength(anio, 'año', 4, 4);
+    bValid = bValid && checkNumeric(anio);
+    bValid = bValid && checkLength(numeroChasis, 'número chasis', 0, 50);
+    bValid = bValid && checkLength(combustible, 'combustible', 1, 50);
+    bValid = bValid && checkNumeric(numeroMovil);
+    bValid = bValid && checkLength(idDespacho, 'Despacho', 1, 10);
+    bValid = bValid && checkNumeric(idDespacho);
+    bValid = bValid && checkLength(kmIniciales, 'km iniciales', 1, 10);
+    bValid = bValid && checkNumeric(kmIniciales);
+    bValid = bValid && checkLength(idAseguradora, 'Aseguradora', 0, 10);
+    bValid = bValid && checkNumeric(idAseguradora);
+    return bValid;    
+}

@@ -1,0 +1,210 @@
+
+Multa:
+
+  Multa1:
+    idMovil: movil1
+    idChofer: chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  i1_multa1:
+    idMovil: i1_movil1
+    idChofer: i1_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i2_multa1:
+    idMovil: i2_movil1
+    idChofer: i2_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i3_multa1:
+    idMovil: i3_movil1
+    idChofer: i3_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i4_multa1:
+    idMovil: i4_movil1
+    idChofer: i4_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i5_multa1:
+    idMovil: i5_movil1
+    idChofer: i5_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i6_multa1:
+    idMovil: i6_movil1
+    idChofer: i6_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i7_multa1:
+    idMovil: i7_movil1
+    idChofer: i7_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i8_multa1:
+    idMovil: i8_movil1
+    idChofer: i8_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i9_multa1:
+    idMovil: i9_movil1
+    idChofer: i9_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i10_multa1:
+    idMovil: i10_movil1
+    idChofer: i10_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i11_multa1:
+    idMovil: i11_movil1
+    idChofer: i11_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i12_multa1:
+    idMovil: i12_movil1
+    idChofer: i12_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i13_multa1:
+    idMovil: i13_movil1
+    idChofer: i13_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i14_multa1:
+    idMovil: i14_movil1
+    idChofer: i14_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i15_multa1:
+    idMovil: i15_movil1
+    idChofer: i15_chofer1
+    fecha: 2012-10-01
+    descripcion: Cruzar con luz roja.
+    esquina: 18 de Julio y Ejido
+    responsable: Chofer
+    costo: 3700
+    fechaVencimiento: 2012-10-13
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado

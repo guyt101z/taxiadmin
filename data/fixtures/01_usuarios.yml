@@ -1,0 +1,183 @@
+# Cargo los usuarios iniciales de la aplicación
+# Detalle, ya pongo la clave en md5 por que esto lo tira como viene a la bd
+
+usuario:
+  admin:
+    tipo: administrador
+    nombre: admin
+    apellidos: administrador
+    direccion: SO
+    email: admin@byg.com.uy
+    clave: e871598327a5f13e88fe7ad4bc02c8df    # adminBYG
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  brus:
+    tipo: usuario
+    nombre: Bruno
+    apellidos: Viera
+    direccion: Uruguay 1378 ap 402
+    email: bviera@byg.com.uy
+    clave: 4723e2820bb7815047c3c8b9bc73f68f    # viera
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  german:
+    tipo: usuario
+    nombre: Germán
+    apellidos: Beltrán
+    direccion: Desconocida por mi parte
+    email: gbeltran@byg.com.uy
+    clave: f7999e2ae9a91c18ae41a936a8c629ab    # beltran
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i1_invitado:
+    tipo: usuario
+    nombre: invitado1
+    apellidos: invitado1
+    direccion: 18 de Julio 1234
+    email: invitado1@taxiadmin.com.uy
+    clave: 5084b880f5a4ee5f3e8eba63033e0f0d    # h83dsw79
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i2_invitado:
+    tipo: usuario
+    nombre: invitado2
+    apellidos: invitado2
+    direccion: 18 de Julio 1234
+    email: invitado2@taxiadmin.com.uy
+    clave: b16e93fdc17893152c799ea64c8d8b44    # j34fta33
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i3_invitado:
+    tipo: usuario
+    nombre: invitado3
+    apellidos: invitado3
+    direccion: 18 de Julio 1234
+    email: invitado3@taxiadmin.com.uy
+    clave: ce471407da37b5b270bd575b6c0fb2b2    # x85emr74
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i4_invitado:
+    tipo: usuario
+    nombre: invitado4
+    apellidos: invitado4
+    direccion: 18 de Julio 1234
+    email: invitado4@taxiadmin.com.uy
+    clave: 59f11420de20bc8053c1242a44821471    # b17psk44
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i5_invitado:
+    tipo: usuario
+    nombre: invitado5
+    apellidos: invitado5
+    direccion: 18 de Julio 1234
+    email: invitado5@taxiadmin.com.uy
+    clave: 2a15145f197402c147fa17abed345040    # f47yxh94
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i6_invitado:
+    tipo: usuario
+    nombre: invitado6
+    apellidos: invitado6
+    direccion: 18 de Julio 1234
+    email: invitado6@taxiadmin.com.uy
+    clave: 2a96489d27bde2ec8919148fd3afd5fd    # z34sge42
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i7_invitado:
+    tipo: usuario
+    nombre: invitado7
+    apellidos: invitado7
+    direccion: 18 de Julio 1234
+    email: invitado7@taxiadmin.com.uy
+    clave: 6707fa12cd81a0df3c1f3edba3410321    # w71usd36
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i8_invitado:
+    tipo: usuario
+    nombre: invitado8
+    apellidos: invitado8
+    direccion: 18 de Julio 1234
+    email: invitado8@taxiadmin.com.uy
+    clave: 543321ac15025251715c90c20927df1b    # m93ftf44
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i9_invitado:
+    tipo: usuario
+    nombre: invitado9
+    apellidos: invitado9
+    direccion: 18 de Julio 1234
+    email: invitado9@taxiadmin.com.uy
+    clave: 85b8e4854f4715d8d3429f8d0dc2cedb    # c64aab57
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i10_invitado:
+    tipo: usuario
+    nombre: invitado10
+    apellidos: invitado10
+    direccion: 18 de Julio 1234
+    email: invitado10@taxiadmin.com.uy
+    clave: caaafbfd56dda29408b4ba25ea548c03    # t41rdk88
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i11_invitado:
+    tipo: usuario
+    nombre: invitado11
+    apellidos: invitado11
+    direccion: 18 de Julio 1234
+    email: invitado11@taxiadmin.com.uy
+    clave: 2dddc5336c772637ff5d46495ddae7ee    # u53vne36
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i12_invitado:
+    tipo: usuario
+    nombre: invitado12
+    apellidos: invitado12
+    direccion: 18 de Julio 1234
+    email: invitado12@taxiadmin.com.uy
+    clave: d3fe7ad0ae7e56142f3a2a84d1da2aad    # q65knr16
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i13_invitado:
+    tipo: usuario
+    nombre: invitado13
+    apellidos: invitado13
+    direccion: 18 de Julio 1234
+    email: invitado13@taxiadmin.com.uy
+    clave: 03dabf85e57ac06f371cbc44ae9661f4    # a18smt54
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i14_invitado:
+    tipo: usuario
+    nombre: invitado14
+    apellidos: invitado14
+    direccion: 18 de Julio 1234
+    email: invitado14@taxiadmin.com.uy
+    clave: cc3a31a21f24557c26329c14f0ef3a4d    # y14bke88
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1
+
+  i15_invitado:
+    tipo: usuario
+    nombre: invitado15
+    apellidos: invitado15
+    direccion: 18 de Julio 1234
+    email: invitado15@taxiadmin.com.uy
+    clave: a24bf3fae5095a77a1d25306d4c71a78    # e33jht17
+    fechaAlta: 2012-01-01 00:00:00
+    habilitado: 1

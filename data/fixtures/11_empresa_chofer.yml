@@ -1,0 +1,786 @@
+
+ChoferEmpresa:
+
+  ChoferEmpresa1:
+    idChofer: chofer1
+    idEmpresa: empresa1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  ChoferEmpresa2:
+    idChofer: chofer2
+    idEmpresa: empresa1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  ChoferEmpresa3:
+    idChofer: chofer3
+    idEmpresa: empresa1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  ChoferEmpresa4:
+    idChofer: chofer4
+    idEmpresa: empresa1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  ChoferEmpresa5:
+    idChofer: chofer1
+    idEmpresa: empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  ChoferEmpresa6:
+    idChofer: chofer2
+    idEmpresa: empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  ChoferEmpresa7:
+    idChofer: chofer3
+    idEmpresa: empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: brus
+
+  i1_EmpresaChofer1:
+    idEmpresa: i1_empresa1  
+    idChofer: i1_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_EmpresaChofer2:
+    idEmpresa: i1_empresa1
+    idChofer: i1_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_EmpresaChofer3:
+    idEmpresa: i1_empresa1
+    idChofer: i1_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_EmpresaChofer4:
+    idEmpresa: i1_empresa1
+    idChofer: i1_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_EmpresaChofer5:
+    idEmpresa: i1_empresa2
+    idChofer: i1_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_EmpresaChofer6:
+    idChofer: i1_chofer2
+    idEmpresa: i1_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_EmpresaChofer7:
+    idEmpresa: i1_empresa2
+    idChofer: i1_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i2_EmpresaChofer1:
+    idEmpresa: i2_empresa1  
+    idChofer: i2_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_EmpresaChofer2:
+    idEmpresa: i2_empresa1
+    idChofer: i2_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_EmpresaChofer3:
+    idEmpresa: i2_empresa1
+    idChofer: i2_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_EmpresaChofer4:
+    idEmpresa: i2_empresa1
+    idChofer: i2_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_EmpresaChofer5:
+    idEmpresa: i2_empresa2
+    idChofer: i2_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_EmpresaChofer6:
+    idChofer: i2_chofer2
+    idEmpresa: i2_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_EmpresaChofer7:
+    idEmpresa: i2_empresa2
+    idChofer: i2_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i3_EmpresaChofer1:
+    idEmpresa: i3_empresa1  
+    idChofer: i3_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_EmpresaChofer2:
+    idEmpresa: i3_empresa1
+    idChofer: i3_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_EmpresaChofer3:
+    idEmpresa: i3_empresa1
+    idChofer: i3_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_EmpresaChofer4:
+    idEmpresa: i3_empresa1
+    idChofer: i3_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_EmpresaChofer5:
+    idEmpresa: i3_empresa2
+    idChofer: i3_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_EmpresaChofer6:
+    idChofer: i3_chofer2
+    idEmpresa: i3_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_EmpresaChofer7:
+    idEmpresa: i3_empresa2
+    idChofer: i3_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i4_EmpresaChofer1:
+    idEmpresa: i4_empresa1  
+    idChofer: i4_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_EmpresaChofer2:
+    idEmpresa: i4_empresa1
+    idChofer: i4_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_EmpresaChofer3:
+    idEmpresa: i4_empresa1
+    idChofer: i4_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_EmpresaChofer4:
+    idEmpresa: i4_empresa1
+    idChofer: i4_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_EmpresaChofer5:
+    idEmpresa: i4_empresa2
+    idChofer: i4_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_EmpresaChofer6:
+    idChofer: i4_chofer2
+    idEmpresa: i4_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_EmpresaChofer7:
+    idEmpresa: i4_empresa2
+    idChofer: i4_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i5_EmpresaChofer1:
+    idEmpresa: i5_empresa1  
+    idChofer: i5_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_EmpresaChofer2:
+    idEmpresa: i5_empresa1
+    idChofer: i5_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_EmpresaChofer3:
+    idEmpresa: i5_empresa1
+    idChofer: i5_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_EmpresaChofer4:
+    idEmpresa: i5_empresa1
+    idChofer: i5_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_EmpresaChofer5:
+    idEmpresa: i5_empresa2
+    idChofer: i5_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_EmpresaChofer6:
+    idChofer: i5_chofer2
+    idEmpresa: i5_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_EmpresaChofer7:
+    idEmpresa: i5_empresa2
+    idChofer: i5_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i6_EmpresaChofer1:
+    idEmpresa: i6_empresa1  
+    idChofer: i6_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_EmpresaChofer2:
+    idEmpresa: i6_empresa1
+    idChofer: i6_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_EmpresaChofer3:
+    idEmpresa: i6_empresa1
+    idChofer: i6_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_EmpresaChofer4:
+    idEmpresa: i6_empresa1
+    idChofer: i6_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_EmpresaChofer5:
+    idEmpresa: i6_empresa2
+    idChofer: i6_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_EmpresaChofer6:
+    idChofer: i6_chofer2
+    idEmpresa: i6_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_EmpresaChofer7:
+    idEmpresa: i6_empresa2
+    idChofer: i6_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i7_EmpresaChofer1:
+    idEmpresa: i7_empresa1  
+    idChofer: i7_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_EmpresaChofer2:
+    idEmpresa: i7_empresa1
+    idChofer: i7_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_EmpresaChofer3:
+    idEmpresa: i7_empresa1
+    idChofer: i7_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_EmpresaChofer4:
+    idEmpresa: i7_empresa1
+    idChofer: i7_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_EmpresaChofer5:
+    idEmpresa: i7_empresa2
+    idChofer: i7_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_EmpresaChofer6:
+    idChofer: i7_chofer2
+    idEmpresa: i7_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_EmpresaChofer7:
+    idEmpresa: i7_empresa2
+    idChofer: i7_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i8_EmpresaChofer1:
+    idEmpresa: i8_empresa1  
+    idChofer: i8_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_EmpresaChofer2:
+    idEmpresa: i8_empresa1
+    idChofer: i8_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_EmpresaChofer3:
+    idEmpresa: i8_empresa1
+    idChofer: i8_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_EmpresaChofer4:
+    idEmpresa: i8_empresa1
+    idChofer: i8_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_EmpresaChofer5:
+    idEmpresa: i8_empresa2
+    idChofer: i8_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_EmpresaChofer6:
+    idChofer: i8_chofer2
+    idEmpresa: i8_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_EmpresaChofer7:
+    idEmpresa: i8_empresa2
+    idChofer: i8_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i9_EmpresaChofer1:
+    idEmpresa: i9_empresa1  
+    idChofer: i9_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_EmpresaChofer2:
+    idEmpresa: i9_empresa1
+    idChofer: i9_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_EmpresaChofer3:
+    idEmpresa: i9_empresa1
+    idChofer: i9_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_EmpresaChofer4:
+    idEmpresa: i9_empresa1
+    idChofer: i9_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_EmpresaChofer5:
+    idEmpresa: i9_empresa2
+    idChofer: i9_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_EmpresaChofer6:
+    idChofer: i9_chofer2
+    idEmpresa: i9_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_EmpresaChofer7:
+    idEmpresa: i9_empresa2
+    idChofer: i9_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i10_EmpresaChofer1:
+    idEmpresa: i10_empresa1  
+    idChofer: i10_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_EmpresaChofer2:
+    idEmpresa: i10_empresa1
+    idChofer: i10_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_EmpresaChofer3:
+    idEmpresa: i10_empresa1
+    idChofer: i10_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_EmpresaChofer4:
+    idEmpresa: i10_empresa1
+    idChofer: i10_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_EmpresaChofer5:
+    idEmpresa: i10_empresa2
+    idChofer: i10_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_EmpresaChofer6:
+    idChofer: i10_chofer2
+    idEmpresa: i10_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_EmpresaChofer7:
+    idEmpresa: i10_empresa2
+    idChofer: i10_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i11_EmpresaChofer1:
+    idEmpresa: i11_empresa1  
+    idChofer: i11_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_EmpresaChofer2:
+    idEmpresa: i11_empresa1
+    idChofer: i11_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_EmpresaChofer3:
+    idEmpresa: i11_empresa1
+    idChofer: i11_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_EmpresaChofer4:
+    idEmpresa: i11_empresa1
+    idChofer: i11_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_EmpresaChofer5:
+    idEmpresa: i11_empresa2
+    idChofer: i11_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_EmpresaChofer6:
+    idChofer: i11_chofer2
+    idEmpresa: i11_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_EmpresaChofer7:
+    idEmpresa: i11_empresa2
+    idChofer: i11_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i12_EmpresaChofer1:
+    idEmpresa: i12_empresa1  
+    idChofer: i12_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_EmpresaChofer2:
+    idEmpresa: i12_empresa1
+    idChofer: i12_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_EmpresaChofer3:
+    idEmpresa: i12_empresa1
+    idChofer: i12_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_EmpresaChofer4:
+    idEmpresa: i12_empresa1
+    idChofer: i12_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_EmpresaChofer5:
+    idEmpresa: i12_empresa2
+    idChofer: i12_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_EmpresaChofer6:
+    idChofer: i12_chofer2
+    idEmpresa: i12_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_EmpresaChofer7:
+    idEmpresa: i12_empresa2
+    idChofer: i12_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i13_EmpresaChofer1:
+    idEmpresa: i13_empresa1  
+    idChofer: i13_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_EmpresaChofer2:
+    idEmpresa: i13_empresa1
+    idChofer: i13_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_EmpresaChofer3:
+    idEmpresa: i13_empresa1
+    idChofer: i13_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_EmpresaChofer4:
+    idEmpresa: i13_empresa1
+    idChofer: i13_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_EmpresaChofer5:
+    idEmpresa: i13_empresa2
+    idChofer: i13_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_EmpresaChofer6:
+    idChofer: i13_chofer2
+    idEmpresa: i13_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_EmpresaChofer7:
+    idEmpresa: i13_empresa2
+    idChofer: i13_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i14_EmpresaChofer1:
+    idEmpresa: i14_empresa1  
+    idChofer: i14_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_EmpresaChofer2:
+    idEmpresa: i14_empresa1
+    idChofer: i14_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_EmpresaChofer3:
+    idEmpresa: i14_empresa1
+    idChofer: i14_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_EmpresaChofer4:
+    idEmpresa: i14_empresa1
+    idChofer: i14_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_EmpresaChofer5:
+    idEmpresa: i14_empresa2
+    idChofer: i14_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_EmpresaChofer6:
+    idChofer: i14_chofer2
+    idEmpresa: i14_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_EmpresaChofer7:
+    idEmpresa: i14_empresa2
+    idChofer: i14_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i15_EmpresaChofer1:
+    idEmpresa: i15_empresa1  
+    idChofer: i15_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_EmpresaChofer2:
+    idEmpresa: i15_empresa1
+    idChofer: i15_chofer2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_EmpresaChofer3:
+    idEmpresa: i15_empresa1
+    idChofer: i15_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_EmpresaChofer4:
+    idEmpresa: i15_empresa1
+    idChofer: i15_chofer4
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_EmpresaChofer5:
+    idEmpresa: i15_empresa2
+    idChofer: i15_chofer1
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_EmpresaChofer6:
+    idChofer: i15_chofer2
+    idEmpresa: i15_empresa2
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_EmpresaChofer7:
+    idEmpresa: i15_empresa2
+    idChofer: i15_chofer3
+    fechaAlta: 2012-01-11 9:00:00
+    habilitado: 1
+    usuario: i15_invitado

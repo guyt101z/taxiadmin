@@ -1,0 +1,770 @@
+
+propietario:
+
+  propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: brus
+
+  propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: brus
+
+  propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: brus
+
+  propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: brus
+
+  i1_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i1_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i1_invitado
+
+  i2_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i2_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i2_invitado
+
+  i3_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i3_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i3_invitado
+
+  i4_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i4_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i4_invitado
+
+  i5_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i5_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i5_invitado
+
+  i6_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i6_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i6_invitado
+
+  i7_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i7_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i7_invitado
+
+  i8_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i8_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i8_invitado
+
+  i9_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i9_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i9_invitado
+
+  i10_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i10_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i10_invitado
+
+  i11_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i11_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i11_invitado
+
+  i12_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i12_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i12_invitado
+
+  i13_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i13_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i13_invitado
+
+  i14_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i14_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i14_invitado
+
+  i15_propietario1:
+    cedula: 34659815
+    nombre: Roberto
+    apellidos: Silva Lopez
+    direccion: Uruguay 3456 esq Yaguaron
+    telefono: 23948576
+    celular: 098765432
+    email: rsilva@yahoo.com.ar
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_propietario2:
+    cedula: 45659815
+    nombre: Julio
+    apellidos: Castegli
+    direccion: Roma 458
+    telefono: 29847562
+    celular: 091876456
+    email: julio35@hotmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_propietario3:
+    cedula: 84659384
+    nombre: Maria Raquel
+    apellidos: Gonzalez
+    direccion: Mercedes 4985 Ap 34
+    telefono: 29837254
+    celular: 099837776
+    email: mraquelg@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i15_invitado
+
+  i15_propietario4:
+    cedula: 12345384
+    nombre: Patricio
+    apellidos: Romano
+    direccion: Rondo 4996
+    telefono: 23848644
+    celular: 098765341
+    email: patricio33g@gmail.com
+    fechaAlta: 2012-01-20 15:00:00
+    habilitado: 1
+    usuario: i15_invitado

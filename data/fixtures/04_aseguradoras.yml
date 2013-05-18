@@ -1,0 +1,75 @@
+# Aseguradoras ingresadas en el sistema
+
+aseguradora:
+
+  prosegur:
+    nombre: Prosegur Aseguradora
+    direccion: Blvar. Artigas 1234
+    telefono: 23456734
+    telefono2: 29875341
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
+
+  far:
+    nombre: Far Seguros
+    direccion: Burgues 3947
+    telefono: 29983788
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
+
+  bse:
+    nombre: Banco de Seguros del Estado
+    direccion: Mercedes 948
+    telefono: 29387744
+    telefono2: 27651212
+    web: www.bse.gub.uy
+    email: emergencia@bse.gub.uy
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
+
+  sancor:
+    nombre: Sancor Seguros 
+    direccion: 
+    telefono: 
+    telefono2: 
+    web: www.gruposancorseguros.com/uruguay
+    email: 
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
+
+  surco:
+    nombre: Surco Seguros 
+    direccion: Bvar. Artigas 1388
+    telefono: 
+    telefono2: 
+    web: www.surco.com.uy/
+    email: 
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
+
+  mapfre:
+    nombre: Mapfre
+    direccion: 
+    telefono: 
+    telefono2: 
+    web: www.mapfre.com.uy
+    email: 
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
+
+  portoSeguro:
+    nombre: Porto Seguro
+    direccion: 
+    telefono: 
+    telefono2: 
+    web: www.portoseguro.com.uy
+    email: 
+    fechaAlta: 2011-04-2 23:33:00
+    habilitado: 1
+    usuario: admin
