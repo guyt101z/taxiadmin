@@ -82,8 +82,8 @@
                             <h2 class="inner">¿Qué es TaxiAdmin?</h2>
                             <p>
                                 TaxiAdmin es una aplicación diseñada específicamente para la administración de taxímetros.
-                                Con TaxiAdmin usted podrá administrar sus choferes, moviles, empresas y sus propietarios.
-                                Llevar un registro de todos los gastos del móvil, multas, accidentes y mucho mas.
+                                Con el cual usted podrá administrar sus choferes, moviles, empresas y sus propietarios.
+                                Llevar un registro de todos los gastos del móvil, multas, accidentes y mas.
                                 <br>Tendrá a su disposición graficas para poder comparar rendimientos entre móviles y choferes.
                                 <br>No se olvide de pagar ni una cuenta más, con nuestro servicio de avisos de vencimientos, usted siempre sabrá cuando se vencen las multas, mensualidades y demás.
                                 <br>Como TaxiAdmin es una aplicación web, usted podrá ingresar desde cualquier computadora o dispositivo móvil, de esta manera podrá trabajar desde el lugar que desee.
@@ -95,7 +95,7 @@
                                 TaxiAdmin tiene costo por móvil administrado, esto es, si usted administra 5 móviles va a pagar el costo de móvil por 5.
                                 <br>De esta manera va a pagar solamente por lo que utiliza del sistema.
                                 <br>En este momento TaxiAdmin esta en su versión Beta, esto quiere decir que aún estamos en desarrollo y por lo tanto los usuarios son ingresados por invitación para probar la aplicación y enviarnos sus comentarios. 
-                                <br>Para adquirir un usuario y probar la aplicación envíanos un email.
+                                <br>Para adquirir un usuario y probar la aplicación envíanos un <a onclick="showEditDialog('Contacto', '<?php echo url_for('email/new') ?>', '400', fValidateEmail, fOkContacto); return false;" style="cursor: pointer;" >email</a>.
                             </p>
                         </div>
                         <div class="bit">

@@ -1,4 +1,4 @@
 taxiadmin
 =========
 
-Sistema de administración de taxímetros para uruguay
+Sistema de administración de taxímetros para Uruguay
