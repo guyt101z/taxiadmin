@@ -23,10 +23,10 @@ abstract class BaseEmpresaForm extends BaseFormPropel
       'fechaBaja'                => new sfWidgetFormDateTime(),
       'habilitado'               => new sfWidgetFormInputCheckbox(),
       'usuario'                  => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => false)),
-      'empresa_propietario_list' => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Propietario')),
       'movil_empresa_list'       => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Movil')),
-      'chofer_empresa_list'      => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Chofer')),
+      'empresa_propietario_list' => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Propietario')),
       'pagoaseguradora_list'     => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Aseguradora')),
+      'chofer_empresa_list'      => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Chofer')),
     ));
 
     $this->setValidators(array(
@@ -39,10 +39,10 @@ abstract class BaseEmpresaForm extends BaseFormPropel
       'fechaBaja'                => new sfValidatorDateTime(array('required' => false)),
       'habilitado'               => new sfValidatorBoolean(array('required' => false)),
       'usuario'                  => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id')),
-      'empresa_propietario_list' => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Propietario', 'required' => false)),
       'movil_empresa_list'       => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Movil', 'required' => false)),
-      'chofer_empresa_list'      => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Chofer', 'required' => false)),
+      'empresa_propietario_list' => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Propietario', 'required' => false)),
       'pagoaseguradora_list'     => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Aseguradora', 'required' => false)),
+      'chofer_empresa_list'      => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Chofer', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('empresa[%s]');
@@ -62,17 +62,6 @@ abstract class BaseEmpresaForm extends BaseFormPropel
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['empresa_propietario_list']))
-    {
-      $values = array();
-      foreach ($this->object->getEmpresaPropietarios() as $obj)
-      {
-        $values[] = $obj->getIdpropietario();
-      }
-
-      $this->setDefault('empresa_propietario_list', $values);
-    }
-
     if (isset($this->widgetSchema['movil_empresa_list']))
     {
       $values = array();
@@ -84,15 +73,15 @@ abstract class BaseEmpresaForm extends BaseFormPropel
       $this->setDefault('movil_empresa_list', $values);
     }
 
-    if (isset($this->widgetSchema['chofer_empresa_list']))
+    if (isset($this->widgetSchema['empresa_propietario_list']))
     {
       $values = array();
-      foreach ($this->object->getChoferEmpresas() as $obj)
+      foreach ($this->object->getEmpresaPropietarios() as $obj)
       {
-        $values[] = $obj->getIdchofer();
+        $values[] = $obj->getIdpropietario();
       }
 
-      $this->setDefault('chofer_empresa_list', $values);
+      $this->setDefault('empresa_propietario_list', $values);
     }
 
     if (isset($this->widgetSchema['pagoaseguradora_list']))
@@ -106,51 +95,27 @@ abstract class BaseEmpresaForm extends BaseFormPropel
       $this->setDefault('pagoaseguradora_list', $values);
     }
 
+    if (isset($this->widgetSchema['chofer_empresa_list']))
+    {
+      $values = array();
+      foreach ($this->object->getChoferEmpresas() as $obj)
+      {
+        $values[] = $obj->getIdchofer();
+      }
+
+      $this->setDefault('chofer_empresa_list', $values);
+    }
+
   }
 
   protected function doSave($con = null)
   {
     parent::doSave($con);
 
-    $this->saveEmpresaPropietarioList($con);
     $this->saveMovilEmpresaList($con);
-    $this->saveChoferEmpresaList($con);
+    $this->saveEmpresaPropietarioList($con);
     $this->savePagoaseguradoraList($con);
-  }
-
-  public function saveEmpresaPropietarioList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['empresa_propietario_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $c = new Criteria();
-    $c->add(EmpresaPropietarioPeer::IDEMPRESA, $this->object->getPrimaryKey());
-    EmpresaPropietarioPeer::doDelete($c, $con);
-
-    $values = $this->getValue('empresa_propietario_list');
-    if (is_array($values))
-    {
-      foreach ($values as $value)
-      {
-        $obj = new EmpresaPropietario();
-        $obj->setIdempresa($this->object->getPrimaryKey());
-        $obj->setIdpropietario($value);
-        $obj->save();
-      }
-    }
+    $this->saveChoferEmpresaList($con);
   }
 
   public function saveMovilEmpresaList($con = null)
@@ -188,14 +153,14 @@ abstract class BaseEmpresaForm extends BaseFormPropel
     }
   }
 
-  public function saveChoferEmpresaList($con = null)
+  public function saveEmpresaPropietarioList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['chofer_empresa_list']))
+    if (!isset($this->widgetSchema['empresa_propietario_list']))
     {
       // somebody has unset this widget
       return;
@@ -207,17 +172,17 @@ abstract class BaseEmpresaForm extends BaseFormPropel
     }
 
     $c = new Criteria();
-    $c->add(ChoferEmpresaPeer::IDEMPRESA, $this->object->getPrimaryKey());
-    ChoferEmpresaPeer::doDelete($c, $con);
+    $c->add(EmpresaPropietarioPeer::IDEMPRESA, $this->object->getPrimaryKey());
+    EmpresaPropietarioPeer::doDelete($c, $con);
 
-    $values = $this->getValue('chofer_empresa_list');
+    $values = $this->getValue('empresa_propietario_list');
     if (is_array($values))
     {
       foreach ($values as $value)
       {
-        $obj = new ChoferEmpresa();
+        $obj = new EmpresaPropietario();
         $obj->setIdempresa($this->object->getPrimaryKey());
-        $obj->setIdchofer($value);
+        $obj->setIdpropietario($value);
         $obj->save();
       }
     }
@@ -253,6 +218,41 @@ abstract class BaseEmpresaForm extends BaseFormPropel
         $obj = new Pagoaseguradora();
         $obj->setIdempresa($this->object->getPrimaryKey());
         $obj->setIdaseguradora($value);
+        $obj->save();
+      }
+    }
+  }
+
+  public function saveChoferEmpresaList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['chofer_empresa_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(ChoferEmpresaPeer::IDEMPRESA, $this->object->getPrimaryKey());
+    ChoferEmpresaPeer::doDelete($c, $con);
+
+    $values = $this->getValue('chofer_empresa_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new ChoferEmpresa();
+        $obj->setIdempresa($this->object->getPrimaryKey());
+        $obj->setIdchofer($value);
         $obj->save();
       }
     }

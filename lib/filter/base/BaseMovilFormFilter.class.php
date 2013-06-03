@@ -26,8 +26,8 @@ abstract class BaseMovilFormFilter extends BaseFormFilterPropel
       'fechaBaja'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'habilitado'           => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'usuario'              => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
-      'movil_despacho_list'  => new sfWidgetFormPropelChoice(array('model' => 'Despacho', 'add_empty' => true)),
       'movil_empresa_list'   => new sfWidgetFormPropelChoice(array('model' => 'Empresa', 'add_empty' => true)),
+      'movil_despacho_list'  => new sfWidgetFormPropelChoice(array('model' => 'Despacho', 'add_empty' => true)),
       'pagoaseguradora_list' => new sfWidgetFormPropelChoice(array('model' => 'Empresa', 'add_empty' => true)),
     ));
 
@@ -46,8 +46,8 @@ abstract class BaseMovilFormFilter extends BaseFormFilterPropel
       'fechaBaja'            => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'habilitado'           => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'usuario'              => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Usuario', 'column' => 'id')),
-      'movil_despacho_list'  => new sfValidatorPropelChoice(array('model' => 'Despacho', 'required' => false)),
       'movil_empresa_list'   => new sfValidatorPropelChoice(array('model' => 'Empresa', 'required' => false)),
+      'movil_despacho_list'  => new sfValidatorPropelChoice(array('model' => 'Despacho', 'required' => false)),
       'pagoaseguradora_list' => new sfValidatorPropelChoice(array('model' => 'Empresa', 'required' => false)),
     ));
 
@@ -56,31 +56,6 @@ abstract class BaseMovilFormFilter extends BaseFormFilterPropel
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     parent::setup();
-  }
-
-  public function addMovilDespachoListColumnCriteria(Criteria $criteria, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $criteria->addJoin(MovilDespachoPeer::IDMOVIL, MovilPeer::ID);
-
-    $value = array_pop($values);
-    $criterion = $criteria->getNewCriterion(MovilDespachoPeer::IDDESPACHO, $value);
-
-    foreach ($values as $value)
-    {
-      $criterion->addOr($criteria->getNewCriterion(MovilDespachoPeer::IDDESPACHO, $value));
-    }
-
-    $criteria->add($criterion);
   }
 
   public function addMovilEmpresaListColumnCriteria(Criteria $criteria, $field, $values)
@@ -103,6 +78,31 @@ abstract class BaseMovilFormFilter extends BaseFormFilterPropel
     foreach ($values as $value)
     {
       $criterion->addOr($criteria->getNewCriterion(MovilEmpresaPeer::IDEMPRESA, $value));
+    }
+
+    $criteria->add($criterion);
+  }
+
+  public function addMovilDespachoListColumnCriteria(Criteria $criteria, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $criteria->addJoin(MovilDespachoPeer::IDMOVIL, MovilPeer::ID);
+
+    $value = array_pop($values);
+    $criterion = $criteria->getNewCriterion(MovilDespachoPeer::IDDESPACHO, $value);
+
+    foreach ($values as $value)
+    {
+      $criterion->addOr($criteria->getNewCriterion(MovilDespachoPeer::IDDESPACHO, $value));
     }
 
     $criteria->add($criterion);
@@ -156,8 +156,8 @@ abstract class BaseMovilFormFilter extends BaseFormFilterPropel
       'fechaBaja'            => 'Date',
       'habilitado'           => 'Boolean',
       'usuario'              => 'ForeignKey',
-      'movil_despacho_list'  => 'ManyKey',
       'movil_empresa_list'   => 'ManyKey',
+      'movil_despacho_list'  => 'ManyKey',
       'pagoaseguradora_list' => 'ManyKey',
     );
   }

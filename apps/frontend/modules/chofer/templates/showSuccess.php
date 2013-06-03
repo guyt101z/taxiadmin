@@ -24,7 +24,7 @@
     </div>
 
     <div class="news">
-        <h5><label onclick="showEditDialog('Ingresar Recaudación', '<?php echo url_for('recaudacion/new?idChofer=' . $chofer->getId()) ?>', '800', fValidateRecaudacion, fOkRecaudacion); return false;">Ingresar Recaudación</label></h5>
+        <!-- <h5><label onclick="showEditDialog('Ingresar Recaudación', '<?php echo url_for('recaudacion/new?idChofer=' . $chofer->getId()) ?>', '800', fValidateRecaudacion, fOkRecaudacion); return false;">Ingresar Recaudación</label></h5> -->
     </div>
     <div class="news">
         <h5><a href="<?php echo url_for('recaudacion/index?idChofer=' . $chofer->getId()) ?>"><label>Ver Recaudaciones</label></a></h5>

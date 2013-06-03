@@ -20,10 +20,10 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
       'fechaBaja'                => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'habilitado'               => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'usuario'                  => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => true)),
-      'empresa_propietario_list' => new sfWidgetFormPropelChoice(array('model' => 'Propietario', 'add_empty' => true)),
       'movil_empresa_list'       => new sfWidgetFormPropelChoice(array('model' => 'Movil', 'add_empty' => true)),
-      'chofer_empresa_list'      => new sfWidgetFormPropelChoice(array('model' => 'Chofer', 'add_empty' => true)),
+      'empresa_propietario_list' => new sfWidgetFormPropelChoice(array('model' => 'Propietario', 'add_empty' => true)),
       'pagoaseguradora_list'     => new sfWidgetFormPropelChoice(array('model' => 'Aseguradora', 'add_empty' => true)),
+      'chofer_empresa_list'      => new sfWidgetFormPropelChoice(array('model' => 'Chofer', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -35,10 +35,10 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
       'fechaBaja'                => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDate(array('required' => false)))),
       'habilitado'               => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'usuario'                  => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Usuario', 'column' => 'id')),
-      'empresa_propietario_list' => new sfValidatorPropelChoice(array('model' => 'Propietario', 'required' => false)),
       'movil_empresa_list'       => new sfValidatorPropelChoice(array('model' => 'Movil', 'required' => false)),
-      'chofer_empresa_list'      => new sfValidatorPropelChoice(array('model' => 'Chofer', 'required' => false)),
+      'empresa_propietario_list' => new sfValidatorPropelChoice(array('model' => 'Propietario', 'required' => false)),
       'pagoaseguradora_list'     => new sfValidatorPropelChoice(array('model' => 'Aseguradora', 'required' => false)),
+      'chofer_empresa_list'      => new sfValidatorPropelChoice(array('model' => 'Chofer', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('empresa_filters[%s]');
@@ -46,31 +46,6 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
     parent::setup();
-  }
-
-  public function addEmpresaPropietarioListColumnCriteria(Criteria $criteria, $field, $values)
-  {
-    if (!is_array($values))
-    {
-      $values = array($values);
-    }
-
-    if (!count($values))
-    {
-      return;
-    }
-
-    $criteria->addJoin(EmpresaPropietarioPeer::IDEMPRESA, EmpresaPeer::ID);
-
-    $value = array_pop($values);
-    $criterion = $criteria->getNewCriterion(EmpresaPropietarioPeer::IDPROPIETARIO, $value);
-
-    foreach ($values as $value)
-    {
-      $criterion->addOr($criteria->getNewCriterion(EmpresaPropietarioPeer::IDPROPIETARIO, $value));
-    }
-
-    $criteria->add($criterion);
   }
 
   public function addMovilEmpresaListColumnCriteria(Criteria $criteria, $field, $values)
@@ -98,7 +73,7 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
     $criteria->add($criterion);
   }
 
-  public function addChoferEmpresaListColumnCriteria(Criteria $criteria, $field, $values)
+  public function addEmpresaPropietarioListColumnCriteria(Criteria $criteria, $field, $values)
   {
     if (!is_array($values))
     {
@@ -110,14 +85,14 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
       return;
     }
 
-    $criteria->addJoin(ChoferEmpresaPeer::IDEMPRESA, EmpresaPeer::ID);
+    $criteria->addJoin(EmpresaPropietarioPeer::IDEMPRESA, EmpresaPeer::ID);
 
     $value = array_pop($values);
-    $criterion = $criteria->getNewCriterion(ChoferEmpresaPeer::IDCHOFER, $value);
+    $criterion = $criteria->getNewCriterion(EmpresaPropietarioPeer::IDPROPIETARIO, $value);
 
     foreach ($values as $value)
     {
-      $criterion->addOr($criteria->getNewCriterion(ChoferEmpresaPeer::IDCHOFER, $value));
+      $criterion->addOr($criteria->getNewCriterion(EmpresaPropietarioPeer::IDPROPIETARIO, $value));
     }
 
     $criteria->add($criterion);
@@ -148,6 +123,31 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
     $criteria->add($criterion);
   }
 
+  public function addChoferEmpresaListColumnCriteria(Criteria $criteria, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $criteria->addJoin(ChoferEmpresaPeer::IDEMPRESA, EmpresaPeer::ID);
+
+    $value = array_pop($values);
+    $criterion = $criteria->getNewCriterion(ChoferEmpresaPeer::IDCHOFER, $value);
+
+    foreach ($values as $value)
+    {
+      $criterion->addOr($criteria->getNewCriterion(ChoferEmpresaPeer::IDCHOFER, $value));
+    }
+
+    $criteria->add($criterion);
+  }
+
   public function getModelName()
   {
     return 'Empresa';
@@ -165,10 +165,10 @@ abstract class BaseEmpresaFormFilter extends BaseFormFilterPropel
       'fechaBaja'                => 'Date',
       'habilitado'               => 'Boolean',
       'usuario'                  => 'ForeignKey',
-      'empresa_propietario_list' => 'ManyKey',
       'movil_empresa_list'       => 'ManyKey',
-      'chofer_empresa_list'      => 'ManyKey',
+      'empresa_propietario_list' => 'ManyKey',
       'pagoaseguradora_list'     => 'ManyKey',
+      'chofer_empresa_list'      => 'ManyKey',
     );
   }
 }

@@ -18,8 +18,16 @@ class ConstantesFrontEnd {
     public static $DIURNO = 'Diurno';
     public static $NOCTURNO = 'Nocturno';
     
+    public static $GASTO_1 = 'Gas-Oil';
+    public static $GASTO_2 = 'Aceite';
+    public static $GASTO_3 = 'Gomería';
+    public static $GASTO_4 = 'Lavado';
+    public static $GASTO_5 = 'Viáticos';
+    public static $GASTO_6 = 'Otros';
+    
     public static $SIZE_WIDGET_FECHA = 10;
     public static $SIZE_WIDGET_COSTO = 8;
+    public static $SIZE_WIDGET_KM = 4;
     public static $SIZE_WIDGET_RECAUDACION = 8;
     public static $SIZE_WIDGET_DESCRIPCION_COLS = 22;
     public static $SIZE_WIDGET_DESCRIPCION_COLS_DOS = 35;

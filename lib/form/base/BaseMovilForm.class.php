@@ -29,8 +29,8 @@ abstract class BaseMovilForm extends BaseFormPropel
       'fechaBaja'            => new sfWidgetFormDateTime(),
       'habilitado'           => new sfWidgetFormInputCheckbox(),
       'usuario'              => new sfWidgetFormPropelChoice(array('model' => 'Usuario', 'add_empty' => false)),
-      'movil_despacho_list'  => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Despacho')),
       'movil_empresa_list'   => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Empresa')),
+      'movil_despacho_list'  => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Despacho')),
       'pagoaseguradora_list' => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Empresa')),
     ));
 
@@ -50,8 +50,8 @@ abstract class BaseMovilForm extends BaseFormPropel
       'fechaBaja'            => new sfValidatorDateTime(array('required' => false)),
       'habilitado'           => new sfValidatorBoolean(array('required' => false)),
       'usuario'              => new sfValidatorPropelChoice(array('model' => 'Usuario', 'column' => 'id')),
-      'movil_despacho_list'  => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Despacho', 'required' => false)),
       'movil_empresa_list'   => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Empresa', 'required' => false)),
+      'movil_despacho_list'  => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Despacho', 'required' => false)),
       'pagoaseguradora_list' => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Empresa', 'required' => false)),
     ));
 
@@ -72,17 +72,6 @@ abstract class BaseMovilForm extends BaseFormPropel
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['movil_despacho_list']))
-    {
-      $values = array();
-      foreach ($this->object->getMovilDespachos() as $obj)
-      {
-        $values[] = $obj->getIddespacho();
-      }
-
-      $this->setDefault('movil_despacho_list', $values);
-    }
-
     if (isset($this->widgetSchema['movil_empresa_list']))
     {
       $values = array();
@@ -92,6 +81,17 @@ abstract class BaseMovilForm extends BaseFormPropel
       }
 
       $this->setDefault('movil_empresa_list', $values);
+    }
+
+    if (isset($this->widgetSchema['movil_despacho_list']))
+    {
+      $values = array();
+      foreach ($this->object->getMovilDespachos() as $obj)
+      {
+        $values[] = $obj->getIddespacho();
+      }
+
+      $this->setDefault('movil_despacho_list', $values);
     }
 
     if (isset($this->widgetSchema['pagoaseguradora_list']))
@@ -111,44 +111,9 @@ abstract class BaseMovilForm extends BaseFormPropel
   {
     parent::doSave($con);
 
-    $this->saveMovilDespachoList($con);
     $this->saveMovilEmpresaList($con);
+    $this->saveMovilDespachoList($con);
     $this->savePagoaseguradoraList($con);
-  }
-
-  public function saveMovilDespachoList($con = null)
-  {
-    if (!$this->isValid())
-    {
-      throw $this->getErrorSchema();
-    }
-
-    if (!isset($this->widgetSchema['movil_despacho_list']))
-    {
-      // somebody has unset this widget
-      return;
-    }
-
-    if (null === $con)
-    {
-      $con = $this->getConnection();
-    }
-
-    $c = new Criteria();
-    $c->add(MovilDespachoPeer::IDMOVIL, $this->object->getPrimaryKey());
-    MovilDespachoPeer::doDelete($c, $con);
-
-    $values = $this->getValue('movil_despacho_list');
-    if (is_array($values))
-    {
-      foreach ($values as $value)
-      {
-        $obj = new MovilDespacho();
-        $obj->setIdmovil($this->object->getPrimaryKey());
-        $obj->setIddespacho($value);
-        $obj->save();
-      }
-    }
   }
 
   public function saveMovilEmpresaList($con = null)
@@ -181,6 +146,41 @@ abstract class BaseMovilForm extends BaseFormPropel
         $obj = new MovilEmpresa();
         $obj->setIdmovil($this->object->getPrimaryKey());
         $obj->setIdempresa($value);
+        $obj->save();
+      }
+    }
+  }
+
+  public function saveMovilDespachoList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['movil_despacho_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(MovilDespachoPeer::IDMOVIL, $this->object->getPrimaryKey());
+    MovilDespachoPeer::doDelete($c, $con);
+
+    $values = $this->getValue('movil_despacho_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new MovilDespacho();
+        $obj->setIdmovil($this->object->getPrimaryKey());
+        $obj->setIddespacho($value);
         $obj->save();
       }
     }

@@ -34,7 +34,7 @@ class recaudacionActions extends sfActions {
     }
 
     public function executeNew(sfWebRequest $request) {
-        $this->forward404Unless($request->isXmlHttpRequest());
+
         $this->setChoferesYMoviles($request);
 
         $this->form = new RecaudacionForm();

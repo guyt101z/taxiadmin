@@ -62,10 +62,10 @@ class EtiquetasFrontEnd {
     public static $BANDERAS_DIURNAS = 'Banderas Diurnas';
     public static $BANDERAS_NOCTURNAS = 'Banderas Nocturnas';
     public static $PORCENTAJE_RECAUDACION = 'Porcentaje Recaudación';
-    public static $IMPORTE_CHOFER = 'Importe Chofer';
+    public static $IMPORTE_CHOFER = 'Salario Chofer';
     public static $IMPORTE_MOVIL = 'Importe Móvil';
     public static $RECAUDACION = 'Recaudación';
-    public static $APORTE_PATRONAL = 'Aporte Patronal';
+    public static $APORTE_LEYES = 'Aporte Leyes';
     public static $DESCUENTO_FICHAS = 'Descuento Fichas';
     public static $DESCUENTO_BANDERAS = 'Descuento Banderas';
     public static $MONTO = 'Monto';
@@ -77,7 +77,11 @@ class EtiquetasFrontEnd {
     public static $FECHA_DE_VENCIMIENTO = 'Fecha de Vencimiento';
     public static $PERTENECE_A = 'Pertenece a';
     public static $IMPORTE = 'Importe';
-
+    public static $TOTAL_GASTOS = 'Total Gastos';
+    public static $GASTO_1 = 'Gas-Oil';
+    public static $GASTO_2 = 'Aceite';
+    public static $GASTO_3 = 'Gomería';
+    public static $GASTO_4 = 'Lavado';
+    public static $GASTO_5 = 'Viáticos';
+    public static $GASTO_6 = 'Otros';
 }
-
-?>

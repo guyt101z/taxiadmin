@@ -26,53 +26,40 @@ class RecaudacionForm extends BaseRecaudacionForm {
         $this->widgetSchema['fecha'] = new sfWidgetFormInput(array(), array('class' => 'fecha', 'size' => ConstantesFrontEnd::$SIZE_WIDGET_FECHA));
         $this->setValidator('fecha', new sfValidatorDate(array('date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')));
 
-        $turnos = array();
-        $turnos[ConstantesFrontEnd::$DIURNO] = ConstantesFrontEnd::$DIURNO;
-        $turnos[ConstantesFrontEnd::$NOCTURNO] = ConstantesFrontEnd::$NOCTURNO;
-        $this->widgetSchema['turno'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $turnos));
+        // agrego los gastos
+        $this->widgetSchema['gasto1'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->widgetSchema['gasto2'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->widgetSchema['gasto3'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->widgetSchema['gasto4'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->widgetSchema['gasto5'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->widgetSchema['gasto6'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
 
-        // seteo el tamaño de todos los widgets que necesiten
-        $this->widgetSchema['kmInicialAuto']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['kmFinalAuto']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['kmInicialReloj']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['kmFinalReloj']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['fichasIniciales']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['fichasFinales']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['fichasDiurnas']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['fichasNocturnas']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['banderasDiurnas']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['banderasNocturnas']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['porcentajeRecaudacion']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        // $this->widgetSchema['turno'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $turnos));
+
+        // // seteo el tamaño de todos los widgets que necesiten
+        $this->widgetSchema['recaudacion']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
         $this->widgetSchema['importeChofer']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
         $this->widgetSchema['importeMovil']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['recaudacion']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['aportePatronal']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['descuentoFichas']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['descuentoBanderas']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-
+        $this->widgetSchema['aporteLeyes']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->widgetSchema['km']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_KM));
+        $this->widgetSchema['totalGastos']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        
         // agrego las etiquetas
         $this->widgetSchema->setLabels(array(
+            'recaudacion' => EtiquetasFrontEnd::$RECAUDACION,
+            'fecha' => EtiquetasFrontEnd::$FECHA,
+            'importeChofer' => EtiquetasFrontEnd::$IMPORTE_CHOFER,
+            'totalGastos' => EtiquetasFrontEnd::$TOTAL_GASTOS,
+            'importeMovil' => EtiquetasFrontEnd::$IMPORTE_MOVIL,
+            'aporteLeyes' => EtiquetasFrontEnd::$APORTE_LEYES,
             'idChofer' => EtiquetasFrontEnd::$CHOFER,
             'idMovil' => EtiquetasFrontEnd::$MOVIL,
-            'turno' => EtiquetasFrontEnd::$TURNO,
-            'fecha' => EtiquetasFrontEnd::$FECHA,
-            'kmInicialAuto' => EtiquetasFrontEnd::$KM_INICIAL_AUTO,
-            'kmFinalAuto' => EtiquetasFrontEnd::$KM_FINAL_AUTO,
-            'kmInicialReloj' => EtiquetasFrontEnd::$KM_INICIAL_RELOJ,
-            'kmFinalReloj' => EtiquetasFrontEnd::$KM_FINAL_RELOJ,
-            'fichasIniciales' => EtiquetasFrontEnd::$FICHAS_INICIALES,
-            'fichasFinales' => EtiquetasFrontEnd::$FICHAS_FINALES,
-            'fichasDiurnas' => EtiquetasFrontEnd::$FICHAS_DIURNAS,
-            'fichasNocturnas' => EtiquetasFrontEnd::$FICHAS_NOCTURNAS,
-            'banderasDiurnas' => EtiquetasFrontEnd::$BANDERAS_DIURNAS,
-            'banderasNocturnas' => EtiquetasFrontEnd::$BANDERAS_NOCTURNAS,
-            'porcentajeRecaudacion' => EtiquetasFrontEnd::$PORCENTAJE_RECAUDACION,
-            'importeChofer' => EtiquetasFrontEnd::$IMPORTE_CHOFER,
-            'importeMovil' => EtiquetasFrontEnd::$IMPORTE_MOVIL,
-            'recaudacion' => EtiquetasFrontEnd::$RECAUDACION,
-            'aportePatronal' => EtiquetasFrontEnd::$APORTE_PATRONAL,
-            'descuentoFichas' => EtiquetasFrontEnd::$DESCUENTO_FICHAS,
-            'descuentoBanderas' => EtiquetasFrontEnd::$DESCUENTO_BANDERAS
+            'gasto1' => EtiquetasFrontEnd::$GASTO_1,
+            'gasto2' => EtiquetasFrontEnd::$GASTO_2,
+            'gasto3' => EtiquetasFrontEnd::$GASTO_3,
+            'gasto4' => EtiquetasFrontEnd::$GASTO_4,
+            'gasto5' => EtiquetasFrontEnd::$GASTO_5,
+            'gasto6' => EtiquetasFrontEnd::$GASTO_6,
         ));
     }
 

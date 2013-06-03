@@ -94,7 +94,7 @@ propel:
   
   chofer:
     id:                         ~
-    cedula:                     { type: integer, required: true}
+    cedula:                     { type: integer, required: true }
     nombre:                     { type: varchar(50), required: true }
     apellidos:                  { type: varchar(50), required: true }
     direccion:                  { type: varchar(100), required: false }
@@ -103,6 +103,7 @@ propel:
     email:                      { type: varchar(100), required: false }
     vencimientoLibretaConducir: { type: date, required: false }
     vencimientoCarneSalud:      { type: date, required: false }
+    aporteLeyes:                { type: decimal, size: 10, scale: 2, required: true }
     fechaAlta:                  { type: timestamp, required: true }
     fechaBaja:                  { type: timestamp, required: false }
     habilitado:                 { type: boolean, required: false, default: 1 }
@@ -158,32 +159,20 @@ propel:
     usuario:     { type: integer, foreignTable: usuario, foreignReference: id, required: true, onDelete: CASCADE }
 
   recaudacion:
-    id:                    ~
-    idMovil:               { type: integer, foreignTable: movil, foreignReference: id, required: true, onDelete: CASCADE }
-    idChofer:              { type: integer, foreignTable: chofer, foreignReference: id, required: true, onDelete: CASCADE }
-    turno:                 { type: varchar(50), required: true }
-    fecha:                 { type: date, required: true }
-    kmInicialAuto:         { type: decimal, size: 17, scale: 2, required: true }
-    kmFinalAuto:           { type: decimal, size: 17, scale: 2, required: true }
-    kmInicialReloj:        { type: decimal, size: 17, scale: 2, required: true }
-    kmFinalReloj:          { type: decimal, size: 17, scale: 2, required: true }
-    fichasIniciales:       { type: decimal, size: 17, scale: 2, required: true }
-    fichasFinales:         { type: decimal, size: 17, scale: 2, required: true }
-    fichasDiurnas:         { type: decimal, size: 17, scale: 2, required: true }
-    fichasNocturnas:       { type: decimal, size: 17, scale: 2, required: true }
-    banderasDiurnas:       { type: decimal, size: 17, scale: 2, required: true }
-    banderasNocturnas:     { type: decimal, size: 17, scale: 2, required: true }
-    porcentajeRecaudacion: { type: decimal, size: 17, scale: 2, required: true }
-    importeChofer:         { type: decimal, size: 17, scale: 2, required: true }
-    importeMovil:          { type: decimal, size: 17, scale: 2, required: true }
-    recaudacion:           { type: decimal, size: 17, scale: 2, required: true }
-    aportePatronal:        { type: decimal, size: 17, scale: 2, required: true }
-    descuentoFichas:       { type: decimal, size: 17, scale: 2, required: true }
-    descuentoBanderas:     { type: decimal, size: 17, scale: 2, required: true }
-    fechaAlta:             { type: timestamp, required: true }
-    fechaBaja:             { type: timestamp, required: false }
-    habilitado:            { type: boolean, required: false, default: 1 }
-    usuario:               { type: integer, foreignTable: usuario, foreignReference: id, required: true, onDelete: CASCADE }
+    id:            ~
+    idMovil:       { type: integer, foreignTable: movil, foreignReference: id, required: true, onDelete: CASCADE }
+    idChofer:      { type: integer, foreignTable: chofer, foreignReference: id, required: true, onDelete: CASCADE }
+    fecha:         { type: date, required: true }
+    km:            { type: decimal, size: 17, scale: 2, required: true }
+    recaudacion:   { type: decimal, size: 17, scale: 2, required: true }
+    totalGastos:   { type: decimal, size: 17, scale: 2, required: true }
+    importeChofer: { type: decimal, size: 17, scale: 2, required: true }
+    importeMovil:  { type: decimal, size: 17, scale: 2, required: true }
+    aporteLeyes:   { type: decimal, size: 17, scale: 2, required: true }
+    fechaAlta:     { type: timestamp, required: true }
+    fechaBaja:     { type: timestamp, required: false }
+    habilitado:    { type: boolean, required: false, default: 1 }
+    usuario:       { type: integer, foreignTable: usuario, foreignReference: id, required: true, onDelete: CASCADE }
 
   gastoRecaudacion:
     id:            ~
