@@ -17,24 +17,28 @@ class RecaudacionForm extends BaseRecaudacionForm {
         unset($this['usuario']);
 
         $choferes = sfContext::getInstance()->getUser()->getAttribute("choferes");
+        $aporteLeyes = sfContext::getInstance()->getUser()->getAttribute("choferesAporteLeyes");
+        $pliquidacion = sfContext::getInstance()->getUser()->getAttribute("choferesPLiquidacion");
         $moviles = sfContext::getInstance()->getUser()->getAttribute("moviles");
 
         // cargo los arreglos en los combos 
         $this->widgetSchema['idChofer'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $choferes));
+        $this->widgetSchema['listaAporteLeyes'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $aporteLeyes));
+        $this->widgetSchema['listaPLiquidacion'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $pliquidacion));
         $this->widgetSchema['idMovil'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $moviles));
 
+        $this->setValidator('listaAporteLeyes', new sfValidatorNumber(array()));
+        $this->setValidator('listaPLiquidacion', new sfValidatorNumber(array()));
+            
         $this->widgetSchema['fecha'] = new sfWidgetFormInput(array(), array('class' => 'fecha', 'size' => ConstantesFrontEnd::$SIZE_WIDGET_FECHA));
         $this->setValidator('fecha', new sfValidatorDate(array('date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')));
 
         // agrego los gastos
-        $this->widgetSchema['gasto1'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['gasto2'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['gasto3'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['gasto4'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['gasto5'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-        $this->widgetSchema['gasto6'] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-
-        // $this->widgetSchema['turno'] = new sfWidgetFormChoice(array('multiple' => false, 'expanded' => false, 'choices' => $turnos));
+        for ($i=1; $i < 7 ; $i++) { 
+            $index = 'gasto'.$i;
+            $this->widgetSchema[$index] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+            $this->setValidator($index, new sfValidatorNumber());
+        }
 
         // // seteo el tamaño de todos los widgets que necesiten
         $this->widgetSchema['recaudacion']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));

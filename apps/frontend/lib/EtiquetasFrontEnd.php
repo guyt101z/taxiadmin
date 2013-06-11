@@ -19,8 +19,8 @@ class EtiquetasFrontEnd {
     public static $EMAIL = 'Email';
     public static $TELEFONO = 'Teléfono';
     public static $CELULAR = 'Celular';
-    public static $VENCIMIENTO_LIBRETA_CONDUCIR = 'Vencimiento Libreta de Conducir';
-    public static $VENCIMIENTO_CARNE_SALUD = 'Vencimiento Carné de Salud';
+    public static $VENCIMIENTO_LIBRETA_CONDUCIR = 'Vto Libreta de Conducir';
+    public static $VENCIMIENTO_CARNE_SALUD = 'Vto Carné de Salud';
     public static $NUM_CUENTA = 'Número de Cuenta';
     public static $RAZON_SOCIAL = 'Razón Social';
     public static $BANCO = 'Banco';
@@ -78,6 +78,7 @@ class EtiquetasFrontEnd {
     public static $PERTENECE_A = 'Pertenece a';
     public static $IMPORTE = 'Importe';
     public static $TOTAL_GASTOS = 'Total Gastos';
+    public static $PORCENTAJE_LIQUIDACION = '% Liquidación';
     public static $GASTO_1 = 'Gas-Oil';
     public static $GASTO_2 = 'Aceite';
     public static $GASTO_3 = 'Gomería';

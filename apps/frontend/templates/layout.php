@@ -39,6 +39,7 @@
                         <li><?php echo link_to('Propietarios', 'propietario/') ?></li>
                         <li><?php echo link_to('Choferes', 'chofer/') ?></li>
                         <li><?php echo link_to('Móviles', 'movil/') ?></li>
+                        <li><?php echo link_to('Ingresar Recaudación', 'recaudacion/new') ?></li>
                     </ul>
                 </div>
 

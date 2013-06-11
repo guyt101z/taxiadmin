@@ -38,6 +38,14 @@
                 <?php endif ?>
             </td>
         </tr>
+         <tr>
+            <th><?php echo EtiquetasFrontEnd::$APORTE_LEYES ?></th>
+            <td><?php echo UtilFrontEnd::formatoCelular($chofer->getAporteleyes()) ?></td>
+        </tr>
+        <tr>
+            <th><?php echo EtiquetasFrontEnd::$PORCENTAJE_LIQUIDACION ?></th>
+            <td><?php echo UtilFrontEnd::formatoCelular($chofer->getPorcentajeliquidacion()) ?></td>
+        </tr>
         <tr>
             <th><?php echo EtiquetasFrontEnd::$VENCIMIENTO_LIBRETA_CONDUCIR ?></th>
             <td><?php echo $chofer->getVencimientolibretaconducir() ?></td>

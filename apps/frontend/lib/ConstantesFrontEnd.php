@@ -37,11 +37,11 @@ class ConstantesFrontEnd {
 
     
     public static $CANTIDAD_DIAS_VENCIMIENTOS = 7;
-    public static $CANTIDAD_MOVILES_PAGINADO = 4;
-    public static $CANTIDAD_CHOFERES_PAGINADO = 4;
-    public static $CANTIDAD_PROPIETARIOS_PAGINADO = 4;
-    public static $CANTIDAD_EMPRESAS_PAGINADO = 4;
-    public static $CANTIDAD_RECAUDACIONES_PAGINADO = 4;
+    public static $CANTIDAD_MOVILES_PAGINADO = 15;
+    public static $CANTIDAD_CHOFERES_PAGINADO = 15;
+    public static $CANTIDAD_PROPIETARIOS_PAGINADO = 15;
+    public static $CANTIDAD_EMPRESAS_PAGINADO = 15;
+    public static $CANTIDAD_RECAUDACIONES_PAGINADO = 15;
 
     public static $VALOR_LIBRETA_DE_CONDUCIR = 1570.00;
     public static $VALOR_CARNE_DE_SALUD = 983.00;
@@ -50,6 +50,33 @@ class ConstantesFrontEnd {
 
     public static function getRangoAnios() {
         return range(2010, 2020);
+    }
+
+    public static function getDetalleGasto($gasto){
+        $detalle = '';
+        switch ($gasto) {
+            case '1':
+                $detalle = EtiquetasFrontEnd::$GASTO_1;
+            break;
+            case '2':
+                $detalle = EtiquetasFrontEnd::$GASTO_2;
+            break;
+            case '3':
+                $detalle = EtiquetasFrontEnd::$GASTO_3;
+            break;
+            case '4':
+                $detalle = EtiquetasFrontEnd::$GASTO_4;
+            break;
+
+            case '5':
+                $detalle = EtiquetasFrontEnd::$GASTO_5;
+            break;
+            case '6':
+                $detalle = EtiquetasFrontEnd::$GASTO_6;
+            break;
+
+        }
+        return $detalle;
     }
 
 }

@@ -23,11 +23,11 @@ class ChoferForm extends BaseChoferForm {
 
         $this->widgetSchema['cedula'] = new sfWidgetFormInputText();
         
-        $this->widgetSchema['direccion']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_DIRECCION));
-        
         $this->widgetSchema['vencimientoLibretaConducir'] = new sfWidgetFormInput(array(), array('class' => 'fecha', 'size' => ConstantesFrontEnd::$SIZE_WIDGET_FECHA));
         $this->setValidator('vencimientoLibretaConducir', new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')));
         
+        $this->widgetSchema['aporteLeyes'] = new sfWidgetFormInput(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_DESCRIPCION_ROWS));
+        $this->widgetSchema['porcentajeLiquidacion'] = new sfWidgetFormInput(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_DESCRIPCION_ROWS));
         $this->widgetSchema['vencimientoCarneSalud'] = new sfWidgetFormInput(array(), array('class' => 'fecha', 'size' => ConstantesFrontEnd::$SIZE_WIDGET_FECHA));
         $this->setValidator('vencimientoCarneSalud', new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')));
         
@@ -48,6 +48,8 @@ class ChoferForm extends BaseChoferForm {
             'telefono' => EtiquetasFrontEnd::$TELEFONO,
             'celular' => EtiquetasFrontEnd::$CELULAR,
             'email' => EtiquetasFrontEnd::$EMAIL,
+            'aporteLeyes' => EtiquetasFrontEnd::$APORTE_LEYES,
+            'porcentajeLiquidacion' => EtiquetasFrontEnd::$PORCENTAJE_LIQUIDACION,
             'vencimientoLibretaConducir' => EtiquetasFrontEnd::$VENCIMIENTO_LIBRETA_CONDUCIR,
             'vencimientoCarneSalud' => EtiquetasFrontEnd::$VENCIMIENTO_CARNE_SALUD,
         ));

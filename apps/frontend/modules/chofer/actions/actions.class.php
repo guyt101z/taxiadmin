@@ -221,6 +221,8 @@ class choferActions extends sfActions {
                 $Chofer->setDireccion($chofer['direccion']);
                 $Chofer->setTelefono($chofer['telefono']);
                 $Chofer->setCelular($chofer['celular']);
+                $Chofer->setAporteleyes($chofer['aporteLeyes']);
+                $Chofer->setPorcentajeliquidacion($chofer['porcentajeLiquidacion']);
                 $Chofer->setEmail($chofer['email']);
                 $Chofer->setVencimientocarnesalud($chofer['vencimientoCarneSalud']);
                 $Chofer->setVencimientolibretaconducir($chofer['vencimientoLibretaConducir']);
@@ -245,6 +247,22 @@ class choferActions extends sfActions {
             }
         } else {
             // sino es válido, envío al usuario nuevamente a la página de alta con un mensaje de error
+            // // ver por errores
+            // if ($this->form->hasErrors()) {
+
+            //     echo $this->form['cedula']->renderError();
+            //     echo $this->form['nombre']->renderError();
+            //     echo $this->form['apellidos']->renderError();
+            //     echo $this->form['direccion']->renderError();
+            //     echo $this->form['telefono']->renderError();
+            //     echo $this->form['celular']->renderError();
+            //     echo $this->form['email']->renderError();
+            //     echo $this->form['aporteLeyes']->renderError();
+            //     echo $this->form['porcentajeLiquidacion']->renderError();
+            //     echo $this->form['vencimientoLibretaConducir']->renderError();
+            //     echo $this->form['vencimientoCarneSalud']->renderError();
+
+            // }
             $respuesta_ajax = array(
                 "ok" => "false",
                 "tip" => "Error al guardar los datos, por favor verifíquelos y vuelva a intentar."

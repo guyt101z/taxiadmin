@@ -5,6 +5,8 @@ chofer:
     nombre: Maximo
     apellidos: Peña
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -16,6 +18,8 @@ chofer:
     nombre: Julia
     apellidos: Castro
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -27,6 +31,8 @@ chofer:
     nombre: Marcelo
     apellidos: Pisco
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -38,6 +44,8 @@ chofer:
     nombre: Sebastian
     apellidos: Martinez
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -51,6 +59,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -64,6 +74,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -77,6 +89,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -90,6 +104,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -103,6 +119,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -116,6 +134,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -129,6 +149,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -142,6 +164,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -155,6 +179,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -168,6 +194,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -181,6 +209,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -194,6 +224,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -207,6 +239,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -220,6 +254,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -233,6 +269,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -246,6 +284,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -259,6 +299,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -272,6 +314,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -285,6 +329,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -298,6 +344,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -311,6 +359,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -324,6 +374,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -337,6 +389,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -350,6 +404,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -363,6 +419,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -376,6 +434,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -389,6 +449,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -402,6 +464,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -415,6 +479,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -428,6 +494,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -441,6 +509,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -454,6 +524,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -467,6 +539,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -480,6 +554,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -493,6 +569,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -506,6 +584,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -519,6 +599,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -532,6 +614,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -545,6 +629,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -558,6 +644,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -571,6 +659,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -584,6 +674,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -597,6 +689,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -610,6 +704,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -623,6 +719,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -636,6 +734,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -649,6 +749,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -662,6 +764,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -675,6 +779,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -688,6 +794,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -701,6 +809,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -714,6 +824,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -727,6 +839,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -740,6 +854,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -753,6 +869,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -766,6 +884,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -779,6 +899,8 @@ chofer:
     direccion: Av. Rivera 3453
     telefono: '26006635'
     celular: '099876452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -792,6 +914,8 @@ chofer:
     direccion: Gral. Flores 2534
     telefono: '22048734'
     celular: '095687866'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2012-10-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -805,6 +929,8 @@ chofer:
     direccion: Camino Carrasco 4532
     telefono: '25257323'
     celular: '099386452'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00
@@ -818,6 +944,8 @@ chofer:
     direccion: Magallanes 1734
     telefono: '29241834'
     celular: '096543981'
+    aporteLeyes: 19.621
+    porcentajeLiquidacion: 29.00
     vencimientoLibretaConducir: 2013-11-04
     vencimientoCarneSalud: 2013-04-03
     fechaAlta: 2012-04-03 19:00:00

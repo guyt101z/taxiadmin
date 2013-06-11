@@ -35,8 +35,8 @@ class recaudacionActions extends sfActions {
 
     public function executeNew(sfWebRequest $request) {
 
-        $this->setChoferesYMoviles($request);
-
+        $this->setChoferesMovilesSalario($request);
+        
         $this->form = new RecaudacionForm();
 
         // seteo la fecha de hoy en el objeto fecha
@@ -53,7 +53,7 @@ class recaudacionActions extends sfActions {
         $idUsuario = $this->getUser()->getAttribute("id");
         $idRecaudacion = $request->getParameter('id');
         $this->forward404Unless($recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario), sprintf('Object recaudación does not exist (%s).', $idRecaudacion));
-        $this->setChoferesYMoviles($request);
+        $this->setChoferesMovilesSalario($request);
         $this->form = new RecaudacionForm($recaudacion);
     }
 
@@ -103,53 +103,54 @@ class recaudacionActions extends sfActions {
             $recaudacion = new Recaudacion();
             $recaudacion->setMovil(MovilPeer::getMovilByPK($values['idMovil'], $idUsuario));
             $recaudacion->setChofer(ChoferPeer::getChoferByPK($values['idChofer'], $idUsuario));
-            $recaudacion->setTurno($values['turno']);
             $recaudacion->setFecha($values['fecha']);
-            $recaudacion->setKminicialauto($values['kmInicialAuto']);
-            $recaudacion->setKmfinalauto($values['kmFinalAuto']);
-            $recaudacion->setKminicialreloj($values['kmInicialReloj']);
-            $recaudacion->setKmfinalreloj($values['kmFinalReloj']);
-            $recaudacion->setFichasiniciales($values['fichasIniciales']);
-            $recaudacion->setFichasfinales($values['fichasFinales']);
-            $recaudacion->setFichasdiurnas($values['fichasDiurnas']);
-            $recaudacion->setFichasnocturnas($values['fichasNocturnas']);
-            $recaudacion->setBanderasdiurnas($values['banderasDiurnas']);
-            $recaudacion->setBanderasnocturnas($values['banderasNocturnas']);
-            $recaudacion->setPorcentajerecaudacion($values['porcentajeRecaudacion']);
-            $recaudacion->setImportechofer($values['importeChofer']);
-            $recaudacion->setImportemovil($values['importeMovil']);
+            $recaudacion->setKm($values['km']);
             $recaudacion->setRecaudacion($values['recaudacion']);
-            $recaudacion->setAportepatronal($values['aportePatronal']);
-            $recaudacion->setDescuentofichas($values['descuentoFichas']);
-            $recaudacion->setDescuentobanderas($values['descuentoBanderas']);
+            $recaudacion->setTotalgastos($values['totalGastos']);
+            $recaudacion->setImportechofer($values['importeChofer']);
+            $recaudacion->setAporteleyes($values['aporteLeyes']);
+            $recaudacion->setImportemovil($values['importeMovil']);
 
             $recaudacion->setFechaalta(new DateTime());
             $recaudacion->setHabilitado(true);
             $recaudacion->setUsuario($idUsuario);
+
+            for ($i=1; $i < 7; $i++) { 
+                $index = 'gasto' .$i;
+                if(!empty($values[$index])){
+                    $gasto = new GastoRecaudacion();
+                    $gasto->setCosto($values[$index]);
+                    $gasto->setUsuario($idUsuario);
+                    $gasto->setDetalle(ConstantesFrontEnd::getDetalleGasto($i));
+                    $recaudacion->addGastorecaudacion($gasto);
+                }
+
+            }
+
             $recaudacion->save();
 
             // si lo puedo guardar sin problemas ahora creo el evento para registrar el alta
             Evento::crearEvento($recaudacion->getUsuario(), "Se creo una nueva recaudación para el chofer id " . $recaudacion->getChofer()->getId() . ' y el móvil id ' . $recaudacion->getMovil()->getId());
-            // quito de la sesion de usuario las listas de moviles y choferes antes seteadas
-            $this->getUser()->getAttributeHolder()->remove('choferes');
-            $this->getUser()->getAttributeHolder()->remove('moviles');
+            $this->getUser()->setFlash("success", "La Recaudación se a ingresado correctamente.");
 
-            $respuesta_ajax = array(
-                "ok" => "true"
-            );
+            // quito de la sesion de usuario las listas de moviles y choferes antes seteadas
+            // $this->getUser()->getAttributeHolder()->remove('choferes');
+            // $this->getUser()->getAttributeHolder()->remove('moviles');
+
+            // enviar un mensaje por flash al usuario para informar que se ha guardado todo ok
 
             // ver por errores
             //if ($this->form->hasErrors()) {
             //$respuesta_ajax['tip'] = 'Nombre: ' . $this->form['nombre']->renderError();
             //}
         } else {
-            $respuesta_ajax = array(
-                "ok" => "false",
-                "tip" => "Error al guardar los datos, por favor verifíquelos y vuelva a intentar."
-            );
+            // mandar un mensaje por flash para el usuario informando del error
+            // echo 'cagada algo funcino mal';
+            $this->getUser()->setFlash("success", "Se generó un error al ingresar la recaudación, verifique los datos y vuelva a intentar");
         }
 
-        return $this->renderText(json_encode($respuesta_ajax));
+             // $this->setTemplate('new');
+        // return $this->renderText(json_encode($respuesta_ajax));
     }
 
     protected function modificarRecaudacion(sfWebRequest $request, sfForm $form) {
@@ -178,21 +179,29 @@ class recaudacionActions extends sfActions {
         return $this->renderText(json_encode($respuesta_ajax));
     }
 
-    protected function setChoferesYMoviles(sfWebRequest $request) {
+    protected function setChoferesMovilesSalario(sfWebRequest $request) {
         $idUsuario = $this->getUser()->getAttribute("id");
 
         // en un array cargo los choferes de ese usuario
         $choferes = array();
+        $choferesAporteLeyes = array();
+        $choferesPLiquidacion = array();
         if ($request->hasParameter('idChofer')) {
             $chofer = ChoferPeer::getChoferByPK($request->getParameter('idChofer'), $idUsuario);
             $choferes[$chofer->getId()] = $chofer->getNombreCompleto();
+            $choferesAporteLeyes[$chofer->getId()] = $chofer->getAporteleyes();
+            $choferesPLiquidacion[$chofer->getId()] = $chofer->getPorcentajeliquidacion();
             $this->getUser()->setAttribute("choferes", $choferes);
         } else {
             $listaChoferes = ChoferPeer::getChoferesParaUsuario($idUsuario);
             foreach ($listaChoferes as $chofer) {
                 $choferes[$chofer->getId()] = $chofer->getNombreCompleto();
+                $choferesAporteLeyes[$chofer->getId()] = $chofer->getAporteleyes();
+                $choferesPLiquidacion[$chofer->getId()] = $chofer->getPorcentajeliquidacion();
             }
             $this->getUser()->setAttribute("choferes", $choferes);
+            $this->getUser()->setAttribute("choferesAporteLeyes", $choferesAporteLeyes);
+            $this->getUser()->setAttribute("choferesPLiquidacion", $choferesPLiquidacion);
         }
 
         $moviles = array();

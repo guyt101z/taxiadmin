@@ -1,4 +1,5 @@
-
+<?php use_stylesheets_for_form($form) ?>
+<?php use_javascripts_for_form($form) ?>
 
 <p id="validateTips" class="validateTips"></p>    
 <form id="form" action="<?php echo url_for('recaudacion/' . ($form->getObject()->isNew() ? 'create' : 'update') . (!$form->getObject()->isNew() ? '?id=' . $form->getObject()->getId() : '')) ?>" method="post">
@@ -8,9 +9,14 @@
 
 
     <table>
+        <tfoot>
+            <tr> <td > <button type="submit" class="boton" >Guardar</button> </td> </tr>
+        </tfoot>
         <tbody>
             <tr hidden="true" >
                 <th> <?php echo $form['_csrf_token']->render() ?> </th>
+                <th> <?php echo $form['listaAporteLeyes']->render() ?> </th>
+                <th> <?php echo $form['listaPLiquidacion']->render() ?> </th>
             </tr>
 
             <tr>
@@ -145,7 +151,6 @@
                 <th> </th>
                 <td> </td>
             </tr>
-
         </tbody>
     </table>
 

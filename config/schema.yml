@@ -101,9 +101,10 @@ propel:
     telefono:                   { type: varchar(15), required: false }
     celular:                    { type: varchar(15), required: false }
     email:                      { type: varchar(100), required: false }
+    aporteLeyes:                { type: decimal, size: 10, scale: 4, required: true }
+    porcentajeLiquidacion:      { type: decimal, size: 10, scale: 4, required: true }
     vencimientoLibretaConducir: { type: date, required: false }
     vencimientoCarneSalud:      { type: date, required: false }
-    aporteLeyes:                { type: decimal, size: 10, scale: 2, required: true }
     fechaAlta:                  { type: timestamp, required: true }
     fechaBaja:                  { type: timestamp, required: false }
     habilitado:                 { type: boolean, required: false, default: 1 }

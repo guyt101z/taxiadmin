@@ -1,3 +1,8 @@
+<?php use_javascript('fValidateRecaudacion.js') ?>
+
+<?php if ($sf_user->getFlash("success")): ?>
+  <div class="success"> <?php echo $sf_user->getFlash('success') ?> </div>
+<?php endif; ?>
 
 <?php slot('sidebar') ?>
 <!-- Barra lateral -->
