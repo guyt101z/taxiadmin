@@ -14,7 +14,7 @@
 
     <div class="news">
         <h5>
-            <!-- <h5><label onclick="showEditDialog('Ingresar Recaudación', '<?php echo url_for('recaudacion/new') ?>', '800', fValidateRecaudacion, fOkRecaudacion); return false;">Ingresar Recaudación</label></h5> -->
+            <h5><label onclick="showEditDialog('Ingresar Recaudación', '<?php echo url_for('recaudacion/new') ?>', '800', fValidateRecaudacion, fOkRecaudacion); return false;">Ingresar Recaudación</label></h5>
         </h5>
     </div>
     <div class="news">

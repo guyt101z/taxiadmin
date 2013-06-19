@@ -26,7 +26,6 @@
             <th><?php echo EtiquetasFrontEnd::$FECHA ?></th>
             <th><?php echo EtiquetasFrontEnd::$MOVIL ?></th>
             <th><?php echo EtiquetasFrontEnd::$CHOFER ?></th>
-            <th><?php echo EtiquetasFrontEnd::$TURNO ?></th>
             <th><?php echo EtiquetasFrontEnd::$IMPORTE_CHOFER ?></th>
             <th><?php echo EtiquetasFrontEnd::$IMPORTE_MOVIL ?></th>
             <th><?php echo EtiquetasFrontEnd::$RECAUDACION ?></th>
@@ -39,7 +38,6 @@
                 <td><?php echo $recaudacion->getFecha() ?></td>
                 <td><?php echo $recaudacion->getMovil()->getMatricula() ?></td>
                 <td><?php echo $recaudacion->getChofer()->getNombreCompleto() ?></td>
-                <td><?php echo $recaudacion->getTurno() ?></td>
                 <td><?php echo $recaudacion->getImporteChofer() ?></td>
                 <td><?php echo $recaudacion->getImporteMovil() ?></td>
                 <td><?php echo $recaudacion->getRecaudacion() ?></td>

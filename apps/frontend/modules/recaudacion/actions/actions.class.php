@@ -79,7 +79,6 @@ class recaudacionActions extends sfActions {
         $idRecaudacion = $request->getParameter('id');
 
         $this->forward404Unless($recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario), sprintf('Object recaudación does not exist (%s).', $idRecaudacion));
-        //$recaudacion->delete();
         $recaudacion->setFechabaja(new DateTime());
         $recaudacion->setHabilitado(FALSE);
         $recaudacion->save();
@@ -124,7 +123,6 @@ class recaudacionActions extends sfActions {
                     $gasto->setDetalle(ConstantesFrontEnd::getDetalleGasto($i));
                     $recaudacion->addGastorecaudacion($gasto);
                 }
-
             }
 
             $recaudacion->save();
@@ -134,23 +132,14 @@ class recaudacionActions extends sfActions {
             $this->getUser()->setFlash("success", "La Recaudación se a ingresado correctamente.");
 
             // quito de la sesion de usuario las listas de moviles y choferes antes seteadas
-            // $this->getUser()->getAttributeHolder()->remove('choferes');
-            // $this->getUser()->getAttributeHolder()->remove('moviles');
+            $this->getUser()->getAttributeHolder()->remove('choferes');
+            $this->getUser()->getAttributeHolder()->remove('moviles');
 
-            // enviar un mensaje por flash al usuario para informar que se ha guardado todo ok
-
-            // ver por errores
-            //if ($this->form->hasErrors()) {
-            //$respuesta_ajax['tip'] = 'Nombre: ' . $this->form['nombre']->renderError();
-            //}
         } else {
-            // mandar un mensaje por flash para el usuario informando del error
-            // echo 'cagada algo funcino mal';
             $this->getUser()->setFlash("success", "Se generó un error al ingresar la recaudación, verifique los datos y vuelva a intentar");
         }
 
-             // $this->setTemplate('new');
-        // return $this->renderText(json_encode($respuesta_ajax));
+        $this->redirect('recaudacion/new');
     }
 
     protected function modificarRecaudacion(sfWebRequest $request, sfForm $form) {
@@ -183,7 +172,7 @@ class recaudacionActions extends sfActions {
         $idUsuario = $this->getUser()->getAttribute("id");
 
         // en un array cargo los choferes de ese usuario
-        $choferes = array();
+        $choferes = array('' => 'Seleccione un Chofer');
         $choferesAporteLeyes = array();
         $choferesPLiquidacion = array();
         if ($request->hasParameter('idChofer')) {
@@ -204,7 +193,7 @@ class recaudacionActions extends sfActions {
             $this->getUser()->setAttribute("choferesPLiquidacion", $choferesPLiquidacion);
         }
 
-        $moviles = array();
+        $moviles = array('' => 'Seleccione un Móvil');
         // si la solicitud es para agregar una multa a un movil dado busco unicamente ese movil
         if ($request->hasParameter('idMovil')) {
             // obtengo el movil

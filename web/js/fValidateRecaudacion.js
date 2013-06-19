@@ -3,15 +3,46 @@ var fValidateRecaudacion = function() {
 	return bValid;    
 }
 
+function validarRecaudacion(){
+	// la recaudación no puede ser cero
+	if($("#recaudacion_recaudacion").val() <= 0){
+		alert('Tiene que ingresar una Recaudación');	
+		return false;
+	}
+	// los kms no pueden ser cero
+	if($("#recaudacion_km").val() <= 0){
+		alert('Tiene que ingresar un kilometraje mayor a cero');	
+		return false;
+	}
+
+	// tiene que haber seleccionado un chofer
+	if($("#recaudacion_idChofer").val() == "" || $("#recaudacion_idChofer").val() == undefined ){
+		alert('Debe seleccionar un Chofer');	
+		return false;
+	}
+	// tiene que haber seleccionado un móvil
+	if($("#recaudacion_idMovil").val() == "" || $("#recaudacion_idMovil").val() == undefined ){
+		alert('Debe seleccionar un Móvil');
+		return false;
+	}
+	return true;
+}
 
 
 $(document).ready(function() {
 
+	// no permito agregar recaudaciones para días mayores que hoy
+	$("#recaudacion_fecha").datepicker({ maxDate: "0" });
+
 	// hacemos que al modificar el chofer si modifique el combo con el porcentaje de aporte
 	// de esta manera lo obtenemos para hacer el calculo
 	$('#recaudacion_idChofer').change(function() {
+		// seteo la selección en los demás combos ocultos
     	$('#recaudacion_listaAporteLeyes').val($(this).val());
     	$('#recaudacion_listaPLiquidacion').val($(this).val());
+    	// seteo el valor en los span para mostrarle al usuario
+    	$('#p_chofer').text($('#recaudacion_listaPLiquidacion option:selected').html().substring(0,5) + '%');
+    	$('#p_aporte').text($('#recaudacion_listaAporteLeyes option:selected').html().substring(0,6) + '%');
 	});
 
 	$("#recaudacion_km").val('0').focusout( function() { verifico('Debe ingresar un valor de Km válido', $(this).val()); } );
@@ -63,11 +94,8 @@ $(document).ready(function() {
 	function aporteLeyes(){
 		var descuento = parseFloat($('#recaudacion_listaAporteLeyes option:selected').html());
 		descuento = descuento / 100;
-		alert(descuento); 
 		var sueldo = $("#recaudacion_importeChofer").val();
 		var aporteLeyes = sueldo * descuento;
-		alert(sueldo);
-		alert(aporteLeyes);
 		$("#recaudacion_importeChofer").val(Math.round(sueldo - aporteLeyes));
 		$("#recaudacion_aporteLeyes").val(Math.round(aporteLeyes));
 
