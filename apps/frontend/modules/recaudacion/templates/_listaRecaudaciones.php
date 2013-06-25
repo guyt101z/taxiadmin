@@ -1,28 +1,6 @@
 <table class="table">
     <thead>
         <tr>
-            <?php if ($movil) : ?>
-                <th><?php echo EtiquetasFrontEnd::$MOVIL ?></th>
-            <?php endif; ?>
-            <?php if ($chofer) : ?>
-                <th><?php echo EtiquetasFrontEnd::$CHOFER ?></th>
-            <?php endif; ?>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <?php if ($movil) : ?>
-                <td><?php echo $movil->getMatricula() ?></td>
-            <?php endif; ?>
-            <?php if ($chofer) : ?>
-                <td><?php echo $chofer->getNombreCompleto() ?></td>
-            <?php endif; ?>
-        </tr>
-    </tbody>
-</table>
-<table class="table">
-    <thead>
-        <tr>
             <th><?php echo EtiquetasFrontEnd::$FECHA ?></th>
             <th><?php echo EtiquetasFrontEnd::$MOVIL ?></th>
             <th><?php echo EtiquetasFrontEnd::$CHOFER ?></th>
