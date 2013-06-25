@@ -33,6 +33,24 @@ class Recaudacion extends BaseRecaudacion {
         return parent::getFecha($format);
     }
 
+    /**
+     * 
+     */
+    public function getGasto($desc){
+        $gasto = new Gastorecaudacion();
+        $i = 0;
+        $lista = $this->getGastorecaudacions();
+        while ( $i < count($lista)) {
+            if($lista[$i]->getDetalle() === $desc){
+                $gasto = $lista[$i];
+                $i = count($lista);
+            }
+            $i += 1;
+        }
+        return $gasto;
+    }
+
+
 }
 
 // Recaudacion

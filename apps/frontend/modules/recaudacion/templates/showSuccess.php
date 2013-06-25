@@ -1,78 +1,67 @@
 <table>
     <tbody>
         <tr>
+            <th><?php echo EtiquetasFrontEnd::$FECHA ?></th>
+            <td><?php echo $Recaudacion->getFecha() ?></td>
+
+            <th><?php echo EtiquetasFrontEnd::$GASTO_1 ?></th>
+            <td><?php echo $Recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_1)->getCosto() ?></td>
+        </tr>
+        <tr>
             <th><?php echo EtiquetasFrontEnd::$MOVIL ?></th>
             <td><?php echo $Recaudacion->getMovil()->getMatricula() ?></td>
 
+            <th><?php echo EtiquetasFrontEnd::$GASTO_2 ?></th>
+            <td><?php echo $Recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_2)->getCosto() ?></td>
+        </tr>
+        <tr>
             <th><?php echo EtiquetasFrontEnd::$CHOFER ?></th>
             <td><?php echo $Recaudacion->getChofer()->getNombreCompleto() ?></td>
+            
+            <th><?php echo EtiquetasFrontEnd::$GASTO_3 ?></th>
+            <td><?php echo $Recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_3)->getCosto() ?></td>
         </tr>
         <tr>
-            <th><?php echo EtiquetasFrontEnd::$TURNO ?></th>
-            <td><?php echo $Recaudacion->getTurno() ?></td>
+            <th><?php echo EtiquetasFrontEnd::$KM ?></th>
+            <td><?php echo $Recaudacion->getKm() ?></td>
 
-            <th><?php echo EtiquetasFrontEnd::$FECHA ?></th>
-            <td><?php echo $Recaudacion->getFecha() ?></td>
+            <th><?php echo EtiquetasFrontEnd::$GASTO_4 ?></th>
+            <td><?php echo $Recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_4)->getCosto() ?></td>
         </tr>
         <tr>
-            <th><?php echo EtiquetasFrontEnd::$KM_INICIAL_AUTO ?></th>
-            <td><?php echo $Recaudacion->getKminicialauto() ?></td>
-
-            <th><?php echo EtiquetasFrontEnd::$KM_FINAL_AUTO ?></th>
-            <td><?php echo $Recaudacion->getKmfinalauto() ?></td>
+            <th><?php echo EtiquetasFrontEnd::$RECAUDACION ?></th>
+            <td><?php echo $Recaudacion->getRecaudacion() ?></td>
+            
+            <th><?php echo EtiquetasFrontEnd::$GASTO_5 ?></th>
+            <td><?php echo $Recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_5)->getCosto() ?></td>
         </tr>
         <tr>
-            <th><?php echo EtiquetasFrontEnd::$KM_INICIAL_RELOJ ?></th>
-            <td><?php echo $Recaudacion->getKminicialreloj() ?></td>
-
-            <th><?php echo EtiquetasFrontEnd::$KM_FINAL_RELOJ ?></th>
-            <td><?php echo $Recaudacion->getKmfinalreloj() ?></td>
+            <th><?php echo EtiquetasFrontEnd::$TOTAL_GASTOS ?></th>
+            <td><?php echo $Recaudacion->getTotalgastos() ?></td>
+            
+            <th><?php echo EtiquetasFrontEnd::$GASTO_6 ?></th>
+            <td><?php echo $Recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_6)->getCosto() ?></td>
         </tr>
         <tr>
-            <th><?php echo EtiquetasFrontEnd::$FICHAS_INICIALES ?></th>
-            <td><?php echo $Recaudacion->getFichasiniciales() ?></td>
-
-            <th><?php echo EtiquetasFrontEnd::$FICHAS_FINALES ?></th>
-            <td><?php echo $Recaudacion->getFichasfinales() ?></td>
-        </tr>
-        <tr>
-            <th><?php echo EtiquetasFrontEnd::$FICHAS_DIURNAS ?></th>
-            <td><?php echo $Recaudacion->getFichasdiurnas() ?></td>
-
-            <th><?php echo EtiquetasFrontEnd::$FICHAS_NOCTURNAS ?></th>
-            <td><?php echo $Recaudacion->getFichasnocturnas() ?></td>
-        </tr>
-        <tr>
-            <th><?php echo EtiquetasFrontEnd::$BANDERAS_DIURNAS ?></th>
-            <td><?php echo $Recaudacion->getBanderasdiurnas() ?></td>
-
-            <th><?php echo EtiquetasFrontEnd::$BANDERAS_NOCTURNAS ?></th>
-            <td><?php echo $Recaudacion->getBanderasnocturnas() ?></td>
-        </tr>
-        <tr>
-            <th><?php echo EtiquetasFrontEnd::$PORCENTAJE_RECAUDACION ?></th>
-            <td><?php echo $Recaudacion->getPorcentajerecaudacion() ?></td>
-
             <th><?php echo EtiquetasFrontEnd::$IMPORTE_CHOFER ?></th>
             <td><?php echo $Recaudacion->getImportechofer() ?></td>
+            
+            <th></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th><?php echo EtiquetasFrontEnd::$APORTE_LEYES ?></th>
+            <td><?php echo $Recaudacion->getAporteleyes() ?></td>
+            
+            <th></th>
+            <td></td>
         </tr>
         <tr>
             <th><?php echo EtiquetasFrontEnd::$IMPORTE_MOVIL ?></th>
             <td><?php echo $Recaudacion->getImportemovil() ?></td>
 
-            <th><?php echo EtiquetasFrontEnd::$RECAUDACION ?></th>
-            <td><?php echo $Recaudacion->getRecaudacion() ?></td>
-        </tr>
-        <tr>
-            <th><?php echo EtiquetasFrontEnd::$APORTE_PATRONAL ?></th>
-            <td><?php echo $Recaudacion->getAportepatronal() ?></td>
-
-            <th><?php echo EtiquetasFrontEnd::$DESCUENTO_FICHAS ?></th>
-            <td><?php echo $Recaudacion->getDescuentofichas() ?></td>
-        </tr>
-        <tr>
-            <th><?php echo EtiquetasFrontEnd::$DESCUENTO_BANDERAS ?></th>
-            <td><?php echo $Recaudacion->getDescuentobanderas() ?></td>
+            <th></th>
+            <td></td>    
         </tr>
     </tbody>
 </table>

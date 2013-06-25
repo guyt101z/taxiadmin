@@ -30,6 +30,7 @@ class recaudacionActions extends sfActions {
         $idRecaudacion = $request->getParameter('id');
 
         $this->Recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario);
+       
         $this->forward404Unless($this->Recaudacion);
     }
 
