@@ -27,8 +27,8 @@ class ConstantesFrontEnd {
     
     public static $SIZE_WIDGET_FECHA = 10;
     public static $SIZE_WIDGET_COSTO = 8;
-    public static $SIZE_WIDGET_KM = 1;
-    public static $SIZE_WIDGET_RECAUDACION = 1;
+    public static $SIZE_WIDGET_KM = 3;
+    public static $SIZE_WIDGET_RECAUDACION = 4;
     public static $SIZE_WIDGET_DESCRIPCION_COLS = 22;
     public static $SIZE_WIDGET_DESCRIPCION_COLS_DOS = 35;
     public static $SIZE_WIDGET_DESCRIPCION_ROWS = 6;

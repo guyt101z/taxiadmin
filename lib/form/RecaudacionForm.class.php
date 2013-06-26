@@ -29,16 +29,27 @@ class RecaudacionForm extends BaseRecaudacionForm {
 
         $this->setValidator('listaAporteLeyes', new sfValidatorNumber(array()));
         $this->setValidator('listaPLiquidacion', new sfValidatorNumber(array()));
-            
+
         $this->widgetSchema['fecha'] = new sfWidgetFormInput(array(), array('class' => 'fecha', 'size' => ConstantesFrontEnd::$SIZE_WIDGET_FECHA));
         $this->setValidator('fecha', new sfValidatorDate(array('date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')));
 
-        // agrego los gastos
-        for ($i=1; $i < 7 ; $i++) { 
-            $index = 'gasto'.$i;
-            $this->widgetSchema[$index] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
-            $this->setValidator($index, new sfValidatorNumber());
-        }
+        $this->widgetSchema[EtiquetasFrontEnd::$GASTO_1] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->setValidator(EtiquetasFrontEnd::$GASTO_1, new sfValidatorNumber());
+
+        $this->widgetSchema[EtiquetasFrontEnd::$GASTO_2] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->setValidator(EtiquetasFrontEnd::$GASTO_2, new sfValidatorNumber());
+
+        $this->widgetSchema[EtiquetasFrontEnd::$GASTO_3] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->setValidator(EtiquetasFrontEnd::$GASTO_3, new sfValidatorNumber());
+
+        $this->widgetSchema[EtiquetasFrontEnd::$GASTO_4] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->setValidator(EtiquetasFrontEnd::$GASTO_4, new sfValidatorNumber());
+
+        $this->widgetSchema[EtiquetasFrontEnd::$GASTO_5] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->setValidator(EtiquetasFrontEnd::$GASTO_5, new sfValidatorNumber());
+
+        $this->widgetSchema[EtiquetasFrontEnd::$GASTO_6] = new sfWidgetFormInputText(array(), array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
+        $this->setValidator(EtiquetasFrontEnd::$GASTO_6, new sfValidatorNumber());
 
         // // seteo el tamaño de todos los widgets que necesiten
         $this->widgetSchema['recaudacion']->setAttributes(array('size' => ConstantesFrontEnd::$SIZE_WIDGET_RECAUDACION));
@@ -58,13 +69,13 @@ class RecaudacionForm extends BaseRecaudacionForm {
             'aporteLeyes' => EtiquetasFrontEnd::$APORTE_LEYES,
             'idChofer' => EtiquetasFrontEnd::$CHOFER,
             'idMovil' => EtiquetasFrontEnd::$MOVIL,
-            'gasto1' => EtiquetasFrontEnd::$GASTO_1,
-            'gasto2' => EtiquetasFrontEnd::$GASTO_2,
-            'gasto3' => EtiquetasFrontEnd::$GASTO_3,
-            'gasto4' => EtiquetasFrontEnd::$GASTO_4,
-            'gasto5' => EtiquetasFrontEnd::$GASTO_5,
-            'gasto6' => EtiquetasFrontEnd::$GASTO_6,
-        ));
+            EtiquetasFrontEnd::$GASTO_1 => EtiquetasFrontEnd::$GASTO_1,
+            EtiquetasFrontEnd::$GASTO_2 => EtiquetasFrontEnd::$GASTO_2,
+            EtiquetasFrontEnd::$GASTO_3 => EtiquetasFrontEnd::$GASTO_3_E,
+            EtiquetasFrontEnd::$GASTO_4 => EtiquetasFrontEnd::$GASTO_4,
+            EtiquetasFrontEnd::$GASTO_5 => EtiquetasFrontEnd::$GASTO_5_E,
+            EtiquetasFrontEnd::$GASTO_6 => EtiquetasFrontEnd::$GASTO_6,
+            ));
     }
 
 }

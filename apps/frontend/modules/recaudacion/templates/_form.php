@@ -94,10 +94,10 @@
             </tr>
 
             <tr>
-                <th> <?php echo $form['gasto1']->renderLabel() ?> </th>
+                <th> <?php echo $form[EtiquetasFrontEnd::$GASTO_1]->renderLabel() ?> </th>
                 <td>
-                    <?php echo $form['gasto1']->renderError() ?>
-                    <?php echo $form['gasto1']->render() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_1]->renderError() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_1]->render() ?>
                 </td>
 
                 <th> </th>
@@ -105,10 +105,10 @@
             </tr>
 
             <tr>
-                <th> <?php echo $form['gasto5']->renderLabel() ?> </th>
+                <th> <?php echo $form[EtiquetasFrontEnd::$GASTO_5]->renderLabel() ?> </th>
                 <td>
-                    <?php echo $form['gasto5']->renderError() ?>
-                    <?php echo $form['gasto5']->render() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_5]->renderError() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_5]->render() ?>
                 </td>
 
                 <th> </th>
@@ -116,10 +116,10 @@
             </tr>
 
             <tr>
-                <th> <?php echo $form['gasto4']->renderLabel() ?> </th>
+                <th> <?php echo $form[EtiquetasFrontEnd::$GASTO_4]->renderLabel() ?> </th>
                 <td>
-                    <?php echo $form['gasto4']->renderError() ?>
-                    <?php echo $form['gasto4']->render() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_4]->renderError() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_4]->render() ?>
                 </td>
 
                 <th> </th>
@@ -127,10 +127,10 @@
             </tr>
 
             <tr>
-                <th> <?php echo $form['gasto2']->renderLabel() ?> </th>
+                <th> <?php echo $form[EtiquetasFrontEnd::$GASTO_2]->renderLabel() ?> </th>
                 <td>
-                    <?php echo $form['gasto2']->renderError() ?>
-                    <?php echo $form['gasto2']->render() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_2]->renderError() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_2]->render() ?>
                 </td>
 
                 <th> </th>
@@ -138,10 +138,10 @@
             </tr>
 
             <tr>
-                <th> <?php echo $form['gasto3']->renderLabel() ?> </th>
+                <th> <?php echo $form[EtiquetasFrontEnd::$GASTO_3]->renderLabel() ?> </th>
                 <td>
-                    <?php echo $form['gasto3']->renderError() ?>
-                    <?php echo $form['gasto3']->render() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_3]->renderError() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_3]->render() ?>
                 </td>
 
                 <th> </th>
@@ -149,10 +149,10 @@
             </tr>
 
             <tr>
-                <th> <?php echo $form['gasto6']->renderLabel() ?> </th>
+                <th> <?php echo $form[EtiquetasFrontEnd::$GASTO_6]->renderLabel() ?> </th>
                 <td>
-                    <?php echo $form['gasto6']->renderError() ?>
-                    <?php echo $form['gasto6']->render() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_6]->renderError() ?>
+                    <?php echo $form[EtiquetasFrontEnd::$GASTO_6]->render() ?>
                 </td>
 
                 <th> </th>

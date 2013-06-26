@@ -69,8 +69,10 @@ class EtiquetasFrontEnd {
     public static $PORCENTAJE_LIQUIDACION = '% Liquidación';
     public static $GASTO_1 = 'Gas-Oil';
     public static $GASTO_2 = 'Aceite';
-    public static $GASTO_3 = 'Gomería';
+    public static $GASTO_3 = 'Gomeria';
     public static $GASTO_4 = 'Lavado';
-    public static $GASTO_5 = 'Viáticos';
+    public static $GASTO_5 = 'Viaticos';
     public static $GASTO_6 = 'Otros';
+    public static $GASTO_3_E = 'Gomería';
+    public static $GASTO_5_E = 'Viáticos';
 }

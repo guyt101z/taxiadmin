@@ -56,6 +56,10 @@ class recaudacionActions extends sfActions {
         $this->forward404Unless($recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario), sprintf('Object recaudación does not exist (%s).', $idRecaudacion));
         $this->setChoferesMovilesSalario($request);
         $this->form = new RecaudacionForm($recaudacion);
+        // seteo los valores de los gastos
+        foreach ($recaudacion->getGastorecaudacions() as $gasto) {
+            $this->form->setDefault($gasto->getDetalle(), $gasto->getCosto());
+        }
     }
 
     public function executeUpdate(sfWebRequest $request) {
@@ -117,15 +121,24 @@ class recaudacionActions extends sfActions {
             $recaudacion->setHabilitado(true);
             $recaudacion->setUsuario($idUsuario);
 
-            for ($i=1; $i < 7; $i++) { 
-                $index = 'gasto' .$i;
-                if(!empty($values[$index])){
-                    $gasto = new GastoRecaudacion();
-                    $gasto->setCosto($values[$index]);
-                    $gasto->setUsuario($idUsuario);
-                    $gasto->setDetalle(ConstantesFrontEnd::getDetalleGasto($i));
-                    $recaudacion->addGastorecaudacion($gasto);
-                }
+            // voy guardando los gastos
+            if($values[EtiquetasFrontEnd::$GASTO_1] != null && $values[EtiquetasFrontEnd::$GASTO_1] != 0){
+                $recaudacion->addGastorecaudacion($this->crearGasto($values[EtiquetasFrontEnd::$GASTO_1], $idUsuario, EtiquetasFrontEnd::$GASTO_1));
+            }
+            if($values[EtiquetasFrontEnd::$GASTO_2] != null && $values[EtiquetasFrontEnd::$GASTO_2] != 0){
+                $recaudacion->addGastorecaudacion($this->crearGasto($values[EtiquetasFrontEnd::$GASTO_2], $idUsuario, EtiquetasFrontEnd::$GASTO_2));
+            }
+            if($values[EtiquetasFrontEnd::$GASTO_3] != null && $values[EtiquetasFrontEnd::$GASTO_3] != 0){
+                $recaudacion->addGastorecaudacion($this->crearGasto($values[EtiquetasFrontEnd::$GASTO_3], $idUsuario, EtiquetasFrontEnd::$GASTO_3));
+            }
+            if($values[EtiquetasFrontEnd::$GASTO_4] != null && $values[EtiquetasFrontEnd::$GASTO_4] != 0){
+                $recaudacion->addGastorecaudacion($this->crearGasto($values[EtiquetasFrontEnd::$GASTO_4], $idUsuario, EtiquetasFrontEnd::$GASTO_4));
+            }
+            if($values[EtiquetasFrontEnd::$GASTO_5] != null && $values[EtiquetasFrontEnd::$GASTO_5] != 0){
+                $recaudacion->addGastorecaudacion($this->crearGasto($values[EtiquetasFrontEnd::$GASTO_5], $idUsuario, EtiquetasFrontEnd::$GASTO_5));
+            }
+            if($values[EtiquetasFrontEnd::$GASTO_6] != null && $values[EtiquetasFrontEnd::$GASTO_6] != 0){
+                $recaudacion->addGastorecaudacion($this->crearGasto($values[EtiquetasFrontEnd::$GASTO_6], $idUsuario, EtiquetasFrontEnd::$GASTO_6));
             }
 
             $recaudacion->save();
@@ -145,11 +158,20 @@ class recaudacionActions extends sfActions {
         $this->redirect('recaudacion/new');
     }
 
+    protected function crearGasto($costo, $idUsuario, $detalle) {
+        $gasto = new GastoRecaudacion();
+        $gasto->setCosto($costo);
+        $gasto->setUsuario($idUsuario);
+        $gasto->setDetalle($detalle);
+        return $gasto;
+    }
+
     protected function modificarRecaudacion(sfWebRequest $request, sfForm $form) {
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 
         if ($form->isValid()) {
             $recaudacion = $form->save();
+            // ME FALTA AHORA ES GUARDAR LOS DATOS DE LOS GASTOS
 
             // si lo puedo guardar sin problemas ahora creo el evento para registrar el alta
             Evento::crearEvento($recaudacion->getUsuario(), "Se modificó la recaudación id " . $recaudacion->getId());
@@ -158,9 +180,7 @@ class recaudacionActions extends sfActions {
             $this->getUser()->getAttributeHolder()->remove('choferes');
             $this->getUser()->getAttributeHolder()->remove('moviles');
 
-            $respuesta_ajax = array(
-                "ok" => "true"
-            );
+             $this->redirect('recaudacion/index');;
         } else {
             $respuesta_ajax = array(
                 "ok" => "false",
@@ -168,7 +188,7 @@ class recaudacionActions extends sfActions {
             );
         }
 
-        return $this->renderText(json_encode($respuesta_ajax));
+        // return $this->renderText(json_encode($respuesta_ajax));
     }
 
     protected function setChoferesMovilesSalario(sfWebRequest $request) {
