@@ -2,7 +2,7 @@
 <?php use_javascripts_for_form($form) ?>
 <?php use_javascript('common.js') ?>
 
-<p id="validateTips" class="validateTips"></p>    
+<p id="validateTips" class="validateTips"></p>
 <form 
     id="form" 
     action="<?php echo url_for('recaudacion/' . ($form->getObject()->isNew() ? 'create' : 'update') . (!$form->getObject()->isNew() ? '?id=' . $form->getObject()->getId() : '')) ?>" 

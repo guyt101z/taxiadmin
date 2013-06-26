@@ -68,9 +68,10 @@ class recaudacionActions extends sfActions {
     }
 
     public function executeErase(sfWebRequest $request) {
-        $idUsuario = $this->getUser()->getAttribute("id");
-        $idRecaudacion = $request->getParameter('id');
-        $this->recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario);
+        // $idUsuario = $this->getUser()->getAttribute("id");
+        // $idRecaudacion = $request->getParameter('id');
+        // $this->recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario);
+        $this->recaudacion = new Recaudacion();;
     }
 
     public function executeDelete(sfWebRequest $request) {
@@ -85,7 +86,8 @@ class recaudacionActions extends sfActions {
         $recaudacion->save();
 
         $respuesta_ajax = array(
-            "ok" => "true"
+            "ok" => "true",
+            "url" => $this->getController()->genUrl('recaudacion/index', TRUE)
         );
 
         return $this->renderText(json_encode($respuesta_ajax));

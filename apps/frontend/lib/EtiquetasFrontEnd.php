@@ -11,6 +11,7 @@ class EtiquetasFrontEnd {
     public static $COMBUSTIBLE = 'Combustible';
     public static $NUM_MOVIL = 'N&#250;mero de Móvil';
     public static $DESPACHO = 'Despacho';
+    public static $KM_INICIALES = 'Km Iniciales';
     public static $KM = 'Km';
     public static $NOMBRE = 'Nombre';
     public static $CEDULA = 'Cédula';
