@@ -2,8 +2,8 @@
 
 class ConstantesFrontEnd {
 
-    //public static $CUENTA_CORREO_INFO_BYG = 'brunovierag@gmail.com';
-    public static $CUENTA_CORREO_INFO_BYG = 'skyredknight@gmail.com';
+    public static $CUENTA_CORREO_INFO_BYG = 'brunovierag@gmail.com';
+    // public static $CUENTA_CORREO_INFO_BYG = 'skyredknight@gmail.com';
 
     public static $TIPO_USER_USUARIO = 'usuario';
     public static $TIPO_USER_ADMINISTRADOR = "administrador";

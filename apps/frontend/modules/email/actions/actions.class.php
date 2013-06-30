@@ -51,7 +51,7 @@ class emailActions extends sfActions {
                     "ok" => "true"
                 );
             } catch (Exception $exc) {
-//                echo $exc->getTraceAsString();
+              echo $exc->getTraceAsString();
                 $respuesta_ajax = array(
                     "ok" => "false",
                     "tip" => "Error al enviar mensaje, verifique e intente nuevamente."
