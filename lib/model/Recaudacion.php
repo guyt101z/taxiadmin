@@ -37,7 +37,7 @@ class Recaudacion extends BaseRecaudacion {
      * 
      */
     public function getGasto($desc){
-        $gasto = new Gastorecaudacion();
+        $gasto = null;
         $i = 0;
         $lista = $this->getGastorecaudacions();
         while ( $i < count($lista)) {

@@ -170,8 +170,50 @@ class recaudacionActions extends sfActions {
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 
         if ($form->isValid()) {
+            // guardo la recaudación
             $recaudacion = $form->save();
-            // ME FALTA AHORA ES GUARDAR LOS DATOS DE LOS GASTOS
+            // ahora voy verificando gasto por gasto si se modifico el monto y lo actualizo
+            $values = $form->getValues();
+            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_1);
+            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_1];
+            if($gastoReca->getCosto() != $gastoForm){
+                $gastoReca->setCosto($gastoForm);
+                $gastoReca->save();
+            }
+            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_2);
+            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_2];
+            if($gastoReca == null && $values[EtiquetasFrontEnd::$GASTO_2] != 0){
+                $gastoReca = $this->crearGasto($values[EtiquetasFrontEnd::$GASTO_2], $this->getUser()->getAttribute('id'), EtiquetasFrontEnd::$GASTO_2);
+            } elseif ($gastoReca->getCosto() != $gastoForm){
+                $gastoReca->setCosto($gastoForm);
+                $gastoReca->save();
+            }
+            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_3);
+            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_3];
+            if($gastoReca->getCosto() != $gastoForm){
+                $gastoReca->setCosto($gastoForm);
+                $gastoReca->save();
+            }
+            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_4);
+            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_4];
+            if($gastoReca->getCosto() != $gastoForm){
+                $gastoReca->setCosto($gastoForm);
+                $gastoReca->save();
+            }
+            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_5);
+            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_5];
+            if($gastoReca->getCosto() != $gastoForm){
+                $gastoReca->setCosto($gastoForm);
+                $gastoReca->save();
+            }
+            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_6);
+            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_6];
+            if($gastoReca->getCosto() != $gastoForm){
+                $gastoReca->setCosto($gastoForm);
+                $gastoReca->save();
+            }
+
+            // $recaudacion = $form->save();
 
             // si lo puedo guardar sin problemas ahora creo el evento para registrar el alta
             Evento::crearEvento($recaudacion->getUsuario(), "Se modificó la recaudación id " . $recaudacion->getId());
@@ -179,8 +221,9 @@ class recaudacionActions extends sfActions {
             // quito de la sesion de usuario las listas de moviles y choferes antes seteadas
             $this->getUser()->getAttributeHolder()->remove('choferes');
             $this->getUser()->getAttributeHolder()->remove('moviles');
-
-             $this->redirect('recaudacion/index');;
+            
+            $this->setTemplate('edit');
+             // $this->redirect('recaudacion/index');;
         } else {
             $respuesta_ajax = array(
                 "ok" => "false",

@@ -37,7 +37,7 @@ dev:
           port:       465
           encryption: ssl
           username:   infobygtest@gmail.com
-          password:   Taxiadmin2013
+          password:   TaxiAdmin2013Info
 
 all:
   routing:
