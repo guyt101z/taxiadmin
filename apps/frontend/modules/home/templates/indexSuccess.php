@@ -26,7 +26,8 @@
                             <li><?php echo link_to('Cerrar Sesión', 'sesion/logout') ?> </li>
                         <?php else : ?>
                             <li><label onclick="showEditDialog('Contacto', '<?php echo url_for('email/new') ?>', '400', fValidateEmail, fOkContacto); return false;">Contacto</label></li>
-                            <li><label onclick="alert('Para ingresar al sistema debe solicitar su invitación en la opción de Contacto.'); return false;">Registrarse</label></li>
+                            <li><label onclick="showEditDialog('Solicitar Invitación', '<?php echo url_for('email/invitacion') ?>', '400', fValidateInvitacion, fOkContacto); return false;">Solicitar Invitación</label></li>
+                            <!-- <li><label onclick="alert('Para ingresar al sistema debe solicitar su invitación en la opción de Contacto.'); return false;">Registrarse</label></li> -->
                             <li><label onclick="showEditDialog('Ingresar al sistema', '<?php echo url_for('sesion/new') ?>', '320', fValidateSesion); return false;">Ingresar</label></li>
                         <?php endif ?>
                     </ul>

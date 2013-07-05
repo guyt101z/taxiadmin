@@ -26,6 +26,52 @@ class emailActions extends sfActions {
         }
     }
 
+    public function executeInvitacion(sfWebRequest $request) {
+        $this->forward404Unless($request->isXmlHttpRequest());
+
+        $this->form = new InvitacionForm();
+
+    }
+    public function executeEnviarInvitacion(sfRequest $request) {
+
+        $this->forward404Unless($request->isXmlHttpRequest());
+        $this->forward404Unless($request->isMethod(sfRequest::POST));
+        $this->form = new InvitacionForm();
+        $this->form->bind($request->getParameter($this->form->getName()));
+
+        if ($this->form->isValid()) {
+            $info = $this->form->getValues();
+
+            $body = 'Nombre: ' . $info['nombre'] . '\n';
+            $body .= 'Correo: ' . $info['correo'] . '\n';
+            try {
+                $this->getMailer()->composeAndSend(
+                    'infobygtest@gmail.com', 
+                    ConstantesFrontEnd::$CUENTA_CORREO_INFO_BYG, 
+                    'Solicitud de Invitacion ' . $info['nombre'], 
+                    $body
+                );
+
+                $respuesta_ajax = array(
+                    "ok" => "true"
+                    );
+            } catch (Exception $exc) {
+              // echo $exc->getTraceAsString();
+                $respuesta_ajax = array(
+                    "ok" => "false",
+                    "tip" => "Error al enviar mensaje, verifique e intente nuevamente."
+                    );
+            }
+        } else {
+            // si entre aca es por que tengo un error de validacion
+            $respuesta_ajax = array(
+                "ok" => "false",
+                "tip" => "Error al procesar los datos, verifique e intente nuevamente."
+                );
+        }
+        return $this->renderText(json_encode($respuesta_ajax));
+    }
+
     public function executeEnviar(sfRequest $request) {
 
         $this->forward404Unless($request->isXmlHttpRequest());
@@ -49,23 +95,23 @@ class emailActions extends sfActions {
 
                 $respuesta_ajax = array(
                     "ok" => "true"
-                );
+                    );
             } catch (Exception $exc) {
               echo $exc->getTraceAsString();
-                $respuesta_ajax = array(
-                    "ok" => "false",
-                    "tip" => "Error al enviar mensaje, verifique e intente nuevamente."
-                );
-            }
-        } else {
-            // si entre aca es por que tengo un error de validacion
-            $respuesta_ajax = array(
+              $respuesta_ajax = array(
                 "ok" => "false",
-                "tip" => "Error al procesar los datos, verifique e intente nuevamente."
+                "tip" => "Error al enviar mensaje, verifique e intente nuevamente."
+                );
+          }
+      } else {
+            // si entre aca es por que tengo un error de validacion
+        $respuesta_ajax = array(
+            "ok" => "false",
+            "tip" => "Error al procesar los datos, verifique e intente nuevamente."
             );
-        }
-
-        return $this->renderText(json_encode($respuesta_ajax));
     }
+
+    return $this->renderText(json_encode($respuesta_ajax));
+}
 
 }
