@@ -21,7 +21,7 @@
                 <td><?php echo $recaudacion->getRecaudacion() ?></td>
                 <td>
                     <input title="Ver Información" src="/images/app/icons/view.gif" type="image" onclick="showViewDialog('Información Recaudación', '<?php echo url_for('recaudacion/show?id=' . $recaudacion->getId()) ?>', '800'); return false;" />
-                    <input title="Editar" src="/images/app/icons/edit.png" type="image" onclick="showEditDialog('Editar Recaudación', '<?php echo url_for('recaudacion/edit?id=' . $recaudacion->getId()) ?>', '800', fValidateRecaudacion, fOkRecaudacion); return false;" />
+                    <a title="Editar" href="<?php echo url_for('recaudacion/edit?id=' . $recaudacion->getId()) ?>"> <img src="/images/app/icons/edit.png"> </a>
                     <input title="Eliminar" src="/images/app/icons/delete.png" type="image" onclick="showDeleteDialog('Confirmación', '<?php echo url_for('recaudacion/erase?id=' . $recaudacion->getId()) ?>', '440', '<?php echo url_for('recaudacion/delete?id=' . $recaudacion->getId()) ?>', '<?php echo $csrfToken ?>', fOkRecaudacion); return false;" />
                 </td>
             </tr>

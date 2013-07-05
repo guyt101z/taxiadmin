@@ -30,7 +30,7 @@ class recaudacionActions extends sfActions {
         $idRecaudacion = $request->getParameter('id');
 
         $this->Recaudacion = RecaudacionPeer::getRecaudacionByPK($idRecaudacion, $idUsuario);
-       
+
         $this->forward404Unless($this->Recaudacion);
     }
 
@@ -92,7 +92,7 @@ class recaudacionActions extends sfActions {
         $respuesta_ajax = array(
             "ok" => "true",
             "url" => $this->getController()->genUrl('recaudacion/index', TRUE)
-        );
+            );
 
         return $this->renderText(json_encode($respuesta_ajax));
     }
@@ -166,54 +166,39 @@ class recaudacionActions extends sfActions {
         return $gasto;
     }
 
+    protected function modificarGasto($recaudacion, $gastoRecaudacion, $costo, $detalle, $idUsuario) {
+        if($costo != 0){
+            // si la recaudación no tiene el gasto aún
+            if($gastoRecaudacion == null){
+                $gasto = new GastoRecaudacion();
+                $gasto->setCosto($costo);
+                $gasto->setUsuario($idUsuario);
+                $gasto->setDetalle($detalle);
+                $gasto->setRecaudacion($recaudacion);
+                $gasto->save();
+            } else if ($gastoRecaudacion->getCosto() != $costo) {
+                $gastoRecaudacion->setCosto($costo);
+                $gastoRecaudacion->save();
+            }
+        }
+    }
+
     protected function modificarRecaudacion(sfWebRequest $request, sfForm $form) {
         $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 
         if ($form->isValid()) {
+            $idUsuario = $this->getUser()->getAttribute('id');
             // guardo la recaudación
             $recaudacion = $form->save();
+
             // ahora voy verificando gasto por gasto si se modifico el monto y lo actualizo
             $values = $form->getValues();
-            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_1);
-            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_1];
-            if($gastoReca->getCosto() != $gastoForm){
-                $gastoReca->setCosto($gastoForm);
-                $gastoReca->save();
-            }
-            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_2);
-            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_2];
-            if($gastoReca == null && $values[EtiquetasFrontEnd::$GASTO_2] != 0){
-                $gastoReca = $this->crearGasto($values[EtiquetasFrontEnd::$GASTO_2], $this->getUser()->getAttribute('id'), EtiquetasFrontEnd::$GASTO_2);
-            } elseif ($gastoReca->getCosto() != $gastoForm){
-                $gastoReca->setCosto($gastoForm);
-                $gastoReca->save();
-            }
-            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_3);
-            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_3];
-            if($gastoReca->getCosto() != $gastoForm){
-                $gastoReca->setCosto($gastoForm);
-                $gastoReca->save();
-            }
-            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_4);
-            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_4];
-            if($gastoReca->getCosto() != $gastoForm){
-                $gastoReca->setCosto($gastoForm);
-                $gastoReca->save();
-            }
-            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_5);
-            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_5];
-            if($gastoReca->getCosto() != $gastoForm){
-                $gastoReca->setCosto($gastoForm);
-                $gastoReca->save();
-            }
-            $gastoReca = $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_6);
-            $gastoForm = $values[EtiquetasFrontEnd::$GASTO_6];
-            if($gastoReca->getCosto() != $gastoForm){
-                $gastoReca->setCosto($gastoForm);
-                $gastoReca->save();
-            }
-
-            // $recaudacion = $form->save();
+            $this->modificarGasto($recaudacion, $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_1), $values[EtiquetasFrontEnd::$GASTO_1], EtiquetasFrontEnd::$GASTO_1, $idUsuario);
+            $this->modificarGasto($recaudacion, $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_2), $values[EtiquetasFrontEnd::$GASTO_2], EtiquetasFrontEnd::$GASTO_2, $idUsuario);
+            $this->modificarGasto($recaudacion, $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_3), $values[EtiquetasFrontEnd::$GASTO_3], EtiquetasFrontEnd::$GASTO_3, $idUsuario);
+            $this->modificarGasto($recaudacion, $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_4), $values[EtiquetasFrontEnd::$GASTO_4], EtiquetasFrontEnd::$GASTO_4, $idUsuario);
+            $this->modificarGasto($recaudacion, $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_5), $values[EtiquetasFrontEnd::$GASTO_5], EtiquetasFrontEnd::$GASTO_5, $idUsuario);
+            $this->modificarGasto($recaudacion, $recaudacion->getGasto(EtiquetasFrontEnd::$GASTO_6), $values[EtiquetasFrontEnd::$GASTO_6], EtiquetasFrontEnd::$GASTO_6, $idUsuario);
 
             // si lo puedo guardar sin problemas ahora creo el evento para registrar el alta
             Evento::crearEvento($recaudacion->getUsuario(), "Se modificó la recaudación id " . $recaudacion->getId());
@@ -222,16 +207,13 @@ class recaudacionActions extends sfActions {
             $this->getUser()->getAttributeHolder()->remove('choferes');
             $this->getUser()->getAttributeHolder()->remove('moviles');
             
-            $this->setTemplate('edit');
-             // $this->redirect('recaudacion/index');;
+            $this->redirect('recaudacion/index');;
         } else {
             $respuesta_ajax = array(
                 "ok" => "false",
                 "tip" => "Error al procesar los datos, verifique e intente nuevamente."
-            );
+                );
         }
-
-        // return $this->renderText(json_encode($respuesta_ajax));
     }
 
     protected function setChoferesMovilesSalario(sfWebRequest $request) {

@@ -33,9 +33,6 @@ class Recaudacion extends BaseRecaudacion {
         return parent::getFecha($format);
     }
 
-    /**
-     * 
-     */
     public function getGasto($desc){
         $gasto = null;
         $i = 0;
@@ -48,6 +45,15 @@ class Recaudacion extends BaseRecaudacion {
             $i += 1;
         }
         return $gasto;
+    }
+
+    public function getCostoGasto($desc){
+        $gasto = $this->getGasto($desc);
+        if($gasto == null){
+            return 0;
+        } else {
+            return $gasto->getCosto();
+        }
     }
 
 
