@@ -121,7 +121,7 @@ class propietarioActions extends sfActions {
                 $Propietario->save();
 
                 //si lo puedo guardar sin problemas ahora creo el evento para registrar esta alta de usuario
-                Evento::crearEvento($Propietario->getId(), "Se creo un nuevo Propietario id " . $Propietario->getId());
+                Evento::crearEvento($this->getUser()->getAttribute('id'), "Se creo un nuevo Propietario id " . $Propietario->getId());
 
                 $respuesta_ajax = array(
                     "ok" => "true",

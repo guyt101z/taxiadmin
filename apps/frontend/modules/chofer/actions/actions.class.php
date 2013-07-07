@@ -232,7 +232,7 @@ class choferActions extends sfActions {
                 $Chofer->save();
 
                 //si lo puedo guardar sin problemas ahora creo el evento para registrar esta alta de usuario
-                Evento::crearEvento($Chofer->getId(), "Se creo un nuevo Chofer id " . $Chofer->getId());
+                Evento::crearEvento($this->getUser()->getAttribute('id'), "Se creo un nuevo Chofer id " . $Chofer->getId());
 
                 $respuesta_ajax = array(
                     "ok" => "true",
