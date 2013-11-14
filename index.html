@@ -13,83 +13,152 @@
 	<!-- Bootstrap core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- Bootstrap theme -->
-	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
 
-	<!-- Just for debugging purposes. Don't actually copy this line! -->
-	<!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <!-- Just for debugging purposes. Don't actually copy this line! -->
+  <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
       <![endif]-->
-  </head>
+    </head>
 
-  <body style="padding-top: 50px; background:url('img/bg.jpg'); ">
-  	<div class="container">
+    <body>
+     <div class="container">
 
-  		<!-- MENU -->
-  		<nav class="navbar navbar-default" role="navigation">
-  			<!-- Brand and toggle get grouped for better mobile display -->
-  			<div class="navbar-header">
-  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-  					<span class="sr-only">Toggle navigation</span>
-  					<span class="icon-bar"></span>
-  					<span class="icon-bar"></span>
-  					<span class="icon-bar"></span>
-  				</button>
-  				<a class="navbar-brand" href="index.html">TaxiAdmin</a>
-  			</div>
+      <!-- MENU -->
+      <nav class="navbar navbar-default" role="navigation">
+       <!-- Brand and toggle get grouped for better mobile display -->
+       <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="index.html">TaxiAdmin</a>
+     </div>
 
-  			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-  				<ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Inicio</a></li>
-  					<li><a href="Empresa.html">Empresas</a></li>
-  					<li><a href="#">Propietarios</a></li>
-  					<li><a href="#">Choferes</a></li>
-  					<li><a href="#">Móviles</a></li>
-  					<li><a href="#">Recaudaciones</a></li>
-  				</ul>
-  				<ul class="nav navbar-nav navbar-right">
-  					<li class="dropdown">
-  						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
-  						<ul class="dropdown-menu">
-  							<li><a href="#">Perfil</a></li>
-  							<li><a href="#">Estado de Cuenta</a></li>
-  							<li class="divider"></li>
-  							<li><a href="#">Salir</a></li>
-  						</ul>
-  					</li>
-  				</ul>
-  			</div>
-  		</nav>
-  		<!-- MENU -->
-
-
-  		<div class="row">
-  			<div class="col-md-3 ">
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Inicio</a></li>
+        <li><a href="Empresa.html">Empresas</a></li>
+        <li><a href="#">Propietarios</a></li>
+        <li><a href="#">Choferes</a></li>
+        <li><a href="#">Móviles</a></li>
+        <li><a href="#">Recaudaciones</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="#">Perfil</a></li>
+         <li class="divider"></li>
+         <li><a href="#">Estado de Cuenta</a></li>
+         <li><a href="#">Soporte</a></li>
+         <li class="divider"></li>
+         <li><a href="#">Salir</a></li>
+       </ul>
+     </li>
+   </ul>
+ </div>
+</nav>
+<!-- MENU -->
 
 
-  				<div class="list-group">
-  					<a href="#" class="list-group-item">Nueva Recaudación</a>
-  					<a href="#" class="list-group-item">Nuevo Adelanto</a>
-  					<a href="#" class="list-group-item">Ingresar Multa</a>
-  					<a href="#" class="list-group-item">Ingresar Accidente</a>
-  					<a href="#" class="list-group-item">Ingresar Mantenimiento</a>
-  					<a href="#" class="list-group-item">Ingresar Gasto Empresa</a>
-  					<a href="#" class="list-group-item">Ingresar Gasto Movil</a>
-  				</div>
+<div class="row">
+ <div class="col-md-3 ">
 
-  			</div>
-  			<div class="col-xs-13 col-md-9">
-  				<div class="panel panel-default">
-  				<div class="panel-body">
-  					<h3>Próximos Vencimientos</h3>
 
-  				</div>
-  				</div>
-  			</div>
-  		</div>
+  <div class="list-group">
+   <a href="#recaudacion" class="list-group-item">Nueva Recaudación</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#adelanto">Nuevo Adelanto</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#multa">Ingresar Multa</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#accidente">Ingresar Accidente</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Ingresar Mantenimiento</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#gastoEmpresa">Ingresar Gasto Empresa</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#gastoMovil">Ingresar Gasto Movil</a>
+ </div>
+
+</div>
+<div class="col-xs-13 col-md-9">
+  <div class="panel panel-default">
+    <div class="panel-body">
+     <h3>Próximos Vencimientos</h3>
+
+   </div>
+ </div>
+</div>
+</div>
+
+<footer>
+ <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <ul class="nav navbar-nav navbar-right">
+    <li><a target="_blank" href="http://www.byg.com.uy">Realizado por BYG</a></li>
+  </ul>
+</nav>
+</footer>
+
+<!-- ADELANTO -->
+<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
+      </div>
+
+      <div class="modal-body">
+        <form class="form-horizontal" action="#" role="form">
+          <div class="form-group">
+            <label for="inputChofer" class="col-sm-2 control-label">Chofer</label>
+            <div class="col-sm-10">
+              <select class="form-control" required autofocus>
+                <option>Roberto</option>
+                <option>Carlos</option>
+                <option>Quique</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputFecha" class="col-sm-2 control-label">Fecha</label>
+            <div class="col-sm-10">
+             <div class="input-group"  style="margin:10px 0;">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <input type="date" class="form-control" id="inputFecha" placeholder="Fecha" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label style="padding-top:14px;" for="inputAdelantoMonto" class="col-sm-2 control-label">Monto</label>
+            <div class="col-sm-10">
+              <div class="input-group"  style="margin:10px 0;">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+                <input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAdelantoDetalle " class="col-sm-2 control-label">Detalle</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div><!-- ADELANTO -->
 
 
     <!-- Bootstrap core JavaScript
@@ -97,5 +166,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+  </body>
+  </html>
