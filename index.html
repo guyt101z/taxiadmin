@@ -58,7 +58,7 @@
          <li><a href="#">Perfil</a></li>
          <li class="divider"></li>
          <li><a href="#">Estado de Cuenta</a></li>
-         <li><a href="#">Soporte</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#soporte">Soporte</a></li>
          <li class="divider"></li>
          <li><a href="#">Salir</a></li>
        </ul>
@@ -126,32 +126,32 @@
           </div>
           <div class="form-group">
             <label for="inputAdelantoFecha" class="control-label">Fecha</label>
-             <div class="input-group">
+            <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
               <input type="date" class="form-control" id="inputAdelantoFecha" placeholder="Fecha" required>
             </div>
-        </div>
-        <div class="form-group">
-          <label style="padding-top:14px;" for="inputAdelantoMonto" class="control-label">Monto</label>
+          </div>
+          <div class="form-group">
+            <label style="padding-top:14px;" for="inputAdelantoMonto" class="control-label">Monto</label>
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
               <input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
             </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAdelantoDetalle " class="control-label">Detalle</label>
-            <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 ">
-            <button type="submit" class="btn btn-default">Enviar</button>
           </div>
-        </div>
-      </form>
-    </div>
+          <div class="form-group">
+            <label for="inputAdelantoDetalle " class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
 
+    </div>
   </div>
-</div>
 </div>
 <!-- ADELANTO -->
 
@@ -169,66 +169,66 @@
         <form action="#" role="form">
           <div class="form-group">
             <label class="control-label">Chofer</label>
-              <select class="form-control" required autofocus>
-                <option>Roberto</option>
-                <option>Carlos</option>
-                <option>Quique</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>Roberto</option>
+              <option>Carlos</option>
+              <option>Quique</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="control-label">Movil</label>
-              <select class="form-control" required autofocus>
-                <option>STX-1234</option>
-                <option>STX-4561</option>
-                <option>STX-7894</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-4561</option>
+              <option>STX-7894</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="inputMultaFecha" class="control-label">Fecha</label>
-             <div class="input-group">
+            <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
               <input type="date" class="form-control" id="inputMultaFecha" placeholder="Fecha" required>
             </div>
-        </div>
-        <div class="form-group">
-          <label for="inputMultaFechaVencimiento" class="control-label">Fecha de Vencimiento</label>
-           <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-            <input type="date" class="form-control" id="inputMultaFechaVencimiento" placeholder="Fecha de Vencimiento" required>
-        </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaFechaVencimiento" class="control-label">Fecha de Vencimiento</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMultaFechaVencimiento" placeholder="Fecha de Vencimiento" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaFechaPago" class="control-label">Fecha de Pago</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMultaFechaPago" placeholder="Fecha de Pago">
+            </div>
+          </div>
+          <div class="form-group">
+            <label style="padding-top:14px;" for="inputAdelantoMonto" class="control-label">Monto</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+              <input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaLugar" class="control-label">Lugar</label>
+            <input type="text" class="form-control" id="inputMultaLugar" placeholder="Lugar" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAdelantoDetalle " class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="inputMultaFechaPago" class="control-label">Fecha de Pago</label>
-         <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-          <input type="date" class="form-control" id="inputMultaFechaPago" placeholder="Fecha de Pago">
-      </div>
-    </div>
-    <div class="form-group">
-      <label style="padding-top:14px;" for="inputAdelantoMonto" class="control-label">Monto</label>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-          <input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
-        </div>
-    </div>
-    <div class="form-group">
-      <label for="inputMultaLugar" class="control-label">Lugar</label>
-        <input type="text" class="form-control" id="inputMultaLugar" placeholder="Lugar" required>
-    </div>
-    <div class="form-group">
-      <label for="inputAdelantoDetalle " class="control-label">Detalle</label>
-        <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 ">
-        <button type="submit" class="btn btn-default">Enviar</button>
-      </div>
-    </div>
-  </form>
-</div>
 
-</div>
-</div>
+    </div>
+  </div>
 </div><!-- MULTA -->
 
 
@@ -246,45 +246,45 @@
         <form action="#" role="form">
           <div class="form-group">
             <label class="control-label">Chofer</label>
-              <select class="form-control" required autofocus>
-                <option>Roberto</option>
-                <option>Carlos</option>
-                <option>Quique</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>Roberto</option>
+              <option>Carlos</option>
+              <option>Quique</option>
+            </select>
           </div>
           <div class="form-group">
             <label class="control-label">Movil</label>
-              <select class="form-control" required autofocus>
-                <option>STX-1234</option>
-                <option>STX-4561</option>
-                <option>STX-7894</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-4561</option>
+              <option>STX-7894</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="inputAccidenteFecha" class="control-label">Fecha</label>
-             <div class="input-group">
+            <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
               <input type="date" class="form-control" id="inputAccidenteFecha" placeholder="Fecha" required>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAccidenteLugar" class="control-label">Lugar</label>
+          <div class="form-group">
+            <label for="inputAccidenteLugar" class="control-label">Lugar</label>
             <input type="text" class="form-control" id="inputAccidenteLugar" placeholder="Lugar" required>
-        </div>
-        <div class="form-group">
-          <label for="inputAccidenteDetalle" class="control-label">Detalle</label>
-            <textarea class="form-control" rows="3" id="inputAccidenteDetalle" placeholder="Detalle" required></textarea>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 ">
-            <button type="submit" class="btn btn-default">Enviar</button>
           </div>
-        </div>
-      </form>
-    </div>
+          <div class="form-group">
+            <label for="inputAccidenteDetalle" class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputAccidenteDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
 
+    </div>
   </div>
-</div>
 </div>
 <!-- ACCIDENTE -->
 
@@ -302,11 +302,11 @@
         <form action="#" role="form">
           <div class="form-group">
             <label class="control-label">Empresa</label>
-              <select class="form-control" required autofocus>
-                <option>Empresa 1</option>
-                <option>Empresa 2</option>
-                <option>Empresa 3</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>Empresa 1</option>
+              <option>Empresa 2</option>
+              <option>Empresa 3</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="inputGastoEmpresaFecha" class="control-label">Fecha</label>
@@ -357,11 +357,11 @@
         <form action="#" role="form">
           <div class="form-group">
             <label class="control-label">Movil</label>
-              <select class="form-control" required autofocus>
-                <option>STX-1234</option>
-                <option>STX-6541</option>
-                <option>STX-7894</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-6541</option>
+              <option>STX-7894</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="inputGastoMovilFecha" class="control-label">Fecha</label>
@@ -408,11 +408,11 @@
         <form action="#" role="form">
           <div class="form-group">
             <label class="control-label">Movil</label>
-              <select class="form-control" required autofocus>
-                <option>STX-1234</option>
-                <option>STX-6541</option>
-                <option>STX-7894</option>
-              </select>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-6541</option>
+              <option>STX-7894</option>
+            </select>
           </div>
           <div class="form-group">
             <label for="inputMantenimientoFechaIngreso" class="control-label">Fecha de Ingreso</label>
@@ -431,7 +431,7 @@
           </div>
           <div class="form-group">
             <label for="inputMantenimientoResponsable" class="control-label">Responsable</label>
-            <input type="text" class="form-control" id="inputGastoEmpresaRubro" placeholder="Responsable" required>
+            <input type="text" class="form-control" id="inputMantenimientoResponsable" placeholder="Responsable" required>
           </div>
           <div class="form-group">
             <label for="inputMantenimientoDetalle" class="control-label">Detalle del Trabajo</label>
@@ -464,6 +464,41 @@
   </div>
 </div>
 <!-- MANTENIMIENTO -->
+
+
+<!-- SOPORTE -->
+<div class="modal fade" id="soporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Soporte</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+          <label for="inputSoporteAsunto" class="control-label">Asunto</label>
+            <input type="text" class="form-control" id="inputSoporteAsunto" placeholder="Asunto" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="inputSoporteMensaje" class="control-label">Mensaje</label>
+            <textarea class="form-control" rows="3" id="inputSoporteMensaje" placeholder="Mensaje" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- SOPORTE -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
