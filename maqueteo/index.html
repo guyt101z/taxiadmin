@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="ico/favicon.png">
+
+	<title>TaxiAdmin</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="css/app.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy this line! -->
+  <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <![endif]-->
+    </head>
+
+    <body>
+     <div class="container">
+
+      <!-- MENU -->
+      <nav class="navbar navbar-default" role="navigation">
+       <!-- Brand and toggle get grouped for better mobile display -->
+       <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="index.html">TaxiAdmin</a>
+     </div>
+
+     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Inicio</a></li>
+        <li><a href="Empresa.html">Empresas</a></li>
+        <li><a href="#">Propietarios</a></li>
+        <li><a href="#">Choferes</a></li>
+        <li><a href="#">Móviles</a></li>
+        <li><a href="#">Recaudaciones</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         <li><a href="#">Perfil</a></li>
+         <li class="divider"></li>
+         <li><a href="#">Estado de Cuenta</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#soporte">Soporte</a></li>
+         <li class="divider"></li>
+         <li><a href="#">Salir</a></li>
+       </ul>
+     </li>
+   </ul>
+ </div>
+</nav>
+<!-- MENU -->
+
+
+<div class="row">
+ <div class="col-md-3 ">
+
+
+  <div class="list-group">
+   <a href="#recaudacion" class="list-group-item">Nueva Recaudación</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#adelanto">Nuevo Adelanto</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#multa">Ingresar Multa</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#accidente">Ingresar Accidente</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Ingresar Mantenimiento</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#gastoEmpresa">Ingresar Gasto Empresa</a>
+   <a href="#" class="list-group-item" data-toggle="modal" data-target="#gastoMovil">Ingresar Gasto Movil</a>
+ </div>
+
+</div>
+<div class="col-xs-13 col-md-9">
+  <div class="panel panel-default">
+    <div class="panel-body">
+     <h3>Próximos Vencimientos</h3>
+
+   </div>
+ </div>
+</div>
+</div>
+
+<footer>
+ <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="min-height:0px;">
+  <ul class="nav navbar-nav navbar-right">
+    <li><a target="_blank" style="padding:10px 0px;"href="http://www.byg.com.uy">Realizado por BYG</a></li>
+  </ul>
+</nav>
+</footer>
+
+<!-- ADELANTO -->
+<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+            <label class="control-label">Chofer</label>
+            <div>
+              <select class="form-control" required autofocus>
+                <option>Roberto</option>
+                <option>Carlos</option>
+                <option>Quique</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAdelantoFecha" class="control-label">Fecha</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputAdelantoFecha" placeholder="Fecha" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label style="padding-top:14px;" for="inputAdelantoMonto" class="control-label">Monto</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+              <input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAdelantoDetalle " class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ADELANTO -->
+
+<!-- MULTA -->
+<div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar nueva Multa</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+            <label class="control-label">Chofer</label>
+            <select class="form-control" required autofocus>
+              <option>Roberto</option>
+              <option>Carlos</option>
+              <option>Quique</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Movil</label>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-4561</option>
+              <option>STX-7894</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaFecha" class="control-label">Fecha</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMultaFecha" placeholder="Fecha" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaFechaVencimiento" class="control-label">Fecha de Vencimiento</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMultaFechaVencimiento" placeholder="Fecha de Vencimiento" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaFechaPago" class="control-label">Fecha de Pago</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMultaFechaPago" placeholder="Fecha de Pago">
+            </div>
+          </div>
+          <div class="form-group">
+            <label style="padding-top:14px;" for="inputAdelantoMonto" class="control-label">Monto</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+              <input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMultaLugar" class="control-label">Lugar</label>
+            <input type="text" class="form-control" id="inputMultaLugar" placeholder="Lugar" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAdelantoDetalle " class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div><!-- MULTA -->
+
+
+<!-- ACCIDENTE -->
+<div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar nuevo Accidente</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+            <label class="control-label">Chofer</label>
+            <select class="form-control" required autofocus>
+              <option>Roberto</option>
+              <option>Carlos</option>
+              <option>Quique</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Movil</label>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-4561</option>
+              <option>STX-7894</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputAccidenteFecha" class="control-label">Fecha</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputAccidenteFecha" placeholder="Fecha" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAccidenteLugar" class="control-label">Lugar</label>
+            <input type="text" class="form-control" id="inputAccidenteLugar" placeholder="Lugar" required>
+          </div>
+          <div class="form-group">
+            <label for="inputAccidenteDetalle" class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputAccidenteDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- ACCIDENTE -->
+
+<!-- GASTO EMPRESA -->
+<div class="modal fade" id="gastoEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar nuevo Gasto</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+            <label class="control-label">Empresa</label>
+            <select class="form-control" required autofocus>
+              <option>Empresa 1</option>
+              <option>Empresa 2</option>
+              <option>Empresa 3</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoEmpresaFecha" class="control-label">Fecha</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputGastoEmpresaFecha" placeholder="Fecha" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoEmpresaRubro" class="control-label">Rubro</label>
+            <input type="text" class="form-control" id="inputGastoEmpresaRubro" placeholder="Rubro" required>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoEmpresaMonto" class="control-label">Monto</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+              <input type="number" class="form-control" id="inputGastoEmpresaMonto" placeholder="Monto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoEmpresaDetalle" class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputGastoEmpresaDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- GASTO EMPRESA -->
+
+<!-- GASTO MOVIL -->
+<div class="modal fade" id="gastoMovil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar nuevo Gasto</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+            <label class="control-label">Movil</label>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-6541</option>
+              <option>STX-7894</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoMovilFecha" class="control-label">Fecha</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputGastoMovilFecha" placeholder="Fecha" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoMovilMonto" class="control-label">Monto</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+              <input type="number" class="form-control" id="inputGastoMovilMonto" placeholder="Monto" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputGastoMovilDetalle" class="control-label">Detalle</label>
+            <textarea class="form-control" rows="3" id="inputGastoMovilDetalle" placeholder="Detalle" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- GASTO MOVIL -->
+
+<!-- MANTENIMIENTO -->
+<div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Ingresar nuevo Mantenimiento</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+            <label class="control-label">Movil</label>
+            <select class="form-control" required autofocus>
+              <option>STX-1234</option>
+              <option>STX-6541</option>
+              <option>STX-7894</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoFechaIngreso" class="control-label">Fecha de Ingreso</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMantenimientoFechaIngreso" placeholder="Fecha de Ingreso" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoMotivo" class="control-label">Motivo del Ingreso</label>
+            <textarea class="form-control" rows="3" id="inputMantenimientoMotivo" placeholder="Motivo del Ingreso" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoTaller" class="control-label">Taller</label>
+            <input type="text" class="form-control" id="inputGastoEmpresaRubro" placeholder="Taller" required>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoResponsable" class="control-label">Responsable</label>
+            <input type="text" class="form-control" id="inputMantenimientoResponsable" placeholder="Responsable" required>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoDetalle" class="control-label">Detalle del Trabajo</label>
+            <textarea class="form-control" rows="3" id="inputMantenimientoDetalle" placeholder="Detalle del Trabajo"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoCosto" class="control-label">Costo</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+              <input type="number" class="form-control" id="inputMantenimientoCosto" placeholder="Costo" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputMantenimientoFechaFinalizado" class="control-label">Fecha de Finalizado</label>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+              <input type="date" class="form-control" id="inputMantenimientoFechaFinalizado" placeholder="Fecha de Finalizado" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- MANTENIMIENTO -->
+
+
+<!-- SOPORTE -->
+<div class="modal fade" id="soporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Soporte</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="#" role="form">
+          <div class="form-group">
+          <label for="inputSoporteAsunto" class="control-label">Asunto</label>
+            <input type="text" class="form-control" id="inputSoporteAsunto" placeholder="Asunto" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="inputSoporteMensaje" class="control-label">Mensaje</label>
+            <textarea class="form-control" rows="3" id="inputSoporteMensaje" placeholder="Mensaje" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 ">
+              <button type="submit" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- SOPORTE -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+  </html>
