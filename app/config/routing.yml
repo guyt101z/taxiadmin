@@ -1,0 +1,8 @@
+taxi_admin_sitio:
+    resource: "@TaxiAdminSitioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+taxi_admin_usuario:
+    resource: "@TaxiAdminUsuarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
