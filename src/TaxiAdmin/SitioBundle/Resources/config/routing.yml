@@ -1,3 +1,3 @@
-taxi_admin_sitio_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TaxiAdminSitioBundle:Default:index }
+sitio_homepage:
+    pattern:  /
+    defaults: { _controller: TaxiAdminSitioBundle:Sitio:home }
