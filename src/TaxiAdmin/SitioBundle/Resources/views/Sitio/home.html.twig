@@ -18,36 +18,31 @@
 			</div>
 			<button class="btn btn-default" type="submit">Entrar</button>
 		</form>
-
-		<button class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
-			Registrarme
-		</button>
 	</div>
 
 	<div class="col-xs-13 col-md-9">
 		<div class="jumbotron">
-			<h1>Hola!</h1>
-			<p>Bienvenido a mi página de ejemplos, selecciona en el menu tu combinación predilecta y disfruta del ejemplo.
-				saludos</p>
+			<h1>Bienvenido</h1>
+			<p>TaxiAdmin, es un sistema para la administración de Taxímetros, también puede aplicar para Remises y automóviles de alquier.
+				Está especialmente diseñado para ayudar al administrador en su función diaria y no reemplazarlo.</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-4">
-			<div class="well well-sm">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. </p>
-			</div>
+			<h3>Cómo acceder?</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. 
+			Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. </p>
+			<button class="btn btn-default" data-toggle="modal" data-target="#myModal"> Registrarme </button>
 		</div>
 		<div class="col-md-4">
-			<div class="well well-sm">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu erat. Mauris nunc. </p>
-			</div>
+			<h3>Cómo funciona?</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu erat. Mauris nunc. </p>
 		</div>
 		<div class="col-md-4">
-			<div class="well well-sm">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. Cursus vitae erat. Mauris nunc. </p>
-			</div>
+			<h3>Ladsf asd adf</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. Cursus vitae erat. Mauris nunc. </p>
 		</div>
 	</div>
 	{% endblock %}
@@ -64,50 +59,44 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="form-horizontal" action="#" role="form">
+					<form class="form-horizontal" action="{{ path("usuario_create") }}" method="post" role="form">
 						<div class="form-group">
 							<label for="inputNombre" class="col-sm-2 control-label">Nombre</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputNombre" placeholder="Nombre" required autofocus>
-							</div>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.nombre) }} </div>
 						</div>
 						<div class="form-group">
 							<label for="inputApellido" class="col-sm-2 control-label">Apellido</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>
-							</div>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.apellido )}} </div>
 						</div>
 						<div class="form-group">
 							<label for="inputEmail" class="col-sm-2 control-label">Email</label>
-							<div class="col-sm-10">
-								<input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
-							</div>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.email )}} </div>
+						</div>
+						<div class="form-group">
+							<label for="inputClave" class="col-sm-2 control-label">Clave</label>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.password )}} </div>
 						</div>
 						<div class="form-group">
 							<label for="inputTelefono" class="col-sm-2 control-label">Teléfono</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputTelefono" placeholder="Teléfono">
-							</div>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.telefono )}} </div>
 						</div>
 						<div class="form-group">
 							<label for="inputCelular" class="col-sm-2 control-label">Celular</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputCelular" placeholder="Celular" required>
-							</div>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.celular )}} </div>
 						</div>
 						<div class="form-group">
 							<label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
-							</div>
+							<div class="col-sm-10"> {{ form_widget(formUsuario.direccion )}} </div>
 						</div>
+
+						{{ form_widget(formUsuario._token) }}
+						
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<button type="submit" class="btn btn-default">Enviar</button>
 							</div>
 						</div>
 					</form>
-
 				</div>
 			</div>
 		</div>
