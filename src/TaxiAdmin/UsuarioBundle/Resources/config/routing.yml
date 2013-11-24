@@ -1,3 +1,0 @@
-taxi_admin_usuario_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: TaxiAdminUsuarioBundle:Default:index }
