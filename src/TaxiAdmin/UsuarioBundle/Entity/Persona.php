@@ -9,8 +9,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
 * Persona
 *
-* @ORM\Table()
-* @ORM\Entity
+* @ORM\MappedSuperclass
 * @UniqueEntity("email")
 */
 class Persona implements  \Serializable {
@@ -88,7 +87,7 @@ class Persona implements  \Serializable {
     /**
      * @var string
      *
-     * @ORM\Column(name="fechaBaja", type="datetime")
+     * @ORM\Column(name="fechaBaja", type="datetime", nullable=true)
      */
     private $fechaBaja;
 

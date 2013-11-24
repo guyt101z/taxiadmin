@@ -4,6 +4,7 @@ namespace TaxiAdmin\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Usuario
@@ -12,13 +13,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="TaxiAdmin\UsuarioBundle\Entity\UsuarioRepository")
  */
 class Usuario extends Persona implements UserInterface, \Serializable {
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo", type="string", length=50)
-     */
-    private $tipo;
 
     /**
      * @var string
@@ -43,9 +37,8 @@ class Usuario extends Persona implements UserInterface, \Serializable {
     public function __construct() {
         // genero un id único como salt
         $this->salt = md5(uniqid(null, true));
-        $this->fechaBaja = null;
+        // creo los arrays para guardar la info
         $this->user_roles = new ArrayCollection();
-        $this->eventos = new ArrayCollection();
     }
 
     public function __toString() {
