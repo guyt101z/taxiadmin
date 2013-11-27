@@ -6,15 +6,19 @@
 {% block contenido %}
 <div class="row">
 	<div class="col-md-3">
-		<form class="form-signin">
+		{% if error is defined %}
+		<div>{{ error.message }}</div>
+		{% endif %}
+
+		<form class="form-signin" action="{{ path("usuario_login") }}" method="post">
 			<h3 class="form-signin-heading">Ingresar</h3>
 			<div class="input-group">
 				<span class="input-group-addon">@</span>
-				<input type="email" class="form-control" placeholder="Email address" required autofocus>
+				<input type="email" name="_username" class="form-control" placeholder="Email address" required autofocus>
 			</div>
 			<div class="input-group"  style="margin:10px 0;">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				<input type="password" class="form-control" placeholder="Password" required >
+				<input type="password" name="_password" class="form-control" placeholder="Password" required >
 			</div>
 			<button class="btn btn-default" type="submit">Entrar</button>
 		</form>
@@ -33,66 +37,66 @@
 		<div class="col-md-4">
 			<h3>Cómo acceder?</h3>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. 
-			Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. </p>
-			<button class="btn btn-default" data-toggle="modal" data-target="#myModal"> Registrarme </button>
+				Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. </p>
+				<button class="btn btn-default" data-toggle="modal" data-target="#myModal"> Registrarme </button>
+			</div>
+			<div class="col-md-4">
+				<h3>Cómo funciona?</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu erat. Mauris nunc. </p>
+			</div>
+			<div class="col-md-4">
+				<h3>Ladsf asd adf</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. Cursus vitae erat. Mauris nunc. </p>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<h3>Cómo funciona?</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu erat. Mauris nunc. </p>
-		</div>
-		<div class="col-md-4">
-			<h3>Ladsf asd adf</h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis volutpat nunc lacus, id facilisis nunc vehicula ultricies. Fusce sit amet arcu velit. Mauris vulputate magna non hendrerit volutpat. In a arcu quis purus fringilla auctor luctus eu nulla. Duis tortor erat, mollis vitae elementum dictum, cursus vitae erat. Mauris nunc. Cursus vitae erat. Mauris nunc. </p>
-		</div>
-	</div>
-	{% endblock %}
+		{% endblock %}
 
-	{% block modal %}
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
+		{% block modal %}
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
 
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">Estás a un paso de usar TaxiAdmin</h4>
-				</div>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Estás a un paso de usar TaxiAdmin</h4>
+					</div>
 
-				<div class="modal-body">
-					<form class="form-horizontal form-style" action="{{ path("usuario_create") }}" method="post" role="form">
+					<div class="modal-body">
+						<form class="form-horizontal form-style" action="{{ path("usuario_create") }}" method="post" role="form">
 
-						<div class="form-group">
-							{{ form_widget(formUsuario.nombre) }}
-						</div>
-						<div class="form-group">
-							{{ form_widget(formUsuario.apellido )}}
-						</div>
-						<div class="form-group">
-							{{ form_widget(formUsuario.email )}}
-						</div>
-						<div class="form-group">
-							{{ form_widget(formUsuario.password )}}
-						</div>
-						<div class="form-group">
-							{{ form_widget(formUsuario.telefono )}}
-						</div>
-						<div class="form-group">
-							{{ form_widget(formUsuario.celular )}}
-						</div>
-						<div class="form-group">
-							{{ form_widget(formUsuario.direccion )}}
-						</div>
-
-						{{ form_widget(formUsuario._token) }}
-						
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-default">Enviar</button>
+							<div class="form-group">
+								{{ form_widget(formUsuario.nombre) }}
 							</div>
-						</div>
-					</form>
+							<div class="form-group">
+								{{ form_widget(formUsuario.apellido )}}
+							</div>
+							<div class="form-group">
+								{{ form_widget(formUsuario.email )}}
+							</div>
+							<div class="form-group">
+								{{ form_widget(formUsuario.password )}}
+							</div>
+							<div class="form-group">
+								{{ form_widget(formUsuario.telefono )}}
+							</div>
+							<div class="form-group">
+								{{ form_widget(formUsuario.celular )}}
+							</div>
+							<div class="form-group">
+								{{ form_widget(formUsuario.direccion )}}
+							</div>
+
+							{{ form_widget(formUsuario._token) }}
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-default">Enviar</button>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	{% endblock %}
+		{% endblock %}
