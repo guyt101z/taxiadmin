@@ -60,33 +60,27 @@
 
 				<div class="modal-body">
 					<form class="form-horizontal" action="{{ path("usuario_create") }}" method="post" role="form">
+
 						<div class="form-group">
-							<label for="inputNombre" class="col-sm-2 control-label">Nombre</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.nombre) }} </div>
+							{{ form_widget(formUsuario.nombre) }}
 						</div>
 						<div class="form-group">
-							<label for="inputApellido" class="col-sm-2 control-label">Apellido</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.apellido )}} </div>
+							{{ form_widget(formUsuario.apellido )}}
 						</div>
 						<div class="form-group">
-							<label for="inputEmail" class="col-sm-2 control-label">Email</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.email )}} </div>
+							{{ form_widget(formUsuario.email )}}
 						</div>
 						<div class="form-group">
-							<label for="inputClave" class="col-sm-2 control-label">Clave</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.password )}} </div>
+							{{ form_widget(formUsuario.password )}}
 						</div>
 						<div class="form-group">
-							<label for="inputTelefono" class="col-sm-2 control-label">Teléfono</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.telefono )}} </div>
+							{{ form_widget(formUsuario.telefono )}}
 						</div>
 						<div class="form-group">
-							<label for="inputCelular" class="col-sm-2 control-label">Celular</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.celular )}} </div>
+							{{ form_widget(formUsuario.celular )}}
 						</div>
 						<div class="form-group">
-							<label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
-							<div class="col-sm-10"> {{ form_widget(formUsuario.direccion )}} </div>
+							{{ form_widget(formUsuario.direccion )}}
 						</div>
 
 						{{ form_widget(formUsuario._token) }}
