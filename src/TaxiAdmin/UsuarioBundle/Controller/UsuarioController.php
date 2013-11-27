@@ -81,6 +81,15 @@ class UsuarioController extends Controller {
     }
 
 
+    /**
+     * Show Usuario dashboard.
+     *
+     * @Route("/logout", name="usuario_logout")
+     * @Method("GET")
+     */
+    public function logoutAction(Request $request) {
+        return $this->redirect($this->generateUrl('sitio_home'));
+    }
 
 
 
