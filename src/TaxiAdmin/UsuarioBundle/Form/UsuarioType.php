@@ -16,7 +16,7 @@ class UsuarioType extends AbstractType {
         $builder
             ->add('nombre', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Nombre')))
             ->add('apellido', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Apellido')))
-            ->add('telefono', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Teléfono', 'required' => false)))
+            ->add('telefono', 'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Teléfono')))
             ->add('celular', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Celular')))
             ->add('direccion', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Dirección')))
             ->add('email', 'email', array('attr' => array('class' => 'form-control', 'placeholder' => 'Email')))
