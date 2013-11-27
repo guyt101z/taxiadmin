@@ -6,18 +6,13 @@ security:
             iterations: 10
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        # ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN: ROLE_USER
 
     providers:
         user_db:
             entity: { class: TaxiAdmin\UsuarioBundle\Entity\Usuario, property: email }
 
     firewalls:
-        # dev:
-        #     pattern:  ^/(_(profiler|wdt)|css|images|js)/
-        #     security: false
-
         login:
             pattern:  sitio_home
             security: false
@@ -27,7 +22,7 @@ security:
             anonymous: ~
             form_login:
                 login_path: sitio_home
-                check_path: _security_check
+                check_path: usuario_login
             logout:
                 path:   /logout
                 target: sitio_home
@@ -35,7 +30,11 @@ security:
                realm: "Ingrese Email y Clave"
 
     access_control:
-        - { path: ^/                    , roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/usuario/create      , roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/dashboard,          roles: ROLE_USER }
+        - { path: ^/empresa,            roles: ROLE_USER }
+        - { path: ^/propietario,        roles: ROLE_USER }
+        - { path: ^/chofer,             roles: ROLE_USER }
+        - { path: ^/movil,              roles: ROLE_USER }
+        - { path: ^/recaudacion,        roles: ROLE_USER }
+        - { path: ^/,                   roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registrarse,        roles: IS_AUTHENTICATED_ANONYMOUSLY }

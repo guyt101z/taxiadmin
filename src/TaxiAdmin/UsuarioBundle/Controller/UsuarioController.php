@@ -3,10 +3,12 @@
 namespace TaxiAdmin\UsuarioBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use TaxiAdmin\UsuarioBundle\Entity\Usuario;
 use TaxiAdmin\UsuarioBundle\Form\UsuarioType;
 
@@ -20,7 +22,7 @@ class UsuarioController extends Controller {
     /**
      * Creates a new Usuario entity.
      *
-     * @Route("/usuario/create", name="usuario_create")
+     * @Route("/registrarse", name="usuario_create")
      * @Method("POST")
      * @Template("TaxiAdminUsuarioBundle:Usuario:new.html.twig")
      */
@@ -40,14 +42,19 @@ class UsuarioController extends Controller {
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('msg_success', 'Felicidades eres el mas nuevo usuario de TaxiAdmin! Logueate y comienza a disfrutar.');
-        }
+        } else {
+            echo 'TIENE ERRORES';
+            $errors = $form->getErrorsAsString();
+            $result = '';
+            echo $errors;
+            foreach( $errors as $error )
+              echo $error->getPropertyPath();
+              echo $error->getMessage();
+            {
+            }
 
-        foreach ($form->getErrors() as $key => $value) {
-            echo $key . '<br>';
-            echo $value;
         }
-            
-        return $this->redirect($this->generateUrl('sitio_home'));
+       return $this->redirect($this->generateUrl('sitio_home'));
     }
 
     /**
@@ -74,7 +81,7 @@ class UsuarioController extends Controller {
      *
      * @Route("/dashboard", name="usuario_dashboard")
      * @Method("GET")
-     * @Template("TaxiAdminUsuarioBundle:Usuario:dashboard.html.twig")
+     * @Template("")
      */
     public function dashboardAction(Request $request) {
 
@@ -89,6 +96,37 @@ class UsuarioController extends Controller {
      */
     public function logoutAction(Request $request) {
         return $this->redirect($this->generateUrl('sitio_home'));
+    }
+
+    /**
+     * Show Usuario dashboard.
+     *
+     * @Route("/login", name="usuario_login")
+     * @Method("POST")
+     * @Template("TaxiAdminSitioBundle:Sitio:home.html.twig")
+     */
+    public function loginAction() {
+        $this->get('session')->getFlashBag()->add('msg_success', 'Felicidades eres el mas nuevo usuario de TaxiAdmin! Logueate y comienza a disfrutar.');
+        $request = $this->getRequest();
+        $session = $request->getSession();
+
+        // get the login error if there is one
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                SecurityContext::AUTHENTICATION_ERROR
+                );
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
+        }
+        echo 'imprimo el error ' . $error;
+
+        // return array(
+        //     'formUsuario'   => $this->createForm(new UsuarioType(), new Usuario)->createView(),
+        //         // last username entered by the user
+        //     'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+        //     'error'         => $error,
+        //     );
     }
 
 
@@ -110,7 +148,7 @@ class UsuarioController extends Controller {
     /**
      * Finds and displays a Usuario entity.
      *
-     * @Route("/{id}", name="usuario_show")
+     * @Route("/perfil", name="usuario_perfil")
      * @Method("GET")
      * @Template()
      */
