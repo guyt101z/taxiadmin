@@ -16,3 +16,14 @@ footer .navbar {
 .form-style {
 	padding: 15px 30px;
 }
+
+.help-button {
+	float:right; 
+	padding-top: 7px;
+}
+
+.with-help {
+	 width:95%;
+	 float: left;
+	 margin: 0 0 15px 0;
+}
