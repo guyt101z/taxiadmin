@@ -1,39 +1,41 @@
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        TaxiAdmin\UsuarioBundle\Entity\Usuario:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        # ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        user_db:
+            entity: { class: TaxiAdmin\UsuarioBundle\Entity\Usuario, property: email }
 
     firewalls:
-        dev:
-            pattern:  ^/(_(profiler|wdt)|css|images|js)/
-            security: false
+        # dev:
+        #     pattern:  ^/(_(profiler|wdt)|css|images|js)/
+        #     security: false
 
         login:
-            pattern:  ^/demo/secured/login$
+            pattern:  sitio_home
             security: false
 
         secured_area:
-            pattern:    ^/demo/secured/
+            pattern:    ^/
+            anonymous: ~
             form_login:
+                login_path: sitio_home
                 check_path: _security_check
-                login_path: _demo_login
             logout:
-                path:   _demo_logout
-                target: _demo
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
+                path:   /logout
+                target: sitio_home
+            http_basic:
+               realm: "Ingrese Email y Clave"
 
     access_control:
-        - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
+        - { path: ^/                    , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/usuario/create      , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
