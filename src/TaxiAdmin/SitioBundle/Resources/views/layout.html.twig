@@ -1,98 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="shortcut icon" href="ico/favicon.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="ico/favicon.png">
 
-	<title>TaxiAdmin</title>
+    <title>TaxiAdmin</title>
 
-	<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="{{ asset('bundles/taxiadminsitio/css/bootstrap.min.css') }}" rel="stylesheet"/>
-	<!-- Bootstrap theme -->
+    <!-- Bootstrap theme -->
     <link href="{{ asset('bundles/taxiadminsitio/css/bootstrap-theme.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('bundles/taxiadminsitio/css/app.css') }}" rel="stylesheet"/>
 
-	<!-- Just for debugging purposes. Don't actually copy this line! -->
-	<!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-      <![endif]-->
-    </head>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
 
-    <body>
-    	<div class="container">
+<body>
+    <div class="container">
 
-    		{% block menuTop %}
-    		<!-- MENU -->
-    		<nav class="navbar navbar-default" role="navigation">
-    			<!-- Brand and toggle get grouped for better mobile display -->
-    			<div class="navbar-header">
-    				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-    					<span class="sr-only">Toggle navigation</span>
-    					<span class="icon-bar"></span>
-    					<span class="icon-bar"></span>
-    					<span class="icon-bar"></span>
-    				</button>
-    				<a class="navbar-brand" href="index.html">TaxiAdmin</a>
-    			</div>
+        {% block menuTop %}
+        <!-- MENU -->
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">TaxiAdmin</a>
+            </div>
 
-    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    				<ul class="nav navbar-nav">
-    					<li class="active"><a href="index.html">Inicio</a></li>
-    					<li><a href="Empresa.html">Empresas</a></li>
-    					<li><a href="#">Propietarios</a></li>
-    					<li><a href="#">Choferes</a></li>
-    					<li><a href="#">Móviles</a></li>
-    					<li><a href="#">Recaudaciones</a></li>
-    				</ul>
-    				<ul class="nav navbar-nav navbar-right">
-    					<li class="dropdown">
-    						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
-    						<ul class="dropdown-menu">
-    							<li><a href="#">Perfil</a></li>
-    							<li class="divider"></li>
-    							<li><a href="#">Estado de Cuenta</a></li>
-    							<li><a href="#" data-toggle="modal" data-target="#soporte">Soporte</a></li>
-    							<li class="divider"></li>
-    							<li><a href="#">Salir</a></li>
-    						</ul>
-    					</li>
-    				</ul>
-    			</div>
-    		</nav>
-    		<!-- MENU -->
-    		{% endblock %}
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li><a href="Empresa.html">Empresas</a></li>
+                    <li><a href="#">Propietarios</a></li>
+                    <li><a href="#">Choferes</a></li>
+                    <li><a href="#">Móviles</a></li>
+                    <li><a href="#">Recaudaciones</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuario<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Perfil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Estado de Cuenta</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#soporte">Soporte</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Salir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- MENU -->
+        {% endblock %}
 
-    		{% block contenido %}
+        {% if app.session.flashbag.has('msg_error') %} 
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ app.session.flashbag.get('msg_error') }}
+        </div>
 
-    		{% endblock %}
-    		
-    		{% block footer %}
-    		<footer>
-    			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="min-height:0px;">
-    				<ul class="nav navbar-nav navbar-right">
-    					<li><a target="_blank" style="padding:10px 0px;"href="http://www.byg.com.uy">Realizado por BYG</a></li>
-    				</ul>
-    			</nav>
-    		</footer>
-    		{% endblock %}
+        {% elseif app.session.flashbag.has('msg_success') %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ app.session.flashbag.get('msg_success')[0] }}
+        </div>
+        {% elseif app.session.flashbag.has('msg_info') %}
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ app.session.flashbag.get('msg_info') }}
+        </div>
+        {% elseif app.session.flashbag.has('msg_warning') %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ app.session.flashbag.get('msg_warning') }}
+        </div>
+        {% endif %}
 
-    		{% block modal %}
-    		{% endblock %}
+        {% block contenido %}
 
-    <!-- Bootstrap core JavaScript
+        {% endblock %}
+
+        {% block footer %}
+        <footer>
+            <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="min-height:0px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a target="_blank" style="padding:10px 0px;"href="http://www.byg.com.uy">Realizado por BYG</a></li>
+                </ul>
+            </nav>
+        </footer>
+        {% endblock %}
+
+        {% block modal %}
+        {% endblock %}
+
+<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ asset('bundles/taxiadminsitio/js/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ asset('bundles/taxiadminsitio/js/bootstrap.min.js') }}"></script>
     {% block js %}
     {% endblock %}
-  </body>
-  </html>
+</body>
+</html>
