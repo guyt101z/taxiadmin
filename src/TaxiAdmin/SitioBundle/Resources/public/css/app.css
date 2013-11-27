@@ -12,3 +12,7 @@ footer .navbar {
 	padding: 0 50px;
 	background-image:none !important;
 }
+
+.form-style {
+	padding: 15px 30px;
+}
