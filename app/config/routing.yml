@@ -1,6 +1,6 @@
 taxi_admin_sitio:
-    resource: "@TaxiAdminSitioBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@TaxiAdminSitioBundle/Controller"
+    type:     annotation
 
 # import routes from a controller directory
 taxi_admin_usuario:
