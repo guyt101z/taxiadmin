@@ -40,12 +40,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">TaxiAdmin</a>
+                <a class="navbar-brand" href="{{ path("usuario_dashboard") }}">TaxiAdmin</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">Inicio</a></li>
+                    <li class="active"><a href="{{ path("usuario_dashboard") }}">Inicio</a></li>
                     <li><a href="Empresa.html">Empresas</a></li>
                     <li><a href="#">Propietarios</a></li>
                     <li><a href="#">Choferes</a></li>
@@ -61,7 +61,7 @@
                             <li><a href="#">Estado de Cuenta</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#soporte">Soporte</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Salir</a></li>
+                            <li><a href="{{ path("usuario_logout") }}">Salir</a></li>
                         </ul>
                     </li>
                 </ul>
