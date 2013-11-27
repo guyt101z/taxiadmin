@@ -13,14 +13,14 @@ use TaxiAdmin\UsuarioBundle\Form\UsuarioType;
 /**
  * Usuario controller.
  *
- * @Route("/usuario")
+ * @Route("/")
  */
 class UsuarioController extends Controller {
 
     /**
      * Creates a new Usuario entity.
      *
-     * @Route("/", name="usuario_create")
+     * @Route("/usuario/create", name="usuario_create")
      * @Method("POST")
      * @Template("TaxiAdminUsuarioBundle:Usuario:new.html.twig")
      */
@@ -39,13 +39,15 @@ class UsuarioController extends Controller {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usuario_show', array('id' => $entity->getId())));
+            $this->get('session')->getFlashBag()->add('msg_success', 'Felicidades eres el mas nuevo usuario de TaxiAdmin! Logueate y comienza a disfrutar.');
         }
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-            );
+        foreach ($form->getErrors() as $key => $value) {
+            echo $key . '<br>';
+            echo $value;
+        }
+            
+        return $this->redirect($this->generateUrl('sitio_home'));
     }
 
     /**
@@ -66,6 +68,35 @@ class UsuarioController extends Controller {
 
         return $form;
     }
+
+    /**
+     * Show Usuario dashboard.
+     *
+     * @Route("/dashboard", name="usuario_dashboard")
+     * @Method("GET")
+     * @Template("TaxiAdminUsuarioBundle:Usuario:dashboard.html.twig")
+     */
+    public function dashboardAction(Request $request) {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Finds and displays a Usuario entity.
