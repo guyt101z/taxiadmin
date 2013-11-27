@@ -21,7 +21,7 @@ class SitioController extends Controller {
 	/**
      * Show the homepage 
      *
-     * @Route("/", name="siti_ohome")
+     * @Route("/", name="sitio_home")
      * @Method("GET")
      * @Template("")
      */
