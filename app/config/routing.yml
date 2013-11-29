@@ -6,3 +6,10 @@ taxi_admin_sitio:
 taxi_admin_usuario:
     resource: "@TaxiAdminUsuarioBundle/Controller"
     type:     annotation
+
+# login_check:
+#     pattern:  /usuario/login_check
+
+# login:
+#     pattern:   /login
+#     defaults:  { _controller: TaxiAdminSitioBundle:Sitio:login }

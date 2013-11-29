@@ -9,8 +9,8 @@ security:
         ROLE_ADMIN: ROLE_USER
 
     providers:
-        user_db:
-            entity: { class: TaxiAdmin\UsuarioBundle\Entity\Usuario, property: email }
+        administrators:
+            entity: { class: TaxiAdminUsuarioBundle:Usuario, property: email }
 
     firewalls:
         login:
@@ -18,23 +18,20 @@ security:
             security: false
 
         secured_area:
-            pattern:    ^/
+            pattern:   ^/
             anonymous: ~
             form_login:
-                login_path: sitio_home
-                check_path: usuario_login
+                login_path: sitio_login
+                check_path: _security_check
+                default_target_path: usuario_dashboard
             logout:
-                path:   /logout
+                path:   sitio_logout
                 target: sitio_home
             http_basic:
                realm: "Ingrese Email y Clave"
 
     access_control:
-        - { path: ^/dashboard,          roles: ROLE_USER }
-        - { path: ^/empresa,            roles: ROLE_USER }
-        - { path: ^/propietario,        roles: ROLE_USER }
-        - { path: ^/chofer,             roles: ROLE_USER }
-        - { path: ^/movil,              roles: ROLE_USER }
-        - { path: ^/recaudacion,        roles: ROLE_USER }
+        - { path: ^/usuario/registrarse,        roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/usuario,            roles: ROLE_USER }
+        - { path: ^/login_check,        roles: ROLE_USER }
         - { path: ^/,                   roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/registrarse,        roles: IS_AUTHENTICATED_ANONYMOUSLY }

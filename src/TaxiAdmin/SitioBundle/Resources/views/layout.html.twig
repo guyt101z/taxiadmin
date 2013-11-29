@@ -61,7 +61,7 @@
                             <li><a href="#">Estado de Cuenta</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#soporte">Soporte</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ path("usuario_logout") }}">Salir</a></li>
+                            <li><a href="{{ path("sitio_logout") }}">Salir</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -73,7 +73,7 @@
         {% if app.session.flashbag.has('msg_error') %} 
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ app.session.flashbag.get('msg_error') }}
+            {{ app.session.flashbag.get('msg_error')[0] }}
         </div>
 
         {% elseif app.session.flashbag.has('msg_success') %}
@@ -84,12 +84,12 @@
         {% elseif app.session.flashbag.has('msg_info') %}
         <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ app.session.flashbag.get('msg_info') }}
+            {{ app.session.flashbag.get('msg_info')[0] }}
         </div>
         {% elseif app.session.flashbag.has('msg_warning') %}
         <div class="alert alert-warning">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ app.session.flashbag.get('msg_warning') }}
+            {{ app.session.flashbag.get('msg_warning')[0] }}
         </div>
         {% endif %}
 

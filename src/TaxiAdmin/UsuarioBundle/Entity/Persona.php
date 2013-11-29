@@ -4,15 +4,13 @@ namespace TaxiAdmin\UsuarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
 * Persona
 *
 * @ORM\MappedSuperclass
-* @UniqueEntity("email")
 */
-class Persona implements  \Serializable {
+class Persona implements \Serializable {
 
     /**
     * @var integer
@@ -64,15 +62,6 @@ class Persona implements  \Serializable {
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=100)
-     * @Assert\Email( message = "El Email '{{ value }}' ingresado no tiene el formato correcto." )
-     * @Assert\NotNull(message="Debe ingresar un Email")
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="habilitado", type="boolean")
      */
     private $habilitado;
@@ -95,11 +84,10 @@ class Persona implements  \Serializable {
         return serialize(array($this->getId()));
     }
 
-    public function unserialize($serialized) {
-        $arr = unserialize($serialized);
-        $this->setId($arr[0]);
+    public function unserialize($serialized)
+    {
+        list ($this->id) = unserialize($serialized);
     }
-
 
     /**
      * Get id
@@ -224,29 +212,6 @@ class Persona implements  \Serializable {
     public function getDireccion()
     {
         return $this->direccion;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Persona
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**

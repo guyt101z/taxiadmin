@@ -6,15 +6,15 @@
 {% block contenido %}
 <div class="row">
 	<div class="col-md-3">
-		{% if error is defined %}
+		{% if error is defined  and error is not null %}
 		<div>{{ error.message }}</div>
 		{% endif %}
 
-		<form class="form-signin" action="{{ path("usuario_login") }}" method="post">
+		<form class="form-signin" action="{{ path("_security_check") }}" method="post">
 			<h3 class="form-signin-heading">Ingresar</h3>
 			<div class="input-group">
 				<span class="input-group-addon">@</span>
-				<input type="email" name="_username" class="form-control" placeholder="Email address" required autofocus>
+				<input type="email" name="_username" class="form-control" placeholder="Email address" value="{{last_username}}" required autofocus>
 			</div>
 			<div class="input-group"  style="margin:10px 0;">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

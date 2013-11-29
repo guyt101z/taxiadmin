@@ -5,12 +5,15 @@ namespace TaxiAdmin\UsuarioBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Usuario
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TaxiAdmin\UsuarioBundle\Entity\UsuarioRepository")
+ * @UniqueEntity("email")
  */
 class Usuario extends Persona implements UserInterface, \Serializable {
 
@@ -21,10 +24,19 @@ class Usuario extends Persona implements UserInterface, \Serializable {
      */
     private $rol;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=32)
      */
-     private $salt;
+    private $salt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100)
+     * @Assert\Email( message = "El Email '{{ value }}' ingresado no tiene el formato correcto." )
+     * @Assert\NotNull(message="Debe ingresar un Email")
+     */
+    private $email;
 
     /**
      * @var string
@@ -49,50 +61,6 @@ class Usuario extends Persona implements UserInterface, \Serializable {
         return array($this->rol);
     }
 
-    public function getUsername() {
-        return $this->email;
-    }
-
-    public function eraseCredentials() {
-    }
-
-    public function serialize() {
-        return serialize(array($this->getId()));
-    }
-
-    public function unserialize($serialized) {
-        $arr = unserialize($serialized);
-        $this->setId($arr[0]);
-    }
-
-    public function getSalt() {
-        return $this->salt;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return Usuario
-     */
-    public function setSalt($salt) {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Usuario
-     */
-    public function setPassword($password) {
-        $this->password = $password;
-
-        return $this;
-    }
-
     /**
      * Get password
      *
@@ -102,29 +70,18 @@ class Usuario extends Persona implements UserInterface, \Serializable {
         return $this->password;
     }
 
-
-    /**
-     * Set tipo
-     *
-     * @param string $tipo
-     * @return Usuario
-     */
-    public function setTipo($tipo)
-    {
-        $this->tipo = $tipo;
-
-        return $this;
+    public function getSalt() {
+        return $this->salt;
     }
 
-    /**
-     * Get tipo
-     *
-     * @return string 
-     */
-    public function getTipo()
-    {
-        return $this->tipo;
+    public function getUsername() {
+        return $this->email;
     }
+
+    public function eraseCredentials() {
+    }
+
+
 
     /**
      * Set rol
@@ -135,7 +92,7 @@ class Usuario extends Persona implements UserInterface, \Serializable {
     public function setRol($rol)
     {
         $this->rol = $rol;
-
+    
         return $this;
     }
 
@@ -147,5 +104,54 @@ class Usuario extends Persona implements UserInterface, \Serializable {
     public function getRol()
     {
         return $this->rol;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return Usuario
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+    
+        return $this;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Usuario
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Usuario
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    
+        return $this;
     }
 }
