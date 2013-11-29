@@ -41,7 +41,6 @@ class SecuredController extends Controller
     public function securityCheckAction()
     {
         // The security layer will intercept this request
-        return $this->redirect($this->generateUrl('usuario_dashboard'));
     }
 
     /**

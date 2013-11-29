@@ -20,20 +20,6 @@ use TaxiAdmin\UsuarioBundle\Form\UsuarioType;
 class SitioController extends Controller {
 
 	/**
-     * Show the homepage 
-     *
-     * @Route("/", name="login_check")
-     * @Method("POST")
-     * @Template("")
-     */
-	// public function homeAction() {
-	// 	$form = $this->createForm(new UsuarioType(), new Usuario);
-	// 	return array(
-	// 			'formUsuario'   => $form->createView(),
-	// 		);
-	// }
-
-	/**
      * Show Usuario dashboard.
      *
      * @Route("/", name="sitio_home")
@@ -41,23 +27,12 @@ class SitioController extends Controller {
      * @Template("TaxiAdminSitioBundle:Sitio:home.html.twig")
      */
     public function homeAction() {
-        $request = $this->getRequest();
-        $session = $request->getSession();
-
-        // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(
-                SecurityContext::AUTHENTICATION_ERROR
-                );
-        } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
-        }
+        $session = $this->getRequest()->getSession();
 
 		return array(
 				'formUsuario'   => $this->createForm(new UsuarioType(), new Usuario)->createView(),
 				'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-				'error'         => $error,
+				'error'         => NULL,
 			);
     }
 	
