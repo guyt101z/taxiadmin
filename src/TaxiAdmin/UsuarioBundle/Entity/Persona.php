@@ -41,7 +41,6 @@ class Persona implements \Serializable {
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=15, nullable=true)
-     * @Assert\NotNull(message="Debe ingresar un Teléfono")
      */
     private $telefono;
 
@@ -49,6 +48,7 @@ class Persona implements \Serializable {
      * @var string
      *
      * @ORM\Column(name="celular", type="string", length=15, nullable=true)
+     * @Assert\NotNull(message="Debe ingresar un Teléfono Celular")
      */
     private $celular;
 

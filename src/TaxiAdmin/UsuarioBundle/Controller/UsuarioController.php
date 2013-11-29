@@ -51,15 +51,8 @@ class UsuarioController extends Controller {
             $this->get('session')->getFlashBag()->add('msg_success', 'Felicidades eres el mas nuevo usuario de TaxiAdmin! Logueate y comienza a disfrutar.');
         } else {
             echo 'TIENE ERRORES';
-          //   $errors = $form->getErrorsAsString();
-          //   $result = '';
-          //   echo $errors;
-          //   foreach( $errors as $error )
-          //     echo $error->getPropertyPath();
-          //     echo $error->getMessage();
-          // {
-          // }
-
+            echo $form->getErrorsAsString();
+            $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para crear su usario, por favor inténtelo mas tarde.');
       }
       return $this->redirect($this->generateUrl('sitio_home'));
   }
