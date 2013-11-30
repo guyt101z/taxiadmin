@@ -7,4 +7,7 @@ $(function(){
 			$(this).parent().addClass('active');
 		}
 	});
+
+	// agrego todos los tooltips
+	jQuery('.help-tooltip').tooltip();
 });
