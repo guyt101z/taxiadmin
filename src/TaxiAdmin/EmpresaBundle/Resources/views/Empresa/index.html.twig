@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ entity.nombre }}</td>
                                 <td>{{ entity.razonSocial }}</td>
-                                <td>{% if entity.fechaAlta %}{{ entity.fechaAlta|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if entity.fechaAlta %}{{ entity.fechaAlta|date('Y-m-d') }}{% endif %}</td>
                                 <td>
                                     <ul>
                                         <li>
