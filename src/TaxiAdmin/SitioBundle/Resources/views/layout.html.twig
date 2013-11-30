@@ -44,9 +44,9 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="{{ path("usuario_dashboard") }}">Inicio</a></li>
-                    <li><a href="Empresa.html">Empresas</a></li>
+                <ul id="menu" class="nav navbar-nav">
+                    <li><a href="{{ path("usuario_dashboard") }}">Inicio</a></li>
+                    <li><a href="{{ path("empresa") }}">Empresas</a></li>
                     <li><a href="#">Propietarios</a></li>
                     <li><a href="#">Choferes</a></li>
                     <li><a href="#">Móviles</a></li>
@@ -115,6 +115,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ asset('bundles/taxiadminsitio/js/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ asset('bundles/taxiadminsitio/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/taxiadminsitio/js/app.js') }}"></script>
     {% block js %}
     {% endblock %}
 </body>
