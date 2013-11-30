@@ -123,4 +123,96 @@ class Empresa {
     {
         return $this->razonSocial;
     }
+
+    /**
+     * Set idUsuario
+     *
+     * @param integer $idUsuario
+     * @return Empresa
+     */
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get idUsuario
+     *
+     * @return integer 
+     */
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+
+    /**
+     * Set habilitado
+     *
+     * @param boolean $habilitado
+     * @return Empresa
+     */
+    public function setHabilitado($habilitado)
+    {
+        $this->habilitado = $habilitado;
+    
+        return $this;
+    }
+
+    /**
+     * Get habilitado
+     *
+     * @return boolean 
+     */
+    public function getHabilitado()
+    {
+        return $this->habilitado;
+    }
+
+    /**
+     * Set fechaAlta
+     *
+     * @param \DateTime $fechaAlta
+     * @return Empresa
+     */
+    public function setFechaAlta($fechaAlta)
+    {
+        $this->fechaAlta = $fechaAlta;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaAlta
+     *
+     * @return \DateTime 
+     */
+    public function getFechaAlta()
+    {
+        return $this->fechaAlta;
+    }
+
+    /**
+     * Set fechaBaja
+     *
+     * @param \DateTime $fechaBaja
+     * @return Empresa
+     */
+    public function setFechaBaja($fechaBaja)
+    {
+        $this->fechaBaja = $fechaBaja;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaBaja
+     *
+     * @return \DateTime 
+     */
+    public function getFechaBaja()
+    {
+        return $this->fechaBaja;
+    }
 }

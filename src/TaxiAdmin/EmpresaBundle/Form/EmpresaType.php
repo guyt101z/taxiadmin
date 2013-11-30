@@ -32,6 +32,6 @@ class EmpresaType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'empresa_new';
+        return 'empresa_';
     }
 }

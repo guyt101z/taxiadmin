@@ -1,52 +1,118 @@
-{% extends '::base.html.twig' %}
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Empresa</h1>
+{% block contenido %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Idusuario</th>
-                <td>{{ entity.idUsuario }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ entity.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Razonsocial</th>
-                <td>{{ entity.razonSocial }}</td>
-            </tr>
-            <tr>
-                <th>Habilitado</th>
-                <td>{{ entity.habilitado }}</td>
-            </tr>
-            <tr>
-                <th>Fechaalta</th>
-                <td>{{ entity.fechaAlta|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechabaja</th>
-                <td>{{ entity.fechaBaja|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('empresa') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('empresa_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="col-md-3 ">
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#modificarEmpresa">Modificar Empresa</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#addPropietario">Agregar Propietario</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#addChofer">Agregar Chofer</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#addMovil">Agregar Movil</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoGasto">Agregar Gasto</a>
+            <a href="#" class="list-group-item">Imprimir Información</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Información</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>Nombre</th>
+                                <td>{{ entity.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Razón Social</th>
+                                <td>{{ entity.razonSocial }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Propietarios</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Choferes</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Móviles</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- EDITAR -->
+<div class="modal fade" id="modificarEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Nueva Empresa</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.razonSocial) }}
+                </div>
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Guardar</button>
+                    </div>
+                </div>
+                
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- EDITAR -->
+
 {% endblock %}
