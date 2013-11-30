@@ -13,10 +13,9 @@ use TaxiAdmin\PropietarioBundle\Form\PropietarioType;
 /**
  * Propietario controller.
  *
- * @Route("/propietario")
+ * @Route("/propietarios")
  */
-class PropietarioController extends Controller
-{
+class PropietarioController extends Controller {
 
     /**
      * Lists all Propietario entities.
@@ -25,42 +24,103 @@ class PropietarioController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findAll();
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $entities = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findBy(array('idUsuario' => $idUsuario));
 
         return array(
+            'form'     => $this->createCreateForm(new Propietario())->createView(),
             'entities' => $entities,
-        );
+            );
     }
+
     /**
      * Creates a new Propietario entity.
      *
      * @Route("/", name="propietario_create")
      * @Method("POST")
-     * @Template("TaxiAdminPropietarioBundle:Propietario:new.html.twig")
+     * @Template()
      */
-    public function createAction(Request $request)
-    {
-        $entity = new Propietario();
-        $form = $this->createCreateForm($entity);
+    public function createAction(Request $request) {
+        $propietario = new Propietario();
+        $form = $this->createCreateForm($propietario);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+
+            $propietario->setIdUsuario($this->get('security.context')->getToken()->getUser()->getId());
+            $propietario->setHabilitado(true);
+            $propietario->setFechaAlta(new \DateTime());
+
+            $em->persist($propietario);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('propietario_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre())));
         }
+        //TODO Brus, loguear los errores
+        $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para crear su Propietario, por favor contacte con Soporte.');
 
+        return $this->redirect($this->generateUrl('propietario'));
+    }
+
+    /**
+     * Finds and displays a Propietario entity.
+     *
+     * @Route("/{nombre}", name="propietario_show")
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction($nombre) {
+        $em = $this->getDoctrine()->getManager();
+
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('nombre' => $nombre, 'idUsuario' => $idUsuario));
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Propietario entity.');
+        }
+        
+        $form = $this->createEditForm($entity);
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+            );
     }
+
+    /**
+     * Edits an existing Propietario entity.
+     *
+     * @Route("/{id}", name="propietario_update")
+     * @Method("PUT")
+     * @Template("")
+     */
+    public function updateAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $propietario = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->find($id);
+
+        if (!$propietario) {
+            throw $this->createNotFoundException('Unable to find Propietario entity.');
+        }
+
+        $editForm = $this->createEditForm($propietario);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre())));
+        }
+
+        //TODO Brus, loguear los errores
+        $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para modificar su Propietario, por favor contacte con Soporte.');
+
+        return $this->redirect($this->generateUrl('propietario'));
+    }
+
 
     /**
     * Creates a form to create a Propietario entity.
@@ -69,86 +129,13 @@ class PropietarioController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Propietario $entity)
-    {
+    private function createCreateForm(Propietario $entity) {
         $form = $this->createForm(new PropietarioType(), $entity, array(
             'action' => $this->generateUrl('propietario_create'),
             'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+            ));
 
         return $form;
-    }
-
-    /**
-     * Displays a form to create a new Propietario entity.
-     *
-     * @Route("/new", name="propietario_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Propietario();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
-     * Finds and displays a Propietario entity.
-     *
-     * @Route("/{id}", name="propietario_show")
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-     * Displays a form to edit an existing Propietario entity.
-     *
-     * @Route("/{id}/edit", name="propietario_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
     }
 
     /**
@@ -158,90 +145,13 @@ class PropietarioController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Propietario $entity)
-    {
+    private function createEditForm(Propietario $entity) {
         $form = $this->createForm(new PropietarioType(), $entity, array(
             'action' => $this->generateUrl('propietario_update', array('id' => $entity->getId())),
             'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
+            ));
 
         return $form;
     }
-    /**
-     * Edits an existing Propietario entity.
-     *
-     * @Route("/{id}", name="propietario_update")
-     * @Method("PUT")
-     * @Template("TaxiAdminPropietarioBundle:Propietario:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('propietario_edit', array('id' => $id)));
-        }
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-    /**
-     * Deletes a Propietario entity.
-     *
-     * @Route("/{id}", name="propietario_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Propietario entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('propietario'));
-    }
-
-    /**
-     * Creates a form to delete a Propietario entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('propietario_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+    
 }

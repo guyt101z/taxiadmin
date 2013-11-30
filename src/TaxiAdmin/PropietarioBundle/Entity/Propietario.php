@@ -3,6 +3,8 @@
 namespace TaxiAdmin\PropietarioBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use TaxiAdmin\UsuarioBundle\Entity\Persona;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Propietario
@@ -10,16 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TaxiAdmin\PropietarioBundle\Entity\PropietarioRepository")
  */
-class Propietario
-{
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+class Propietario extends Persona {
 
     /**
      * @var integer
@@ -28,16 +21,14 @@ class Propietario
      */
     private $idUsuario;
 
-
     /**
-     * Get id
+     * @var string
      *
-     * @return integer 
+     * @ORM\Column(name="email", type="string", length=100, nullable=true)
+     * @Assert\Email( message = "El Email '{{ value }}' ingresado no tiene el formato correcto." )
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $email;
+
 
     /**
      * Set idUsuario
@@ -60,5 +51,28 @@ class Propietario
     public function getIdUsuario()
     {
         return $this->idUsuario;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Propietario
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

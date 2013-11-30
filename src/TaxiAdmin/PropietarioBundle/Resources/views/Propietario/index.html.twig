@@ -1,41 +1,100 @@
-{% extends '::base.html.twig' %}
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Propietario list</h1>
+{% block contenido %}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Idusuario</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('propietario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.idUsuario }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('propietario_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('propietario_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-md-3 ">
 
-        <ul>
-        <li>
-            <a href="{{ path('propietario_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoPropietario">Nuevo Propietario</a>
+            <a href="#" class="list-group-item">Imprimir listado</a>
+        </div>
+
+    </div>
+    <div class="col-xs-13 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Propietarios</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Celular</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                            <tr>
+                                <td>{{ entity.nombre }}</td>
+                                <td>{{ entity.apellido }}</td>
+                                <td>{{ entity.celular }}</td>
+                                <td>{{ entity.email }}</td>
+                                <td>
+                                    <a href="{{ path('propietario_show', { 'nombre': entity.nombre }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NUEVA -->
+<div class="modal fade" id="nuevoPropietario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Nuevo Propietario</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.apellido) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.telefono) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.celular) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.direccion) }}
+                </div>
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Crear</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- NUEVA -->
+
+{% endblock %}

@@ -15,7 +15,12 @@ class PropietarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('idUsuario')
+            ->add('nombre', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Nombre')))
+            ->add('apellido', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Apellido')))
+            ->add('email', 'email', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Email')))
+            ->add('telefono', 'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Teléfono')))
+            ->add('celular', 'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Celular')))
+            ->add('direccion', 'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Dirección')))
         ;
     }
     
@@ -34,6 +39,6 @@ class PropietarioType extends AbstractType
      */
     public function getName()
     {
-        return 'taxiadmin_propietariobundle_propietario';
+        return 'propietario_';
     }
 }
