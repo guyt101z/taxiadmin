@@ -46,7 +46,7 @@ class EmpresaController extends Controller {
      */
     public function createAction(Request $request) {
         $empresa = new Empresa();
-        $form = $this->createCreateForm($empresa);
+        $form = $this->createForm(new EmpresaType(), $empresa);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
