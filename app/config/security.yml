@@ -33,5 +33,7 @@ security:
     access_control:
         - { path: ^/usuario/registrarse,        roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/usuario,            roles: ROLE_USER }
+        - { path: ^/empresas,            roles: ROLE_USER }
+        - { path: ^/propietarios,            roles: ROLE_USER }
         - { path: ^/login_check,        roles: ROLE_USER }
         - { path: ^/,                   roles: IS_AUTHENTICATED_ANONYMOUSLY }
