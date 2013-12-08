@@ -6,8 +6,30 @@ app/config/parameters.yml
 app/cache/*
 app/logs/*
 vendor/*
-bin/*
 web/bundles/*
 web/css/*
 web/js/*
 web/uploads/*
+composer.phar
+
+# -- Sistemas Operativos ------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.*
+!.gitignore
+!.htaccess
+*~
+
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
