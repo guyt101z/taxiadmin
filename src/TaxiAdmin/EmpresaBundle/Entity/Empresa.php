@@ -66,6 +66,13 @@ class Empresa {
     private $fechaBaja;
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="TaxiAdmin\PropietarioBundle\Entity\Propietario", inversedBy="empresas")
+     * @ORM\JoinTable(name="propietario_empresa")
+     */
+    private $propietarios;
+
+
 
 
     /**
@@ -214,5 +221,45 @@ class Empresa {
     public function getFechaBaja()
     {
         return $this->fechaBaja;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->propietarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add propietarios
+     *
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios
+     * @return Empresa
+     */
+    public function addPropietario(\TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios)
+    {
+        $this->propietarios[] = $propietarios;
+    
+        return $this;
+    }
+
+    /**
+     * Remove propietarios
+     *
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios
+     */
+    public function removePropietario(\TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios)
+    {
+        $this->propietarios->removeElement($propietarios);
+    }
+
+    /**
+     * Get propietarios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPropietarios()
+    {
+        return $this->propietarios;
     }
 }

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use TaxiAdmin\EmpresaBundle\Entity\Empresa;
 use TaxiAdmin\EmpresaBundle\Form\EmpresaType;
 
@@ -102,7 +103,7 @@ class EmpresaController extends Controller {
     /**
      * Finds and displays a Empresa entity.
      *
-     * @Route("/{razonSocial}", name="empresa_show")
+     * @Route("/show/{razonSocial}", name="empresa_show")
      * @Method("GET")
      * @Template()
      */
@@ -125,7 +126,30 @@ class EmpresaController extends Controller {
             );
     }
 
-     /**
+    /**
+     * Creates a new Empresa entity.
+     *
+     * @Route("/add_propietario", name="empresa_add_propietario")
+     * @Method("GET")
+     * @Template("TaxiAdminEmpresaBundle:Empresa:_addPropietario.html.twig")
+     */
+    public function addPropietarioAction(Request $request) {
+
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+            $data = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->getPropietariosByUsuario($idUsuario);
+            return array(
+                'propietarios' => $data,
+                );
+            return new Response(json_encode(array('propietarios' => $data)));
+        } else if ($request->isMethod('POST')) {
+
+            $this->get('session')->getFlashBag()->add('msg_succes', 'Se ha agregado el nuevo Propietario a la Empresa.');
+        }
+    }
+
+    /**
     * Creates a form to create a Empresa entity.
     *
     * @param Empresa $entity The entity

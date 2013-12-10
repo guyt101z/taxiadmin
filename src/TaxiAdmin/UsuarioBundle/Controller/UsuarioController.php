@@ -98,23 +98,6 @@ class UsuarioController extends Controller {
         return $this->redirect($this->generateUrl('sitio_home'));
     }
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Finds and displays a Usuario entity.

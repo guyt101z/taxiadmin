@@ -66,6 +66,13 @@ class Empresa {
     private $fechaBaja;
 
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Propietario", inversedBy="empresas")
+     * @ORM\JoinTable(name="propietario_empresa")
+     */
+    private $propietarios;
+
+
 
 
     /**

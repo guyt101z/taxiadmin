@@ -29,6 +29,11 @@ class Propietario extends Persona {
      */
     private $email;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="TaxiAdmin\EmpresaBundle\Entity\Empresa", mappedBy="propietarios")
+     */
+     private $empresas;
+
 
     /**
      * Set idUsuario
@@ -39,7 +44,7 @@ class Propietario extends Persona {
     public function setIdUsuario($idUsuario)
     {
         $this->idUsuario = $idUsuario;
-    
+
         return $this;
     }
 
@@ -62,7 +67,7 @@ class Propietario extends Persona {
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -74,5 +79,45 @@ class Propietario extends Persona {
     public function getEmail()
     {
         return $this->email;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->empresas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add empresas
+     *
+     * @param \TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas
+     * @return Propietario
+     */
+    public function addEmpresa(\TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas)
+    {
+        $this->empresas[] = $empresas;
+    
+        return $this;
+    }
+
+    /**
+     * Remove empresas
+     *
+     * @param \TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas
+     */
+    public function removeEmpresa(\TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas)
+    {
+        $this->empresas->removeElement($empresas);
+    }
+
+    /**
+     * Get empresas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEmpresas()
+    {
+        return $this->empresas;
     }
 }
