@@ -56,14 +56,41 @@
                 <h3>Empresas</h3>
 
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                    </table>
-                </div>
-
+                   <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Razón Social</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for empresa in empresas %}
+                        <tr>
+                            <td>{{ empresa.nombre }}</td>
+                            <td>{{ empresa.razonSocial }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('empresa_show', { 'razonSocial': empresa.razonSocial }) }}">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Empresa"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <ul class="pagination pagination-sm">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
             </div>
-        </div>
 
+        </div>
     </div>
+
+</div>
 
 </div>
 

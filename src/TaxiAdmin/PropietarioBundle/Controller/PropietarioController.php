@@ -77,16 +77,19 @@ class PropietarioController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
-        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('nombre' => $nombre, 'apellido' => $apellido, 'idUsuario' => $idUsuario));
+        $propietario = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('nombre' => $nombre, 'apellido' => $apellido, 'idUsuario' => $idUsuario));
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Propietario entity.');
+        $empresas = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->getEmpresas($propietario->getId());
+
+        if (!$propietario) {
+            throw $this->createNotFoundException('Unable to find Propietario propietario.');
         }
         
-        $form = $this->createEditForm($entity);
+        $form = $this->createEditForm($propietario);
         return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+            'entity'   => $propietario,
+            'form'     => $form->createView(),
+            'empresas' => $empresas,
             );
     }
 

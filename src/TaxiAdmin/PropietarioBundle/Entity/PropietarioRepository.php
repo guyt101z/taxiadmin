@@ -14,7 +14,19 @@ class PropietarioRepository extends EntityRepository {
 
 	public function getPropietariosByUsuario($userId){
 		return $this->getEntityManager()->createQuery(
-                'SELECT p.nombre, p.apellido, p.id FROM TaxiAdminPropietarioBundle:Propietario p WHERE p.idUsuario = :user ORDER BY p.nombre ASC'
-            )->setParameter('user', $userId)->getResult();
+			'SELECT p.nombre, p.apellido, p.id FROM TaxiAdminPropietarioBundle:Propietario p WHERE p.idUsuario = :user ORDER BY p.nombre ASC'
+			)->setParameter('user', $userId)->getResult();
+	}
+
+	public function getEmpresas($id){
+		$sql = 'SELECT e.id, e.nombre, e.razonSocial
+		 	FROM propietario_empresa as pe, Empresa as e 
+		 	WHERE pe.propietario_id = :propId AND e.id = pe.empresa_id 
+		 	ORDER BY e.nombre ASC';
+		$params = array(
+			'propId' => $id,
+			);
+
+		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
 	}
 }
