@@ -69,15 +69,15 @@ class PropietarioController extends Controller {
     /**
      * Finds and displays a Propietario entity.
      *
-     * @Route("/{nombre}", name="propietario_show")
+     * @Route("/{nombre}/{apellido}", name="propietario_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($nombre) {
+    public function showAction($nombre, $apellido) {
         $em = $this->getDoctrine()->getManager();
 
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
-        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('nombre' => $nombre, 'idUsuario' => $idUsuario));
+        $entity = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('nombre' => $nombre, 'apellido' => $apellido, 'idUsuario' => $idUsuario));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Propietario entity.');

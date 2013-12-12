@@ -7,7 +7,7 @@
     <div class="col-xs-12  col-md-3">
         <div class="list-group">
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#modificarEmpresa">Modificar Empresa</a>
-            <a href="{{ path('empresa_add_propietario') }}" class="list-group-item" data-toggle="modal" data-target="#addPropietario">Agregar Propietario</a>
+            <a href="{{ path('empresa_add_propietario', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addPropietario">Agregar Propietario</a>
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#addChofer">Agregar Chofer</a>
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#addMovil">Agregar Movil</a>
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoGasto">Agregar Gasto</a>
@@ -98,6 +98,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {% for prop in entity.propietarios %}
+                            <tr>
+                                <td>{{ prop.nombre }}</td>
+                                <td>{{ prop.apellido }}</td>
+                                <td>{{ prop.celular }}</td>
+                                <td style="text-align:right;">
+                                    <a href="{{ path('propietario_show', { 'nombre': prop.nombre, 'apellido': prop.apellido }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Propietario"></i>
+                                    </a>
+                                    <a href="{{ path('empresa_remove_propietario', { 'razonSocial': entity.razonSocial, 'idPropietario': prop.id }) }}">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Propietario"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                     <ul class="pagination pagination-sm">
@@ -151,7 +166,6 @@
 <!-- EDITAR -->
 <!-- AGREGAR PROPIETARIO -->
 <div class="modal fade" id="addPropietario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    
 </div>
 <!-- AGREGAR PROPIETARIO -->
 

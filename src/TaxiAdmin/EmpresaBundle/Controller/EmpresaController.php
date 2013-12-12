@@ -127,26 +127,83 @@ class EmpresaController extends Controller {
     }
 
     /**
-     * Creates a new Empresa entity.
+     * add propietario in Empresa entity.
      *
-     * @Route("/add_propietario", name="empresa_add_propietario")
-     * @Method("GET")
+     * @Route("/add_propietario/{razonSocial}", name="empresa_add_propietario")
+     * @Method("POST|GET")
      * @Template("TaxiAdminEmpresaBundle:Empresa:_addPropietario.html.twig")
      */
-    public function addPropietarioAction(Request $request) {
+    public function addPropietarioAction(Request $request, $razonSocial = null) {
 
+        $em = $this->getDoctrine()->getEntityManager();
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
         if ($this->getRequest()->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getEntityManager();
-            $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
             $data = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->getPropietariosByUsuario($idUsuario);
             return array(
                 'propietarios' => $data,
+                'razonSocial'  => $razonSocial,
                 );
             return new Response(json_encode(array('propietarios' => $data)));
         } else if ($request->isMethod('POST')) {
+            // echo '<pre>'. print_r($request->request->get('propietarios'), 1) . '</pre> <br/>';
+            // echo 'razonSocial ' . $razonSocial;
+            $propietarios = $request->request->get('propietarios');
+            $razonSocial = $request->request->get('razonSocial');
+            // verifico que los datos que vienen del formulario esta completos con algo
+            if (count($propietarios) && !empty($razonSocial)) {
+                // voy a buscar a la empresa
+                $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
+                // para cada propietario lo busco en la bd y lo asigno a la empresa
+                foreach ($propietarios as $propId) {
+                    $propietario = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('id' => $propId, 'idUsuario' => $idUsuario));
+                    if (!empty($propietario)) {
+                        $empresa->addPropietario($propietario);
+                    }
+                }
 
-            $this->get('session')->getFlashBag()->add('msg_succes', 'Se ha agregado el nuevo Propietario a la Empresa.');
+                // para finalizar guardo la entidad empresa
+                $em->persist($empresa);
+                $em->flush();
+
+                if (count($propietarios) == 1) {
+                    $this->get('session')->getFlashBag()->add('msg_success', 'Se ha agregado el nuevo Propietario a la Empresa.');
+                } else {
+                    $this->get('session')->getFlashBag()->add('msg_success', 'Se han agregado los nuevos Propietarios a la Empresa.');
+                }
+                
+                return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial)));
+
+            }
+
         }
+    }
+
+    
+    /**
+     * remove propietario the Empresa entity.
+     *
+     * @Route("/remove_propietario/{razonSocial}/{idPropietario}", name="empresa_remove_propietario")
+     * @Method("GET")
+     * @Template("")
+     */
+    public function removePropietarioAction(Request $request, $razonSocial, $idPropietario) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+
+        $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
+        $propietario = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findOneBy(array('id' => $idPropietario, 'idUsuario' => $idUsuario));
+
+        if ($empresa && $propietario) {
+            // si ninguno es vacio quito el propietario de la empresa
+            $empresa->removePropietario($propietario);
+            // para finalizar guardo la entidad empresa
+            $em->persist($empresa);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('msg_success', 'Se ha elimiando al Propietario de la Empresa.');
+        }
+        
+        return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial)));
     }
 
     /**

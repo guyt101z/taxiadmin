@@ -35,7 +35,7 @@
                                 <td>{{ entity.celular }}</td>
                                 <td>{{ entity.email }}</td>
                                 <td>
-                                    <a href="{{ path('propietario_show', { 'nombre': entity.nombre }) }}">
+                                    <a href="{{ path('propietario_show', { 'nombre': entity.nombre, 'apellido': entity.apellido }) }}">
                                         <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
                                     </a>
                                 </td>

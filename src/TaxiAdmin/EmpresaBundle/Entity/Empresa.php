@@ -233,10 +233,10 @@ class Empresa {
     /**
      * Add propietarios
      *
-     * @param \TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios
+     * @param \TaxiAdmin\PropietarioBundle\Entity\Propietario $propietarios
      * @return Empresa
      */
-    public function addPropietario(\TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios)
+    public function addPropietario(\TaxiAdmin\PropietarioBundle\Entity\Propietario $propietarios)
     {
         $this->propietarios[] = $propietarios;
     
@@ -246,9 +246,9 @@ class Empresa {
     /**
      * Remove propietarios
      *
-     * @param \TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios
+     * @param \TaxiAdmin\PropietarioBundle\Entity\Propietario $propietarios
      */
-    public function removePropietario(\TaxiAdmin\EmpresaBundle\Entity\Propietario $propietarios)
+    public function removePropietario(\TaxiAdmin\PropietarioBundle\Entity\Propietario $propietarios)
     {
         $this->propietarios->removeElement($propietarios);
     }
