@@ -1,3 +1,8 @@
+taxi_admin_chofer:
+    resource: "@TaxiAdminChoferBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 taxi_admin_propietario:
     resource: "@TaxiAdminPropietarioBundle/Controller/"
     type:     annotation

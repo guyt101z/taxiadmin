@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new TaxiAdmin\SitioBundle\TaxiAdminSitioBundle(),
             new TaxiAdmin\EmpresaBundle\TaxiAdminEmpresaBundle(),
             new TaxiAdmin\PropietarioBundle\TaxiAdminPropietarioBundle(),
+            new TaxiAdmin\ChoferBundle\TaxiAdminChoferBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

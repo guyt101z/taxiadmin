@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Chofer</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ entity.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ entity.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{ entity.celular }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ entity.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Habilitado</th>
+                <td>{{ entity.habilitado }}</td>
+            </tr>
+            <tr>
+                <th>Fechaalta</th>
+                <td>{{ entity.fechaAlta|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechabaja</th>
+                <td>{{ entity.fechaBaja|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Idusuario</th>
+                <td>{{ entity.idUsuario }}</td>
+            </tr>
+            <tr>
+                <th>Aporteleyes</th>
+                <td>{{ entity.aporteLeyes }}</td>
+            </tr>
+            <tr>
+                <th>Porcentajeliquidacion</th>
+                <td>{{ entity.porcentajeLiquidacion }}</td>
+            </tr>
+            <tr>
+                <th>Venccarnesalud</th>
+                <td>{{ entity.vencCarneSalud|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Venclibretaconducir</th>
+                <td>{{ entity.vencLibretaConducir|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('chofer') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('chofer_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
