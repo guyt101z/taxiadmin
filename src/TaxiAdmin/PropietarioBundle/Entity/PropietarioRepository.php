@@ -30,14 +30,18 @@ class PropietarioRepository extends EntityRepository {
 		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
 	}
 
-	public function getPropietariosSinEmpresa($idUsuario, $idEmpresa){
+	/**
+	 * obtengo todos los propietarios que aún no estan asignados a esa empresa
+	 */
+	public function getPropietariosSinEmpresa($idUsuario, $razonSocial){
 		$sql = 		'SELECT p.id, p.nombre, p.apellido 
 		FROM Propietario p 
-		WHERE p.idUsuario = :idUsuario AND p.id  NOT IN ( SELECT pe.propietario_id FROM propietario_empresa pe WHERE pe.empresa_id = :idEmpresa )
+		WHERE p.idUsuario = :idUsuario AND p.id  NOT IN 
+		( SELECT pe.propietario_id FROM Empresa e, propietario_empresa pe WHERE e.razonSocial = :razonSocial AND pe.empresa_id = e.id )
 		ORDER BY p.nombre ASC'; 
 		$params = array(
 			'idUsuario' => $idUsuario,
-			'idEmpresa' => $idEmpresa,
+			'razonSocial' => $razonSocial,
 			);
 
 		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
