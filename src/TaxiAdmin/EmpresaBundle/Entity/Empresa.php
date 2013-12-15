@@ -65,12 +65,17 @@ class Empresa {
      */
     private $fechaBaja;
 
-
     /**
      * @ORM\ManyToMany(targetEntity="TaxiAdmin\PropietarioBundle\Entity\Propietario", inversedBy="empresas")
      * @ORM\JoinTable(name="propietario_empresa")
      */
     private $propietarios;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\Chofer", inversedBy="empresas")
+     * @ORM\JoinTable(name="chofer_empresa")
+     */
+    private $choferes;
 
 
 
@@ -261,5 +266,38 @@ class Empresa {
     public function getPropietarios()
     {
         return $this->propietarios;
+    }
+
+    /**
+     * Add choferes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
+     * @return Empresa
+     */
+    public function addChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    {
+        $this->choferes[] = $choferes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove choferes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
+     */
+    public function removeChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    {
+        $this->choferes->removeElement($choferes);
+    }
+
+    /**
+     * Get choferes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChoferes()
+    {
+        return $this->choferes;
     }
 }

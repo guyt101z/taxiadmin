@@ -18,18 +18,6 @@ class PropietarioRepository extends EntityRepository {
 			)->setParameter('user', $userId)->getResult();
 	}
 
-	public function getEmpresas($id){
-		$sql = 'SELECT e.id, e.nombre, e.razonSocial
-		FROM propietario_empresa as pe, Empresa as e 
-		WHERE pe.propietario_id = :propId AND e.id = pe.empresa_id 
-		ORDER BY e.nombre ASC';
-		$params = array(
-			'propId' => $id,
-			);
-
-		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
-	}
-
 	/**
 	 * obtengo todos los propietarios que aún no estan asignados a esa empresa
 	 */
