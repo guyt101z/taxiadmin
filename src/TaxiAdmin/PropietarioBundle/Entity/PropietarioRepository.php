@@ -20,11 +20,24 @@ class PropietarioRepository extends EntityRepository {
 
 	public function getEmpresas($id){
 		$sql = 'SELECT e.id, e.nombre, e.razonSocial
-		 	FROM propietario_empresa as pe, Empresa as e 
-		 	WHERE pe.propietario_id = :propId AND e.id = pe.empresa_id 
-		 	ORDER BY e.nombre ASC';
+		FROM propietario_empresa as pe, Empresa as e 
+		WHERE pe.propietario_id = :propId AND e.id = pe.empresa_id 
+		ORDER BY e.nombre ASC';
 		$params = array(
 			'propId' => $id,
+			);
+
+		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
+	}
+
+	public function getPropietariosSinEmpresa($idUsuario, $idEmpresa){
+		$sql = 		'SELECT p.id, p.nombre, p.apellido 
+		FROM Propietario p 
+		WHERE p.idUsuario = :idUsuario AND p.id  NOT IN ( SELECT pe.propietario_id FROM propietario_empresa pe WHERE pe.empresa_id = :idEmpresa )
+		ORDER BY p.nombre ASC'; 
+		$params = array(
+			'idUsuario' => $idUsuario,
+			'idEmpresa' => $idEmpresa,
 			);
 
 		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();

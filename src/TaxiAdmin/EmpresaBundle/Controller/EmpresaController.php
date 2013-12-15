@@ -138,7 +138,9 @@ class EmpresaController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
         if ($this->getRequest()->isXmlHttpRequest()) {
-            $data = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->getPropietariosByUsuario($idUsuario);
+            // $data = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->getPropietariosByUsuario($idUsuario);
+            $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
+            $data = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->getPropietariosSinEmpresa($idUsuario, $empresa->getId());
             return array(
                 'propietarios' => $data,
                 'razonSocial'  => $razonSocial,

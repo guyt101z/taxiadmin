@@ -58,7 +58,7 @@ class PropietarioController extends Controller {
             $em->persist($propietario);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre())));
+            return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre(), 'apellido' => $propietario->getApellido())));
         }
         //TODO Brus, loguear los errores
         $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para crear su Propietario, por favor contacte con Soporte.');
@@ -115,7 +115,7 @@ class PropietarioController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre())));
+            return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre(), 'apellido' => $propietario->getApellido())));
         }
 
         //TODO Brus, loguear los errores
