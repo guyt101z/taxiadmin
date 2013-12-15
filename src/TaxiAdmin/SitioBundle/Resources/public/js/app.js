@@ -10,4 +10,5 @@ $(function(){
 
 	// agrego todos los tooltips
 	jQuery('.help-tooltip').tooltip();
+
 });
