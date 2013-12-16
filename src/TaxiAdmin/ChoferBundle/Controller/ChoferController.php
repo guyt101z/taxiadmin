@@ -111,7 +111,7 @@ class ChoferController extends Controller {
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->get('session')->getFlashBag()->add('msg_success', 'Chofer modificado con éxito.');
             return $this->redirect($this->generateUrl('chofer_show', array('nombre' => $chofer->getNombre(), 'apellido' => $chofer->getApellido())));
         }
 

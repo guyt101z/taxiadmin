@@ -113,6 +113,7 @@ class PropietarioController extends Controller {
         if ($editForm->isValid()) {
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add('msg_success', 'Propietario modificado con éxito.');
             return $this->redirect($this->generateUrl('propietario_show', array('nombre' => $propietario->getNombre(), 'apellido' => $propietario->getApellido())));
         }
 
