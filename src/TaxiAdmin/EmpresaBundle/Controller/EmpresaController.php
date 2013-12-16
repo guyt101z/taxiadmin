@@ -207,6 +207,96 @@ class EmpresaController extends Controller {
         return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial)));
     }
 
+
+    /**
+     * add chofer in Empresa entity.
+     *
+     * @Route("/add_chofer/{razonSocial}", name="empresa_add_chofer")
+     * @Method("POST|GET")
+     * @Template("TaxiAdminEmpresaBundle:Empresa:_addChofer.html.twig")
+     */
+    public function addChoferAction(Request $request, $razonSocial = null) {
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $data = $em->getRepository('TaxiAdminChoferBundle:Chofer')->getChoferesSinEmpresa($idUsuario, $razonSocial);
+            return array(
+                'choferes' => $data,
+                'razonSocial'  => $razonSocial,
+                );
+            return new Response(json_encode(array('choferes' => $data)));
+
+        } else if ($request->isMethod('POST')) {
+            $choferes = $request->request->get('choferes');
+            $razonSocial = $request->request->get('razonSocial');
+            // verifico que los datos que vienen del formulario esta completos con algo
+            if (count($choferes) && !empty($razonSocial)) {
+                // voy a buscar a la empresa
+                $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
+                // para cada chofer lo busco en la bd y lo asigno a la empresa
+                foreach ($choferes as $propId) {
+                    $chofer = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findOneBy(array('id' => $propId, 'idUsuario' => $idUsuario));
+                    if (!empty($chofer)) {
+                        $empresa->addChofer($chofer);
+                    }
+                }
+
+                // para finalizar guardo la entidad empresa
+                $em->persist($empresa);
+                $em->flush();
+
+                if (count($choferes) == 1) {
+                    $this->get('session')->getFlashBag()->add('msg_success', 'Se ha agregado el nuevo Chofer a la Empresa.');
+                } else {
+                    $this->get('session')->getFlashBag()->add('msg_success', 'Se han agregado los nuevos Choferes a la Empresa.');
+                }
+                
+                return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial)));
+
+            }
+
+        }
+    }
+
+    
+    /**
+     * remove chofer the Empresa entity.
+     *
+     * @Route("/remove_chofer/{razonSocial}/{idChofer}", name="empresa_remove_chofer")
+     * @Method("GET")
+     * @Template("")
+     */
+    public function removeChoferAction(Request $request, $razonSocial, $idChofer) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+
+        $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
+        $chofer = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findOneBy(array('id' => $idChofer, 'idUsuario' => $idUsuario));
+
+        if ($empresa && $chofer) {
+            // si ninguno es vacio quito el chofer de la empresa
+            $empresa->removeChofer($chofer);
+            // para finalizar guardo la entidad empresa
+            $em->persist($empresa);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('msg_success', 'Se ha elimiando al Chofer de la Empresa.');
+        }
+        
+        return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial)));
+    }
+
+
+
+
+
+
+
+
+
+
     /**
     * Creates a form to create a Empresa entity.
     *

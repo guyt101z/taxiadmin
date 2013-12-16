@@ -8,7 +8,7 @@
         <div class="list-group">
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#modificarEmpresa">Modificar Empresa</a>
             <a href="{{ path('empresa_add_propietario', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addPropietario">Agregar Propietario</a>
-            <a href="#" class="list-group-item" data-toggle="modal" data-target="#addChofer">Agregar Chofer</a>
+            <a href="{{ path('empresa_add_chofer', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addChofer">Agregar Chofer</a>
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#addMovil">Agregar Movil</a>
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoGasto">Agregar Gasto</a>
             <a href="#" class="list-group-item">Imprimir Información</a>
@@ -39,8 +39,6 @@
             </div>
         </div>
 
-
-
         <div class="col-12">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -51,21 +49,27 @@
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Celular</th>
-                                <th>Fecha de Ingreso</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                        {% for chofer in entity.choferes %}
+                            <tr>
+                                <td>{{ chofer.nombre }}</td>
+                                <td>{{ chofer.apellido }}</td>
+                                <td>{{ chofer.celular }}</td>
+                                <td style="text-align:right;">
+                                    <a href="{{ path('chofer_show', { 'nombre': chofer.nombre, 'apellido': chofer.apellido }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Chofer"></i>
+                                    </a>
+                                    <a href="{{ path('empresa_remove_chofer', { 'razonSocial': entity.razonSocial, 'idChofer': chofer.id }) }}">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Chofer"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
-
-<!--                     <ul class="pagination pagination-sm">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul> -->
                 </div>
             </div>
 
@@ -74,14 +78,6 @@
                     <h3>Moviles</h3>
                     <table class="table table-hover">
                     </table>
-
-<!--                     <ul class="pagination pagination-sm">
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul> -->
                 </div>
             </div>
 
@@ -164,9 +160,15 @@
     </div>
 </div>
 <!-- EDITAR -->
+
 <!-- AGREGAR PROPIETARIO -->
 <div class="modal fade" id="addPropietario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 <!-- AGREGAR PROPIETARIO -->
+
+<!-- AGREGAR CHOFER -->
+<div class="modal fade" id="addChofer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<!-- AGREGAR CHOFER -->
 
 {% endblock %}

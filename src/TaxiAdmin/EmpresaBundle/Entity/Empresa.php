@@ -274,7 +274,7 @@ class Empresa {
      * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
      * @return Empresa
      */
-    public function addChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    public function addChofer(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
     {
         $this->choferes[] = $choferes;
     
@@ -286,7 +286,7 @@ class Empresa {
      *
      * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
      */
-    public function removeChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    public function removeChofer(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
     {
         $this->choferes->removeElement($choferes);
     }
