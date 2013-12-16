@@ -1,84 +1,212 @@
-{% extends '::base.html.twig' %}
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Chofer</h1>
+{% block contenido %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ entity.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Apellido</th>
-                <td>{{ entity.apellido }}</td>
-            </tr>
-            <tr>
-                <th>Telefono</th>
-                <td>{{ entity.telefono }}</td>
-            </tr>
-            <tr>
-                <th>Celular</th>
-                <td>{{ entity.celular }}</td>
-            </tr>
-            <tr>
-                <th>Direccion</th>
-                <td>{{ entity.direccion }}</td>
-            </tr>
-            <tr>
-                <th>Habilitado</th>
-                <td>{{ entity.habilitado }}</td>
-            </tr>
-            <tr>
-                <th>Fechaalta</th>
-                <td>{{ entity.fechaAlta|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechabaja</th>
-                <td>{{ entity.fechaBaja|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Idusuario</th>
-                <td>{{ entity.idUsuario }}</td>
-            </tr>
-            <tr>
-                <th>Aporteleyes</th>
-                <td>{{ entity.aporteLeyes }}</td>
-            </tr>
-            <tr>
-                <th>Porcentajeliquidacion</th>
-                <td>{{ entity.porcentajeLiquidacion }}</td>
-            </tr>
-            <tr>
-                <th>Venccarnesalud</th>
-                <td>{{ entity.vencCarneSalud|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Venclibretaconducir</th>
-                <td>{{ entity.vencLibretaConducir|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ entity.email }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('chofer') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('chofer_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="col-md-3 ">
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#editChofer">Modificar Chofer</a>
+            <a href="#" class="list-group-item">Imprimir Información</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Información</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th width="300px;">Nombre</th>
+                                <td>{{ entity.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Apellido</th>
+                                <td>{{ entity.apellido }}</td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td>{{ entity.telefono }}</td>
+                            </tr>
+                            <tr>
+                                <th>Celular</th>
+                                <td>{{ entity.celular }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ entity.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td>{{ entity.direccion }}</td>
+                            </tr>
+                            <tr>
+                                <th>Aporte Leyes</th>
+                                <td>{{ entity.aporteLeyes }} % </td>
+                            </tr>
+                            <tr>
+                                <th>Liquidación</th>
+                                <td>{{ entity.porcentajeLiquidacion }} % </td>
+                            </tr>
+                            <tr>
+                                <th>Vencimiento Carne de Salud</th>
+                                <td>{{ entity.vencCarneSalud|date("d/m/Y") }}</td>
+                            </tr>
+                            <tr>
+                                <th>Vencimiento Libreta Conducir</th>
+                                <td>{{ entity.vencLibretaConducir|date("d/m/Y") }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Móviles</h3>
+
+                <div class="table-responsive">
+                   <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Matrícula</th>
+                            <th>Num. Móvil</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3>Empresas</h3>
+
+            <div class="table-responsive">
+               <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Razón Social</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empresa in entity.empresas %}
+                    <tr>
+                        <td>{{ empresa.nombre }}</td>
+                        <td>{{ empresa.razonSocial }}</td>
+                        <td style="text-align:right;">
+                            <a href="{{ path('empresa_show', { 'razonSocial': empresa.razonSocial }) }}">
+                                <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Empresa"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MODIFICAR -->
+<div class="modal fade" id="editChofer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modificar Chofer</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.apellido) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.telefono) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.celular) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.direccion) }}
+                </div>
+                <div class="form-group">
+                    <div class="input-group with-help">
+                        <span class="input-group-addon">%</i></span>
+                        {{ form_widget(form.aporteLeyes) }}
+                    </div>
+                    <span class="help-button"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese el Porcentaje para el Aporte a las Leyes Patronales"></i>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group with-help">
+                        <span class="input-group-addon">%</i></span>
+                        {{ form_widget(form.porcentajeLiquidacion) }}
+                    </div>
+                    <span class="help-button"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese el Porcentaje de Liquidación"></i>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group with-help">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        {{ form_widget(form.vencCarneSalud) }}
+                    </div>
+                    <span class="help-button"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha del Vencimiento del Carne de Salud"></i>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group with-help">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        {{ form_widget(form.vencLibretaConducir) }}
+                    </div>
+                    <span class="help-button"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha del Vencimiento de la Libreta de Conducir"></i>
+                    </span>
+                </div>
+
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Guardar</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div><!-- MODIFICAR -->
+
 {% endblock %}

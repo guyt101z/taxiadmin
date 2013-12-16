@@ -267,4 +267,37 @@ class Empresa {
     {
         return $this->propietarios;
     }
+
+    /**
+     * Add choferes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
+     * @return Empresa
+     */
+    public function addChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    {
+        $this->choferes[] = $choferes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove choferes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
+     */
+    public function removeChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    {
+        $this->choferes->removeElement($choferes);
+    }
+
+    /**
+     * Get choferes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChoferes()
+    {
+        return $this->choferes;
+    }
 }

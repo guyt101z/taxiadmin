@@ -25,28 +25,28 @@ class Chofer extends Persona {
     /**
      * @var float
      *
-     * @ORM\Column(name="aporteLeyes", type="float")
+     * @ORM\Column(name="aporteLeyes", type="float", nullable=true)
      */
     private $aporteLeyes;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="porcentajeLiquidacion", type="float")
+     * @ORM\Column(name="porcentajeLiquidacion", type="float", nullable=true)
      */
     private $porcentajeLiquidacion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="vencCarneSalud", type="datetime")
+     * @ORM\Column(name="vencCarneSalud", type="datetime", nullable=true)
      */
     private $vencCarneSalud;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="vencLibretaConducir", type="datetime")
+     * @ORM\Column(name="vencLibretaConducir", type="datetime", nullable=true)
      */
     private $vencLibretaConducir;
 
@@ -62,17 +62,6 @@ class Chofer extends Persona {
      * @ORM\ManyToMany(targetEntity="TaxiAdmin\EmpresaBundle\Entity\Empresa", mappedBy="choferes")
      */
      private $empresas;
-
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set aporteLeyes

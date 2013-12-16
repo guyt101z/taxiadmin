@@ -12,16 +12,22 @@ class ChoferType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('aporteLeyes')
-            ->add('porcentajeLiquidacion')
-            ->add('vencCarneSalud')
-            ->add('vencLibretaConducir')
-        ;
-    }
-    
+        public function buildForm(FormBuilderInterface $builder, array $options)
+        {
+            $builder
+            ->add('nombre',                'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Nombre')))
+            ->add('apellido',              'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Apellido')))
+            ->add('email',                 'email', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Email')))
+            ->add('telefono',              'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Teléfono')))
+            ->add('celular',               'text', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Celular')))
+            ->add('direccion',             'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Dirección')))
+            ->add('aporteLeyes',           'number', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Aporte Leyes')))
+            ->add('porcentajeLiquidacion', 'number', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Liquidación')))
+            ->add('vencCarneSalud',        'date', array('required' => false, 'widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Venci. Carne Salud')))
+            ->add('vencLibretaConducir',   'date', array('required' => false, 'widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Venc. Libreta Conducir')))
+            ;
+        }
+
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -29,7 +35,7 @@ class ChoferType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'TaxiAdmin\ChoferBundle\Entity\Chofer'
-        ));
+            ));
     }
 
     /**
@@ -37,6 +43,6 @@ class ChoferType extends AbstractType
      */
     public function getName()
     {
-        return 'taxiadmin_choferbundle_chofer';
+        return 'chofer_';
     }
 }
