@@ -54,11 +54,20 @@
                             </tr>
                             <tr>
                                 <th>Vencimiento Carne de Salud</th>
+                                {% if entity.vencCarneSalud is null %}
+                                <td></td>
+                                {% else %}
                                 <td>{{ entity.vencCarneSalud|date("d/m/Y") }}</td>
+                                {% endif %}
+
                             </tr>
                             <tr>
                                 <th>Vencimiento Libreta Conducir</th>
+                                {% if entity.vencLibretaConducir is null %}
+                                <td></td>
+                                {% else %}
                                 <td>{{ entity.vencLibretaConducir|date("d/m/Y") }}</td>
+                                {% endif %}
                             </tr>
                         </tbody>
                     </table>
