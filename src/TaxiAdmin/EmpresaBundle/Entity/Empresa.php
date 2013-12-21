@@ -67,17 +67,25 @@ class Empresa {
 
     /**
      * @ORM\ManyToMany(targetEntity="TaxiAdmin\PropietarioBundle\Entity\Propietario", inversedBy="empresas")
-     * @ORM\JoinTable(name="propietario_empresa")
+     * @ORM\JoinTable(name="empresa_propietario")
      */
     private $propietarios;
 
     /**
      * @ORM\ManyToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\Chofer", inversedBy="empresas")
-     * @ORM\JoinTable(name="chofer_empresa")
+     * @ORM\JoinTable(name="empresa_chofer")
      */
     private $choferes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\MovilBundle\Entity\Movil", mappedBy="empresa")
+     */
+    private $moviles;
 
+
+    public function __toString(){
+        return $this->nombre;
+    }
 
 
     /**
@@ -299,5 +307,61 @@ class Empresa {
     public function getChoferes()
     {
         return $this->choferes;
+    }
+
+    /**
+     * Add choferes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
+     * @return Empresa
+     */
+    public function addChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    {
+        $this->choferes[] = $choferes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove choferes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $choferes
+     */
+    public function removeChofere(\TaxiAdmin\ChoferBundle\Entity\Chofer $choferes)
+    {
+        $this->choferes->removeElement($choferes);
+    }
+
+    /**
+     * Add moviles
+     *
+     * @param \TaxiAdmin\MovilBundle\Entity\Movil $moviles
+     * @return Empresa
+     */
+    public function addMovile(\TaxiAdmin\MovilBundle\Entity\Movil $moviles)
+    {
+        $this->moviles[] = $moviles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove moviles
+     *
+     * @param \TaxiAdmin\MovilBundle\Entity\Movil $moviles
+     */
+    public function removeMovile(\TaxiAdmin\MovilBundle\Entity\Movil $moviles)
+    {
+        $this->moviles->removeElement($moviles);
+    }
+
+    /**
+     * Get moviles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMoviles()
+    {
+        return $this->moviles;
     }
 }

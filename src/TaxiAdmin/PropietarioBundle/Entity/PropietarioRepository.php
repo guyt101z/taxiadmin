@@ -25,7 +25,7 @@ class PropietarioRepository extends EntityRepository {
 		$sql = 		'SELECT p.id, p.nombre, p.apellido 
 		FROM Propietario p 
 		WHERE p.idUsuario = :idUsuario AND p.id  NOT IN 
-		( SELECT pe.propietario_id FROM Empresa e, propietario_empresa pe WHERE e.razonSocial = :razonSocial AND pe.empresa_id = e.id )
+		( SELECT pe.propietario_id FROM Empresa e, empresa_propietario pe WHERE e.razonSocial = :razonSocial AND pe.empresa_id = e.id )
 		ORDER BY p.nombre ASC'; 
 		$params = array(
 			'idUsuario' => $idUsuario,

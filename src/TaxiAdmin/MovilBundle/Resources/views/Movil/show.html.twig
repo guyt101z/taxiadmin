@@ -1,72 +1,176 @@
-{% extends '::base.html.twig' %}
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Movil</h1>
+{% block contenido %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Matricula</th>
-                <td>{{ entity.matricula }}</td>
-            </tr>
-            <tr>
-                <th>Marca</th>
-                <td>{{ entity.marca }}</td>
-            </tr>
-            <tr>
-                <th>Modelo</th>
-                <td>{{ entity.modelo }}</td>
-            </tr>
-            <tr>
-                <th>Anio</th>
-                <td>{{ entity.anio }}</td>
-            </tr>
-            <tr>
-                <th>Numchasis</th>
-                <td>{{ entity.numChasis }}</td>
-            </tr>
-            <tr>
-                <th>Combustible</th>
-                <td>{{ entity.combustible }}</td>
-            </tr>
-            <tr>
-                <th>Nummovil</th>
-                <td>{{ entity.numMovil }}</td>
-            </tr>
-            <tr>
-                <th>Despacho</th>
-                <td>{{ entity.despacho }}</td>
-            </tr>
-            <tr>
-                <th>Fechaalta</th>
-                <td>{{ entity.fechaAlta|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechabaja</th>
-                <td>{{ entity.fechaBaja|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Habilitado</th>
-                <td>{{ entity.habilitado }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('movil') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('movil_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="col-md-3 ">
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#editMovil">Modificar Móvil</a>
+            <a href="#" class="list-group-item">Imprimir Información</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Información</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th width="200px;">Matrícula</th>
+                                <td>{{ entity.matricula }}</td>
+                            </tr>
+                            <tr>
+                                <th>Marca</th>
+                                <td>{{ entity.marca }}</td>
+                            </tr>
+                            <tr>
+                                <th>Modelo</th>
+                                <td>{{ entity.modelo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Año</th>
+                                <td>{{ entity.anio }}</td>
+                            </tr>
+                            <tr>
+                                <th>Num. de Chasis</th>
+                                <td>{{ entity.numChasis }}</td>
+                            </tr>
+                            <tr>
+                                <th>Combustible</th>
+                                <td>{{ entity.combustible }}</td>
+                            </tr>
+                            <tr>
+                                <th>Num. Móvil</th>
+                                <td>{{ entity.numMovil }}</td>
+                            </tr>
+                            <tr>
+                                <th>Despacho</th>
+                                <td>{{ entity.despacho }}</td>
+                            </tr>
+                            <tr>
+                                <th>Radio</th>
+                                <td>{{ entity.radio }}</td>
+                            </tr>
+                            <tr>
+                                <th>Empresa</th>
+                                <td><a href="{{ path('empresa_show', { 'razonSocial': entity.empresa.razonSocial }) }}"> {{ entity.empresa.nombre }}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Recaudaciones</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Chofer</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Choferes</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODIFICAR -->
+<div class="modal fade" id="editMovil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modificar Móvil</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.matricula) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.marca) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.modelo) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.anio) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.numChasis) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.combustible) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.numMovil) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.despacho) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.radio) }}
+                </div>
+                <div class="form-group">
+                {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
+                </div>
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Guardar</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- MODIFICAR -->
+
 {% endblock %}

@@ -13,7 +13,7 @@ use TaxiAdmin\MovilBundle\Form\MovilType;
 /**
  * Movil controller.
  *
- * @Route("/movil")
+ * @Route("/moviles")
  */
 class MovilController extends Controller {
 
@@ -24,150 +24,74 @@ class MovilController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TaxiAdminMovilBundle:Movil')->findAll();
-
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $moviles = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
+        $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
+        
         return array(
-            'entities' => $entities,
-        );
+            'form'     => $this->createCreateForm(new Movil(), $empresas)->createView(),
+            'entities' => $moviles,
+            );
     }
     /**
      * Creates a new Movil entity.
      *
      * @Route("/", name="movil_create")
      * @Method("POST")
-     * @Template("TaxiAdminMovilBundle:Movil:new.html.twig")
+     * @Template()
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Movil();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $entity->setIdUsuario($this->get('security.context')->getToken()->getUser()->getId());
+            $entity->setHabilitado(true);
+            $entity->setFechaAlta(new \DateTime());
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('movil_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('movil_show', array('matricula' => $entity->getMatricula())));
         }
+        //TODO Brus, loguear los errores
+        $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para crear su nuevo Móvil, por favor contacte con Soporte.');
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
-    }
-
-    /**
-    * Creates a form to create a Movil entity.
-    *
-    * @param Movil $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Movil $entity)
-    {
-        $form = $this->createForm(new MovilType(), $entity, array(
-            'action' => $this->generateUrl('movil_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
-        return $form;
-    }
-
-    /**
-     * Displays a form to create a new Movil entity.
-     *
-     * @Route("/new", name="movil_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction()
-    {
-        $entity = new Movil();
-        $form   = $this->createCreateForm($entity);
-
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+        return $this->redirect($this->generateUrl('movil'));
     }
 
     /**
      * Finds and displays a Movil entity.
      *
-     * @Route("/{id}", name="movil_show")
+     * @Route("/{matricula}", name="movil_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
-    {
+    public function showAction($matricula) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TaxiAdminMovilBundle:Movil')->find($id);
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $movil = $em->getRepository('TaxiAdminMovilBundle:Movil')->findOneBy(array('matricula' => $matricula, 'idUsuario' => $idUsuario));
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Movil entity.');
+        if (!$movil) {
+            throw $this->createNotFoundException('Unable to find Movil movil.');
         }
-
-        $deleteForm = $this->createDeleteForm($id);
+        
+        $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
+        $form = $this->createEditForm($movil, $empresas);
 
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
+            'entity'      => $movil,
+            'form' => $form->createView(),
+            );
     }
 
-    /**
-     * Displays a form to edit an existing Movil entity.
-     *
-     * @Route("/{id}/edit", name="movil_edit")
-     * @Method("GET")
-     * @Template()
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TaxiAdminMovilBundle:Movil')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Movil entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-    * Creates a form to edit a Movil entity.
-    *
-    * @param Movil $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Movil $entity)
-    {
-        $form = $this->createForm(new MovilType(), $entity, array(
-            'action' => $this->generateUrl('movil_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
-        return $form;
-    }
     /**
      * Edits an existing Movil entity.
      *
@@ -179,68 +103,58 @@ class MovilController extends Controller {
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TaxiAdminMovilBundle:Movil')->find($id);
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+        $movil = $em->getRepository('TaxiAdminMovilBundle:Movil')->findOneBy(array( 'id' => $id, 'idUsuario' => $idUsuario));
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Movil entity.');
+        if (!$movil) {
+            throw $this->createNotFoundException('Unable to find movil entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($movil, null);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('movil_edit', array('id' => $id)));
+            $this->get('session')->getFlashBag()->add('msg_success', 'Móvil modificado con éxito.');
+            return $this->redirect($this->generateUrl('movil_show', array('matricula' => $movil->getMatricula())));
         }
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
-    }
-    /**
-     * Deletes a Movil entity.
-     *
-     * @Route("/{id}", name="movil_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TaxiAdminMovilBundle:Movil')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Movil entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
+        //TODO Brus, loguear los errores
+        $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para modificar su Móvil, por favor contacte con Soporte.');
 
         return $this->redirect($this->generateUrl('movil'));
     }
 
     /**
-     * Creates a form to delete a Movil entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('movil_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+    * Creates a form to create a Movil entity.
+    *
+    * @param Movil $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createCreateForm(Movil $entity, $empresas) {
+        $form = $this->createForm(new MovilType($empresas), $entity, array(
+            'action' => $this->generateUrl('movil_create'),
+            'method' => 'POST',
+            ));
+
+        return $form;
     }
+
+    /**
+    * Creates a form to edit a Movil entity.
+    *
+    * @param Movil $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Movil $entity, $empresas) {
+        $form = $this->createForm(new MovilType($empresas), $entity, array(
+            'action' => $this->generateUrl('movil_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            ));
+
+        return $form;
+    }   
 }

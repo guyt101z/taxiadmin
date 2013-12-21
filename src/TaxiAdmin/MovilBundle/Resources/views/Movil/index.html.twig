@@ -1,61 +1,116 @@
-{% extends '::base.html.twig' %}
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
 
-{% block body -%}
-    <h1>Movil list</h1>
+{% block contenido %}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Matricula</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Anio</th>
-                <th>Numchasis</th>
-                <th>Combustible</th>
-                <th>Nummovil</th>
-                <th>Despacho</th>
-                <th>Fechaalta</th>
-                <th>Fechabaja</th>
-                <th>Habilitado</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('movil_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.matricula }}</td>
-                <td>{{ entity.marca }}</td>
-                <td>{{ entity.modelo }}</td>
-                <td>{{ entity.anio }}</td>
-                <td>{{ entity.numChasis }}</td>
-                <td>{{ entity.combustible }}</td>
-                <td>{{ entity.numMovil }}</td>
-                <td>{{ entity.despacho }}</td>
-                <td>{% if entity.fechaAlta %}{{ entity.fechaAlta|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.fechaBaja %}{{ entity.fechaBaja|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.habilitado }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('movil_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('movil_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-md-3 ">
 
-        <ul>
-        <li>
-            <a href="{{ path('movil_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoMovil">Nuevo Móvil</a>
+            <a href="#" class="list-group-item">Imprimir listado</a>
+        </div>
+
+    </div>
+    <div class="col-xs-13 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Moviles</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Matrícula</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Combustible</th>
+                                <th>Num. Móvil</th>
+                                <th>Despacho</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                            <tr>
+                                <td>{{ entity.matricula }}</td>
+                                <td>{{ entity.marca }}</td>
+                                <td>{{ entity.modelo }}</td>
+                                <td>{{ entity.combustible }}</td>
+                                <td>{{ entity.despacho }}</td>
+                                <td>{{ entity.numMovil }}</td>
+                                <td>
+                                    <a href="{{ path('movil_show', { 'matricula': entity.matricula }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NUEVA -->
+<div class="modal fade" id="nuevoMovil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Nuevo Móvil</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.matricula) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.marca) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.modelo) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.anio) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.numChasis) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.combustible) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.numMovil) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.despacho) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.radio) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
+                </div>
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Crear</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- NUEVA -->
+
+{% endblock %}

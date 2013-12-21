@@ -3,12 +3,14 @@
 namespace TaxiAdmin\MovilBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Movil
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TaxiAdmin\MovilBundle\Entity\MovilRepository")
+  * @UniqueEntity("matricula")
  */
 class Movil
 {
@@ -20,6 +22,13 @@ class Movil
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idUsuario", type="integer")
+     */
+    private $idUsuario;
 
     /**
      * @var string
@@ -50,9 +59,9 @@ class Movil
     private $anio;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="numChasis", type="integer")
+     * @ORM\Column(name="numChasis", type="string", length=200)
      */
     private $numChasis;
 
@@ -77,6 +86,13 @@ class Movil
      */
     private $despacho;
 
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="radio", type="string", length=100)
+     */
+    private $radio;
+
     /**
      * @var \DateTime
      *
@@ -87,7 +103,7 @@ class Movil
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaBaja", type="datetime")
+     * @ORM\Column(name="fechaBaja", type="datetime", nullable=true)
      */
     private $fechaBaja;
 
@@ -97,6 +113,12 @@ class Movil
      * @ORM\Column(name="habilitado", type="boolean")
      */
     private $habilitado;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TaxiAdmin\EmpresaBundle\Entity\Empresa", inversedBy="moviles")
+     * @ORM\JoinColumn(name="empresa_id", referencedColumnName="id")
+     */
+     private $empresa;
 
 
     /**
@@ -360,5 +382,104 @@ class Movil
     public function getHabilitado()
     {
         return $this->habilitado;
+    }
+
+    /**
+     * Set radio
+     *
+     * @param string $radio
+     * @return Movil
+     */
+    public function setRadio($radio)
+    {
+        $this->radio = $radio;
+    
+        return $this;
+    }
+
+    /**
+     * Get radio
+     *
+     * @return string 
+     */
+    public function getRadio()
+    {
+        return $this->radio;
+    }
+
+    /**
+     * Set idUsuario
+     *
+     * @param integer $idUsuario
+     * @return Movil
+     */
+    public function setIdUsuario($idUsuario)
+    {
+        $this->idUsuario = $idUsuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get idUsuario
+     *
+     * @return integer 
+     */
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->empresa = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add empresa
+     *
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa
+     * @return Movil
+     */
+    public function addEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa)
+    {
+        $this->empresa[] = $empresa;
+    
+        return $this;
+    }
+
+    /**
+     * Remove empresa
+     *
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa
+     */
+    public function removeEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa)
+    {
+        $this->empresa->removeElement($empresa);
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa
+     * @return Movil
+     */
+    public function setEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa = null)
+    {
+        $this->empresa = $empresa;
+    
+        return $this;
     }
 }

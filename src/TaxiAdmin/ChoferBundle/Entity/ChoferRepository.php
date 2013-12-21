@@ -19,7 +19,7 @@ class ChoferRepository extends EntityRepository {
 		$sql = 'SELECT c.id, c.nombre, c.apellido 
 		FROM Chofer c
 		WHERE c.idUsuario = :idUsuario AND c.id  NOT IN 
-		( SELECT ce.chofer_id FROM Empresa e, chofer_empresa ce WHERE e.razonSocial = :razonSocial AND ce.empresa_id = e.id )
+		( SELECT ce.chofer_id FROM Empresa e, empresa_chofer ce WHERE e.razonSocial = :razonSocial AND ce.empresa_id = e.id )
 		ORDER BY c.nombre ASC'; 
 		$params = array(
 			'idUsuario' => $idUsuario,

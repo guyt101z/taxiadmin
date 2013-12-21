@@ -9,7 +9,6 @@
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#modificarEmpresa">Modificar Empresa</a>
             <a href="{{ path('empresa_add_propietario', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addPropietario">Agregar Propietario</a>
             <a href="{{ path('empresa_add_chofer', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addChofer">Agregar Chofer</a>
-            <a href="#" class="list-group-item" data-toggle="modal" data-target="#addMovil">Agregar Movil</a>
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoGasto">Agregar Gasto</a>
             <a href="#" class="list-group-item">Imprimir Información</a>
         </div>
@@ -25,7 +24,7 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <th>Nombre</th>
+                                <th width="200px;">Nombre</th>
                                 <td>{{ entity.nombre }}</td>
                             </tr>
                             <tr>
@@ -53,7 +52,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {% for chofer in entity.choferes %}
+                            {% for chofer in entity.choferes %}
                             <tr>
                                 <td>{{ chofer.nombre }}</td>
                                 <td>{{ chofer.apellido }}</td>
@@ -77,40 +76,63 @@
                 <div class="panel-body">
                     <h3>Moviles</h3>
                     <table class="table table-hover">
-                    </table>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h3>Propietarios</h3>
-                    <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Celular</th>
+                            <th>Matrícula</th>
+                                <th>Num. Móvil</th>
+                                <th>Radio</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for prop in entity.propietarios %}
+                            {% for movil in entity.moviles %}
                             <tr>
-                                <td>{{ prop.nombre }}</td>
-                                <td>{{ prop.apellido }}</td>
-                                <td>{{ prop.celular }}</td>
+                                <td>{{ movil.matricula }}</td>
+                                <td>{{ movil.numMovil }}</td>
+                                <td>{{ movil.radio }}</td>
                                 <td style="text-align:right;">
-                                    <a href="{{ path('propietario_show', { 'nombre': prop.nombre, 'apellido': prop.apellido }) }}">
-                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Propietario"></i>
-                                    </a>
-                                    <a href="{{ path('empresa_remove_propietario', { 'razonSocial': entity.razonSocial, 'idPropietario': prop.id }) }}">
-                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Propietario"></i>
+                                    <a href="{{ path('movil_show', { 'matricula': movil.matricula }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Móvil"></i>
                                     </a>
                                 </td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Propietarios</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Celular</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prop in entity.propietarios %}
+                        <tr>
+                            <td>{{ prop.nombre }}</td>
+                            <td>{{ prop.apellido }}</td>
+                            <td>{{ prop.celular }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('propietario_show', { 'nombre': prop.nombre, 'apellido': prop.apellido }) }}">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Propietario"></i>
+                                </a>
+                                <a href="{{ path('empresa_remove_propietario', { 'razonSocial': entity.razonSocial, 'idPropietario': prop.id }) }}">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Propietario"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
 <!--                     <ul class="pagination pagination-sm">
                         <li><a href="#">&laquo;</a></li>
                         <li><a href="#">1</a></li>
