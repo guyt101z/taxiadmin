@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Movil</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Matricula</th>
+                <td>{{ entity.matricula }}</td>
+            </tr>
+            <tr>
+                <th>Marca</th>
+                <td>{{ entity.marca }}</td>
+            </tr>
+            <tr>
+                <th>Modelo</th>
+                <td>{{ entity.modelo }}</td>
+            </tr>
+            <tr>
+                <th>Anio</th>
+                <td>{{ entity.anio }}</td>
+            </tr>
+            <tr>
+                <th>Numchasis</th>
+                <td>{{ entity.numChasis }}</td>
+            </tr>
+            <tr>
+                <th>Combustible</th>
+                <td>{{ entity.combustible }}</td>
+            </tr>
+            <tr>
+                <th>Nummovil</th>
+                <td>{{ entity.numMovil }}</td>
+            </tr>
+            <tr>
+                <th>Despacho</th>
+                <td>{{ entity.despacho }}</td>
+            </tr>
+            <tr>
+                <th>Fechaalta</th>
+                <td>{{ entity.fechaAlta|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechabaja</th>
+                <td>{{ entity.fechaBaja|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Habilitado</th>
+                <td>{{ entity.habilitado }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('movil') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('movil_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
