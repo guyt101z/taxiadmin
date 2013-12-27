@@ -7,6 +7,7 @@
     <div class="col-md-3 ">
         <div class="list-group">
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#editChofer">Modificar Chofer</a>
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#adelanto">Agregar Adelanto</a>
             <a href="#" class="list-group-item">Imprimir Información</a>
         </div>
     </div>
@@ -81,55 +82,87 @@
                 <h3>Móviles</h3>
 
                 <div class="table-responsive">
-                   <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Matrícula</th>
-                            <th>Num. Móvil</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Matrícula</th>
+                                <th>Num. Móvil</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
-
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <h3>Empresas</h3>
-
-            <div class="table-responsive">
-               <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Razón Social</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for empresa in entity.empresas %}
-                    <tr>
-                        <td>{{ empresa.nombre }}</td>
-                        <td>{{ empresa.razonSocial }}</td>
-                        <td style="text-align:right;">
-                            <a href="{{ path('empresa_show', { 'razonSocial': empresa.razonSocial }) }}">
-                                <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Empresa"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </div>
 
-    </div>
-</div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Empresas</h3>
 
-</div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Razón Social</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for empresa in entity.empresas %}
+                            <tr>
+                                <td>{{ empresa.nombre }}</td>
+                                <td>{{ empresa.razonSocial }}</td>
+                                <td style="text-align:right;">
+                                    <a href="{{ path('empresa_show', { 'razonSocial': empresa.razonSocial }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Empresa"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Adelantos</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for adelanto in entity.adelantos %}
+                            <tr>
+                                <td>{{ adelanto.fecha|date("d/m/Y") }}</td>
+                                <td>{{ adelanto.monto }}</td>
+                                <td style="text-align:right;">
+                                    <a href="{# {  path('empresa_show', { 'razonSocial': empresa.razonSocial }) }#}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles del Adelanto"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
@@ -216,6 +249,59 @@
 
         </div>
     </div>
-</div><!-- MODIFICAR -->
+</div>
+<!-- MODIFICAR -->
 
-{% endblock %}
+<!-- ADELANTO -->
+<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(adelantoForm) }}
+                <form action="#" role="form">
+                    <div class="form-group">
+                        {{ form_widget(adelantoForm.chofer, { 'attr' : { 'class' : 'form-control' } }) }}
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group with-help">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            {{ form_widget(adelantoForm.fecha) }}
+                        </div>
+                        <span class="help-button"> 
+                            <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de solicitud del adelanto"></i>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+                            {{ form_widget(adelantoForm.monto) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(adelantoForm.detalle) }}
+                    </div>
+
+                    {{ form_widget(form._token) }}
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 ">
+                            <button type="submit" class="btn btn-default">Crear</button>
+                        </div>
+                    </div>
+
+                    {{ form_end(adelantoForm) }}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ADELANTO -->
+
+    {% endblock %}

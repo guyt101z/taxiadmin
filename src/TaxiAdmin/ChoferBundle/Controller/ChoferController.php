@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TaxiAdmin\ChoferBundle\Entity\Chofer;
 use TaxiAdmin\ChoferBundle\Form\ChoferType;
+use TaxiAdmin\ChoferBundle\Form\AdelantoType;
+use TaxiAdmin\ChoferBundle\Entity\Adelanto;
 
 /**
  * Chofer controller.
@@ -83,9 +85,13 @@ class ChoferController extends Controller {
         }
 
         $form = $this->createEditForm($chofer);
+        $adelanto = new AdelantoController();
+        $adelantoForm = $this->createForm(new AdelantoType(array(1 => $chofer)), new Adelanto(), array('action' => $this->generateUrl('adelanto_create'), 'method' => 'POST'));
+        
         return array(
-            'entity'      => $chofer,
-            'form' => $form->createView(),
+            'entity'        => $chofer,
+            'form'          => $form->createView(),
+            'adelantoForm'  => $adelantoForm->createView(),
             );
     }
 

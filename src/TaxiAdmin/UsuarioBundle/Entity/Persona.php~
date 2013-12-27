@@ -79,6 +79,12 @@ class Persona implements \Serializable {
      */
     private $fechaBaja;
 
+
+    public function __toString(){
+        return $this->nombre . ' ' . $this->apellido;
+    }
+
+
     public function serialize() {
         return serialize(array($this->getId()));
     }

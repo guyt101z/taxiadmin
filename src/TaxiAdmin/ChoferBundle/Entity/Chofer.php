@@ -64,6 +64,15 @@ class Chofer extends Persona {
      private $empresas;
 
     /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\Adelanto", mappedBy="chofer")
+     */
+    private $adelantos;
+
+    public function __toString(){
+        return parent::__toString();
+    }
+
+    /**
      * Set aporteLeyes
      *
      * @param float $aporteLeyes
@@ -239,5 +248,38 @@ class Chofer extends Persona {
     public function getEmpresas()
     {
         return $this->empresas;
+    }
+
+    /**
+     * Add adelantos
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos
+     * @return Chofer
+     */
+    public function addAdelanto(\TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos)
+    {
+        $this->adelantos[] = $adelantos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove adelantos
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos
+     */
+    public function removeAdelanto(\TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos)
+    {
+        $this->adelantos->removeElement($adelantos);
+    }
+
+    /**
+     * Get adelantos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdelantos()
+    {
+        return $this->adelantos;
     }
 }

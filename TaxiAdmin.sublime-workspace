@@ -1,0 +1,651 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ep",
+				"empresas"
+			],
+			[
+				"arra",
+				"array"
+			],
+			[
+				"empresa",
+				"empresas"
+			],
+			[
+				"propi",
+				"Propietario"
+			],
+			[
+				"propietario",
+				"Propietario_empresa"
+			],
+			[
+				"id",
+				"idUsuario"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"pro",
+				"propId"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"Prop",
+				"PropietarioRepository"
+			],
+			[
+				"u",
+				"userId"
+			],
+			[
+				"Propie",
+				"Propietario"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Volumes/C/Users/brunovieraguerra/CAPPEX/Impact/trunk/DataModels/Impact.edmx",
+			"settings":
+			{
+				"buffer_size": 246676,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 137.0,
+		"selected_items":
+		[
+			[
+				"REIDE",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reide",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"red",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remoe",
+				"Package Control: Remove Package"
+			],
+			[
+				"preference",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"prefere",
+				"Preferences: Settings - Default"
+			],
+			[
+				"prefe",
+				"Preferences: Settings - User"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"isntal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 561.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Entity/Movil.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Controller/MovilController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Form/MovilType.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Form/EmpresaType.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Entity/Empresa.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/edit.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Resources/views/Movil/index.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/show.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Controller/EmpresaController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Entity/EmpresaRepository.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/symfony/symfony/src/Symfony/Component/Finder/Tests/Iterator/MockSplFileInfo.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/symfony/symfony/src/Symfony/Component/Finder/Tests/Iterator/MockFileListIterator.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Entity/Chofer.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Entity/ChoferRepository.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Entity/PropietarioRepository.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Entity/Propietario.php~",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Entity/Propietario.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/composer.json",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/SitioBundle/Resources/views/Sitio/home.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Resources/views/Movil/show.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/doctrine/dbal/lib/Doctrine/DBAL/Sharding/SQLAzure/Schema/MultiTenantVisitor.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/symfony/symfony/src/Symfony/Component/Form/FormView.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Resources/views/Chofer/show.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Controller/ChoferController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/DependencyInjection/TaxiAdminMovilExtension.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/monolog/monolog/src/Monolog/Handler/RedisHandler.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/kriswallsmith/assetic/src/Assetic/Factory/Resource/ResourceInterface.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/README.md",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Entity/MovilRepository.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Resources/doc/index.rst",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/UsuarioBundle/Entity/Usuario.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/monolog/monolog/src/Monolog/Handler/SyslogUdp/UdpSocket.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/doctrine/dbal/UPGRADE",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Form/ChoferType.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Entity/Movil.php~",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/symfony/symfony/src/Symfony/Component/Form/Extension/HttpFoundation/HttpFoundationExtension.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Resources/views/Chofer/index.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/swiftmailer/swiftmailer/test-suite/lib/simpletest/mock_objects.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Resources/doc/index.rst",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/app/cache/dev/profiler/index.csv",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/UsuarioBundle/Resources/doc/index.rst",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/symfony/symfony/src/Symfony/Component/Config/Definition/IntegerNode.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/composer/installed.json",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/SitioBundle/Resources/views/layout.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views/Configurator/layout.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Tests/Controller/DefaultControllerTest.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Controller/DefaultController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Resources/views/Movil/new.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/MovilBundle/Resources/views/Movil/edit.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/_addChofer.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/UsuarioBundle/Resources/views/Usuario/dashboard.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Form/PropietarioType.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Resources/views/Propietario/index.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/PropietarioBundle/Resources/views/Propietario/show.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/ChoferBundle/Resources/views/Chofer/new.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/app/config/security.yml",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/index.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Resources/doc/index.rst",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/SitioBundle/Resources/public/js/app.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/SitioBundle/Resources/public/js/jquery.tablePagination.0.5.js",
+		"/Users/brunovieraguerra/Downloads/Pajinate-master/examples/example1.html",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/SitioBundle/Resources/public/js/jquery.pajinate.js",
+		"/Users/brunovieraguerra/Downloads/Pajinate-master/examples/js/jquery.pajinate.js",
+		"/class SomeClass",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/UsuarioBundle/Entity/Persona.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/_addPropietario.html.twig",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/UsuarioBundle/Controller/SecuredController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src/TaxiAdmin/UsuarioBundle/Controller/UsuarioController.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/app/config/parameters.yml",
+		"/Users/brunovieraguerra/Documents/proyectos/taxiadmin/app/config/parameters.yml",
+		"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/.gitignore",
+		"/Users/brunovieraguerra/Documents/proyectos/taxiadmin/.gitignore",
+		"/Users/brunovieraguerra/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/brunovieraguerra/Documents/proyectos/taxiadmin/lib/filter/base/BaseTrabajoTallerFormFilter.class.php",
+		"/Users/brunovieraguerra/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/brunovieraguerra/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/brunovieraguerra/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/brunovieraguerra/Library/Application Support/Sublime Text 3/Packages/SideBarEnhancements/CHANGELOG",
+		"/Volumes/185.28.20.114/index.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 95.0,
+		"where_history":
+		[
+			"/Applications/XAMPP/xamppfiles/htdocs/taxiadmin/src"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"createEditForm",
+			"empresas",
+			"), ",
+			"createCreateForm",
+			"'],",
+			"createCreateForm",
+			"movil",
+			"\n            ",
+			"prop",
+			"getMoviles",
+			"propietario_empresa",
+			"chofer_empresa",
+			"chofer_empersa",
+			"MOVIL",
+			"true",
+			"                <div class=\"form-group\">\n                    {{ form_widget(form.despacho) }}\n                </div>",
+			"chofer",
+			"Chofer",
+			"chofer",
+			"Chofer",
+			"chofer",
+			"Chofer",
+			"chofer",
+			"entity",
+			"createCreateForm",
+			"'text",
+			"', ",
+			"')",
+			"nuevoChofer",
+			"Propietario",
+			"PROPIETARIO",
+			"prop.",
+			"TaxiAdminPropietarioBundle:Chofer",
+			"propietario",
+			"propietarios",
+			"prop.",
+			"prop",
+			"$propietario",
+			"pe.",
+			"p.",
+			" '",
+			"$propietario",
+			"Propietario",
+			"propietario",
+			"createCreateForm",
+			"Request",
+			"request",
+			"Request",
+			"request",
+			"percent",
+			"createCreateForm",
+			"propietario_show",
+			"prop",
+			"propietario_empresa",
+			"entity",
+			"msg_succes",
+			"msg_success",
+			"nombre",
+			"Propietario",
+			"propId",
+			"entity",
+			"\n    ",
+			"dUsuario",
+			"PropietarioRepository",
+			"post",
+			"EDITAR",
+			"pagination",
+			"themep",
+			"theme",
+			"soda"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Volumes/C/Users/brunovieraguerra/CAPPEX/Impact/trunk/DataModels/Impact.edmx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 246676,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "TaxiAdmin.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"movilty",
+				"src/TaxiAdmin/MovilBundle/Form/MovilType.php"
+			],
+			[
+				"movilinde",
+				"src/TaxiAdmin/MovilBundle/Resources/views/Movil/index.html.twig"
+			],
+			[
+				"empresaty",
+				"src/TaxiAdmin/EmpresaBundle/Form/EmpresaType.php"
+			],
+			[
+				"empresa",
+				"src/TaxiAdmin/EmpresaBundle/Entity/Empresa.php"
+			],
+			[
+				"movilindex",
+				"src/TaxiAdmin/MovilBundle/Resources/views/Movil/index.html.twig"
+			],
+			[
+				"empresashow",
+				"src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/show.html.twig"
+			],
+			[
+				"movilshow",
+				"src/TaxiAdmin/MovilBundle/Resources/views/Movil/show.html.twig"
+			],
+			[
+				"movilcontro",
+				"src/TaxiAdmin/MovilBundle/Controller/MovilController.php"
+			],
+			[
+				"empresacon",
+				"src/TaxiAdmin/EmpresaBundle/Controller/EmpresaController.php"
+			],
+			[
+				"movil",
+				"src/TaxiAdmin/MovilBundle/Entity/Movil.php"
+			],
+			[
+				"empresacontroller",
+				"src/TaxiAdmin/EmpresaBundle/Controller/EmpresaController.php"
+			],
+			[
+				"prop",
+				"src/TaxiAdmin/PropietarioBundle/Entity/PropietarioRepository.php"
+			],
+			[
+				"chofer",
+				"src/TaxiAdmin/ChoferBundle/Entity/Chofer.php"
+			],
+			[
+				"empres",
+				"src/TaxiAdmin/EmpresaBundle/Entity/Empresa.php"
+			],
+			[
+				"chofershow",
+				"src/TaxiAdmin/ChoferBundle/Resources/views/Chofer/show.html.twig"
+			],
+			[
+				"reide",
+				"vendor/monolog/monolog/src/Monolog/Handler/RedisHandler.php"
+			],
+			[
+				"usuario",
+				"src/TaxiAdmin/UsuarioBundle/Entity/Usuario.php"
+			],
+			[
+				"chofercont",
+				"src/TaxiAdmin/ChoferBundle/Controller/ChoferController.php"
+			],
+			[
+				"choferty",
+				"src/TaxiAdmin/ChoferBundle/Form/ChoferType.php"
+			],
+			[
+				"chofertyp",
+				"src/TaxiAdmin/ChoferBundle/Form/ChoferType.php"
+			],
+			[
+				"chofercon",
+				"src/TaxiAdmin/ChoferBundle/Controller/ChoferController.php"
+			],
+			[
+				"choferindex",
+				"src/TaxiAdmin/ChoferBundle/Resources/views/Chofer/index.html.twig"
+			],
+			[
+				"layout",
+				"src/TaxiAdmin/SitioBundle/Resources/views/layout.html.twig"
+			],
+			[
+				"empresacontro",
+				"src/TaxiAdmin/EmpresaBundle/Controller/EmpresaController.php"
+			],
+			[
+				"propietariorepo",
+				"src/TaxiAdmin/PropietarioBundle/Entity/PropietarioRepository.php"
+			],
+			[
+				"choferrepo",
+				"src/TaxiAdmin/ChoferBundle/Entity/ChoferRepository.php"
+			],
+			[
+				"propeitariocontro",
+				"src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php"
+			],
+			[
+				"chofercontroller",
+				"src/TaxiAdmin/ChoferBundle/Controller/ChoferController.php"
+			],
+			[
+				"propi",
+				"src/TaxiAdmin/PropietarioBundle/Entity/Propietario.php"
+			],
+			[
+				"propietariocontro",
+				"src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php"
+			],
+			[
+				"dahs",
+				"src/TaxiAdmin/UsuarioBundle/Resources/views/Usuario/dashboard.html.twig"
+			],
+			[
+				"home",
+				"src/TaxiAdmin/SitioBundle/Resources/views/Sitio/home.html.twig"
+			],
+			[
+				"propietarioty",
+				"src/TaxiAdmin/PropietarioBundle/Form/PropietarioType.php"
+			],
+			[
+				"chofertyep",
+				"src/TaxiAdmin/ChoferBundle/Form/ChoferType.php"
+			],
+			[
+				"chofercontro",
+				"src/TaxiAdmin/ChoferBundle/Controller/ChoferController.php"
+			],
+			[
+				"security",
+				"app/config/security.yml"
+			],
+			[
+				"propeita",
+				"src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php"
+			],
+			[
+				"propietarioshow",
+				"src/TaxiAdmin/PropietarioBundle/Resources/views/Propietario/show.html.twig"
+			],
+			[
+				"propiteario",
+				"src/TaxiAdmin/PropietarioBundle/Entity/Propietario.php"
+			],
+			[
+				"propietariorepos",
+				"src/TaxiAdmin/PropietarioBundle/Entity/PropietarioRepository.php"
+			],
+			[
+				"propietarioreposi",
+				"src/TaxiAdmin/PropietarioBundle/Entity/PropietarioRepository.php"
+			],
+			[
+				"empresaconto",
+				"src/TaxiAdmin/EmpresaBundle/Controller/EmpresaController.php"
+			],
+			[
+				"empresaindex",
+				"src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/index.html.twig"
+			],
+			[
+				"empresasindex",
+				"src/TaxiAdmin/EmpresaBundle/Resources/doc/index.rst"
+			],
+			[
+				"propietariocontroll",
+				"src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php"
+			],
+			[
+				"emrpesashow",
+				"src/TaxiAdmin/EmpresaBundle/Resources/views/Empresa/show.html.twig"
+			],
+			[
+				"person",
+				"src/TaxiAdmin/UsuarioBundle/Entity/Persona.php"
+			],
+			[
+				"propie",
+				"src/TaxiAdmin/PropietarioBundle/Entity/Propietario.php"
+			],
+			[
+				"propeitariocontroller",
+				"src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php"
+			],
+			[
+				"propietarioindex",
+				"src/TaxiAdmin/PropietarioBundle/Resources/views/Propietario/index.html.twig"
+			],
+			[
+				"proietariocontro",
+				"src/TaxiAdmin/PropietarioBundle/Controller/PropietarioController.php"
+			],
+			[
+				"empresa.ph",
+				"src/TaxiAdmin/EmpresaBundle/Entity/Empresa.php"
+			],
+			[
+				"parameter",
+				"app/config/parameters.yml"
+			],
+			[
+				"propietario",
+				"src/TaxiAdmin/PropietarioBundle/Entity/Propietario.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 209.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

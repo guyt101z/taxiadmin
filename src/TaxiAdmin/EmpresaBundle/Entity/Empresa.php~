@@ -83,6 +83,10 @@ class Empresa {
     private $moviles;
 
 
+    public function __toString(){
+        return $this->nombre;
+    }
+
 
     /**
      * Get id
