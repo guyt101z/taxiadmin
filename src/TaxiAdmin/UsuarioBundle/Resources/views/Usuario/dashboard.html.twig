@@ -8,7 +8,7 @@
 
 		<div class="list-group">
 			<a href="#recaudacion" class="list-group-item">Nueva Recaudación</a>
-			<a href="#" class="list-group-item" data-toggle="modal" data-target="#adelanto">Nuevo Adelanto</a>
+			<a href="{{ path('adelanto_create') }}" class="list-group-item" data-toggle="modal" data-target="#adelanto">Nuevo Adelanto</a>
 			<a href="#" class="list-group-item" data-toggle="modal" data-target="#multa">Ingresar Multa</a>
 			<a href="#" class="list-group-item" data-toggle="modal" data-target="#accidente">Ingresar Accidente</a>
 			<a href="#" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Ingresar Mantenimiento</a>
@@ -38,53 +38,7 @@
 
 <!-- ADELANTO -->
 <div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
-			</div>
-
-			<div class="modal-body">
-				<form action="#" role="form">
-					<div class="form-group">
-						<div>
-							<select class="form-control" required autofocus>
-								<option>Roberto</option>
-								<option>Carlos</option>
-								<option>Quique</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group with-help">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="date" class="form-control" id="inputAdelantoFecha" placeholder="Fecha" required>
-						</div>
-						<span class="help-button"> 
-							<i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de solicitud del adelanto"></i>
-						</span>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input type="number" class="form-control" id="inputAdelantoMonto" placeholder="Monto" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<textarea class="form-control" rows="3" id="inputAdelantoDetalle" placeholder="Detalle" required></textarea>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 ">
-							<button type="submit" class="btn btn-default">Guardar</button>
-						</div>
-					</div>
-				</form>
-			</div>
-
-		</div>
-	</div>
+	<div class="modal-dialog"> <div class="modal-content"> </div> </div>
 </div>
 <!-- ADELANTO -->
 

@@ -20,11 +20,15 @@ class AdelantoType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-        ->add('chofer',   'entity', array('class' => 'TaxiAdminChoferBundle:Chofer', 'choices' => $this->choferes, 'empty_value' => 'Seleccione un Chofer'))
-        ->add('fecha',    'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Fecha', 'autofocus' => '')))
-        ->add('monto',    'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Monto', 'min' => 0)))
+        ->add('fecha',    'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Fecha')))
+        ->add('monto',    'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Monto', 'min' => 0, 'autofocus' => '')))
         ->add('detalle',  'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Detalle')))
         ;
+        if (count($this->choferes) > 1) {
+            $builder->add('chofer', 'entity', array('class' => 'TaxiAdminChoferBundle:Chofer', 'choices' => $this->choferes, 'empty_value' => 'Seleccione un Chofer'));
+        } else {
+            $builder->add('chofer', 'entity', array('class' => 'TaxiAdminChoferBundle:Chofer', 'choices' => $this->choferes));
+        }
     }
 
     /**

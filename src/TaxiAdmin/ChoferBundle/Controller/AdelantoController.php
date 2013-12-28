@@ -20,27 +20,46 @@ class AdelantoController extends Controller {
     /**
      * Creates a new Adelanto entity.
      *
-     * @Route("/", name="adelanto_create")
-     * @Method("POST")
-     * @Template("")
+     * @Route("/{idChofer}", name="adelanto_create")
+     * @Method("POST|GET")
+     * @Template("TaxiAdminChoferBundle:Chofer:addAdelanto.html.twig")
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request, $idChofer = null) {
+
+        $em = $this->getDoctrine()->getManager();
         $entity = new Adelanto();
-        $form = $this->createCreateForm($entity, null);
-        $form->handleRequest($request);
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $entity->setFecha(new \DateTime());
 
-            return $this->redirect($this->generateUrl('chofer_show', array('nombre' => $entity->getChofer()->getNombre(), 'apellido' => $entity->getChofer()->getApellido())));
+            if ($idChofer != null) {
+                $chofer = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findOneBy(array('idUsuario' => $idUsuario, 'id' => $idChofer));
+                $choferes = array($chofer);
+            } else {
+                $choferes = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findBy(array('idUsuario' => $idUsuario));
+            }
+
+            $adelantoForm = $this->createCreateForm($entity, $choferes);
+
+            return array(
+                'adelantoForm'  => $adelantoForm->createView(),
+                );
+
+        } else if ($request->isMethod('POST')) {
+            $form = $this->createCreateForm($entity, null);
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($entity);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('chofer_show', array('nombre' => $entity->getChofer()->getNombre(), 'apellido' => $entity->getChofer()->getApellido())));
+            }
+
         }
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );
     }
 
     /**
@@ -54,9 +73,7 @@ class AdelantoController extends Controller {
         $form = $this->createForm(new AdelantoType($choferes), $entity, array(
             'action' => $this->generateUrl('adelanto_create'),
             'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+            ));
 
         return $form;
     }
@@ -82,7 +99,7 @@ class AdelantoController extends Controller {
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+            );
     }
 
     /**
@@ -96,9 +113,7 @@ class AdelantoController extends Controller {
         $form = $this->createForm(new AdelantoType(), $entity, array(
             'action' => $this->generateUrl('adelanto_update', array('id' => $entity->getId())),
             'method' => 'PUT',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
+            ));
 
         return $form;
     }
@@ -133,6 +148,6 @@ class AdelantoController extends Controller {
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+            );
     }
 }
