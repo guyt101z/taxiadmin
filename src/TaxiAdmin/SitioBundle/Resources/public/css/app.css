@@ -27,3 +27,7 @@ footer .navbar {
 	 float: left;
 	 margin: 0 0 15px 0;
 }
+
+table i {
+	margin: 0 2px;
+}

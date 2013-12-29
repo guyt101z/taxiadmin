@@ -140,6 +140,7 @@
                             <tr>
                                 <th>Fecha</th>
                                 <th>Monto</th>
+                                <th>Saldo</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -148,10 +149,29 @@
                             <tr>
                                 <td>{{ adelanto.fecha|date("d/m/Y") }}</td>
                                 <td>{{ adelanto.monto }}</td>
+                                <td>{{ adelanto.saldo }}</td>
                                 <td style="text-align:right;">
-                                    <a href="{# {  path('empresa_show', { 'razonSocial': empresa.razonSocial }) }#}">
-                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles del Adelanto"></i>
+                                    
+                                    <a href="{{  path('adelanto_show', { 'id': adelanto.id }) }}" data-toggle="modal" data-target="#adelantoShow">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
                                     </a>
+
+                                    <!-- si tiene saldo a pagar dejo crear un pago  -->
+                                    {% if adelanto.saldo > 0 %}
+                                        <a href="{{  path('adelanto_add_pago', { 'idAdelanto': adelanto.id }) }}" data-toggle="modal" data-target="#adelantoAddPago">
+                                            <i class="glyphicon glyphicon-plus help-tooltip" data-placement="left" data-toggle="tooltip" title="Agregar Pago"></i>
+                                        </a>
+                                    {% endif %}
+
+
+                                   <!--  <a href="{# {  path('') }#}">
+                                        <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
+                                    </a> -->
+
+                                    <a href="{{ path('adelanto_delete', { 'id': adelanto.id }) }}">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
+
                                 </td>
                             </tr>
                             {% endfor %}

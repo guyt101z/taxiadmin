@@ -42,11 +42,23 @@ class Adelanto
     private $monto;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="saldo", type="float")
+     */
+    private $saldo;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="detalle", type="string", length=150)
      */
     private $detalle;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\PagoAdelanto", mappedBy="adelanto")
+     */
+    private $pagos;
 
 
     /**
@@ -149,5 +161,91 @@ class Adelanto
     public function getFecha()
     {
         return $this->fecha;
+    }
+
+    /**
+     * Set pago
+     *
+     * @param boolean $pago
+     * @return Adelanto
+     */
+    public function setPago($pago)
+    {
+        $this->pago = $pago;
+    
+        return $this;
+    }
+
+    /**
+     * Get pago
+     *
+     * @return boolean 
+     */
+    public function getPago()
+    {
+        return $this->pago;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pagos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add pagos
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\PagoAdelanto $pagos
+     * @return Adelanto
+     */
+    public function addPago(\TaxiAdmin\ChoferBundle\Entity\PagoAdelanto $pagos)
+    {
+        $this->pagos[] = $pagos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove pagos
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\PagoAdelanto $pagos
+     */
+    public function removePago(\TaxiAdmin\ChoferBundle\Entity\PagoAdelanto $pagos)
+    {
+        $this->pagos->removeElement($pagos);
+    }
+
+    /**
+     * Get pagos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPagos()
+    {
+        return $this->pagos;
+    }
+
+    /**
+     * Set saldo
+     *
+     * @param float $saldo
+     * @return Adelanto
+     */
+    public function setSaldo($saldo)
+    {
+        $this->saldo = $saldo;
+    
+        return $this;
+    }
+
+    /**
+     * Get saldo
+     *
+     * @return float 
+     */
+    public function getSaldo()
+    {
+        return $this->saldo;
     }
 }

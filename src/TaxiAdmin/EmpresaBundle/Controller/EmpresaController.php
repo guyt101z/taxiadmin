@@ -82,7 +82,7 @@ class EmpresaController extends Controller {
         $entity = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('id' => $id, 'idUsuario' => $idUsuario));
 
         if (!$entity) {
-            $this->get('session')->getFlashBag()->add('msg_error', 'Ups, no hemos encontrado la Empresa solicitada. Update');
+            $this->get('session')->getFlashBag()->add('msg_error', 'Ups, no hemos encontrado la Empresa solicitada.');
             return $this->redirect($this->generateUrl('empresa'));
         }
 
