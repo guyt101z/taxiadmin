@@ -65,6 +65,7 @@ class Chofer extends Persona {
 
     /**
      * @ORM\OneToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\Adelanto", mappedBy="chofer")
+     * @ORM\OrderBy({"fecha" = "DESC"})
      */
     private $adelantos;
 
