@@ -61,7 +61,7 @@
                                     <a href="{{ path('chofer_show', { 'nombre': chofer.nombre, 'apellido': chofer.apellido }) }}">
                                         <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Chofer"></i>
                                     </a>
-                                    <a href="{{ path('empresa_remove_chofer', { 'razonSocial': entity.razonSocial, 'idChofer': chofer.id }) }}">
+                                    <a href="{{ path('empresa_remove_chofer', { 'razonSocial': entity.razonSocial, 'idChofer': chofer.id }) }}" onclick="return confirm('¿Estas seguro?');">
                                         <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Chofer"></i>
                                     </a>
                                 </td>
@@ -125,7 +125,7 @@
                                 <a href="{{ path('propietario_show', { 'nombre': prop.nombre, 'apellido': prop.apellido }) }}">
                                     <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Propietario"></i>
                                 </a>
-                                <a href="{{ path('empresa_remove_propietario', { 'razonSocial': entity.razonSocial, 'idPropietario': prop.id }) }}">
+                                <a href="{{ path('empresa_remove_propietario', { 'razonSocial': entity.razonSocial, 'idPropietario': prop.id }) }}" onclick="return confirm('¿Estas seguro?');">
                                     <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Propietario"></i>
                                 </a>
                             </td>

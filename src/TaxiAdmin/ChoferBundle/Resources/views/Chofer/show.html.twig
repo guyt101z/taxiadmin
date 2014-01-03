@@ -151,16 +151,16 @@
                                 <td>{{ adelanto.monto }}</td>
                                 <td>{{ adelanto.saldo }}</td>
                                 <td style="text-align:right;">
-                                    
-                                    <a href="{{  path('adelanto_show', { 'id': adelanto.id }) }}" data-toggle="modal" data-target="#adelantoShow">
+
+                                    <a href="{{  path('adelanto_show', { 'id': adelanto.id }) }}" data-toggle="modal" data-target="#adelanto" data-refresh="true">
                                         <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
                                     </a>
 
                                     <!-- si tiene saldo a pagar dejo crear un pago  -->
                                     {% if adelanto.saldo > 0 %}
-                                        <a href="{{  path('adelanto_add_pago', { 'idAdelanto': adelanto.id }) }}" data-toggle="modal" data-target="#adelantoAddPago">
-                                            <i class="glyphicon glyphicon-plus help-tooltip" data-placement="left" data-toggle="tooltip" title="Agregar Pago"></i>
-                                        </a>
+                                    <a href="{{  path('adelanto_add_pago', { 'idAdelanto': adelanto.id }) }}" data-toggle="modal" data-target="#adelanto" data-refresh="true">
+                                        <i class="glyphicon glyphicon-plus help-tooltip" data-placement="left" data-toggle="tooltip" title="Agregar Pago"></i>
+                                    </a>
                                     {% endif %}
 
 
@@ -168,7 +168,7 @@
                                         <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
                                     </a> -->
 
-                                    <a href="{{ path('adelanto_delete', { 'id': adelanto.id }) }}">
+                                    <a href="{{ path('adelanto_delete', { 'id': adelanto.id }) }}" onclick="return confirm('¿Estas seguro?');">
                                         <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
                                     </a>
 
@@ -273,9 +273,7 @@
 <!-- MODIFICAR -->
 
 <!-- ADELANTO -->
-<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog"> <div class="modal-content"> </div> </div> 
-</div>
+<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
 <!-- ADELANTO -->
 
 {% endblock %}
