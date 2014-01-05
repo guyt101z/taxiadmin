@@ -24,7 +24,7 @@ class AdelantoController extends Controller {
      *
      * @Route("/{idChofer}", name="adelanto_create")
      * @Method("POST|GET")
-     * @Template("TaxiAdminChoferBundle:Chofer:addAdelanto.html.twig")
+     * @Template("TaxiAdminChoferBundle:Adelanto:new.html.twig")
      */
     public function createAction(Request $request, $idChofer = null) {
 
@@ -71,7 +71,7 @@ class AdelantoController extends Controller {
      *
      * @Route("/show/{id}", name="adelanto_show")
      * @Method("GET")
-     * @Template("TaxiAdminChoferBundle:Chofer:showAdelanto.html.twig")
+     * @Template("TaxiAdminChoferBundle:Adelanto:show.html.twig")
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
@@ -90,7 +90,7 @@ class AdelantoController extends Controller {
      *
      * @Route("/addPago/{idAdelanto}", name="adelanto_add_pago")
      * @Method("POST|GET")
-     * @Template("TaxiAdminChoferBundle:Chofer:addPago.html.twig")
+     * @Template("TaxiAdminChoferBundle:Adelanto:addPago.html.twig")
      */
     public function addPagoAction(Request $request, $idAdelanto = null) {
 
