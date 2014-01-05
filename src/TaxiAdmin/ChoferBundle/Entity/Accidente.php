@@ -22,16 +22,14 @@ class Accidente
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="chofer", type="integer")
+     * @ORM\ManyToOne(targetEntity="TaxiAdmin\ChoferBundle\Entity\Chofer", inversedBy="accidentes")
+     * @ORM\JoinColumn(name="chofer_id", referencedColumnName="id")
      */
     private $chofer;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="movil", type="integer")
+     * @ORM\ManyToOne(targetEntity="TaxiAdmin\MovilBundle\Entity\Movil", inversedBy="accidentes")
+     * @ORM\JoinColumn(name="movil_id", referencedColumnName="id")
      */
     private $movil;
 

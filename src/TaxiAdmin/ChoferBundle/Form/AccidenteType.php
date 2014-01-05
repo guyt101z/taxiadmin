@@ -23,7 +23,7 @@ class AccidenteType extends AbstractType {
         public function buildForm(FormBuilderInterface $builder, array $options) {
             $builder
             ->add('fecha',        'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Fecha')))
-            ->add('lugar',        'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción')))
+            ->add('lugar',        'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Lugar')))
             ->add('descripcion',  'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción')))
             ;
             if (count($this->choferes) > 1) {

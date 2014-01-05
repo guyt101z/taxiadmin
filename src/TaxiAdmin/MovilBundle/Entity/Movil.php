@@ -120,6 +120,23 @@ class Movil
      */
      private $empresa;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\Accidente", mappedBy="movil")
+     * @ORM\OrderBy({"fecha" = "DESC"})
+     */
+    private $accidentes;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->empresa = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return $this->matricula;
+    }
+
 
     /**
      * Get id
@@ -429,13 +446,6 @@ class Movil
     {
         return $this->idUsuario;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->empresa = new \Doctrine\Common\Collections\ArrayCollection();
-    }
     
     /**
      * Add empresa
@@ -481,5 +491,38 @@ class Movil
         $this->empresa = $empresa;
     
         return $this;
+    }
+
+    /**
+     * Add accidentes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes
+     * @return Movil
+     */
+    public function addAccidente(\TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes)
+    {
+        $this->accidentes[] = $accidentes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove accidentes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes
+     */
+    public function removeAccidente(\TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes)
+    {
+        $this->accidentes->removeElement($accidentes);
+    }
+
+    /**
+     * Get accidentes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAccidentes()
+    {
+        return $this->accidentes;
     }
 }

@@ -69,6 +69,12 @@ class Chofer extends Persona {
      */
     private $adelantos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\Accidente", mappedBy="chofer")
+     * @ORM\OrderBy({"fecha" = "DESC"})
+     */
+    private $accidentes;
+
     public function __toString(){
         return parent::__toString();
     }
@@ -282,5 +288,38 @@ class Chofer extends Persona {
     public function getAdelantos()
     {
         return $this->adelantos;
+    }
+
+    /**
+     * Add accidentes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes
+     * @return Chofer
+     */
+    public function addAccidente(\TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes)
+    {
+        $this->accidentes[] = $accidentes;
+    
+        return $this;
+    }
+
+    /**
+     * Remove accidentes
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes
+     */
+    public function removeAccidente(\TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes)
+    {
+        $this->accidentes->removeElement($accidentes);
+    }
+
+    /**
+     * Get accidentes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAccidentes()
+    {
+        return $this->accidentes;
     }
 }

@@ -7,6 +7,7 @@
     <div class="col-md-3 ">
         <div class="list-group">
             <a href="#" class="list-group-item" data-toggle="modal" data-target="#editMovil">Modificar Móvil</a>
+            <a href="{{ path('accidente_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
             <a href="#" class="list-group-item">Imprimir Información</a>
         </div>
     </div>
@@ -110,6 +111,50 @@
             </div>
         </div>
 
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Accidentes</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Movil</th>
+                                <th>Lugar</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for accidente in entity.accidentes %}
+                            <tr>
+                                <td>{{ accidente.fecha|date("d/m/Y") }}</td>
+                                <td>{{ accidente.movil.matricula }}</td>
+                                <td>{{ accidente.lugar }}</td>
+                                <td style="text-align:right;">
+
+                                <a href="{{  path('accidente_show', { 'id': accidente.id }) }}" data-toggle="modal" data-target="#accidente" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
+
+                                    <!-- <a href="{# {  path('') }#}">
+                                        <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
+                                    </a> -->
+
+                                    <a href="{{ path('accidente_delete', { 'id': accidente.id, 'vista': 0 }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
 </div>
@@ -155,7 +200,7 @@
                     {{ form_widget(form.radio) }}
                 </div>
                 <div class="form-group">
-                {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
+                    {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
                 </div>
 
                 {{ form_widget(form._token) }}
@@ -172,5 +217,8 @@
     </div>
 </div>
 <!-- MODIFICAR -->
+<!-- ACCIDENTE -->
+<div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<!-- ACCIDENTE -->
 
 {% endblock %}

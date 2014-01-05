@@ -20,16 +20,12 @@ class AccidenteController extends Controller {
     /**
      * Creates a new Accidente entity.
      *
-     * @Route("/chofer/{idChofer}/movil/{idMovil}", name="accidente_create")
+     * @Route("/chofer/{idChofer}/movil/{idMovil}", name="accidente_create", defaults={ "idChofer" = 0, "idMovil" = 0 })
      * @Method("POST|GET")
      * @Template("TaxiAdminChoferBundle:Accidente:new.html.twig")
      */
-    public function createAction(Request $request, $idChofer = null, $idMovil = null) {
+    public function createAction(Request $request, $idChofer, $idMovil) {
         $em = $this->getDoctrine()->getManager();
-
-
-        echo 'choferes ' . $idChofer . '<br>' ;
-        echo 'moviles ' . $idMovil;
 
         $entity = new Accidente();
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
@@ -37,20 +33,19 @@ class AccidenteController extends Controller {
         if ($this->getRequest()->isXmlHttpRequest()) {
             $entity->setFecha(new \DateTime());
 
-            if ($idChofer == null && $idMovil == null) {
-                echo 'entrooooo';
+            if ($idChofer == 0 && $idMovil == 0) {
                 # busco todos los choferes y todos los moviles
                 $moviles  = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
                 $choferes = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findBy(array('idUsuario' => $idUsuario));
 
-            } elseif ($idChofer != null && $idMovil == null) {
+            } elseif ($idChofer > 0 && $idMovil == 0) {
                 # busco un chofer y todos los moviles
                 $chofer   = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findOneBy(array('idUsuario' => $idUsuario, 'id' => $idChofer));
                 $choferes = array($chofer);
 
                 $moviles = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
 
-            } elseif ($idChofer == null && $idMovil != null) {
+            } elseif ($idChofer == 0 && $idMovil > 0) {
                 # busco todos los choferes y un movil
                 $choferes = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findBy(array('idUsuario' => $idUsuario));
 
@@ -58,33 +53,32 @@ class AccidenteController extends Controller {
                 $moviles = array($movil);
             }
 
-            echo 'new choferes ' . $choferes; 
-            $form = $this->createCreateForm($entity, $choferes, $moviles);
+            $form = $this->createCreateForm($entity, $choferes, $moviles, $idChofer, $idMovil);
 
             return array(
                 'form'  => $form->createView(),
                 );
 
         } else if ($request->isMethod('POST')) {
-            $form = $this->createCreateForm($entity, null);
+            $form = $this->createCreateForm($entity, null, null, $idChofer, $idMovil);
             $form->handleRequest($request);
 
             if ($form->isValid()) {
-                $entity->setPago(false);
-                $entity->setSaldo($entity->getMonto());
 
                 $em->persist($entity);
                 $em->flush();
 
-                if ($idChofer == null && $idMovil == null) {
+                $this->get('session')->getFlashBag()->add('msg_success', 'Se ha agregado el accidente.');
+
+                if ($idChofer == 0 && $idMovil == 0) {
                     # no tiene id ninguno viene desde el dashboard
                     return $this->redirect($this->generateUrl('usuario_dashboard'));
 
-                } elseif ($idChofer != null && $idMovil == null) {
+                } elseif ($idChofer > 0 && $idMovil == 0) {
                     # tiene idChofer, redirecciono a la pagina del chofer
                     return $this->redirect($this->generateUrl('chofer_show', array('nombre' => $entity->getChofer()->getNombre(), 'apellido' => $entity->getChofer()->getApellido())));
 
-                } elseif ($idChofer == null && $idMovil != null) {
+                } elseif ($idChofer == 0 && $idMovil > 0) {
                     # tiene idMovil, redirecciono a la pagina del movil
                     return $this->redirect($this->generateUrl('movil_show', array('matricula' => $entity->getMovil()->getMatricula())));
                 }
@@ -99,7 +93,7 @@ class AccidenteController extends Controller {
      *
      * @Route("/{id}", name="accidente_show")
      * @Method("GET")
-     * @Template()
+     * @Template("TaxiAdminChoferBundle:Accidente:show.html.twig")
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
@@ -110,15 +104,75 @@ class AccidenteController extends Controller {
             throw $this->createNotFoundException('Unable to find Accidente entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $entity,
             );
     }
 
-    
+    /**
+     * Edits an existing Accidente entity.
+     *
+     * @Route("/{id}", name="accidente_update")
+     * @Method("PUT")
+     * @Template("TaxiAdminChoferBundle:Accidente:edit.html.twig")
+     */
+    public function updateAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('TaxiAdminChoferBundle:Accidente')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Accidente entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('accidente_edit', array('id' => $id)));
+        }
+
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            );
+    }
+
+    /**
+     * Deletes a Accidente entity.
+     *
+     * @Route("/{id}/{vista}", name="accidente_delete", requirements={"vista" = "\d+"})
+     * @Method("GET")
+     */
+    public function deleteAction(Request $request, $id, $vista) {
+        
+        // vista = 0 viene de chofer vista = 1 viene de movil
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('TaxiAdminChoferBundle:Accidente')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Accidente entity.');
+        }
+
+        if ($vista) {
+            $matricula = $entity->getMovil()->getMatricula();
+            $url = $this->generateUrl('movil_show', array('matricula' => $matricula));
+        } else {
+           $nombre   = $entity->getChofer()->getNombre();
+           $apellido = $entity->getChofer()->getApellido();
+
+           $url = $this->generateUrl('chofer_show', array('nombre' => $nombre, 'apellido' => $apellido ));
+       }
+       $em->remove($entity);
+       $em->flush();
+
+       $this->get('session')->getFlashBag()->add('msg_success', 'Se ha eliminado el accidente.');
+
+       return $this->redirect($url);
+   }
+
     /**
     * Creates a form to edit a Accidente entity.
     *
@@ -144,73 +198,15 @@ class AccidenteController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Accidente $entity, $choferes, $moviles) {
+    private function createCreateForm(Accidente $entity, $choferes, $moviles, $idChofer, $idMovil) {
         $form = $this->createForm(new AccidenteType($choferes, $moviles), $entity, array(
-            'action' => $this->generateUrl('accidente_create'),
+            'action' => $this->generateUrl('accidente_create', array('idChofer' => $idChofer, 'idMovil' => $idMovil)),
             'method' => 'POST',
             ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'class' => 'btn btn-default'));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
 
         return $form;
-    }
-
-    /**
-     * Edits an existing Accidente entity.
-     *
-     * @Route("/{id}", name="accidente_update")
-     * @Method("PUT")
-     * @Template("TaxiAdminChoferBundle:Accidente:edit.html.twig")
-     */
-    public function updateAction(Request $request, $id) {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('TaxiAdminChoferBundle:Accidente')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Accidente entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('accidente_edit', array('id' => $id)));
-        }
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            );
-    }
-
-    /**
-     * Deletes a Accidente entity.
-     *
-     * @Route("/{id}", name="accidente_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TaxiAdminChoferBundle:Accidente')->find($id);
-
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Accidente entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
-        }
-
-        return $this->redirect($this->generateUrl('accidente'));
     }
 
 }
