@@ -19,11 +19,11 @@
                                 </tr>
                                 <tr>
                                     <th>Monto</th>
-                                    <td>{{ entity.monto }}</td>
+                                    <td>${{ entity.monto }}</td>
                                 </tr>
                                 <tr>
                                     <th>Saldo</th>
-                                    <td>{{ entity.saldo }}</td>
+                                    <td>${{ entity.saldo }}</td>
                                 </tr>
                                 <tr>
                                     <th>Detalle</th>
@@ -48,7 +48,7 @@
                             {% for pago in entity.pagos %}
                             <tr>
                                 <td>{{ pago.fecha|date("d/m/Y") }}</td>
-                                <td>{{ pago.monto }}</td>
+                                <td>${{ pago.monto }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

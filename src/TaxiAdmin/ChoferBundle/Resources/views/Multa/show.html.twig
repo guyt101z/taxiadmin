@@ -14,23 +14,27 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <th>Chofer</th>
-                                    <td>{{ entity.chofer }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Movil</th>
-                                    <td>{{ entity.movil }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Fecha</th>
+                                    <th width="170px;">Fecha</th>
                                     <td>{{ entity.fecha|date('d/m/Y') }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fecha Vencimiento</th>
+                                    <td>{{ entity.fechaVencimiento|date('d/m/Y') }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Fecha de Pago</th>
+                                    <td>{{ entity.fechaPago|date('d/m/Y') }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Costo</th>
+                                    <td>${{ entity.costo }}</td>
                                 </tr>
                                 <tr>
                                     <th>Lugar</th>
                                     <td>{{ entity.lugar }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Descripcion</th>
+                                    <th>Descripción</th>
                                     <td>{{ entity.descripcion }}</td>
                                 </tr>
                             </tbody>
