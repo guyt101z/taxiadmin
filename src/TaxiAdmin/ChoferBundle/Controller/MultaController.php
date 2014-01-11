@@ -70,25 +70,11 @@ class MultaController extends Controller {
 
                 $this->get('session')->getFlashBag()->add('msg_success', 'Se ha agregado la multa.');
 
-                if ($idChofer == 0 && $idMovil == 0) {
-                    # no tiene id ninguno viene desde el dashboard
-                    return $this->redirect($this->generateUrl('usuario_dashboard'));
-
-                } elseif ($idChofer > 0 && $idMovil == 0) {
-                    # tiene idChofer, redirecciono a la pagina del chofer
-                    return $this->redirect($this->generateUrl('chofer_show', array('nombre' => $entity->getChofer()->getNombre(), 'apellido' => $entity->getChofer()->getApellido())));
-
-                } elseif ($idChofer == 0 && $idMovil > 0) {
-                    # tiene idMovil, redirecciono a la pagina del movil
-                    return $this->redirect($this->generateUrl('movil_show', array('matricula' => $entity->getMovil()->getMatricula())));
-                }
+                return $this->redirect($this->getRedirect($idChofer, $idMovil, $entity));
 
             }
-
         }
     }
-
-
 
     /**
      * Finds and displays a Multa entity.
@@ -110,39 +96,50 @@ class MultaController extends Controller {
             'entity' => $entity,
             );
     }
-
     
     /**
      * Edits an existing Multa entity.
      *
-     * @Route("/{id}", name="multa_update")
-     * @Method("PUT")
-     * @Template("TaxiAdminChoferBundle:Multa:edit.html.twig")
+     * @Route("/update/chofer/{idChofer}/movil/{idMovil}/multa/{id}", name="multa_update", defaults={ "idChofer" = 0, "idMovil" = 0 })
+     * @Method("PUT|GET")
+     * @Template("TaxiAdminChoferBundle:Multa:new.html.twig")
      */
-    public function updateAction(Request $request, $id) {
+    public function updateAction(Request $request, $idChofer, $idMovil, $id) {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('TaxiAdminChoferBundle:Multa')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Multa entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
 
-        if ($editForm->isValid()) {
-            $em->flush();
+        if ($this->getRequest()->isXmlHttpRequest()) {
 
-            return $this->redirect($this->generateUrl('multa_edit', array('id' => $id)));
+            # busco todos los choferes y todos los moviles
+            $moviles  = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
+            $choferes = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findBy(array('idUsuario' => $idUsuario));
+
+            $form = $this->createEditForm($entity, $choferes, $moviles, $idChofer, $idMovil);
+
+            return array(
+                'form'  => $form->createView(),
+                );
+
+        } else if ($request->isMethod('PUT')) {
+
+            $editForm = $this->createEditForm($entity, null, null, $idChofer, $idMovil, '');
+            $editForm->handleRequest($request);
+
+            if ($editForm->isValid()) {
+                $em->flush();
+                $url = $this->getRedirect($idChofer, $idMovil, $entity);
+
+                return $this->redirect($url);
+            }
+
+            $this->redirectShow($idChofer, $idMovil, $Entity);
         }
-
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            );
     }
 
     /**
@@ -178,6 +175,19 @@ class MultaController extends Controller {
         return $this->redirect($url);
     }
 
+    private function getRedirect($idChofer, $idMovil, $entity){
+        if ($idChofer == 0 && $idMovil == 0) {
+            # no tiene id ninguno viene desde el dashboard
+            return $this->generateUrl('usuario_dashboard');
+        } elseif ($idChofer > 0 && $idMovil == 0) {
+            # tiene idChofer, redirecciono a la pagina del chofer
+            return $this->generateUrl('chofer_show', array('nombre' => $entity->getChofer()->getNombre(), 'apellido' => $entity->getChofer()->getApellido()));
+        } elseif ($idChofer == 0 && $idMovil > 0) {
+            # tiene idMovil, redirecciono a la pagina del movil
+            return $this->generateUrl('movil_show', array('matricula' => $entity->getMovil()->getMatricula()));
+        }
+    }
+
 
     /**
     * Creates a form to create a Multa entity.
@@ -186,7 +196,7 @@ class MultaController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Multa $entity, $choferes, $moviles, $idChofer, $idMovil ) {
+    private function createCreateForm(Multa $entity, $choferes, $moviles, $idChofer, $idMovil) {
         $form = $this->createForm(new MultaType($choferes, $moviles), $entity, array(
             'action' => $this->generateUrl('multa_create', array('idChofer' => $idChofer, 'idMovil' => $idMovil)),
             'method' => 'POST',
@@ -204,13 +214,14 @@ class MultaController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Multa $entity) {
-        $form = $this->createForm(new MultaType(), $entity, array(
-            'action' => $this->generateUrl('multa_update', array('id' => $entity->getId())),
+    private function createEditForm(Multa $entity, $choferes, $moviles, $idChofer, $idMovil) {
+        $form = $this->createForm(new MultaType($choferes, $moviles), $entity, array(
+            'action' => $this->generateUrl('multa_update', array('idChofer' => $idChofer, 'idMovil' => $idMovil, 'id' => $entity->getId() )),
             'method' => 'PUT',
             ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btn btn-default')));
+
 
         return $form;
     }
