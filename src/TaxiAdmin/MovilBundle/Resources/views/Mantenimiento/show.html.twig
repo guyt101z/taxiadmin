@@ -1,60 +1,56 @@
-{% extends '::base.html.twig' %}
+{% extends "TaxiAdminSitioBundle::modal.html.twig" %}
 
-{% block body -%}
-    <h1>Mantenimiento</h1>
+{% block contenido %}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Motivoingreso</th>
-                <td>{{ entity.motivoIngreso }}</td>
-            </tr>
-            <tr>
-                <th>Taller</th>
-                <td>{{ entity.taller }}</td>
-            </tr>
-            <tr>
-                <th>Descripciontrabajo</th>
-                <td>{{ entity.descripcionTrabajo }}</td>
-            </tr>
-            <tr>
-                <th>Costo</th>
-                <td>{{ entity.costo }}</td>
-            </tr>
-            <tr>
-                <th>Fechaingreso</th>
-                <td>{{ entity.fechaIngreso|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechafinalizado</th>
-                <td>{{ entity.fechaFinalizado|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechapago</th>
-                <td>{{ entity.fechaPago|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechavencimiento</th>
-                <td>{{ entity.fechaVencimiento|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Detalle mantenimiento</h4>
+</div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('mantenimiento') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('mantenimiento_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+<div class="modal-body">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr width="170px;">
+                            <th>Motivo del Ingreso</th>
+                            <td>{{ entity.motivoIngreso }}</td>
+                        </tr>
+                        <tr>
+                            <th>Taller</th>
+                            <td>{{ entity.taller }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción del Trabajo</th>
+                            <td>{{ entity.descripcionTrabajo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Costo</th>
+                            <td>${{ entity.costo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Ingreso</th>
+                            <td>{{ entity.fechaIngreso|date('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Finalizado</th>
+                            <td>{{ entity.fechaFinalizado|date('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Vencimiento</th>
+                            <td>{{ entity.fechaVencimiento|date('Y-m-d') }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Pago</th>
+                            <td>{{ entity.fechaPago|date('Y-m-d') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
 {% endblock %}

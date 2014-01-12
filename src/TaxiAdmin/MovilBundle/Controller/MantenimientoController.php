@@ -61,41 +61,6 @@ class MantenimientoController extends Controller {
     }
 
     /**
-    * Creates a form to create a Mantenimiento entity.
-    *
-    * @param Mantenimiento $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Mantenimiento $entity, $moviles, $idMovil) {
-        $form = $this->createForm(new MantenimientoType($moviles), $entity, array(
-            'action' => $this->generateUrl('mantenimiento_create', array('idMovil' => $idMovil)),
-            'method' => 'POST',
-            ));
-
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
-
-        return $form;
-    }
-
-    /**
-     * Displays a form to create a new Mantenimiento entity.
-     *
-     * @Route("/new", name="mantenimiento_new")
-     * @Method("GET")
-     * @Template()
-     */
-    public function newAction() {
-      $entity = new Mantenimiento();
-      $form   = $this->createCreateForm($entity);
-
-      return array(
-        'entity' => $entity,
-        'form'   => $form->createView(),
-        );
-  }
-
-    /**
      * Finds and displays a Mantenimiento entity.
      *
      * @Route("/{id}", name="mantenimiento_show")
@@ -103,21 +68,16 @@ class MantenimientoController extends Controller {
      * @Template()
      */
     public function showAction($id) {
-      $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-      $entity = $em->getRepository('TaxiAdminMovilBundle:Mantenimiento')->find($id);
+        $entity = $em->getRepository('TaxiAdminMovilBundle:Mantenimiento')->find($id);
 
-      if (!$entity) {
-        throw $this->createNotFoundException('Unable to find Mantenimiento entity.');
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Mantenimiento.');
+        }
+
+        return array( 'entity' => $entity);
     }
-
-    $deleteForm = $this->createDeleteForm($id);
-
-    return array(
-        'entity'      => $entity,
-        'delete_form' => $deleteForm->createView(),
-        );
-}
 
     /**
      * Displays a form to edit an existing Mantenimiento entity.
@@ -144,6 +104,25 @@ class MantenimientoController extends Controller {
         'delete_form' => $deleteForm->createView(),
         );
 }
+
+
+    /**
+    * Creates a form to create a Mantenimiento entity.
+    *
+    * @param Mantenimiento $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createCreateForm(Mantenimiento $entity, $moviles, $idMovil) {
+        $form = $this->createForm(new MantenimientoType($moviles), $entity, array(
+            'action' => $this->generateUrl('mantenimiento_create', array('idMovil' => $idMovil)),
+            'method' => 'POST',
+            ));
+
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
+
+        return $form;
+    }
 
     /**
     * Creates a form to edit a Mantenimiento entity.
