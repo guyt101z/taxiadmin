@@ -14,8 +14,8 @@
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
-                        <tr width="170px;">
-                            <th>Motivo del Ingreso</th>
+                        <tr>
+                            <th width="190px;">Motivo del Ingreso</th>
                             <td>{{ entity.motivoIngreso }}</td>
                         </tr>
                         <tr>
@@ -32,25 +32,40 @@
                         </tr>
                         <tr>
                             <th>Fecha de Ingreso</th>
-                            <td>{{ entity.fechaIngreso|date('Y-m-d') }}</td>
-                        </tr>
-                        <tr>
-                            <th>Fecha de Finalizado</th>
-                            <td>{{ entity.fechaFinalizado|date('Y-m-d') }}</td>
-                        </tr>
-                        <tr>
-                            <th>Fecha de Vencimiento</th>
-                            <td>{{ entity.fechaVencimiento|date('Y-m-d') }}</td>
-                        </tr>
-                        <tr>
-                            <th>Fecha de Pago</th>
-                            <td>{{ entity.fechaPago|date('Y-m-d') }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                            {% if entity.fechaIngreso is null %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ entity.fechaIngreso|date("d/m/Y") }}</td>
+                            {% endif %}
+                            <tr>
+                                <th>Fecha de Finalizado</th>
+                                {% if entity.fechaFinalizado is null %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ entity.fechaFinalizado|date("d/m/Y") }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <th>Fecha de Vencimiento</th>
+                                {% if entity.fechaVencimiento is null %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ entity.fechaVencimiento|date("d/m/Y") }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <th>Fecha de Pago</th>
+                                {% if entity.fechaPago is null %}
+                                <td></td>
+                                {% else %}
+                                <td>{{ entity.fechaPago|date("d/m/Y") }}</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
-{% endblock %}
+    </div>
+    {% endblock %}
