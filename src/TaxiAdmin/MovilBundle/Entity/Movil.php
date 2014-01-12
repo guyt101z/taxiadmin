@@ -132,6 +132,13 @@ class Movil
      */
     private $multas;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\MovilBundle\Entity\Mantenimiento", mappedBy="movil")
+     * @ORM\OrderBy({"fechaIngreso" = "DESC"})
+     */
+    private $mantenimientos;
+
+
 
     /**
      * Constructor
