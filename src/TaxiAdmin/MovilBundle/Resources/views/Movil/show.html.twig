@@ -9,6 +9,7 @@
       <a href="#" class="list-group-item" data-toggle="modal" data-target="#editMovil">Modificar Móvil</a>
       <a href="{{ path('accidente_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
       <a href="{{ path('multa_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#multa">Agregar Multa</a>
+      <a href="{{ path('mantenimiento_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Agregar Mantenimiento</a>
       <a href="#" class="list-group-item">Imprimir Información</a>
     </div>
   </div>
@@ -84,6 +85,52 @@
               </tr>
             </thead>
             <tbody>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>Mantenimientos</h3>
+
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Fecha Ingreso</th>
+                <th>Costo</th>
+                <th>Fecha Vencimiento</th>
+                <th>Pago</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for mantenimiento in entity.mantenimientos %}
+              <tr>
+                <td>{{ mantenimiento.fechaIngreso|date("d/m/Y") }}</td>
+                <td>{{ mantenimiento.costo }}</td>
+                <td>{{ mantenimiento.fechaVencimiento }}</td>
+                {% if mantenimiento.fechaPago is null %}
+                <td>No</td>
+                {% else %}
+                <td>{{ mantenimiento.fechaPago|date("d/m/Y") }}</td>
+                {% endif %}
+                <td style="text-align:right;">
+
+                  <a href="{{  path('mantenimiento_show', { 'id': mantenimiento.id }) }}" data-toggle="modal" data-target="#mantenimiento" data-refresh="true">
+                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                  </a>
+
+                  <a href="{{ path('mantenimiento_delete', { 'id': mantenimiento.id, 'vista': 1 }) }}" onclick="return confirm('¿Estas seguro?');">
+                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                  </a>
+
+                </td>
+              </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -245,9 +292,12 @@
   </div>
 </div>
 <!-- MODIFICAR -->
+
 <!-- ACCIDENTE -->
 <div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
 <!-- MULTA -->
 <div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<!-- MANTENIMIENTO -->
+<div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
 
 {% endblock %}

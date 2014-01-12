@@ -54,7 +54,7 @@ class MantenimientoController extends Controller {
 
                 $this->get('session')->getFlashBag()->add('msg_success', 'Se ha agregado el mantenimiento.');
 
-                return $this->redirect($this->getRedirect($idChofer, $idMovil, $entity));
+                return $this->redirect($this->generateUrl('movil_show', array('matricula' => $entity->getMovil()->getMatricula())));
 
             }
         }

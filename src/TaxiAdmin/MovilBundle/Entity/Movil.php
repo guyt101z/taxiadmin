@@ -572,4 +572,37 @@ class Movil
     {
         return $this->multas;
     }
+
+    /**
+     * Add mantenimientos
+     *
+     * @param \TaxiAdmin\MovilBundle\Entity\Mantenimiento $mantenimientos
+     * @return Movil
+     */
+    public function addMantenimiento(\TaxiAdmin\MovilBundle\Entity\Mantenimiento $mantenimientos)
+    {
+        $this->mantenimientos[] = $mantenimientos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove mantenimientos
+     *
+     * @param \TaxiAdmin\MovilBundle\Entity\Mantenimiento $mantenimientos
+     */
+    public function removeMantenimiento(\TaxiAdmin\MovilBundle\Entity\Mantenimiento $mantenimientos)
+    {
+        $this->mantenimientos->removeElement($mantenimientos);
+    }
+
+    /**
+     * Get mantenimientos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMantenimientos()
+    {
+        return $this->mantenimientos;
+    }
 }

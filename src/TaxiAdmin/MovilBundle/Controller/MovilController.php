@@ -45,7 +45,7 @@ class MovilController extends Controller {
      */
     public function createAction(Request $request) {
         $entity = new Movil();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity, null);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
