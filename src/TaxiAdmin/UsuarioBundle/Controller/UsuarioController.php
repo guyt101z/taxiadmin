@@ -73,13 +73,21 @@ class UsuarioController extends Controller {
         return $this->redirect($this->generateUrl('sitio_home'));
     }
 
-   /**
+    /**
      *
      * @Route("/changePassword", name="changePassword")
      * @Method("POST|GET")
      * @Template("TaxiAdminUsuarioBundle:Usuario:changePassword.html.twig")
      */
     public function changePasswordAction(Request $request) { }
+
+    /**
+     *
+     * @Route("/informacion", name="informacionUsuario")
+     * @Method("GET")
+     * @Template("TaxiAdminUsuarioBundle:Usuario:informacion.html.twig")
+     */
+    public function informacionAction(Request $request) { }
 
 
     /**
