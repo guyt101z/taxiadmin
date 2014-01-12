@@ -11,19 +11,19 @@ use TaxiAdmin\MovilBundle\Entity\Mantenimiento;
 use TaxiAdmin\MovilBundle\Form\MantenimientoType;
 
 /**
- * Mantenimiento controller.
- *
- * @Route("/mantenimiento")
- */
+* Mantenimiento controller.
+*
+* @Route("/mantenimiento")
+*/
 class MantenimientoController extends Controller {
 
     /**
-     * Creates a new Mantenimiento entity.
-     *
-     * @Route("/movil/{idMovil}", name="mantenimiento_create", defaults={"idMovil" = 0 })
-     * @Method("POST|GET")
-     * @Template("TaxiAdminMovilBundle:Mantenimiento:new.html.twig")
-     */
+    * Creates a new Mantenimiento entity.
+    *
+    * @Route("/movil/{idMovil}", name="mantenimiento_create", defaults={"idMovil" = 0 })
+    * @Method("POST|GET")
+    * @Template("TaxiAdminMovilBundle:Mantenimiento:new.html.twig")
+    */
     public function createAction(Request $request, $idMovil) {
         $em = $this->getDoctrine()->getManager();
 
@@ -38,7 +38,7 @@ class MantenimientoController extends Controller {
             } else {
                 $moviles = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
             }
-            
+
             $form = $this->createCreateForm($entity, $moviles, $idMovil);
 
             return array( 'form'  => $form->createView());
@@ -60,12 +60,12 @@ class MantenimientoController extends Controller {
     }
 
     /**
-     * Finds and displays a Mantenimiento entity.
-     *
-     * @Route("/{id}", name="mantenimiento_show")
-     * @Method("GET")
-     * @Template()
-     */
+    * Finds and displays a Mantenimiento entity.
+    *
+    * @Route("/{id}", name="mantenimiento_show")
+    * @Method("GET")
+    * @Template()
+    */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
@@ -79,12 +79,12 @@ class MantenimientoController extends Controller {
     }
 
     /**
-     * Edits an existing Mantenimiento entity.
-     *
-     * @Route("/update/mantenimiento/{id}", name="mantenimiento_update" )
-     * @Method("PUT|GET")
-     * @Template("TaxiAdminMovilBundle:Mantenimiento:new.html.twig")
-     */
+    * Edits an existing Mantenimiento entity.
+    *
+    * @Route("/update/mantenimiento/{id}", name="mantenimiento_update" )
+    * @Method("PUT|GET")
+    * @Template("TaxiAdminMovilBundle:Mantenimiento:new.html.twig")
+    */
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('TaxiAdminMovilBundle:Mantenimiento')->find($id);
@@ -97,7 +97,7 @@ class MantenimientoController extends Controller {
 
         if ($this->getRequest()->isXmlHttpRequest()) {
 
-            # busco todos los moviles
+    # busco todos los moviles
             $moviles  = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
 
             $form = $this->createEditForm($entity, $moviles);
@@ -120,11 +120,11 @@ class MantenimientoController extends Controller {
     }
 
     /**
-     * Deletes a Mantenimiento entity.
-     *
-     * @Route("/delete/{id}", name="mantenimiento_delete")
-     * @Method("GET")
-     */
+    * Deletes a Mantenimiento entity.
+    *
+    * @Route("/delete/{id}", name="mantenimiento_delete")
+    * @Method("GET")
+    */
     public function deleteAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('TaxiAdminMovilBundle:Mantenimiento')->find($id);
@@ -140,23 +140,23 @@ class MantenimientoController extends Controller {
         return $this->redirect($this->generateUrl('movil_show', array('matricula' => $matricula)));
     }
 
-        /**
+    /**
     * Creates a form to create a Mantenimiento entity.
     *
     * @param Mantenimiento $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-        private function createCreateForm(Mantenimiento $entity, $moviles, $idMovil) {
-            $form = $this->createForm(new MantenimientoType($moviles), $entity, array(
-                'action' => $this->generateUrl('mantenimiento_create', array('idMovil' => $idMovil)),
-                'method' => 'POST',
-                ));
+    private function createCreateForm(Mantenimiento $entity, $moviles, $idMovil) {
+        $form = $this->createForm(new MantenimientoType($moviles), $entity, array(
+            'action' => $this->generateUrl('mantenimiento_create', array('idMovil' => $idMovil)),
+            'method' => 'POST',
+            ));
 
-            $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
 
-            return $form;
-        }
+        return $form;
+    }
 
     /**
     * Creates a form to edit a Mantenimiento entity.
@@ -166,13 +166,13 @@ class MantenimientoController extends Controller {
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(Mantenimiento $entity, $moviles) {
-      $form = $this->createForm(new MantenimientoType($moviles), $entity, array(
-        'action' => $this->generateUrl('mantenimiento_update', array('id' => $entity->getId())),
-        'method' => 'PUT',
-        ));
+        $form = $this->createForm(new MantenimientoType($moviles), $entity, array(
+            'action' => $this->generateUrl('mantenimiento_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+            ));
 
-      $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Update', 'attr' => array('class' => 'btn btn-default')));
 
-      return $form;
-  }
+        return $form;
+    }
 }
