@@ -21,13 +21,13 @@ class MantenimientoType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
         ->add('motivoIngreso',        'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Motivo del ingreso', 'autofocus' => ''))) 
-        ->add('taller',               'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Taller')))
-        ->add('descripcionTrabajo',   'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción del trabajo')))
+        ->add('taller',               'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Taller'), 'required' => false))
+        ->add('descripcionTrabajo',   'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción del trabajo'), 'required' => false))
         ->add('costo',                'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Costo', 'min' => 0)))
         ->add('fechaIngreso',         'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control')))
-        ->add('fechaFinalizado',      'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control')))
-        ->add('fechaPago',            'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control')))
-        ->add('fechaVencimiento',     'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control')))
+        ->add('fechaFinalizado',      'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
+        ->add('fechaPago',            'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
+        ->add('fechaVencimiento',     'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
         ;
 
         if (count($this->moviles) > 1) {

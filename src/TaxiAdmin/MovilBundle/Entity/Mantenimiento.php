@@ -30,7 +30,7 @@ class Mantenimiento
     /**
      * @var string
      *
-     * @ORM\Column(name="motivoIngreso", type="string", length=255, nullable=true)
+     * @ORM\Column(name="motivoIngreso", type="string", length=255)
      */
     private $motivoIngreso;
 
@@ -58,7 +58,7 @@ class Mantenimiento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaIngreso", type="date", nullable=true)
+     * @ORM\Column(name="fechaIngreso", type="date")
      */
     private $fechaIngreso;
 
