@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use TaxiAdmin\UsuarioBundle\Entity\Usuario;
 use TaxiAdmin\UsuarioBundle\Form\UsuarioType;
+use TaxiAdmin\UsuarioBundle\Form\ChangePasswordType;
 
 /**
  * Usuario controller.
@@ -79,7 +80,30 @@ class UsuarioController extends Controller {
      * @Method("POST|GET")
      * @Template("TaxiAdminUsuarioBundle:Usuario:changePassword.html.twig")
      */
-    public function changePasswordAction(Request $request) { }
+    public function changePasswordAction(Request $request) {
+        if ($request->isMethod('GET')) {
+
+            $form = $this->createForm(new ChangePasswordType(), array());
+            $form->add('submit', 'submit', array('label' => 'Cambiar', 'attr' => array('class' => 'btn btn-default')));
+
+            return array(
+                'form'  => $form->createView(),
+                );
+
+        } else if ($request->isMethod('POST')) {
+
+            // $form->handleRequest($request);
+
+            // if ($editForm->isValid()) {
+            //     $em->flush();
+            //     $url = $this->getRedirect($idChofer, $idMovil, $entity);
+
+            //     return $this->redirect($url);
+            // }
+
+            // $this->redirectShow($idChofer, $idMovil, $Entity);
+        }
+    }
 
     /**
      *
@@ -87,7 +111,47 @@ class UsuarioController extends Controller {
      * @Method("GET")
      * @Template("TaxiAdminUsuarioBundle:Usuario:informacion.html.twig")
      */
-    public function informacionAction(Request $request) { }
+    public function informacionAction(Request $request) { 
+
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $qb->select('count(prop.id)');
+        $qb->from('TaxiAdminPropietarioBundle:Propietario', 'prop');
+        $qb->where('prop.idUsuario = :idUsuario');
+        $qb->setParameter('idUsuario', $idUsuario);
+
+        $propietarios = $qb->getQuery()->getSingleScalarResult();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $qb->select('count(empresa.id)');
+        $qb->from('TaxiAdminEmpresaBundle:Empresa', 'empresa');
+        $qb->where('empresa.idUsuario = :idUsuario');
+        $qb->setParameter('idUsuario', $idUsuario);
+
+        $empresas = $qb->getQuery()->getSingleScalarResult();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $qb->select('count(movil.id)');
+        $qb->from('TaxiAdminMovilBundle:Movil', 'movil');
+        $qb->where('movil.idUsuario = :idUsuario');
+        $qb->setParameter('idUsuario', $idUsuario);
+        $moviles = $qb->getQuery()->getSingleScalarResult();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $qb->select('count(chofer.id)');
+        $qb->from('TaxiAdminChoferBundle:Chofer', 'chofer');
+        $qb->where('chofer.idUsuario = :idUsuario');
+        $qb->setParameter('idUsuario', $idUsuario);
+        $choferes = $qb->getQuery()->getSingleScalarResult();
+
+        return array(
+            'propietarios' => $propietarios,
+            'empresas' => $empresas,
+            'moviles' => $moviles,
+            'choferes' => $choferes,
+            );
+    }
 
 
     /**

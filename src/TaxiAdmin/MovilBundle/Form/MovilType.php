@@ -9,17 +9,20 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class MovilType extends AbstractType {
 
     public $empresas;
+    public $radios;
+    public $combustible;
 
-    public function __construct($emp) {
+    public function __construct($emp, $radios, $combustible) {
         $this->empresas = $emp;
+        $this->radios = $radios;
+        $this->combustible = $combustible;
     }
 
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
         ->add('matricula',      'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Matrícula', 'autofocus' => '')))
         ->add('marca',          'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Marca')))
@@ -28,17 +31,16 @@ class MovilType extends AbstractType {
         ->add('numChasis',      'text', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Num. de Chasis')))
         ->add('numMovil',       'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Num. de Móvil')))
         ->add('despacho',       'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Despacho')))
-        ->add('radio',          'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Radio')))
-        ->add('combustible',    'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Combustible')))
+        ->add('radio',          'choice', array('choices' => $this->radios))
+        ->add('combustible',    'choice', array('choices' => $this->combustible))
         ->add('empresa',        'entity', array('class' => 'TaxiAdminEmpresaBundle:Empresa', 'choices' => $this->empresas, 'empty_value' => 'Seleccione una Empresa'))
         ;
-        }
+    }
 
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'TaxiAdmin\MovilBundle\Entity\Movil'
             ));
@@ -47,8 +49,7 @@ class MovilType extends AbstractType {
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return 'movil_';
     }
 }

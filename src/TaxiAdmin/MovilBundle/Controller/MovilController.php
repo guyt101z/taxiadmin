@@ -30,10 +30,13 @@ class MovilController extends Controller {
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
         $moviles = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
         $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
-        
+        $radios = $this->container->getParameter('radios');
+        $combustible = $this->container->getParameter('combustible');
+
         return array(
-            'form'     => $this->createCreateForm(new Movil(), $empresas)->createView(),
-            'entities' => $moviles,
+            'form'        => $this->createCreateForm(new Movil(), $empresas, $radios, $combustible)->createView(),
+            'entities'    => $moviles,
+            'combustible' => $combustible,
             );
     }
     /**
@@ -45,7 +48,10 @@ class MovilController extends Controller {
      */
     public function createAction(Request $request) {
         $entity = new Movil();
-        $form = $this->createCreateForm($entity, null);
+        $radios = $this->container->getParameter('radios');
+        $combustible = $this->container->getParameter('combustible');
+
+        $form = $this->createCreateForm($entity, null, $radios, $combustible);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -60,6 +66,7 @@ class MovilController extends Controller {
 
             return $this->redirect($this->generateUrl('movil_show', array('matricula' => $entity->getMatricula())));
         }
+        // echo $form->getErrorsAsString();
         //TODO Brus, loguear los errores
         $this->get('session')->getFlashBag()->add('msg_error', 'Ups, estamos teniendo problemas para crear su nuevo Móvil, por favor contacte con Soporte.');
 
@@ -84,11 +91,16 @@ class MovilController extends Controller {
         }
         
         $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
-        $form = $this->createEditForm($movil, $empresas);
+        $radios = $this->container->getParameter('radios');
+        $combustible = $this->container->getParameter('combustible');
+
+        $form = $this->createEditForm($movil, $empresas, $radios, $combustible);
 
         return array(
             'entity'      => $movil,
-            'form' => $form->createView(),
+            'form'        => $form->createView(),
+            'radios'      => $radios,
+            'combustible' => $combustible,
             );
     }
 
@@ -99,8 +111,7 @@ class MovilController extends Controller {
      * @Method("PUT")
      * @Template("TaxiAdminMovilBundle:Movil:edit.html.twig")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
@@ -110,7 +121,10 @@ class MovilController extends Controller {
             throw $this->createNotFoundException('Unable to find movil entity.');
         }
 
-        $editForm = $this->createEditForm($movil, null);
+        $radios = $this->container->getParameter('radios');
+        $combustible = $this->container->getParameter('combustible');
+        
+        $editForm = $this->createEditForm($movil, null, $radios, $combustible);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -133,8 +147,8 @@ class MovilController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Movil $entity, $empresas) {
-        $form = $this->createForm(new MovilType($empresas), $entity, array(
+    private function createCreateForm(Movil $entity, $empresas, $radios, $combustible) {
+        $form = $this->createForm(new MovilType($empresas, $radios, $combustible), $entity, array(
             'action' => $this->generateUrl('movil_create'),
             'method' => 'POST',
             ));
@@ -149,8 +163,8 @@ class MovilController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Movil $entity, $empresas) {
-        $form = $this->createForm(new MovilType($empresas), $entity, array(
+    private function createEditForm(Movil $entity, $empresas, $radios, $combustible) {
+        $form = $this->createForm(new MovilType($empresas, $radios, $combustible), $entity, array(
             'action' => $this->generateUrl('movil_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             ));

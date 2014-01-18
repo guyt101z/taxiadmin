@@ -14,7 +14,7 @@ class EmpresaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('nombre', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Nombre')))
+            ->add('nombre', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Nombre', 'autofocus' => '')))
             ->add('razonSocial', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Razon Social')))
         ;
     }

@@ -61,14 +61,14 @@ class Movil
     /**
      * @var string
      *
-     * @ORM\Column(name="numChasis", type="string", length=200)
+     * @ORM\Column(name="numChasis", type="string", length=200, nullable=true))
      */
     private $numChasis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="combustible", type="string", length=100)
+     * @ORM\Column(name="combustible", type="string", length=10)
      */
     private $combustible;
 
@@ -89,7 +89,7 @@ class Movil
         /**
      * @var string
      *
-     * @ORM\Column(name="radio", type="string", length=100)
+     * @ORM\Column(name="radio", type="string", length=10)
      */
     private $radio;
 

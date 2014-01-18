@@ -35,9 +35,9 @@
                                 <td>{{ entity.matricula }}</td>
                                 <td>{{ entity.marca }}</td>
                                 <td>{{ entity.modelo }}</td>
-                                <td>{{ entity.combustible }}</td>
-                                <td>{{ entity.despacho }}</td>
+                                <td>{{ combustible[entity.combustible] }}</td>
                                 <td>{{ entity.numMovil }}</td>
+                                <td>{{ entity.despacho }}</td>
                                 <td>
                                     <a href="{{ path('movil_show', { 'matricula': entity.matricula }) }}">
                                         <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
@@ -83,7 +83,7 @@
                     {{ form_widget(form.numChasis) }}
                 </div>
                 <div class="form-group">
-                    {{ form_widget(form.combustible) }}
+                    {{ form_widget(form.combustible, { 'attr' : { 'class' : 'form-control' } }) }}
                 </div>
                 <div class="form-group">
                     {{ form_widget(form.numMovil) }}
@@ -92,7 +92,7 @@
                     {{ form_widget(form.despacho) }}
                 </div>
                 <div class="form-group">
-                    {{ form_widget(form.radio) }}
+                    {{ form_widget(form.radio, { 'attr' : { 'class' : 'form-control' } }) }}
                 </div>
                 <div class="form-group">
                     {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
