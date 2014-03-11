@@ -82,6 +82,11 @@ class Empresa {
      */
     private $moviles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\GastoBundle\Entity\GastoEmpresa", mappedBy="empresa")
+     */
+    private $gastos;
+
 
     public function __toString(){
         return $this->nombre;
@@ -363,5 +368,38 @@ class Empresa {
     public function getMoviles()
     {
         return $this->moviles;
+    }
+
+    /**
+     * Add gastos
+     *
+     * @param \TaxiAdmin\MovilBundle\Entity\Gasto $gastos
+     * @return Empresa
+     */
+    public function addGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gastos)
+    {
+        $this->gastos[] = $gastos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove gastos
+     *
+     * @param \TaxiAdmin\MovilBundle\Entity\Gasto $gastos
+     */
+    public function removeGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gastos)
+    {
+        $this->gastos->removeElement($gastos);
+    }
+
+    /**
+     * Get gastos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGastos()
+    {
+        return $this->gastos;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace TaxiAdmin\MovilBundle\Entity;
+namespace TaxiAdmin\GastoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

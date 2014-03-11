@@ -1,3 +1,8 @@
+taxi_admin_gasto:
+    resource: "@TaxiAdminGastoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 taxi_admin_movil:
     resource: "@TaxiAdminMovilBundle/Controller/"
     type:     annotation

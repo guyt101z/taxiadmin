@@ -10,6 +10,8 @@
       <a href="{{ path('accidente_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
       <a href="{{ path('multa_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#multa">Agregar Multa</a>
       <a href="{{ path('mantenimiento_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Agregar Mantenimiento</a>
+      <a href="{{ path('gasto_create', { 'movil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto</a>
+
       <a href="#" class="list-group-item">Imprimir Información</a>
     </div>
   </div>
@@ -303,5 +305,7 @@
 <div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
 <!-- MANTENIMIENTO -->
 <div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<!-- GASTO -->
+<div class="modal fade" id="addGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
 
 {% endblock %}
