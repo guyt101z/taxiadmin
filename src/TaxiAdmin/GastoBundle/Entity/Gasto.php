@@ -12,15 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Gasto {
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="costo", type="float")
@@ -47,6 +38,12 @@ class Gasto {
      * @ORM\Column(name="fechaVencimiento", type="date")
      */
     private $fechaVencimiento;
+        /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaPago", type="date")
+     */
+    private $fechaPago;
 
     /**
      * @var \boolean
@@ -233,5 +230,28 @@ class Gasto {
     public function getPago()
     {
         return $this->pago;
+    }
+
+    /**
+     * Set fechaPago
+     *
+     * @param \DateTime $fechaPago
+     * @return Gasto
+     */
+    public function setFechaPago($fechaPago)
+    {
+        $this->fechaPago = $fechaPago;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaPago
+     *
+     * @return \DateTime 
+     */
+    public function getFechaPago()
+    {
+        return $this->fechaPago;
     }
 }

@@ -11,6 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  */
 class GastoEmpresa extends Gasto {
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
     
     /**
      * @ORM\ManyToOne(targetEntity="TaxiAdmin\EmpresaBundle\Entity\Empresa", inversedBy="gastos")
@@ -19,7 +28,8 @@ class GastoEmpresa extends Gasto {
     private $empresa;
 
     /**
-     * @ORM\OneToMany(targetEntity="TaxiAdmin\GastoBundle\Entity\PagoGasto", mappedBy="gastoEmpresa")
+     * @ORM\ManyToOne(targetEntity="TaxiAdmin\GastoBundle\Entity\PagoGasto")
+     * @ORM\JoinColumn(name="pago_id", referencedColumnName="id")
      */
     private $pagos;
 
@@ -33,7 +43,7 @@ class GastoEmpresa extends Gasto {
     public function setEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa = null)
     {
         $this->empresa = $empresa;
-    
+
         return $this;
     }
 
@@ -63,7 +73,7 @@ class GastoEmpresa extends Gasto {
     public function addPago(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos)
     {
         $this->pagos[] = $pagos;
-    
+
         return $this;
     }
 
@@ -85,5 +95,28 @@ class GastoEmpresa extends Gasto {
     public function getPagos()
     {
         return $this->pagos;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set pagos
+     *
+     * @param \TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos
+     * @return GastoEmpresa
+     */
+    public function setPagos(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos = null)
+    {
+        $this->pagos = $pagos;
+    
+        return $this;
     }
 }

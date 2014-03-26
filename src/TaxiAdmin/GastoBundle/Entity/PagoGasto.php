@@ -29,23 +29,18 @@ class PagoGasto {
     private $fechaPago;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="costo", type="float")
+     */
+    private $costo;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=300)
      */
     private $descripcion;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="TaxiAdmin\GastoBundle\Entity\GastoEmpresa", inversedBy="pagos")
-     * @ORM\JoinColumn(name="gasto_id", referencedColumnName="id")
-     */
-    private $gastoEmpresa;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="TaxiAdmin\GastoBundle\Entity\GastoMovil", inversedBy="pagos")
-     * @ORM\JoinColumn(name="gasto_id", referencedColumnName="id")
-     */
-    private $gastoMovil;
 
 
     /**
@@ -67,7 +62,7 @@ class PagoGasto {
     public function setFechaPago($fechaPago)
     {
         $this->fechaPago = $fechaPago;
-    
+
         return $this;
     }
 
@@ -90,7 +85,7 @@ class PagoGasto {
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-    
+
         return $this;
     }
 
@@ -113,7 +108,7 @@ class PagoGasto {
     public function setGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gasto = null)
     {
         $this->gasto = $gasto;
-    
+
         return $this;
     }
 
@@ -136,7 +131,7 @@ class PagoGasto {
     public function setGastoEmpresa(\TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastoEmpresa = null)
     {
         $this->gastoEmpresa = $gastoEmpresa;
-    
+
         return $this;
     }
 
@@ -159,7 +154,7 @@ class PagoGasto {
     public function setGastoMovil(\TaxiAdmin\GastoBundle\Entity\GastoMovil $gastoMovil = null)
     {
         $this->gastoMovil = $gastoMovil;
-    
+
         return $this;
     }
 
@@ -171,5 +166,28 @@ class PagoGasto {
     public function getGastoMovil()
     {
         return $this->gastoMovil;
+    }
+
+    /**
+     * Set costo
+     *
+     * @param float $costo
+     * @return PagoGasto
+     */
+    public function setCosto($costo)
+    {
+        $this->costo = $costo;
+    
+        return $this;
+    }
+
+    /**
+     * Get costo
+     *
+     * @return float 
+     */
+    public function getCosto()
+    {
+        return $this->costo;
     }
 }
