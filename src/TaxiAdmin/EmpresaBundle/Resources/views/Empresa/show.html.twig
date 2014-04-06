@@ -47,7 +47,7 @@
                     <thead>
                         <tr>
                             <th>Fecha Pago</th>
-                            <th>Fecha Vencimiento</th>
+                            <th>Día Vencimiento</th>
                             <th>Costo</th>
                             <th></th>
                         </tr>
@@ -55,16 +55,22 @@
                     <tbody>
                         {% for gasto in entity.gastos %}
                         <tr>
-                            <td>{{ gasto.fechaVencimiento }}</td>
-                            <td>{{ gasto.fechaVencimiento }}</td>
+                            {% if gasto.diaVencimiento %}
+                                <td>Gasto Mensual</td>
+                            {% elseif (gasto.fechaPago == null) %}
+                                <td>Pendiente de pago</td>
+                            {% else %}
+                                <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
+                            {% endif %}
+                            <td>{{ gasto.diaVencimiento }}</td>
                             <td>{{ gasto.costo }}</td>
                             <td style="text-align:right;">
-                                <!-- <a href="{{ path('chofer_show', { 'nombre': chofer.nombre, 'apellido': chofer.apellido }) }}">
+                                <!-- {# <a href="{{ path('chofer_show', { 'nombre': chofer.nombre, 'apellido': chofer.apellido }) }}">
                                     <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Chofer"></i>
                                 </a>
                                 <a href="{{ path('empresa_remove_chofer', { 'razonSocial': entity.razonSocial, 'idChofer': chofer.id }) }}" onclick="return confirm('¿Estas seguro?');">
                                     <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Chofer"></i>
-                                </a> -->
+                                </a> #} -->
                             </td>
                         </tr>
                         {% endfor %}

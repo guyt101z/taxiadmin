@@ -7,8 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use TaxiAdmin\GastoBundle\Entity\GastoEmpresa;
 use TaxiAdmin\GastoBundle\Form\GastoEmpresaType;
+use TaxiAdmin\GastoBundle\Entity\GastoEmpresa;
+use TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa;
 
 /**
  * GastoEmpresa controller.
@@ -31,16 +32,16 @@ class GastoEmpresaController extends Controller {
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
         $empresas = null;
 
-            if ($empresa == 0 ) {
+        if ($empresa == 0 ) {
                 # busco todos las empresas
-                $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
+            $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
 
-            } elseif ($empresa > 0 ) {
+        } elseif ($empresa > 0 ) {
                 # busco la empresa
-                $empresa   = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('idUsuario' => $idUsuario, 'id' => $empresa));
-                $empresas = array($empresa);
-            }
-            
+            $empresa   = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('idUsuario' => $idUsuario, 'id' => $empresa));
+            $empresas = array($empresa);
+        }
+
         if ($this->getRequest()->isXmlHttpRequest()) {
 
             $form = $this->createCreateForm($entity, $empresas, $empresa);
@@ -53,8 +54,36 @@ class GastoEmpresaController extends Controller {
 
             if ($form->isValid()) {
 
-                $em->persist($entity);
-                $em->flush();
+                if ($form["fechaPago"]->getData() != null && $entity->getDiaVencimiento() == null) {
+                    // si tiene una fecha de pago pero no tiene un dia de vencimiento, es un gasto puntual,
+                    // por lo tanto  le agrego la fecha de pago al gasto
+                    $entity->setFechaPago($form["fechaPago"]->getData());
+                    $em->persist($entity);
+                    $em->flush();
+                } else if ($form["fechaPago"]->getData() != null && $entity->getDiaVencimiento() != null) {
+                    // es un gasto mensual y el primer ya esta pago
+
+                    // guardo el gasto para poder obtener el id
+                    $em->persist($entity);
+                    $em->flush();
+
+                    $pago = new PagoGastoEmpresa();
+                    $pago->setCosto($entity->getCosto());
+                    $pago->setFechaPago($form["fechaPago"]->getData());
+                    $pago->setEmpresaId($entity->getId());
+                    
+                    $em->persist($pago);
+                    $em->flush();
+                } else {
+                    // si llega aca es por que:
+                    // es un gasto mensual pero el primero no esta pago
+                    // o es un gasto que no tiene fecha de pago ni dia de vencimiento
+                    // por ahora para estos dos casos se procede igual
+
+                    $em->persist($entity);
+                    $em->flush();
+                }
+
 
                 $this->get('session')->getFlashBag()->add('msg_success', 'Se ha agregado el gasto.');
 
@@ -188,10 +217,10 @@ class GastoEmpresaController extends Controller {
     }
 
     private function getRedirect($empresa, $entity){
-        if ($empresa == 0 ) {
+        if (empty($empresa) ) {
             # no tiene id ninguno viene desde el dashboard
             return $this->generateUrl('usuario_dashboard');
-        } elseif ($empresa > 0 ) {
+        } else {
             # tiene empresa, redirecciono a la pagina de la empresa
             return $this->generateUrl('empresa_show', array('razonSocial' => $entity->getEmpresa()->getRazonSocial()));
         }

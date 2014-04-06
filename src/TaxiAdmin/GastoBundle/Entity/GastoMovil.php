@@ -27,12 +27,6 @@ class GastoMovil extends Gasto {
      */
     private $movil;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="TaxiAdmin\GastoBundle\Entity\PagoGasto")
-     * @ORM\JoinColumn(name="pago_id", referencedColumnName="id")
-     */
-    private $pagos;
-
 
     /**
      * Set movil

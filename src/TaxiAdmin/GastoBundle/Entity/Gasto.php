@@ -21,54 +21,32 @@ class Gasto {
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=300)
+     * @ORM\Column(name="descripcion", type="string", length=300, nullable=true)
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="rubro", type="string", length=100, nullable=false)
+     * @ORM\Column(name="rubro", type="string", length=100)
      */
     private $rubro;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaVencimiento", type="date")
-     */
-    private $fechaVencimiento;
-        /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fechaPago", type="date")
+     * @ORM\Column(name="fechaPago", type="date", nullable=true)
      */
     private $fechaPago;
 
     /**
-     * @var \boolean
-     *
-     * @ORM\Column(name="mensual", type="boolean")
-     */
-    private $mensual;
-
-    /**
      * @var \integer
      *
-     * @ORM\Column(name="diaVencimiento", type="integer")
+     * @ORM\Column(name="diaVencimiento", type="integer", nullable=true)
      */
     private $diaVencimiento;
     
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set costo
@@ -79,7 +57,7 @@ class Gasto {
     public function setCosto($costo)
     {
         $this->costo = $costo;
-
+    
         return $this;
     }
 
@@ -102,7 +80,7 @@ class Gasto {
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-
+    
         return $this;
     }
 
@@ -115,76 +93,6 @@ class Gasto {
     {
         return $this->descripcion;
     }
-
-    /**
-     * Set fechaVencimiento
-     *
-     * @param \DateTime $fechaVencimiento
-     * @return Gasto
-     */
-    public function setFechaVencimiento($fechaVencimiento)
-    {
-        $this->fechaVencimiento = $fechaVencimiento;
-
-        return $this;
-    }
-
-    /**
-     * Get fechaVencimiento
-     *
-     * @return \DateTime 
-     */
-    public function getFechaVencimiento()
-    {
-        return $this->fechaVencimiento;
-    }
-
-    /**
-     * Set mensual
-     *
-     * @param boolean $mensual
-     * @return Gasto
-     */
-    public function setMensual($mensual)
-    {
-        $this->mensual = $mensual;
-    
-        return $this;
-    }
-
-    /**
-     * Get mensual
-     *
-     * @return boolean 
-     */
-    public function getMensual()
-    {
-        return $this->mensual;
-    }
-
-    /**
-     * Set diaVencimiento
-     *
-     * @param integer $diaVencimiento
-     * @return Gasto
-     */
-    public function setDiaVencimiento($diaVencimiento)
-    {
-        $this->diaVencimiento = $diaVencimiento;
-    
-        return $this;
-    }
-
-    /**
-     * Get diaVencimiento
-     *
-     * @return integer 
-     */
-    public function getDiaVencimiento()
-    {
-        return $this->diaVencimiento;
-    }
-
 
     /**
      * Set rubro
@@ -210,29 +118,6 @@ class Gasto {
     }
 
     /**
-     * Set pago
-     *
-     * @param \TaxiAdmin\GastoBundle\Entity\PagoGasto $pago
-     * @return Gasto
-     */
-    public function setPago(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pago = null)
-    {
-        $this->pago = $pago;
-    
-        return $this;
-    }
-
-    /**
-     * Get pago
-     *
-     * @return \TaxiAdmin\GastoBundle\Entity\PagoGasto 
-     */
-    public function getPago()
-    {
-        return $this->pago;
-    }
-
-    /**
      * Set fechaPago
      *
      * @param \DateTime $fechaPago
@@ -253,5 +138,28 @@ class Gasto {
     public function getFechaPago()
     {
         return $this->fechaPago;
+    }
+
+    /**
+     * Set diaVencimiento
+     *
+     * @param integer $diaVencimiento
+     * @return Gasto
+     */
+    public function setDiaVencimiento($diaVencimiento)
+    {
+        $this->diaVencimiento = $diaVencimiento;
+    
+        return $this;
+    }
+
+    /**
+     * Get diaVencimiento
+     *
+     * @return integer 
+     */
+    public function getDiaVencimiento()
+    {
+        return $this->diaVencimiento;
     }
 }

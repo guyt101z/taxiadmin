@@ -27,12 +27,6 @@ class GastoEmpresa extends Gasto {
      */
     private $empresa;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="TaxiAdmin\GastoBundle\Entity\PagoGasto")
-     * @ORM\JoinColumn(name="pago_id", referencedColumnName="id")
-     */
-    private $pagos;
-
 
     /**
      * Set empresa
@@ -56,13 +50,7 @@ class GastoEmpresa extends Gasto {
     {
         return $this->empresa;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->pagos = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
     
     /**
      * Add pagos
