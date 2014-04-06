@@ -101,33 +101,32 @@ class GastoEmpresaController extends Controller {
     /**
      * Finds and displays a GastoEmpresa entity.
      *
-     * @Route("/{id}", name="gastoempresa_show")
+     * @Route("/show/{id}", name="gastoempresa_show")
      * @Method("GET")
-     * @Template()
+     * @Template("TaxiAdminGastoBundle:GastoEmpresa:show.html.twig")
      */
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
+        $pagos = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findBy(array('gastoempresa_id' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-
         return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'entity' => $entity,
+            'pagos' => $pagos,
             );
     }
 
     /**
      * Edits an existing GastoEmpresa entity.
      *
-     * @Route("/{id}", name="gastoempresa_update")
-     * @Method("PUT")
-     * @Template("TaxiAdminGastoBundle:GastoEmpresa:edit.html.twig")
+     * @Route("/update/{id}", name="gastoempresa_update")
+     * @Method("GET|PUT")
+     * @Template("TaxiAdminGastoBundle:GastoEmpresa:show.html.twig")
      */
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
@@ -138,47 +137,27 @@ class GastoEmpresaController extends Controller {
             throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        if ($this->getRequest()->isXmlHttpRequest()) {
 
-        if ($editForm->isValid()) {
-            $em->flush();
+            $editForm = $this->createEditForm($entity);
+            return array(
+                'form'   => $editForm->createView(),
+                );
 
-            return $this->redirect($this->generateUrl('gastoempresa_edit', array('id' => $id)));
-        }
+        } else if ($request->isMethod('PUT')) {
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            );
-    }
-    /**
-     * Deletes a GastoEmpresa entity.
-     *
-     * @Route("/{id}", name="gastoempresa_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+            $editForm = $this->createEditForm($entity);
+            $editForm->handleRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
+            if ($editForm->isValid()) {
+                $em->flush();
+                $url = $this->getRedirect($idChofer, $idMovil, $entity);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
+                return $this->redirect($this->generateUrl('gastoempresa_edit', array('id' => $id)));
             }
-
-            $em->remove($entity);
-            $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('gastoempresa'));
     }
-
 
     /**
     * Creates a form to create a GastoEmpresa entity.

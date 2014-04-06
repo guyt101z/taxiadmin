@@ -49,6 +49,7 @@
                             <th>Fecha Pago</th>
                             <th>Día Vencimiento</th>
                             <th>Costo</th>
+                            <th>Rubro</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -64,13 +65,14 @@
                             {% endif %}
                             <td>{{ gasto.diaVencimiento }}</td>
                             <td>{{ gasto.costo }}</td>
+                            <td>{{ gasto.rubro }}</td>
                             <td style="text-align:right;">
-                                <!-- {# <a href="{{ path('chofer_show', { 'nombre': chofer.nombre, 'apellido': chofer.apellido }) }}">
-                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Chofer"></i>
+                                <a href="{{ path('gastoempresa_show', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" title="Ver Gasto"></i>
                                 </a>
-                                <a href="{{ path('empresa_remove_chofer', { 'razonSocial': entity.razonSocial, 'idChofer': chofer.id }) }}" onclick="return confirm('¿Estas seguro?');">
-                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Chofer"></i>
-                                </a> #} -->
+                                <a href="{{ path('gastoempresa_update', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
+                                </a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -232,6 +234,9 @@
 </div>
 <!-- AGREGAR GASTO -->
 <div class="modal fade" id="addGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<!-- AGREGAR GASTO -->
+<div class="modal fade" id="updateGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 
 {% endblock %}

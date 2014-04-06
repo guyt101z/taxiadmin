@@ -370,28 +370,6 @@ class Empresa {
         return $this->moviles;
     }
 
-    /**
-     * Add gastos
-     *
-     * @param \TaxiAdmin\MovilBundle\Entity\Gasto $gastos
-     * @return Empresa
-     */
-    public function addGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gastos)
-    {
-        $this->gastos[] = $gastos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove gastos
-     *
-     * @param \TaxiAdmin\MovilBundle\Entity\Gasto $gastos
-     */
-    public function removeGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gastos)
-    {
-        $this->gastos->removeElement($gastos);
-    }
 
     /**
      * Get gastos
@@ -401,5 +379,28 @@ class Empresa {
     public function getGastos()
     {
         return $this->gastos;
+    }
+
+    /**
+     * Add gastos
+     *
+     * @param \TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos
+     * @return Empresa
+     */
+    public function addGasto(\TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos)
+    {
+        $this->gastos[] = $gastos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove gastos
+     *
+     * @param \TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos
+     */
+    public function removeGasto(\TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos)
+    {
+        $this->gastos->removeElement($gastos);
     }
 }
