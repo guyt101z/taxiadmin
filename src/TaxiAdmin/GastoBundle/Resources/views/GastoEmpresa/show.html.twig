@@ -10,7 +10,7 @@
                     <table class="table table-hover">
                         <tbody>
                             <tr>
-                                <th>Empresa</th>
+                                <th width="150px">Empresa</th>
                                 <td>{{ entity.empresa }}</td>
                             </tr>
                             <tr>
@@ -27,7 +27,7 @@
                             </tr>
                             <tr>
                                 <th>Fecha de Pago</th>
-                                <td>{{ entity.fechaPago|date("d/m/Y")  }}</td>
+                                <td>{{ entity.fechaPago|date("d/m/Y") }}</td>
                             </tr>
                             <tr>
                                 <th>Día de Vencimiento</th>
@@ -42,29 +42,37 @@
                 </div>
             </div>
             {% if entity.diaVencimiento != null %}
-            {% if pagos|length > 1 %}
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Fecha de Pago</th>
-                        <th>Costo</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for pago in pagos %}
-                    <tr>
-                        <td>pago.fechaPago</td>
-                        <td>pago.costo</td>
-                        <td>pago.descripcion</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-            <p>El gasto aún no tiene pagos.</p>
-            {% endif %}
-            {% endif %}
+            {% if pagos|length > 0 %}
+            <div class="col-xs-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Fecha de Pago</th>
+                            <th>Costo</th>
+                            <th>Descripción</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for pago in pagos %}
+                        <tr>
+                            <td>{{ pago.fechaPago|date("d/m/Y") }}</td>
+                            <td>{{ pago.costo }}</td>
+                            <td>{{ pago.descripcion }}</td>
+                            <td>
+                            <a href="{{ path('gastoempresa_removepago', { 'idpago': pago.id, 'id': entity.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar Pago"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>El gasto aún no tiene pagos.</p>
+                {% endif %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

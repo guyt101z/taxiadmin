@@ -42,7 +42,7 @@
 
          <div class="panel panel-default">
             <div class="panel-body">
-            <h3>Gastos</h3>
+                <h3>Gastos</h3>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -57,11 +57,11 @@
                         {% for gasto in entity.gastos %}
                         <tr>
                             {% if gasto.diaVencimiento %}
-                                <td>Gasto Mensual</td>
+                            <td>Gasto Mensual</td>
                             {% elseif (gasto.fechaPago == null) %}
-                                <td>Pendiente de pago</td>
+                            <td>Pendiente de pago</td>
                             {% else %}
-                                <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
+                            <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
                             {% endif %}
                             <td>{{ gasto.diaVencimiento }}</td>
                             <td>{{ gasto.costo }}</td>
@@ -71,6 +71,9 @@
                                     <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" title="Ver Gasto"></i>
                                 </a>
                                 <a href="{{ path('gastoempresa_update', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
+                                </a>
+                                <a href="{{ path('gastoempresa_remove', { 'id': gasto.id }) }}" onclick="return confirm('¿Estas seguro?');">
                                     <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
                                 </a>
                             </td>

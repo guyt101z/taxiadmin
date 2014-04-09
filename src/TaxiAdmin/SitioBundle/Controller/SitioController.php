@@ -29,11 +29,29 @@ class SitioController extends Controller {
     public function homeAction() {
         $session = $this->getRequest()->getSession();
 
-		return array(
-				'formUsuario'   => $this->createForm(new UsuarioType(), new Usuario)->createView(),
-				'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-				'error'         => NULL,
-			);
+        return array(
+            'formUsuario'   => $this->createForm(new UsuarioType(), new Usuario)->createView(),
+            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'error'         => NULL,
+            );
     }
-	
+
+    /**
+     *
+     * @Route("/soporte", name="sitio_soporte")
+     * @Method("GET")
+     */
+    public function soporteAction() {
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Hello Email')
+        ->setFrom('taxiadmin@byg.com.uy')
+        ->setTo('brunovierag@gmail.com')
+        ->setBody('Hello Brus')
+        ;
+        $this->get('mailer')->send($message);
+
+        return null;
+
+    }
+
 }

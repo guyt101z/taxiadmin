@@ -28,7 +28,7 @@ class MovilType extends AbstractType {
         ->add('marca',          'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Marca')))
         ->add('modelo',         'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Modelo')))
         ->add('anio',           'integer', array('attr' => array('min' => '1990', 'class' => 'form-control', 'placeholder' => 'Año')))
-        ->add('numChasis',      'text', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Num. de Chasis')))
+        ->add('numChasis',      'text', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Num. de Chasis'), 'required' => false))
         ->add('numMovil',       'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Num. de Móvil')))
         ->add('despacho',       'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Despacho')))
         ->add('radio',          'choice', array('choices' => $this->radios))

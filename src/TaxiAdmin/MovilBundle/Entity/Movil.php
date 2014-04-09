@@ -141,7 +141,7 @@ class Movil
     /**
      * @ORM\OneToMany(targetEntity="TaxiAdmin\GastoBundle\Entity\GastoMovil", mappedBy="movil")
      */
-    private $gastos;
+    // private $gastos;
 
 
     /**
@@ -609,37 +609,5 @@ class Movil
     {
         return $this->mantenimientos;
     }
-
-    /**
-     * Add gastos
-     *
-     * @param \TaxiAdmin\MovilBundle\Entity\Gasto $gastos
-     * @return Movil
-     */
-    public function addGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gastos)
-    {
-        $this->gastos[] = $gastos;
     
-        return $this;
-    }
-
-    /**
-     * Remove gastos
-     *
-     * @param \TaxiAdmin\MovilBundle\Entity\Gasto $gastos
-     */
-    public function removeGasto(\TaxiAdmin\MovilBundle\Entity\Gasto $gastos)
-    {
-        $this->gastos->removeElement($gastos);
-    }
-
-    /**
-     * Get gastos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getGastos()
-    {
-        return $this->gastos;
-    }
 }

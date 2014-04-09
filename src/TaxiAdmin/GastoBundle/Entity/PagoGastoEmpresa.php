@@ -28,7 +28,6 @@ class PagoGastoEmpresa extends PagoGasto {
      */
     private $gastoempresa_id;
 
-
     /**
      * Get id
      *
@@ -37,29 +36,6 @@ class PagoGastoEmpresa extends PagoGasto {
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set empresa_id
-     *
-     * @param integer $empresaId
-     * @return PagoGastoEmpresa
-     */
-    public function setEmpresaId($empresaId)
-    {
-        $this->empresa_id = $empresaId;
-    
-        return $this;
-    }
-
-    /**
-     * Get empresa_id
-     *
-     * @return integer 
-     */
-    public function getEmpresaId()
-    {
-        return $this->empresa_id;
     }
 
     /**

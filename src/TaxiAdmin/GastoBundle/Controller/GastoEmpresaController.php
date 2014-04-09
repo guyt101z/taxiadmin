@@ -70,7 +70,7 @@ class GastoEmpresaController extends Controller {
                     $pago = new PagoGastoEmpresa();
                     $pago->setCosto($entity->getCosto());
                     $pago->setFechaPago($form["fechaPago"]->getData());
-                    $pago->setEmpresaId($entity->getId());
+                    $pago->setGastoempresaId($entity->getId());
                     
                     $em->persist($pago);
                     $em->flush();
@@ -119,6 +119,58 @@ class GastoEmpresaController extends Controller {
             'entity' => $entity,
             'pagos' => $pagos,
             );
+    }
+
+    /**
+     *
+     * @Route("/remove_pago/{idpago}/{id}", name="gastoempresa_removepago")
+     * @Method("GET")
+     * @Template()
+     */
+    public function removePagoAction($idpago, $id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
+        $pago = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findOneBy(array('id' => $idpago, 'gastoempresa_id' => $id));
+
+        if (!$pago) {
+            throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
+        }
+
+        $em->remove($pago);
+        $em->flush();
+        
+        $this->get('session')->getFlashBag()->add('msg_success', 'El pago se ha eliminado con éxito.');
+        return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $gastoEmpresa->getEmpresa()->getRazonSocial())));
+    }
+
+   /**
+     *
+     * @Route("/remove_gastoempresa/{id}", name="gastoempresa_remove")
+     * @Method("GET")
+     * @Template()
+     */
+    public function removeGastoAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
+        $pagos = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findBy(array('gastoempresa_id' => $id));
+
+        if (!$gastoEmpresa) {
+            throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
+        }
+
+        $razonSocial = $gastoEmpresa->getEmpresa()->getRazonSocial();
+
+        foreach ($pagos as $pago) {
+            $em->remove($pago);
+        }
+
+        $em->remove($gastoEmpresa);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('msg_success', 'El gasto se ha eliminado con éxito.');
+        return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial )));
     }
 
     /**

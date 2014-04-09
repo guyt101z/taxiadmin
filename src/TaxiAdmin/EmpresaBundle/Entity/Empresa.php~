@@ -380,4 +380,27 @@ class Empresa {
     {
         return $this->gastos;
     }
+
+    /**
+     * Add gastos
+     *
+     * @param \TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos
+     * @return Empresa
+     */
+    public function addGasto(\TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos)
+    {
+        $this->gastos[] = $gastos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove gastos
+     *
+     * @param \TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos
+     */
+    public function removeGasto(\TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastos)
+    {
+        $this->gastos->removeElement($gastos);
+    }
 }
