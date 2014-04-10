@@ -39,19 +39,47 @@ class SitioController extends Controller {
     /**
      *
      * @Route("/soporte", name="sitio_soporte")
-     * @Method("GET")
+     * @Method("GET|POST")
+     * @Template("TaxiAdminSitioBundle:Sitio:soporte.html.twig")
      */
-    public function soporteAction() {
-        $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
-        ->setFrom('taxiadmin@byg.com.uy')
-        ->setTo('brunovierag@gmail.com')
-        ->setBody('Hello Brus')
-        ;
-        $this->get('mailer')->send($message);
+    public function soporteAction(Request $request) {
 
-        return null;
+        $form = $this->createFormBuilder()
+        ->setAction($this->generateUrl('sitio_soporte'))
+        ->setMethod('POST')
+        ->add('asunto', 'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Asunto', 'autofocus' => '')))
+        ->add('mensaje', 'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Mensaje')))
+        ->add('submit', 'submit', array('attr' => array('class' => 'btn btn-default')))
+        ->getForm();
 
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            return array(
+                'form'  => $form->createView(),
+                );
+
+        } else if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+
+                $usuario = $this->get('security.context')->getToken()->getUser();
+                $mensaje = "De parte de " . $usuario->getNombre() . " " . $usuario->getApellido() . "\r\n";
+                $mensaje .= "Asunto" . "\r\n" . $data['asunto'] . "\r\n" . "Mensaje:" . "\r\n" . $data['mensaje'];
+
+                $message = \Swift_Message::newInstance()
+                ->setSubject('Soporte TaxiAdmin')
+                ->setFrom($usuario->getEmail())
+                ->setTo('bviera@byg.com.uy')
+                ->setBody($mensaje);
+
+                $this->get('mailer')->send($message);
+                $this->get('session')->getFlashBag()->add('msg_success', 'Se ha enviado el email a soporte, pronto estaremos en contacto.');
+
+                return $this->redirect($request->headers->get('referer'));
+
+            }
+        }
     }
 
 }
