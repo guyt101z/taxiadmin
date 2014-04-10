@@ -25,7 +25,8 @@
     <div class="form-group">
         {{ form_widget(form.descripcion) }}
     </div>
-    
+
+    {% if not diaVencimiento > 0 %}
     <div>
         <label>En caso que ya se haya pago, ingrese la fecha</label>
         <div class="form-group">
@@ -34,15 +35,16 @@
                 {{ form_widget(form.fechaPago) }}
             </div>
             <span class="help-button">
-            <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO del gasto"></i>
+                <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO del gasto"></i>
             </span>
         </div>
     </div>
+    {% endif %}
 
 
     
     <div class="form-group">
-    <label>En caso de que sea un gasto mensual ingrese la fecha de vencimiento.</label>
+        <label>En caso de que sea un gasto mensual ingrese la fecha de vencimiento.</label>
         {{ form_widget(form.diaVencimiento) }}
     </div>
 
@@ -53,6 +55,6 @@
             {{ form_widget(form.submit) }}
         </div>
     </div>
-    {{ form_end(form) }}
+    {# {{ form_end(form) }} #}
 </div>
 {% endblock %}

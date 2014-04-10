@@ -150,35 +150,35 @@ class GastoEmpresaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function removeGastoAction($id) {
-        $em = $this->getDoctrine()->getManager();
+   public function removeGastoAction($id) {
+    $em = $this->getDoctrine()->getManager();
 
-        $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
-        $pagos = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findBy(array('gastoempresa_id' => $id));
+    $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
+    $pagos = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findBy(array('gastoempresa_id' => $id));
 
-        if (!$gastoEmpresa) {
-            throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
-        }
-
-        $razonSocial = $gastoEmpresa->getEmpresa()->getRazonSocial();
-
-        foreach ($pagos as $pago) {
-            $em->remove($pago);
-        }
-
-        $em->remove($gastoEmpresa);
-        $em->flush();
-
-        $this->get('session')->getFlashBag()->add('msg_success', 'El gasto se ha eliminado con éxito.');
-        return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial )));
+    if (!$gastoEmpresa) {
+        throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
     }
+
+    $razonSocial = $gastoEmpresa->getEmpresa()->getRazonSocial();
+
+    foreach ($pagos as $pago) {
+        $em->remove($pago);
+    }
+
+    $em->remove($gastoEmpresa);
+    $em->flush();
+
+    $this->get('session')->getFlashBag()->add('msg_success', 'El gasto se ha eliminado con éxito.');
+    return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $razonSocial )));
+}
 
     /**
      * Edits an existing GastoEmpresa entity.
      *
      * @Route("/update/{id}", name="gastoempresa_update")
      * @Method("GET|PUT")
-     * @Template("TaxiAdminGastoBundle:GastoEmpresa:show.html.twig")
+     * @Template("TaxiAdminGastoBundle:GastoEmpresa:new.html.twig")
      */
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
@@ -191,21 +191,39 @@ class GastoEmpresaController extends Controller {
 
         if ($this->getRequest()->isXmlHttpRequest()) {
 
-            $editForm = $this->createEditForm($entity);
+            echo $entity->getDiaVencimiento();
+            $form = $this->createEditForm($entity);
             return array(
-                'form'   => $editForm->createView(),
+                'form'   => $form->createView(),
+                'diaVencimiento' => $entity->getDiaVencimiento(),
                 );
 
         } else if ($request->isMethod('PUT')) {
 
-            $editForm = $this->createEditForm($entity);
-            $editForm->handleRequest($request);
+            $form = $this->createEditForm($entity);
+            $form->handleRequest($request);
 
-            if ($editForm->isValid()) {
+            if ($form->isValid()) {
+
+                if ($form["fechaPago"]->getData() != null && $entity->getDiaVencimiento() != null) {
+                    // es un gasto mensual y el primer ya esta pago
+
+                    $entity->setFechaPago(null);
+                    $pago = new PagoGastoEmpresa();
+                    $pago->setCosto($entity->getCosto());
+                    $pago->setFechaPago($form["fechaPago"]->getData());
+                    $pago->setGastoempresaId($entity->getId());
+                    
+                    $em->persist($entity);
+                    $em->persist($pago);
+
+                    $em->flush();
+                }
+
                 $em->flush();
-                $url = $this->getRedirect($idChofer, $idMovil, $entity);
 
-                return $this->redirect($this->generateUrl('gastoempresa_edit', array('id' => $id)));
+                $this->get('session')->getFlashBag()->add('msg_success', 'El gasto se ha modificado con éxito.');
+                return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $entity->getEmpresa()->getRazonSocial())));
             }
         }
 
@@ -237,12 +255,12 @@ class GastoEmpresaController extends Controller {
     * @return \Symfony\Component\Form\Form The form
     */
     private function createEditForm(GastoEmpresa $entity) {
-        $form = $this->createForm(new GastoEmpresaType(), $entity, array(
+        $form = $this->createForm(new GastoEmpresaType($entity), $entity, array(
             'action' => $this->generateUrl('gastoempresa_update', array('id' => $entity->getId())),
             'method' => 'PUT',
             ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Update', 'attr' => array('class' => 'btn btn-default')));
 
         return $form;
     }

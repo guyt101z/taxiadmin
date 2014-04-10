@@ -27,7 +27,11 @@
                             </tr>
                             <tr>
                                 <th>Fecha de Pago</th>
+                                {% if entity.fechaPago != null %}
                                 <td>{{ entity.fechaPago|date("d/m/Y") }}</td>
+                                {% else %}
+                                <td></td>
+                                {% endif %}
                             </tr>
                             <tr>
                                 <th>Día de Vencimiento</th>
