@@ -15,6 +15,7 @@
     <!-- Bootstrap theme -->
     <link href="{{ asset('bundles/taxiadminsitio/css/bootstrap-theme.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('bundles/taxiadminsitio/css/app.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('bundles/taxiadminsitio/js/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet"/>
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -101,18 +102,19 @@
         <footer>
             <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation" style="min-height:0px;">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a target="_blank" style="padding:10px 0px;"href="http://www.byg.com.uy">Realizado por BYG</a></li>
+                    <li><a target="_blank" style="padding:10px 0px" href="http://www.byg.com.uy">Realizado por BYG</a></li>
                 </ul>
             </nav>
         </footer>
+    </div>
 
-        <!-- SOPORTE -->
-        <div class="modal fade" id="soporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
-        <!-- SOPORTE -->
-        {% endblock %}
+    <!-- SOPORTE -->
+    <div class="modal fade" id="soporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+    <!-- SOPORTE -->
+    {% endblock %}
 
-        {% block modal %}
-        {% endblock %}
+    {% block modal %}
+    {% endblock %}
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -120,6 +122,18 @@
     <script src="{{ asset('bundles/taxiadminsitio/js/jquery-1.10.2.min.js') }}"></script>
     <script src="{{ asset('bundles/taxiadminsitio/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/taxiadminsitio/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/taxiadminsitio/js/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script>
+        $("[data-date]").datetimepicker({
+            format: "dd/mm/yyyy",
+            language:  'es',
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+        });
+    </script>
     {% block js %}
     {% endblock %}
 </body>

@@ -24,10 +24,10 @@ class MantenimientoType extends AbstractType {
         ->add('taller',               'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Taller'), 'required' => false))
         ->add('descripcionTrabajo',   'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción del trabajo'), 'required' => false))
         ->add('costo',                'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Costo', 'min' => 0)))
-        ->add('fechaIngreso',         'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control')))
-        ->add('fechaFinalizado',      'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
-        ->add('fechaPago',            'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
-        ->add('fechaVencimiento',     'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
+        ->add('fechaIngreso',         'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '')))
+        ->add('fechaFinalizado',      'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => ''), 'required' => false))
+        ->add('fechaPago',            'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => ''), 'required' => false))
+        ->add('fechaVencimiento',     'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => ''), 'required' => false))
         ;
 
         if (count($this->moviles) > 1) {

@@ -23,8 +23,8 @@ class ChoferType extends AbstractType
             ->add('direccion',             'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Dirección')))
             ->add('aporteLeyes',           'number', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Aporte Leyes')))
             ->add('porcentajeLiquidacion', 'number', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Liquidación')))
-            ->add('vencCarneSalud',        'date', array('required' => false, 'widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Venci. Carne Salud')))
-            ->add('vencLibretaConducir',   'date', array('required' => false, 'widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Venc. Libreta Conducir')))
+            ->add('vencCarneSalud',        'date', array('required' => false, 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '', 'placeholder' => 'Venci. Carne Salud')))
+            ->add('vencLibretaConducir',   'date', array('required' => false, 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '', 'placeholder' => 'Venc. Libreta Conducir')))
             ;
         }
 

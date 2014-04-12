@@ -20,7 +20,7 @@ class PagoAdelantoType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('fecha',  'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control', 'placeholder' => 'Fecha')))
+            ->add('fecha',  'date', array('widget' => 'single_text','format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '', 'placeholder' => 'Fecha')))
             ->add('monto',  'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Monto del pago', 'min' => 0, 'max' => $this->saldo, 'autofocus' => '')))
         ;
     }

@@ -46,7 +46,10 @@ class GastoEmpresaController extends Controller {
 
             $form = $this->createCreateForm($entity, $empresas, $empresa);
 
-            return array( 'form'  => $form->createView() );
+            return array(
+                'form'  => $form->createView(),
+                'diaVencimiento'  => 9,
+                );
 
         } else if ($request->isMethod('POST')) {
             $form = $this->createCreateForm($entity, $empresas, $empresa);

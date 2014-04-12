@@ -22,9 +22,9 @@ class MultaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-        ->add('fecha',              'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control')))
-        ->add('fechaPago',          'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
-        ->add('fechaVencimiento',   'date', array('widget' => 'single_text', 'attr' => array('class' => 'form-control'), 'required' => false))
+        ->add('fecha',              'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '')))
+        ->add('fechaPago',          'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => ''), 'required' => false))
+        ->add('fechaVencimiento',   'date', array('widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => ''), 'required' => false))
         ->add('lugar',              'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Lugar')))
         ->add('descripcion',        'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción')))
         ->add('costo',              'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Monto', 'min' => 0)))

@@ -26,35 +26,29 @@
         {{ form_widget(form.descripcion) }}
     </div>
 
-    {% if not diaVencimiento > 0 %}
     <div>
+    {% if diaVencimiento > 0 %}
         <label>En caso que ya se haya pago, ingrese la fecha</label>
-        <div class="form-group">
-            <div class="input-group with-help">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                {{ form_widget(form.fechaPago) }}
-            </div>
-            <span class="help-button">
+        <div class="input-group form-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            {{ form_widget(form.fechaPago) }}
+            <span class="input-group-addon">
                 <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO del gasto"></i>
             </span>
         </div>
-    </div>
-    {% endif %}
+        {% endif %}
+        
+        <div class="form-group">
+            <label>En caso de que sea un gasto mensual ingrese la fecha de vencimiento.</label>
+            {{ form_widget(form.diaVencimiento) }}
+        </div>
 
-
-    
-    <div class="form-group">
-        <label>En caso de que sea un gasto mensual ingrese la fecha de vencimiento.</label>
-        {{ form_widget(form.diaVencimiento) }}
-    </div>
-
-    {{ form_widget(form._token) }}
-    
-    <div class="form-group">
-        <div class="col-sm-offset-2 ">
-            {{ form_widget(form.submit) }}
+        {{ form_widget(form._token) }}
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 ">
+                {{ form_widget(form.submit) }}
+            </div>
         </div>
     </div>
-    {# {{ form_end(form) }} #}
-</div>
-{% endblock %}
+    {% endblock %}
