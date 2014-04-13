@@ -11,8 +11,6 @@
 			<a href="{{ path('multa_create') }}" class="list-group-item" data-toggle="modal" data-target="#multa">Ingresar Multa</a>
 			<a href="{{ path('accidente_create') }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Ingresar Accidente</a>
 			<a href="{{ path('mantenimiento_create') }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Ingresar Mantenimiento</a>
-			<a href="#" class="list-group-item" data-toggle="modal" data-target="#gastoEmpresa">Ingresar Gasto Empresa</a>
-			<a href="#" class="list-group-item" data-toggle="modal" data-target="#gastoMovil">Ingresar Gasto Movil</a>
 		</div>
 
 	</div>
@@ -40,110 +38,6 @@
 <!-- ACCIDENTE -->
 <div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
 <!-- ACCIDENTE -->
-
-<!-- GASTO EMPRESA -->
-<div class="modal fade" id="gastoEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		{# <div class="modal-content">
-
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Ingresar nuevo Gasto</h4>
-			</div>
-
-			<div class="modal-body">
-				<form action="#" role="form">
-					<div class="form-group">
-						<select class="form-control" required autofocus>
-							<option>Empresa 1</option>
-							<option>Empresa 2</option>
-							<option>Empresa 3</option>
-						</select>
-					</div>
-					<div class="form-group">
-						
-						<div class="input-group with-help">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="date" class="form-control" id="inputGastoEmpresaFecha" placeholder="Fecha" required>
-						</div>
-						<span class="help-button"> 
-							<i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de realizado el gasto"></i>
-						</span>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" id="inputGastoEmpresaRubro" placeholder="Rubro" required>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input type="number" class="form-control" id="inputGastoEmpresaMonto" placeholder="Monto" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<textarea class="form-control" rows="3" id="inputGastoEmpresaDetalle" placeholder="Detalle" required></textarea>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 ">
-							<button type="submit" class="btn btn-default">Guardar</button>
-						</div>
-					</div>
-				</form>
-			</div>
-
-		</div> #}
-	</div>
-</div>
-<!-- GASTO EMPRESA -->
-
-<!-- GASTO MOVIL -->
-<div class="modal fade" id="gastoMovil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		{# <div class="modal-content">
-
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Ingresar nuevo Gasto</h4>
-			</div>
-
-			<div class="modal-body">
-				<form action="#" role="form">
-					<div class="form-group">
-						<select class="form-control" required autofocus>
-							<option>STX-1234</option>
-							<option>STX-6541</option>
-							<option>STX-7894</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<div class="input-group with-help">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-							<input type="date" class="form-control" id="inputGastoMovilFecha" placeholder="Fecha" required>
-						</div>
-						<span class="help-button"> 
-							<i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de realizado el gasto"></i>
-						</span>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-							<input type="number" class="form-control" id="inputGastoMovilMonto" placeholder="Monto" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<textarea class="form-control" rows="3" id="inputGastoMovilDetalle" placeholder="Detalle" required></textarea>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 ">
-							<button type="submit" class="btn btn-default">Guardar</button>
-						</div>
-					</div>
-				</form>
-			</div>
-
-		</div> #}
-	</div>
-</div>
-<!-- GASTO MOVIL -->
 
 <!-- MANTENIMIENTO -->
 <div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>

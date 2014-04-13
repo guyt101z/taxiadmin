@@ -45,7 +45,13 @@ class Gasto {
      * @ORM\Column(name="diaVencimiento", type="integer", nullable=true)
      */
     private $diaVencimiento;
-    
+
+    /**
+     * @var \boolean
+     *
+     * @ORM\Column(name="isMensual", type="boolean")
+     */
+    private $isMensual;
 
 
     /**
@@ -161,5 +167,28 @@ class Gasto {
     public function getDiaVencimiento()
     {
         return $this->diaVencimiento;
+    }
+
+    /**
+     * Set isMensual
+     *
+     * @param boolean $isMensual
+     * @return Gasto
+     */
+    public function setIsMensual($isMensual)
+    {
+        $this->isMensual = $isMensual;
+    
+        return $this;
+    }
+
+    /**
+     * Get isMensual
+     *
+     * @return boolean 
+     */
+    public function getIsMensual()
+    {
+        return $this->isMensual;
     }
 }
