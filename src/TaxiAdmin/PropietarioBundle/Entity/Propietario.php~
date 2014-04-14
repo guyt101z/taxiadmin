@@ -91,10 +91,10 @@ class Propietario extends Persona {
     /**
      * Add empresas
      *
-     * @param \TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Empresa $empresas
      * @return Propietario
      */
-    public function addEmpresa(\TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas)
+    public function addEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresas)
     {
         $this->empresas[] = $empresas;
     
@@ -104,9 +104,9 @@ class Propietario extends Persona {
     /**
      * Remove empresas
      *
-     * @param \TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas
+     * @param \TaxiAdmin\EmpresaBundle\Entity\Empresa $empresas
      */
-    public function removeEmpresa(\TaxiAdmin\PropietarioBundle\Entity\Empresa $empresas)
+    public function removeEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresas)
     {
         $this->empresas->removeElement($empresas);
     }
