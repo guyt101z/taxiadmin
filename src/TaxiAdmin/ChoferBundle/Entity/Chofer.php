@@ -265,39 +265,6 @@ class Chofer extends Persona {
     }
 
     /**
-     * Add adelantos
-     *
-     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos
-     * @return Chofer
-     */
-    public function addAdelanto(\TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos)
-    {
-        $this->adelantos[] = $adelantos;
-    
-        return $this;
-    }
-
-    /**
-     * Remove adelantos
-     *
-     * @param \TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos
-     */
-    public function removeAdelanto(\TaxiAdmin\ChoferBundle\Entity\Chofer $adelantos)
-    {
-        $this->adelantos->removeElement($adelantos);
-    }
-
-    /**
-     * Get adelantos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAdelantos()
-    {
-        return $this->adelantos;
-    }
-
-    /**
      * Add accidentes
      *
      * @param \TaxiAdmin\ChoferBundle\Entity\Accidente $accidentes
@@ -361,5 +328,38 @@ class Chofer extends Persona {
     public function getMultas()
     {
         return $this->multas;
+    }
+
+    /**
+     * Add adelantos
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Adelanto $adelantos
+     * @return Chofer
+     */
+    public function addAdelanto(\TaxiAdmin\ChoferBundle\Entity\Adelanto $adelantos)
+    {
+        $this->adelantos[] = $adelantos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove adelantos
+     *
+     * @param \TaxiAdmin\ChoferBundle\Entity\Adelanto $adelantos
+     */
+    public function removeAdelanto(\TaxiAdmin\ChoferBundle\Entity\Adelanto $adelantos)
+    {
+        $this->adelantos->removeElement($adelantos);
+    }
+
+    /**
+     * Get adelantos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAdelantos()
+    {
+        return $this->adelantos;
     }
 }

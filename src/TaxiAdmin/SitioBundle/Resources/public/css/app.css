@@ -22,6 +22,10 @@ footer .navbar {
 	padding-top: 7px;
 }
 
+.help-date {
+	white-space: normal;
+}
+
 .with-help {
 	 width:95%;
 	 float: left;
