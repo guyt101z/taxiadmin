@@ -57,6 +57,7 @@ class Adelanto
 
     /**
      * @ORM\OneToMany(targetEntity="TaxiAdmin\ChoferBundle\Entity\PagoAdelanto", mappedBy="adelanto")
+     * @ORM\OrderBy({"fecha" = "ASC"})
      */
     private $pagos;
 

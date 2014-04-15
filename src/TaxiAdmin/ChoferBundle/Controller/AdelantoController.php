@@ -145,7 +145,7 @@ class AdelantoController extends Controller {
      */
     public function deleteAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('TaxiAdminChoferBundle:Adelanto')->find($id);
+        $entity = $em->getRepository('TaxiAdminChoferBundle:Adelanto')->findOneBy(array('id' => $id));
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }

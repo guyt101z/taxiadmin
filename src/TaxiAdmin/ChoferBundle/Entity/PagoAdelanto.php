@@ -23,7 +23,7 @@ class PagoAdelanto
 
     /**
      * @ORM\ManyToOne(targetEntity="TaxiAdmin\ChoferBundle\Entity\Adelanto", inversedBy="pagos")
-     * @ORM\JoinColumn(name="adelanto_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="adelanto_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $adelanto;
 
