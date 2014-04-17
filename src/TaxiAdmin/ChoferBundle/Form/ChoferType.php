@@ -21,6 +21,7 @@ class ChoferType extends AbstractType
             ->add('telefono',              'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Teléfono')))
             ->add('celular',               'text', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Celular')))
             ->add('direccion',             'text', array('required' => false, 'attr' => array('class' => 'form-control', 'placeholder' => 'Dirección')))
+            ->add('fechaIngreso',           'date', array('required' => false, 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '', 'placeholder' => 'Fecha Ingreso')))
             ->add('aporteLeyes',           'number', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Aporte Leyes')))
             ->add('porcentajeLiquidacion', 'number', array('required' => true, 'attr' => array('class' => 'form-control', 'placeholder' => 'Liquidación')))
             ->add('vencCarneSalud',        'date', array('required' => false, 'widget' => 'single_text', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'form-control', 'data-date' => '', 'placeholder' => 'Venci. Carne Salud')))

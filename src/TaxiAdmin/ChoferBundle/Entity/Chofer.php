@@ -59,6 +59,13 @@ class Chofer extends Persona {
     private $email;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="fechaIngreso", type="datetime", nullable=true)
+     */
+    private $fechaIngreso;
+
+    /**
      * @ORM\ManyToMany(targetEntity="TaxiAdmin\EmpresaBundle\Entity\Empresa", mappedBy="choferes")
      */
      private $empresas;
@@ -361,5 +368,28 @@ class Chofer extends Persona {
     public function getAdelantos()
     {
         return $this->adelantos;
+    }
+
+    /**
+     * Set fechaIngreso
+     *
+     * @param \DateTime $fechaIngreso
+     * @return Chofer
+     */
+    public function setFechaIngreso($fechaIngreso)
+    {
+        $this->fechaIngreso = $fechaIngreso;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaIngreso
+     *
+     * @return \DateTime 
+     */
+    public function getFechaIngreso()
+    {
+        return $this->fechaIngreso;
     }
 }
