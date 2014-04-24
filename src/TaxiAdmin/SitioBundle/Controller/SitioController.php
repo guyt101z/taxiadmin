@@ -82,4 +82,29 @@ class SitioController extends Controller {
         }
     }
 
+    /**
+     *
+     * @Route("/contacto", name="home_contacto")
+     * @Method("POST")
+     */
+    public function contactoAction(Request $request) {
+
+
+        $email = $request->request->get('email');
+        $mensaje = "De parte de " . $email . "\r\n";
+        $mensaje .= "Asunto" . "\r\n" . $request->request->get('asunto') . "\r\n" . "Mensaje:" . "\r\n" . $request->request->get('mensaje');
+
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Soporte TaxiAdmin')
+        ->setFrom($email)
+        ->setTo('bviera@byg.com.uy')
+        ->setBody($mensaje);
+
+        $this->get('mailer')->send($message);
+
+        $this->get('session')->getFlashBag()->add('msg_success', 'Gracias por contactar con TaxiAdmin, pronto responderemos a su solicitud.');
+
+        return $this->redirect($this->generateUrl('sitio_home'));
+    }
+
 }
