@@ -1,0 +1,61 @@
+{% extends "TaxiAdminSitioBundle::modal.html.twig" %}
+
+{% block contenido %}
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
+</div>
+
+<div class="modal-body">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th width="100px;">Fecha</th>
+              <td>{{ entity.fecha|date("d/m/Y") }}</td>
+            </tr>
+            <tr>
+              <th>Monto</th>
+              <td>${{ entity.monto }}</td>
+            </tr>
+            <tr>
+              <th>Saldo</th>
+              <td>${{ entity.saldo }}</td>
+            </tr>
+            <tr>
+              <th>Detalle</th>
+              <td>{{ entity.detalle }}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="panel-body">
+      <h4>Pagos</h4>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pago in entity.pagos %}
+          <tr>
+            <td>{{ pago.fecha|date("d/m/Y") }}</td>
+            <td>${{ pago.monto }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

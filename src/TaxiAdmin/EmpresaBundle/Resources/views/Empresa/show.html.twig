@@ -1,0 +1,245 @@
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
+
+{% block contenido %}
+
+<div class="row">
+
+    <div class="col-xs-12  col-md-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#modificarEmpresa">Modificar Empresa</a>
+            <a href="{{ path('empresa_add_propietario', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addPropietario">Agregar Propietario</a>
+            <a href="{{ path('empresa_add_chofer', { 'razonSocial': entity.razonSocial }) }}" class="list-group-item" data-toggle="modal" data-target="#addChofer">Agregar Chofer</a>
+            <a href="{{ path('gasto_empresa_create', { 'empresa': entity.id, 'mensual': 0 }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto</a>
+            <a href="{{ path('gasto_empresa_create', { 'empresa': entity.id, 'mensual': 1 }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto Mensual</a>
+            <a href="#" class="list-group-item">Imprimir Información</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Información</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th width="200px;">Nombre</th>
+                                <td>{{ entity.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Razón Social</th>
+                                <td>{{ entity.razonSocial }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-12">
+
+           <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Gastos</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Fecha Pago</th>
+                            <th>Día Vencimiento</th>
+                            <th>Costo</th>
+                            <th>Rubro</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gasto in entity.gastos %}
+                        <tr>
+                            {% if gasto.diaVencimiento %}
+                            <td>Gasto Mensual</td>
+                            {% elseif (gasto.fechaPago == null) %}
+                            <td>Pendiente de pago</td>
+                            {% else %}
+                            <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
+                            {% endif %}
+                            <td>{{ gasto.diaVencimiento }}</td>
+                            <td>{{ gasto.costo }}</td>
+                            <td>{{ gasto.rubro }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('gastoempresa_show', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" title="Ver Gasto"></i>
+                                </a>
+                                <a href="{{ path('gastoempresa_update', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
+                                </a>
+                                <a href="{{ path('gastoempresa_remove', { 'id': gasto.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Choferes</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Celular</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for chofer in entity.choferes %}
+                        <tr>
+                            <td>{{ chofer.nombre }}</td>
+                            <td>{{ chofer.apellido }}</td>
+                            <td>{{ chofer.celular }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('chofer_show', { 'nombre': chofer.nombre, 'apellido': chofer.apellido }) }}">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Chofer"></i>
+                                </a>
+                                <a href="{{ path('empresa_remove_chofer', { 'razonSocial': entity.razonSocial, 'idChofer': chofer.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Chofer"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Moviles</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Matrícula</th>
+                            <th>Num. Móvil</th>
+                            <th>Radio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for movil in entity.moviles %}
+                        <tr>
+                            <td>{{ movil.matricula }}</td>
+                            <td>{{ movil.numMovil }}</td>
+                            <td>{{ movil.radio }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('movil_show', { 'matricula': movil.matricula }) }}">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Móvil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Propietarios</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Celular</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for prop in entity.propietarios %}
+                        <tr>
+                            <td>{{ prop.nombre }}</td>
+                            <td>{{ prop.apellido }}</td>
+                            <td>{{ prop.celular }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('propietario_show', { 'nombre': prop.nombre, 'apellido': prop.apellido }) }}">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Propietario"></i>
+                                </a>
+                                <a href="{{ path('empresa_remove_propietario', { 'razonSocial': entity.razonSocial, 'idPropietario': prop.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Quitar Propietario"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+<!--                     <ul class="pagination pagination-sm">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- EDITAR -->
+<div class="modal fade" id="modificarEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Nueva Empresa</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.razonSocial) }}
+                </div>
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Guardar</button>
+                    </div>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- EDITAR -->
+
+<!-- AGREGAR PROPIETARIO -->
+<div class="modal fade" id="addPropietario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<!-- AGREGAR CHOFER -->
+<div class="modal fade" id="addChofer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<!-- AGREGAR GASTO -->
+<div class="modal fade" id="addGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<!-- AGREGAR GASTO -->
+<div class="modal fade" id="updateGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+
+{% endblock %}

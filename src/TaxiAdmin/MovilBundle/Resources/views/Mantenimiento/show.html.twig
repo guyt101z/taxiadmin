@@ -1,0 +1,72 @@
+{% extends "TaxiAdminSitioBundle::modal.html.twig" %}
+
+{% block contenido %}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Detalle mantenimiento</h4>
+</div>
+
+<div class="modal-body">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th width="190px;">Motivo del Ingreso</th>
+                            <td>{{ entity.motivoIngreso }}</td>
+                        </tr>
+                        <tr>
+                            <th>Taller</th>
+                            <td>{{ entity.taller }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción del Trabajo</th>
+                            <td>{{ entity.descripcionTrabajo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Costo</th>
+                            <td>${{ entity.costo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Ingreso</th>
+                            {% if entity.fechaIngreso is null %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ entity.fechaIngreso|date("d/m/Y") }}</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Fecha de Finalizado</th>
+                            {% if entity.fechaFinalizado is null %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ entity.fechaFinalizado|date("d/m/Y") }}</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Fecha de Vencimiento</th>
+                            {% if entity.fechaVencimiento is null %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ entity.fechaVencimiento|date("d/m/Y") }}</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <th>Fecha de Pago</th>
+                            {% if entity.fechaPago is null %}
+                            <td></td>
+                            {% else %}
+                            <td>{{ entity.fechaPago|date("d/m/Y") }}</td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

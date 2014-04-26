@@ -1,7 +1,40 @@
-/cache/*
-/Docs
-/data/sql
-/log/*
-/test
-notasMarcelo
-apps/frontend/config/factories.yml
+
+
+app/bootstrap_cache.php.cache
+app/config/parameters.ini
+app/config/parameters.yml
+app/cache/*
+app/logs/*
+vendor/*
+web/bundles/*
+web/css/*
+web/js/*
+web/uploads/*
+composer.phar
+
+# -- Sistemas Operativos ------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.*
+!.gitignore
+!.htaccess
+*~
+
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+*.sublime-workspace
+
+TaxiAdmin.sublime-workspace
+
+TaxiAdmin.sublime-workspace

@@ -1,0 +1,43 @@
+{% extends "TaxiAdminSitioBundle::modal.html.twig" %}
+
+{% block contenido %}
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" id="myModalLabel">Detalle accidente</h4>
+</div>
+
+<div class="modal-body">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>Chofer</th>
+              <td>{{ entity.chofer }}</td>
+            </tr>
+            <tr>
+              <th>Movil</th>
+              <td>{{ entity.movil }}</td>
+            </tr>
+            <tr>
+              <th>Fecha</th>
+              <td>{{ entity.fecha|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+              <th>Lugar</th>
+              <td>{{ entity.lugar }}</td>
+            </tr>
+            <tr>
+              <th>Descripcion</th>
+              <td>{{ entity.descripcion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+security:
+    encoders:
+        TaxiAdmin\UsuarioBundle\Entity\Usuario:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER]
+
+    providers:
+        administrators:
+            entity: { class: TaxiAdminUsuarioBundle:Usuario, property: email }
+
+    firewalls:
+        login:
+            pattern:  sitio_home
+            security: false
+
+        secured_area:
+            pattern:   ^/
+            anonymous: ~
+            form_login:
+                login_path: sitio_login
+                check_path: _security_check
+                default_target_path: usuario_dashboard
+            logout:
+                path:   sitio_logout
+                target: sitio_home
+            http_basic:
+               realm: "Ingrese Email y Clave"
+
+    access_control:
+        - { path: ^/usuario/registrarse,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/usuario,              roles: ROLE_USER }
+        - { path: ^/empresas,             roles: ROLE_USER }
+        - { path: ^/propietarios,         roles: ROLE_USER }
+        - { path: ^/choferes,             roles: ROLE_USER }
+        - { path: ^/login_check,          roles: ROLE_USER }
+        - { path: ^/,                     roles: IS_AUTHENTICATED_ANONYMOUSLY }

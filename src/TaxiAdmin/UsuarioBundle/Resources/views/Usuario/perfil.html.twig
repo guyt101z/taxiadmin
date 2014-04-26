@@ -1,0 +1,49 @@
+{% extends "TaxiAdminUsuarioBundle:Usuario:layout.html.twig" %}
+
+{% block usuario_contenido %}
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<h3>Perfil</h3>
+
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<tbody>
+					<tr>
+						<th>Nombre</th>
+						<td>{{ usuario.nombre }}</td>
+					</tr>
+					<tr>
+						<th>Apellidos</th>
+						<td>{{ usuario.apellido }}</td>
+					</tr>
+					<tr>
+						<th>Teléfono</th>
+						<td>{{ usuario.telefono }}</td>
+					</tr>
+					<tr>
+						<th>Celular</th>
+						<td>{{ usuario.celular }}</td>
+					</tr>
+					<tr>
+						<th>Dirección</th>
+						<td>{{ usuario.direccion }}</td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td>{{ usuario.email }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 ">
+					<button type="submit" class="btn btn-default">Editar</button>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+{% endblock %}

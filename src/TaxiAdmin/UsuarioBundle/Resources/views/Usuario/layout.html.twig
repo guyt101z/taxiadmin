@@ -1,0 +1,22 @@
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
+
+{% block contenido %}
+
+<div class="row">
+	<div class="col-md-3 ">
+
+		<div class="list-group">
+			<a href="{{ path('perfil') }}" class="list-group-item">Perfil</a>
+      		<a href="{{ path('informacionUsuario') }}" class="list-group-item">Información</a>
+			<a href="{{ path('changePassword') }}" class="list-group-item">Cambiar Clave</a>
+		</div>
+
+	</div>
+
+	<div class="col-md-9">
+        {% block usuario_contenido %}
+        {% endblock %}
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
+
+{% block contenido %}
+
+<div class="row">
+    <div class="col-md-3 ">
+
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#nuevoChofer">Nuevo Chofer</a>
+            <a href="#" class="list-group-item">Imprimir listado</a>
+        </div>
+
+    </div>
+    <div class="col-xs-13 col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Choferes</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Telefono</th>
+                                <th>Celular</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                            <tr>
+                                <td>{{ entity.nombre }}</td>
+                                <td>{{ entity.apellido }}</td>
+                                <td>{{ entity.telefono }}</td>
+                                <td>{{ entity.celular }}</td>
+                                <td>
+                                    <a href="{{ path('chofer_show', { 'nombre': entity.nombre, 'apellido': entity.apellido }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- NUEVA -->
+<div class="modal fade" id="nuevoChofer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Nuevo Chofer</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.apellido) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.telefono) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.celular) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.direccion) }}
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    {{ form_widget(form.fechaIngreso) }}
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Fecha de ingreso a la Empresa"></i>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">%</i></span>
+                        {{ form_widget(form.aporteLeyes) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">%</i></span>
+                        {{ form_widget(form.porcentajeLiquidacion) }}
+                    </div>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    {{ form_widget(form.vencCarneSalud) }}
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha del Vencimiento del Carne de Salud"></i>
+                    </span>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    {{ form_widget(form.vencLibretaConducir) }}
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha del Vencimiento de la Libreta de Conducir"></i>
+                    </span>
+                </div>
+
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Crear</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- NUEVA -->
+
+{% endblock %}

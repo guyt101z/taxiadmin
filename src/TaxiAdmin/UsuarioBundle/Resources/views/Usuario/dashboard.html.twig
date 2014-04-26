@@ -1,0 +1,45 @@
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
+
+{% block contenido %}
+
+<div class="row">
+	<div class="col-md-3 ">
+
+		<div class="list-group">
+			<a href="#recaudacion" class="list-group-item">Nueva Recaudación</a>
+			<a href="{{ path('adelanto_create') }}" class="list-group-item" data-toggle="modal" data-target="#adelanto">Nuevo Adelanto</a>
+			<a href="{{ path('multa_create') }}" class="list-group-item" data-toggle="modal" data-target="#multa">Ingresar Multa</a>
+			<a href="{{ path('accidente_create') }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Ingresar Accidente</a>
+			<a href="{{ path('mantenimiento_create') }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Ingresar Mantenimiento</a>
+		</div>
+
+	</div>
+	<div class="col-xs-13 col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h3>Próximos Vencimientos</h3>
+
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ADELANTO -->
+<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+<!-- ADELANTO -->
+
+<!-- MULTA -->
+<div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<!-- MULTA -->
+
+
+<!-- ACCIDENTE -->
+<div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<!-- ACCIDENTE -->
+
+<!-- MANTENIMIENTO -->
+<div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+
+{% endblock %}

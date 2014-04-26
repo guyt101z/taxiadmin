@@ -1,0 +1,31 @@
+
+body{
+	padding-top: 50px;
+	background:url('../img/bg.jpg');
+}
+
+footer {
+	margin-top:50px;
+}
+
+footer .navbar {
+	padding: 0 50px;
+	background-image:none !important;
+}
+
+.form-style {
+	padding: 15px 30px;
+}
+
+.help-button {
+	float:right; 
+	padding-top: 7px;
+}
+
+.help {
+	white-space: normal;
+}
+
+table i {
+	margin: 0 2px;
+}

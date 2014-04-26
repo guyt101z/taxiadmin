@@ -1,0 +1,346 @@
+{% extends "TaxiAdminSitioBundle::layout.html.twig" %}
+
+{% block contenido %}
+
+<div class="row">
+
+    <div class="col-md-3 ">
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#editChofer">Modificar Chofer</a>
+            <a href="{{ path('adelanto_create', { 'idChofer': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#adelanto">Agregar Adelanto</a>
+            <a href="{{ path('accidente_create', { 'idChofer': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
+            <a href="{{ path('multa_create', { 'idChofer': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#multa">Agregar Multa</a>
+            <a href="#" class="list-group-item">Imprimir Información</a>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Información</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th width="300px;">Nombre</th>
+                                <td>{{ entity.nombre }}</td>
+                            </tr>
+                            <tr>
+                                <th>Apellido</th>
+                                <td>{{ entity.apellido }}</td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td>{{ entity.telefono }}</td>
+                            </tr>
+                            <tr>
+                                <th>Celular</th>
+                                <td>{{ entity.celular }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ entity.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td>{{ entity.direccion }}</td>
+                            </tr>
+                            <tr>
+                                <th>Fecha de Ingreso</th>
+                                <td>{{ entity.fechaIngreso is null ? "" : entity.fechaIngreso|date("d/m/Y") }}</td>
+                            </tr>
+                            <tr>
+                                <th>Aporte Leyes</th>
+                                <td>{{ entity.aporteLeyes }} % </td>
+                            </tr>
+                            <tr>
+                                <th>Liquidación</th>
+                                <td>{{ entity.porcentajeLiquidacion }} % </td>
+                            </tr>
+                            <tr>
+                                <th>Vencimiento Carne de Salud</th>
+                                <td>{{ entity.vencCarneSalud is null ? "" : entity.vencCarneSalud|date("d/m/Y") }}</td>
+                            </tr>
+                            <tr>
+                                <th>Vencimiento Libreta Conducir</th>
+                                <td>{{ entity.vencLibretaConducir is null ? "" : entity.vencLibretaConducir|date("d/m/Y") }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Empresas</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Razón Social</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for empresa in entity.empresas %}
+                            <tr>
+                                <td>{{ empresa.nombre }}</td>
+                                <td>{{ empresa.razonSocial }}</td>
+                                <td style="text-align:right;">
+                                    <a href="{{ path('empresa_show', { 'razonSocial': empresa.razonSocial }) }}">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Empresa"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Adelantos</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Monto</th>
+                                <th>Saldo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for adelanto in entity.adelantos %}
+                            <tr>
+                                <td>{{ adelanto.fecha|date("d/m/Y") }}</td>
+                                <td>{{ adelanto.monto }}</td>
+                                <td>{{ adelanto.saldo }}</td>
+                                <td style="text-align:right;">
+
+                                    <a href="{{  path('adelanto_show', { 'id': adelanto.id }) }}" data-toggle="modal" data-target="#adelanto" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
+
+                                    <!-- si tiene saldo a pagar dejo crear un pago  -->
+                                    {% if adelanto.saldo > 0 %}
+                                    <a href="{{  path('adelanto_add_pago', { 'idAdelanto': adelanto.id }) }}" data-toggle="modal" data-target="#adelanto" data-refresh="true">
+                                        <i class="glyphicon glyphicon-plus help-tooltip" data-placement="left" data-toggle="tooltip" title="Agregar Pago"></i>
+                                    </a>
+                                    {% endif %}
+
+
+                                    <a href="{{ path('adelanto_delete', { 'id': adelanto.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Accidentes</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Movil</th>
+                                <th>Lugar</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for accidente in entity.accidentes %}
+                            <tr>
+                                <td>{{ accidente.fecha|date("d/m/Y") }}</td>
+                                <td>{{ accidente.movil.matricula }}</td>
+                                <td>{{ accidente.lugar }}</td>
+                                <td style="text-align:right;">
+
+                                    <a href="{{  path('accidente_show', { 'id': accidente.id }) }}" data-toggle="modal" data-target="#accidente" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
+
+                                    <a href="{{ path('accidente_delete', { 'id': accidente.id, 'vista': 0 }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Multas</h3>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Movil</th>
+                                <th>Valor</th>
+                                <th>Vencimiento</th>
+                                <th>Pago</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for multa in entity.multas %}
+                            <tr>
+                                <td>{{ multa.fecha|date("d/m/Y") }}</td>
+                                <td>{{ multa.movil }}</td>
+                                <td>{{ multa.costo }}</td>
+                                <td>{{ multa.fechaVencimiento|date("d/m/Y") }}</td>
+                                {% if multa.fechaPago is null %}
+                                <td>No</td>
+                                {% else %}
+                                <td>{{ multa.fechaPago|date("d/m/Y") }}</td>
+                                {% endif %}
+                                <td style="text-align:right;">
+
+                                    <a href="{{  path('multa_show', { 'id': multa.id }) }}" data-toggle="modal" data-target="#multa" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
+
+                                    <a href="{{ path('multa_update', { 'idChofer': entity.id, 'id': multa.id }) }}" data-toggle="modal" data-target="#multa" data-refresh="true">
+                                        <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
+                                    </a>
+
+                                    <a href="{{ path('multa_delete', { 'id': multa.id, 'vista': 0 }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MODIFICAR -->
+<div class="modal fade" id="editChofer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modificar Chofer</h4>
+            </div>
+
+            <div class="modal-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_widget(form.nombre) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.apellido) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.telefono) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.celular) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.direccion) }}
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    {{ form_widget(form.fechaIngreso) }}
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Fecha de ingreso a la Empresa"></i>
+                    </span>
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon">%</i></span>
+                    {{ form_widget(form.aporteLeyes) }}
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese el Porcentaje para el Aporte a las Leyes Patronales"></i>
+                    </span>
+                </div>
+                <div class="input-group form-group">
+                    <span class="input-group-addon">%</i></span>
+                    {{ form_widget(form.porcentajeLiquidacion) }}
+                    <span class="input-group-addon"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese el Porcentaje de Liquidación"></i>
+                    </span>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    {{ form_widget(form.vencCarneSalud) }}
+
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha del Vencimiento del Carne de Salud"></i>
+                    </span>
+                </div>
+
+                <div class="input-group form-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    {{ form_widget(form.vencLibretaConducir) }}
+                    <span class="input-group-addon help"> 
+                        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha del Vencimiento de la Libreta de Conducir"></i>
+                    </span>
+                </div>
+
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Guardar</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- MODIFICAR -->
+
+<!-- ADELANTO -->
+<div class="modal fade" id="adelanto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<!-- ACCIDENTE -->
+<div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<!-- MULTA -->
+<div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+
+{% endblock %}

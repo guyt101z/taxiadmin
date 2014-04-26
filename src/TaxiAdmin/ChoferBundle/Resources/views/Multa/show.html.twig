@@ -1,0 +1,47 @@
+{% extends "TaxiAdminSitioBundle::modal.html.twig" %}
+
+{% block contenido %}
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" id="myModalLabel">Detalle multa</h4>
+</div>
+
+<div class="modal-body">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th width="170px;">Fecha</th>
+              <td>{{ entity.fecha|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+              <th>Fecha Vencimiento</th>
+              <td>{{ entity.fechaVencimiento|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+              <th>Fecha de Pago</th>
+              <td>{{ entity.fechaPago|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+              <th>Costo</th>
+              <td>${{ entity.costo }}</td>
+            </tr>
+            <tr>
+              <th>Lugar</th>
+              <td>{{ entity.lugar }}</td>
+            </tr>
+            <tr>
+              <th>Descripción</th>
+              <td>{{ entity.descripcion }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
