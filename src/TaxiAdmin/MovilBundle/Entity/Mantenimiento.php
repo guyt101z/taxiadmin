@@ -55,6 +55,14 @@ class Mantenimiento
      */
     private $costo;
 
+
+    /**
+     * @var \integer
+     *
+     * @ORM\Column(name="kmIngreso", type="integer", nullable=true)
+     */
+    private $kmIngreso;
+
     /**
      * @var \DateTime
      *
@@ -299,5 +307,28 @@ class Mantenimiento
     public function getFechaVencimiento()
     {
         return $this->fechaVencimiento;
+    }
+
+    /**
+     * Set kmIngreso
+     *
+     * @param integer $kmIngreso
+     * @return Mantenimiento
+     */
+    public function setKmIngreso($kmIngreso)
+    {
+        $this->kmIngreso = $kmIngreso;
+    
+        return $this;
+    }
+
+    /**
+     * Get kmIngreso
+     *
+     * @return integer 
+     */
+    public function getKmIngreso()
+    {
+        return $this->kmIngreso;
     }
 }

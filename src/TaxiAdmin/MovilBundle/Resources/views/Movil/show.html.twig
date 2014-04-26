@@ -104,6 +104,7 @@
               <tr>
                 <th>Fecha Ingreso</th>
                 <th>Costo</th>
+                <th>Taller</th>
                 <th>Fecha Vencimiento</th>
                 <th>Pago</th>
                 <th></th>
@@ -114,6 +115,7 @@
               <tr>
                 <td>{{ mantenimiento.fechaIngreso|date("d/m/Y") }}</td>
                 <td>{{ mantenimiento.costo }}</td>
+                <td>{{ mantenimiento.taller }}</td>
                 <td>{{ mantenimiento.fechaVencimiento|date("d/m/Y") }}</td>
                 {% if mantenimiento.fechaPago is null %}
                 <td>No</td>
