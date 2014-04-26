@@ -27,6 +27,28 @@ class GastoEmpresa extends Gasto {
      */
     private $empresa;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa", mappedBy="gastoEmpresa")
+     */
+    private $pagos;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pagos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set empresa
@@ -37,7 +59,7 @@ class GastoEmpresa extends Gasto {
     public function setEmpresa(\TaxiAdmin\EmpresaBundle\Entity\Empresa $empresa = null)
     {
         $this->empresa = $empresa;
-
+    
         return $this;
     }
 
@@ -51,26 +73,25 @@ class GastoEmpresa extends Gasto {
         return $this->empresa;
     }
 
-    
     /**
      * Add pagos
      *
-     * @param \TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos
+     * @param \TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa $pagos
      * @return GastoEmpresa
      */
-    public function addPago(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos)
+    public function addPago(\TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa $pagos)
     {
         $this->pagos[] = $pagos;
-
+    
         return $this;
     }
 
     /**
      * Remove pagos
      *
-     * @param \TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos
+     * @param \TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa $pagos
      */
-    public function removePago(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos)
+    public function removePago(\TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa $pagos)
     {
         $this->pagos->removeElement($pagos);
     }
@@ -83,28 +104,5 @@ class GastoEmpresa extends Gasto {
     public function getPagos()
     {
         return $this->pagos;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set pagos
-     *
-     * @param \TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos
-     * @return GastoEmpresa
-     */
-    public function setPagos(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos = null)
-    {
-        $this->pagos = $pagos;
-    
-        return $this;
     }
 }

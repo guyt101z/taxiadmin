@@ -22,11 +22,11 @@ class PagoGastoEmpresa extends PagoGasto {
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="gastoempresa_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="TaxiAdmin\GastoBundle\Entity\GastoEmpresa", inversedBy="pagos")
+     * @ORM\JoinColumn(name="gastoEmpresa_id", referencedColumnName="id")
      */
-    private $gastoempresa_id;
+    private $gastoEmpresa;
+
 
     /**
      * Get id
@@ -39,25 +39,25 @@ class PagoGastoEmpresa extends PagoGasto {
     }
 
     /**
-     * Set gastoempresa_id
+     * Set gastoEmpresa
      *
-     * @param integer $gastoempresaId
+     * @param \TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastoEmpresa
      * @return PagoGastoEmpresa
      */
-    public function setGastoempresaId($gastoempresaId)
+    public function setGastoEmpresa(\TaxiAdmin\GastoBundle\Entity\GastoEmpresa $gastoEmpresa = null)
     {
-        $this->gastoempresa_id = $gastoempresaId;
+        $this->gastoEmpresa = $gastoEmpresa;
     
         return $this;
     }
 
     /**
-     * Get gastoempresa_id
+     * Get gastoEmpresa
      *
-     * @return integer 
+     * @return \TaxiAdmin\GastoBundle\Entity\GastoEmpresa 
      */
-    public function getGastoempresaId()
+    public function getGastoEmpresa()
     {
-        return $this->gastoempresa_id;
+        return $this->gastoEmpresa;
     }
 }

@@ -8,10 +8,6 @@
     {{ form_start(form) }}
     
     <div class="form-group">
-        {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
-    </div>
-    
-    <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
             {{ form_widget(form.costo) }}
@@ -26,6 +22,8 @@
         {{ form_widget(form.descripcion) }}
     </div>
 
+    {% if not isMensual %}
+
     <label>En caso que ya se haya pago, ingrese la fecha</label>
     <div class="input-group form-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -34,9 +32,16 @@
             <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO del gasto"></i>
         </span>
     </div>
+    {% endif %}
+    
+    {% if isMensual %}
+    <label>Ingrese el dia de Vencimiento del gasto</label>
+    <div class="form-group">
+        {{ form_widget(form.diaVencimiento) }}
+    </div>
+    {% endif %}
 
     {{ form_widget(form._token) }}
-    
     <div class="form-group">
         <div class="col-sm-offset-2 ">
             {{ form_widget(form.submit) }}
