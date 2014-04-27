@@ -6,14 +6,16 @@
 </div>
 <div class="modal-body">
     {{ form_start(form) }}
-    
+
+    {% if not isMensual %}
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
             {{ form_widget(form.costo) }}
         </div>
     </div>
-    
+    {% endif %}
+
     <div class="form-group">
         {{ form_widget(form.rubro) }}
     </div>

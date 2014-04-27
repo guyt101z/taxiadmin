@@ -57,15 +57,19 @@
                     <tbody>
                         {% for gasto in entity.gastos %}
                         <tr>
-                            {% if gasto.diaVencimiento %}
-                            <td>Gasto Mensual</td>
+                            {% if gasto.isMensual %}
+                                <td>Gasto Mensual</td>
                             {% elseif (gasto.fechaPago == null) %}
-                            <td>Pendiente de pago</td>
+                                <td>Pendiente de pago</td>
                             {% else %}
-                            <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
+                                <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
                             {% endif %}
                             <td>{{ gasto.diaVencimiento }}</td>
-                            <td>{{ gasto.costo }}</td>
+                            {% if gasto.isMensual %}
+                                <td></td>
+                            {% else %}
+                                <td>{{ gasto.costo }}</td>
+                            {% endif %}
                             <td>{{ gasto.rubro }}</td>
                             <td style="text-align:right;">
                                 <a href="{{ path('gastoempresa_show', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
@@ -74,6 +78,11 @@
                                 <a href="{{ path('gastoempresa_update', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
                                     <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
                                 </a>
+                                {% if gasto.isMensual %}
+                                    <a href="{{ path('gastoempresa_addpago', { 'gasto': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                        <i class="glyphicon glyphicon-plus help-tooltip" data-placement="left" data-toggle="tooltip" title="Agregar Pago"></i>
+                                    </a>
+                                {% endif %}
                                 <a href="{{ path('gastoempresa_remove', { 'id': gasto.id }) }}" onclick="return confirm('¿Estas seguro?');">
                                     <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
                                 </a>

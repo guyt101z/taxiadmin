@@ -13,10 +13,12 @@
                                 <th width="150px">Empresa</th>
                                 <td>{{ entity.empresa }}</td>
                             </tr>
+                            {% if not entity.isMensual %}
                             <tr>
                                 <th>Costo</th>
                                 <td>{{ entity.costo }}</td>
                             </tr>
+                            {% endif %}
                             <tr>
                                 <th>Rubro</th>
                                 <td>{{ entity.rubro }}</td>
@@ -37,9 +39,13 @@
                             {% else %}
                                 <tr>
                                     <th>Día de Vencimiento</th>
-                                    <td>
-                                        El {{ entity.diaVencimiento }} de cada mes
-                                    </td>
+                                    {% if entity.diaVencimiento is not null %}
+                                        <td>
+                                            El {{ entity.diaVencimiento }} de cada mes
+                                        </td>
+                                    {% else %}
+                                        <td>El gasto aún no tiene dia de vencimiento</td>
+                                    {% endif %}
                                 </tr>
                             {% endif %}
                         </tbody>
@@ -54,7 +60,7 @@
                             <th>Fecha de Pago</th>
                             <th>Costo</th>
                             <th>Descripción</th>
-                            <th></th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>

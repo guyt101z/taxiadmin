@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TaxiAdmin\GastoBundle\Form\GastoEmpresaType;
+use TaxiAdmin\GastoBundle\Form\PagoGastoEmpresaType;
 use TaxiAdmin\GastoBundle\Entity\GastoEmpresa;
 use TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa;
 
@@ -48,6 +49,9 @@ class GastoEmpresaController extends Controller {
                 $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
                 $empresa   = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('idUsuario' => $idUsuario, 'id' => $empresa));
                 $entity->setIsMensual($mensual);
+                if ($mensual) {
+                    $entity->setCosto(0);
+                }
                 $entity->setEmpresa($empresa);
 
                 $em->persist($entity);
@@ -77,7 +81,6 @@ class GastoEmpresaController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
-        // $pagos = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findBy(array('gastoempresa_id' => $id));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
@@ -85,7 +88,6 @@ class GastoEmpresaController extends Controller {
 
         return array(
             'entity' => $entity,
-            // 'pagos' => $pagos,
             );
     }
 
@@ -107,7 +109,6 @@ class GastoEmpresaController extends Controller {
 
         if ($this->getRequest()->isXmlHttpRequest()) {
 
-            echo $entity->getDiaVencimiento();
             $form = $this->createEditForm($entity);
             return array(
                 'form'   => $form->createView(),
@@ -121,21 +122,7 @@ class GastoEmpresaController extends Controller {
 
             if ($form->isValid()) {
 
-                if ($form["fechaPago"]->getData() != null && $entity->getDiaVencimiento() != null) {
-                    // es un gasto mensual y el primer ya esta pago
-
-                    $entity->setFechaPago(null);
-                    $pago = new PagoGastoEmpresa();
-                    $pago->setCosto($entity->getCosto());
-                    $pago->setFechaPago($form["fechaPago"]->getData());
-                    $pago->setGastoempresaId($entity->getId());
-                    
-                    $em->persist($entity);
-                    $em->persist($pago);
-
-                    $em->flush();
-                }
-
+                $em->persist($entity);
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('msg_success', 'El gasto se ha modificado con éxito.');
@@ -143,6 +130,45 @@ class GastoEmpresaController extends Controller {
             }
         }
 
+    }
+
+    /**
+     *
+     * @Route("/add_pago/{gasto}", name="gastoempresa_addpago")
+     * @Method("GET|POST")
+     * @Template("TaxiAdminGastoBundle:PagoGastoEmpresa:new.html.twig")
+     */
+    public function addPagoAction(Request $request, $gasto) {
+        $em = $this->getDoctrine()->getManager();
+        $pago = new PagoGastoEmpresa();
+        $form = $this->createForm(new PagoGastoEmpresaType(), $pago , array(
+            'action' => $this->generateUrl('gastoempresa_addpago', array('gasto' => $gasto)),
+            'method' => 'POST',
+            ));
+
+        if ( $this->getRequest()->isXmlHttpRequest()) {
+            $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
+            echo 'brus';
+            return array(
+                'form' => $form->createView(),
+                );
+        } else if ($request->isMethod('POST')) {
+
+            $form->handleRequest($request);
+
+            $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($gasto);
+
+            $pago->setGastoEmpresa($gastoEmpresa);
+            $gastoEmpresa->addPago($pago);
+
+            $em->persist($pago);
+            $em->persist($gastoEmpresa);
+            
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('msg_success', 'El pago se ha agregado con éxito.');
+            return $this->redirect($this->generateUrl('empresa_show', array('razonSocial' => $gastoEmpresa->getEmpresa()->getRazonSocial())));
+        }
     }
 
     /**
@@ -155,13 +181,16 @@ class GastoEmpresaController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
-        $pago = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findOneBy(array('id' => $idpago, 'gastoempresa_id' => $id));
+        $pago = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findOneBy(array('id' => $idpago));
 
         if (!$pago) {
             throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
         }
 
+        $gastoEmpresa->removePago($pago);
+
         $em->remove($pago);
+        $em->persist($gastoEmpresa);
         $em->flush();
         
         $this->get('session')->getFlashBag()->add('msg_success', 'El pago se ha eliminado con éxito.');
@@ -178,17 +207,12 @@ class GastoEmpresaController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $gastoEmpresa = $em->getRepository('TaxiAdminGastoBundle:GastoEmpresa')->find($id);
-        $pagos = $em->getRepository('TaxiAdminGastoBundle:PagoGastoEmpresa')->findBy(array('gastoempresa_id' => $id));
 
         if (!$gastoEmpresa) {
             throw $this->createNotFoundException('Unable to find GastoEmpresa entity.');
         }
 
         $razonSocial = $gastoEmpresa->getEmpresa()->getRazonSocial();
-
-        foreach ($pagos as $pago) {
-            $em->remove($pago);
-        }
 
         $em->remove($gastoEmpresa);
         $em->flush();
