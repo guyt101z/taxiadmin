@@ -135,7 +135,7 @@ class EmpresaController extends Controller {
      */
     public function addPropietarioAction(Request $request, $razonSocial = null) {
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
         if ($this->getRequest()->isXmlHttpRequest()) {
             // $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
@@ -188,7 +188,7 @@ class EmpresaController extends Controller {
      * @Template("")
      */
     public function removePropietarioAction(Request $request, $razonSocial, $idPropietario) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
 
         $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
@@ -217,7 +217,7 @@ class EmpresaController extends Controller {
      */
     public function addChoferAction(Request $request, $razonSocial = null) {
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
 
         if ($this->getRequest()->isXmlHttpRequest()) {
@@ -269,7 +269,7 @@ class EmpresaController extends Controller {
      * @Template("")
      */
     public function removeChoferAction(Request $request, $razonSocial, $idChofer) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
 
         $empresa = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findOneBy(array('razonSocial' => $razonSocial, 'idUsuario' => $idUsuario));
