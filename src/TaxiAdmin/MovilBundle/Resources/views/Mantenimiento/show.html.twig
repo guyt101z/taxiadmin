@@ -27,6 +27,11 @@
                             <td>{{ entity.descripcionTrabajo }}</td>
                         </tr>
                         <tr>
+                            <th>Km de ingreso</th>
+
+                            <td>{{ entity.kmIngreso != null ? entity.kmIngreso : 0 }}</td>
+                        </tr>
+                        <tr>
                             <th>Costo</th>
                             <td>${{ entity.costo }}</td>
                         </tr>

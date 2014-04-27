@@ -20,8 +20,8 @@ class MantenimientoType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-        ->add('motivoIngreso',        'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Motivo del ingreso', 'autofocus' => ''))) 
-        ->add('kmIngreso',            'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Km de Ingreso'))) 
+        ->add('motivoIngreso',        'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Motivo del ingreso', 'autofocus' => '')))
+        ->add('kmIngreso',            'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Km de Ingreso'), 'required' => false)) 
         ->add('taller',               'text', array('attr' => array('class' => 'form-control', 'placeholder' => 'Taller'), 'required' => false))
         ->add('descripcionTrabajo',   'textarea', array('attr' => array('class' => 'form-control', 'placeholder' => 'Descripción del trabajo'), 'required' => false))
         ->add('costo',                'integer', array('attr' => array('class' => 'form-control', 'placeholder' => 'Costo', 'min' => 0)))
