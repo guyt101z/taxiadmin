@@ -2,68 +2,83 @@
 
 {% block contenido %}
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	<h4 class="modal-title" id="myModalLabel">Ingresar Multa</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Ingresar Multa</h4>
 </div>
 
 <div class="modal-body">
-	{{ form_start(form) }}
-	<div class="form-group">
-		{{ form_widget(form.chofer, { 'attr' : { 'class' : 'form-control' } }) }}
-	</div>
+    {{ form_start(form) }}
 
-	<div class="form-group">
-		{{ form_widget(form.movil, { 'attr' : { 'class' : 'form-control' } }) }}
-	</div>
+    <div class="form-group">
+        <label>Seleccione Chofer</label>
+        {{ form_widget(form.chofer, { 'attr' : { 'class' : 'form-control' } }) }}
+    </div>
 
-	<div class="input-group form-group">
-		<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-		{{ form_widget(form.fecha) }}
-		<span class="input-group-addon help"> 
-			<i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de la multa"></i>
-		</span>
-	</div>
+    <div class="form-group">
+        <label>Seleccione Movil</label>
+        {{ form_widget(form.movil, { 'attr' : { 'class' : 'form-control' } }) }}
+    </div>
 
-	<div class="input-group form-group">
-		<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-		{{ form_widget(form.fechaVencimiento) }}
-		<span class="input-group-addon help"> 
-			<i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de VENCIMIENTO de la multa"></i>
-		</span>
-	</div>
+    <div class="form-group">
+        <label>Fecha de la Multa</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            {{ form_widget(form.fecha) }}
+            <span class="input-group-addon help"> 
+                <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de la multa"></i>
+            </span>
+        </div>
+    </div>
 
-	<div class="input-group form-group">
-			<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-			{{ form_widget(form.fechaPago) }}
-		<span class="input-group-addon help"> 
-			<i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO (si ya lo realizo) de la multa"></i>
-		</span>
-	</div>
+    <div class="form-group">
+        <label>Fecha de Vencimiento</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            {{ form_widget(form.fechaVencimiento) }}
+            <span class="input-group-addon help"> 
+                <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de VENCIMIENTO de la multa"></i>
+            </span>
+        </div>
+    </div>
 
-	<div class="form-group">
-		<div class="input-group">
-			<span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-			{{ form_widget(form.costo) }}
-		</div>
-	</div>
+    <div class="form-group">
+        <label>Fecha de pago</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            {{ form_widget(form.fechaPago) }}
+            <span class="input-group-addon help"> 
+                <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO (si ya lo realizo) de la multa"></i>
+            </span>
+        </div>
+    </div>
 
-	<div class="form-group">
-		{{ form_widget(form.lugar) }}
-	</div>
+    <div class="form-group">
+        <label>Monto</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+            {{ form_widget(form.costo) }}
+        </div>
+    </div>
 
-	<div class="form-group">
-		{{ form_widget(form.descripcion) }}
-	</div>
+    <div class="form-group">
+        <label>Lugar</label>
+        {{ form_widget(form.lugar) }}
+    </div>
 
-	{{ form_widget(form._token) }}
+    <div class="form-group">
+        <label>Descripción</label>
+        {{ form_widget(form.descripcion) }}
+    </div>
 
-	<div class="form-group">
-		<div class="col-sm-offset-2 ">
-			{{ form_widget(form.submit) }}
-		</div>
-	</div>
+    {{ form_widget(form._token) }}
 
-	{{ form_end(form) }}
+    <div class="form-group">
+        <div class="col-sm-offset-2 ">
+            {{ form_widget(form.submit) }}
+        </div>
+    </div>
+
+    {{ form_end(form) }}
 
 </div>
 {% endblock %}

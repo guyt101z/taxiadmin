@@ -4,300 +4,311 @@
 
 <div class="row">
 
-  <div class="col-md-3 ">
-    <div class="list-group">
-      <a href="#" class="list-group-item" data-toggle="modal" data-target="#editMovil">Modificar Móvil</a>
-      <a href="{{ path('accidente_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
-      <a href="{{ path('multa_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#multa">Agregar Multa</a>
-      <a href="{{ path('mantenimiento_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Agregar Mantenimiento</a>
-      {# <a href="{{ path('gasto_create', { 'movil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto</a> #}
+    <div class="col-md-3 ">
+        <div class="list-group">
+            <a href="#" class="list-group-item" data-toggle="modal" data-target="#editMovil">Modificar Móvil</a>
+            <a href="{{ path('accidente_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
+            <a href="{{ path('multa_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#multa">Agregar Multa</a>
+            <a href="{{ path('mantenimiento_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Agregar Mantenimiento</a>
+            {# <a href="{{ path('gasto_create', { 'movil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto</a> #}
 
-      <a href="#" class="list-group-item">Imprimir Información</a>
+            <a href="#" class="list-group-item">Imprimir Información</a>
+        </div>
     </div>
-  </div>
 
-  <div class="col-xs-12 col-md-9">
+    <div class="col-xs-12 col-md-9">
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Información</h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Información</h3>
 
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <tbody>
-              <tr>
-                <th width="200px;">Matrícula</th>
-                <td>{{ entity.matricula }}</td>
-              </tr>
-              <tr>
-                <th>Marca</th>
-                <td>{{ entity.marca }}</td>
-              </tr>
-              <tr>
-                <th>Modelo</th>
-                <td>{{ entity.modelo }}</td>
-              </tr>
-              <tr>
-                <th>Año</th>
-                <td>{{ entity.anio }}</td>
-              </tr>
-              <tr>
-                <th>Num. de Chasis</th>
-                <td>{{ entity.numChasis }}</td>
-              </tr>
-              <tr>
-                <th>Combustible</th>
-                <td>{{ combustible[entity.combustible] }}</td>
-              </tr>
-              <tr>
-                <th>Num. Móvil</th>
-                <td>{{ entity.numMovil }}</td>
-              </tr>
-              <tr>
-                <th>Despacho</th>
-                <td>{{ entity.despacho }}</td>
-              </tr>
-              <tr>
-                <th>Radio</th>
-                <td>{{ radios[entity.radio] }}</td>
-              </tr>
-              <tr>
-                <th>Empresa</th>
-                <td><a href="{{ path('empresa_show', { 'razonSocial': entity.empresa.razonSocial }) }}"> {{ entity.empresa.nombre }}</a></td>
-              </tr>
-            </tbody>
-          </table>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th width="200px;">Matrícula</th>
+                                <td>{{ entity.matricula }}</td>
+                            </tr>
+                            <tr>
+                                <th>Marca</th>
+                                <td>{{ entity.marca }}</td>
+                            </tr>
+                            <tr>
+                                <th>Modelo</th>
+                                <td>{{ entity.modelo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Año</th>
+                                <td>{{ entity.anio }}</td>
+                            </tr>
+                            <tr>
+                                <th>Num. de Chasis</th>
+                                <td>{{ entity.numChasis }}</td>
+                            </tr>
+                            <tr>
+                                <th>Combustible</th>
+                                <td>{{ combustible[entity.combustible] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Num. Móvil</th>
+                                <td>{{ entity.numMovil }}</td>
+                            </tr>
+                            <tr>
+                                <th>Despacho</th>
+                                <td>{{ entity.despacho }}</td>
+                            </tr>
+                            <tr>
+                                <th>Radio</th>
+                                <td>{{ radios[entity.radio] }}</td>
+                            </tr>
+                            <tr>
+                                <th>Empresa</th>
+                                <td><a href="{{ path('empresa_show', { 'razonSocial': entity.empresa.razonSocial }) }}"> {{ entity.empresa.nombre }}</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
 
-      </div>
-    </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Recaudaciones</h3>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Recaudaciones</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Chofer</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
 
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Chofer</th>
-                <th>Total</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+            </div>
         </div>
 
-      </div>
-    </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Mantenimientos</h3>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Mantenimientos</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha Ingreso</th>
+                                <th>Costo</th>
+                                <th>Taller</th>
+                                <th>Fecha Vencimiento</th>
+                                <th>Pago</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mantenimiento in entity.mantenimientos %}
+                            <tr>
+                                <td>{{ mantenimiento.fechaIngreso|date("d/m/Y") }}</td>
+                                <td>{{ mantenimiento.costo }}</td>
+                                <td>{{ mantenimiento.taller }}</td>
+                                <td>{{ mantenimiento.fechaVencimiento|date("d/m/Y") }}</td>
+                                {% if mantenimiento.fechaPago is null %}
+                                <td>No</td>
+                                {% else %}
+                                <td>{{ mantenimiento.fechaPago|date("d/m/Y") }}</td>
+                                {% endif %}
+                                <td style="text-align:right;">
 
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Fecha Ingreso</th>
-                <th>Costo</th>
-                <th>Taller</th>
-                <th>Fecha Vencimiento</th>
-                <th>Pago</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for mantenimiento in entity.mantenimientos %}
-              <tr>
-                <td>{{ mantenimiento.fechaIngreso|date("d/m/Y") }}</td>
-                <td>{{ mantenimiento.costo }}</td>
-                <td>{{ mantenimiento.taller }}</td>
-                <td>{{ mantenimiento.fechaVencimiento|date("d/m/Y") }}</td>
-                {% if mantenimiento.fechaPago is null %}
-                <td>No</td>
-                {% else %}
-                <td>{{ mantenimiento.fechaPago|date("d/m/Y") }}</td>
-                {% endif %}
-                <td style="text-align:right;">
+                                    <a href="{{  path('mantenimiento_show', { 'id': mantenimiento.id }) }}" data-toggle="modal" data-target="#mantenimiento" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
 
-                  <a href="{{  path('mantenimiento_show', { 'id': mantenimiento.id }) }}" data-toggle="modal" data-target="#mantenimiento" data-refresh="true">
-                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
-                  </a>
+                                    <a href="{{ path('mantenimiento_update', { 'idMovil': entity.id, 'id': mantenimiento.id }) }}" data-toggle="modal" data-target="#mantenimiento" data-refresh="true">
+                                        <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
+                                    </a>
 
-                  <a href="{{ path('mantenimiento_update', { 'idMovil': entity.id, 'id': mantenimiento.id }) }}" data-toggle="modal" data-target="#mantenimiento" data-refresh="true">
-                    <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
-                  </a>
+                                    <a href="{{ path('mantenimiento_delete', { 'id': mantenimiento.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
 
-                  <a href="{{ path('mantenimiento_delete', { 'id': mantenimiento.id }) }}" onclick="return confirm('¿Estas seguro?');">
-                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
-                  </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+            </div>
         </div>
 
-      </div>
-    </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Accidentes</h3>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Accidentes</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Chofer</th>
+                                <th>Lugar</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for accidente in entity.accidentes %}
+                            <tr>
+                                <td>{{ accidente.fecha|date("d/m/Y") }}</td>
+                                <td>{{ accidente.chofer }}</td>
+                                <td>{{ accidente.lugar }}</td>
+                                <td style="text-align:right;">
 
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Chofer</th>
-                <th>Lugar</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for accidente in entity.accidentes %}
-              <tr>
-                <td>{{ accidente.fecha|date("d/m/Y") }}</td>
-                <td>{{ accidente.chofer }}</td>
-                <td>{{ accidente.lugar }}</td>
-                <td style="text-align:right;">
+                                    <a href="{{  path('accidente_show', { 'id': accidente.id }) }}" data-toggle="modal" data-target="#accidente" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
 
-                  <a href="{{  path('accidente_show', { 'id': accidente.id }) }}" data-toggle="modal" data-target="#accidente" data-refresh="true">
-                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
-                  </a>
+                                    <a href="{{ path('accidente_delete', { 'id': accidente.id, 'vista': 1 }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
 
-                  <a href="{{ path('accidente_delete', { 'id': accidente.id, 'vista': 1 }) }}" onclick="return confirm('¿Estas seguro?');">
-                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
-                  </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+            </div>
         </div>
 
-      </div>
-    </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Multas</h3>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <h3>Multas</h3>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Chofer</th>
+                                <th>Valor</th>
+                                <th>Vencimiento</th>
+                                <th>Pago</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for multa in entity.multas %}
+                            <tr>
+                                <td>{{ multa.fecha|date("d/m/Y") }}</td>
+                                <td>{{ multa.chofer }}</td>
+                                <td>{{ multa.costo }}</td>
+                                <td>{{ multa.fechaVencimiento|date("d/m/Y") }}</td>
+                                {% if multa.fechaPago is null %}
+                                <td>No</td>
+                                {% else %}
+                                <td>{{ multa.fechaPago|date("d/m/Y") }}</td>
+                                {% endif %}
+                                <td style="text-align:right;">
 
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Chofer</th>
-                <th>Valor</th>
-                <th>Vencimiento</th>
-                <th>Pago</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for multa in entity.multas %}
-              <tr>
-                <td>{{ multa.fecha|date("d/m/Y") }}</td>
-                <td>{{ multa.chofer }}</td>
-                <td>{{ multa.costo }}</td>
-                <td>{{ multa.fechaVencimiento|date("d/m/Y") }}</td>
-                {% if multa.fechaPago is null %}
-                <td>No</td>
-                {% else %}
-                <td>{{ multa.fechaPago|date("d/m/Y") }}</td>
-                {% endif %}
-                <td style="text-align:right;">
+                                    <a href="{{  path('multa_show', { 'id': multa.id }) }}" data-toggle="modal" data-target="#multa" data-refresh="true">
+                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
+                                    </a>
 
-                  <a href="{{  path('multa_show', { 'id': multa.id }) }}" data-toggle="modal" data-target="#multa" data-refresh="true">
-                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Detalles"></i>
-                  </a>
+                                    <a href="{{ path('multa_update', { 'idMovil': entity.id, 'id': multa.id }) }}" data-toggle="modal" data-target="#multa" data-refresh="true">
+                                        <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
+                                    </a>
 
-                  <a href="{{ path('multa_update', { 'idMovil': entity.id, 'id': multa.id }) }}" data-toggle="modal" data-target="#multa" data-refresh="true">
-                    <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar"></i>
-                  </a>
+                                    <a href="{{ path('multa_delete', { 'id': multa.id, 'vista': 1 }) }}" onclick="return confirm('¿Estas seguro?');">
+                                        <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
+                                    </a>
 
-                  <a href="{{ path('multa_delete', { 'id': multa.id, 'vista': 1 }) }}" onclick="return confirm('¿Estas seguro?');">
-                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Eliminar"></i>
-                  </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+            </div>
         </div>
 
-      </div>
     </div>
-
-  </div>
 
 </div>
 
 
 <!-- MODIFICAR -->
 <div class="modal fade" id="editMovil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modificar Móvil</h4>
-      </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modificar Móvil</h4>
+            </div>
 
-      <div class="modal-body">
-        {{ form_start(form) }}
-        <div class="form-group">
-          {{ form_widget(form.matricula) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.marca) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.modelo) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.anio) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.numChasis) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.combustible, { 'attr' : { 'class' : 'form-control' } }) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.numMovil) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.despacho) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.radio, { 'attr' : { 'class' : 'form-control' } }) }}
-        </div>
-        <div class="form-group">
-          {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
-        </div>
+            <div class="modal-body">
+                {{ form_start(form) }}
 
-        {{ form_widget(form._token) }}
+                <div class="form-group">
+                    <label>Matrícula</label>
+                    {{ form_widget(form.matricula) }}
+                </div>
+                <div class="form-group">
+                    <label>Marca</label>
+                    {{ form_widget(form.marca) }}
+                </div>
+                <div class="form-group">
+                    <label>Modelo</label>
+                    {{ form_widget(form.modelo) }}
+                </div>
+                <div class="form-group">
+                    <label>Año</label>
+                    {{ form_widget(form.anio) }}
+                </div>
+                <div class="form-group">
+                    <label>Nro de Chasis</label>
+                    {{ form_widget(form.numChasis) }}
+                </div>
+                <div class="form-group">
+                    <label>Combustible</label>
+                    {{ form_widget(form.combustible, { 'attr' : { 'class' : 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    <label>Nro Movil</label>
+                    {{ form_widget(form.numMovil) }}
+                </div>
+                <div class="form-group">
+                    <label>Tipo de despacho</label>
+                    {{ form_widget(form.despacho) }}
+                </div>
+                <div class="form-group">
+                <label>Seleccione la Radio</label>
+                    {{ form_widget(form.radio, { 'attr' : { 'class' : 'form-control' } }) }}
+                </div>
+                <div class="form-group">
+                    Seleccione la Empresa
+                    {{ form_widget(form.empresa, { 'attr' : { 'class' : 'form-control' } }) }}
+                </div>
 
-        <div class="form-group">
-          <div class="col-sm-offset-2 ">
-            <button type="submit" class="btn btn-default">Guardar</button>
-          </div>
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 ">
+                        <button type="submit" class="btn btn-default">Guardar</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+
         </div>
-        {{ form_end(form) }}
-      </div>
-
     </div>
-  </div>
 </div>
 <!-- MODIFICAR -->
 

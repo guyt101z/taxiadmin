@@ -17,6 +17,10 @@ footer .navbar {
 	padding: 15px 30px;
 }
 
+.form-group label {
+	font-weight: normal;
+}
+
 .help-button {
 	float:right; 
 	padding-top: 7px;

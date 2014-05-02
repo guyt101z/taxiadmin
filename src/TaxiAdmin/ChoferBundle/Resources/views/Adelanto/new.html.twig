@@ -2,49 +2,53 @@
 
 {% block contenido %}
 <div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title" id="myModalLabel">Ingresar adelanto</h4>
 </div>
 
 <div class="modal-body">
-  {{ form_start(adelantoForm) }}
 
-  <div class="form-group">
-    {{ form_widget(adelantoForm.chofer, { 'attr' : { 'class' : 'form-control' } }) }}
-</div>
+    {{ form_start(adelantoForm) }}
 
-<div class="input-group form-group">
+    <div class="form-group">
+        <label>Seleccione el Chofer</label>
+        {{ form_widget(adelantoForm.chofer, { 'attr' : { 'class' : 'form-control' } }) }}
+    </div>
 
-    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-    {{ form_widget(adelantoForm.fecha) }}
+    <div class="form-group">
+        <label>Fecha de solicitud del Adelanto</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            {{ form_widget(adelantoForm.fecha) }}
+            <span class="input-group-addon help"> 
+                <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de solicitud del adelanto"> </i>
+            </span>
+        </div>
+    </div>
 
-    <span class="input-group-addon help"> 
-        <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de solicitud del adelanto"> </i>
-    </span>
+    <div class="form-group">
+        <label>Monto Solicitado</label>
+        <div class="input-group form-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+            {{ form_widget(adelantoForm.monto) }}
+        </div>
+    </div>
 
-</div>
+    <div class="form-group">
+        <label>Detalle</label>
+        {{ form_widget(adelantoForm.detalle) }}
+    </div>
+
+    {{ form_widget(adelantoForm._token) }}
 
 
-<div class="form-group">
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-      {{ form_widget(adelantoForm.monto) }}
-  </div>
-</div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 ">
+            <button type="submit" class="btn btn-default">Guardar</button>
+        </div>
+    </div>
 
-<div class="form-group">
-    {{ form_widget(adelantoForm.detalle) }}
-</div>
-
-{{ form_widget(adelantoForm._token) }}
-
-<div class="form-group">
-    <div class="col-sm-offset-2 ">
-      <button type="submit" class="btn btn-default">Guardar</button>
-  </div>
-</div>
-
-{{ form_end(adelantoForm) }}
+    {{ form_end(adelantoForm) }}
 
 </div>
 {% endblock %}

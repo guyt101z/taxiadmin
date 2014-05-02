@@ -6,136 +6,143 @@
 {% block contenido %}
 
 <div class="row">
-	<div class="col-md-3">
-		{% if error is defined  and error is not null %}
-		<div>{{ error.message }}</div>
-		{% endif %}
+    <div class="col-md-3">
+        {% if error is defined  and error is not null %}
+        <div>{{ error.message }}</div>
+        {% endif %}
 
-		<form class="form-signin" action="{{ path("_security_check") }}" method="post">
-			<h3 class="form-signin-heading">Ingresar</h3>
-			<div class="input-group">
-				<span class="input-group-addon">@</span>
-				<input type="email" name="_username" class="form-control" placeholder="Email address" value="{{last_username}}" required autofocus>
-			</div>
-			<div class="input-group"  style="margin:10px 0;">
-				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				<input type="password" name="_password" class="form-control" placeholder="Password" required >
-			</div>
-			<button class="btn btn-default" type="submit">Entrar</button>
-		</form>
-	</div>
+        <form class="form-signin" action="{{ path("_security_check") }}" method="post">
+            <h3 class="form-signin-heading">Ingresar</h3>
+            <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input type="email" name="_username" class="form-control" placeholder="Email address" value="{{last_username}}" required autofocus>
+            </div>
+            <div class="input-group"  style="margin:10px 0;">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" name="_password" class="form-control" placeholder="Password" required >
+            </div>
+            <button class="btn btn-default" type="submit">Entrar</button>
+        </form>
+    </div>
 
-	<div class="col-xs-13 col-md-9">
-		<div class="jumbotron">
-			<h1>Bienvenido</h1>
-			<p>TaxiAdmin, es un sistema para la administración de Taxímetros, también puede aplicar para Remises y automóviles de alquier.
-				Está especialmente diseñado para ayudar al administrador en su función diaria.
-			</p>
-		</div>
-	</div>
+    <div class="col-xs-13 col-md-9">
+        <div class="jumbotron">
+            <h1>Bienvenido</h1>
+            <p>TaxiAdmin, es un sistema para la administración de Taxímetros, también puede aplicar para Remises y automóviles de alquier.
+                Está especialmente diseñado para ayudar al administrador en su función diaria.
+            </p>
+        </div>
+    </div>
 </div>
 
 <div class="row">
-	<div class="col-md-4">
-		<h3>Cómo acceder?</h3>
-		<p>TaxiaAdmin aún esta en desarrollo, esto quiere decir que hay alguas funciones que aún no estan disponibles. Por tal motivo estamos brindando a todos los que deseen la posibilidad de registrarse en nuestro sistema y utilizarlo en su totalidad por un tiempo determiando.</p>
-		<button class="btn btn-default" data-toggle="modal" data-target="#registro"> Registrarme </button>
-	</div>
-	<div class="col-md-4">
-		<h3>Cómo funciona?</h3>
-		<p>Simple, luego de registrarse va a poder ingresar toda la información relacionada a las empresas, propietarios, móviles y choferes que administra. Para cada uno podra ingresar gastos mensuales o puntuales, multas, accidentes, trabajos de taller mecánico, adelantos, y las recaudaciones diarias. De esta manera a fin de mes podra obtener listados completos de lo recaudado por cada chofer o movil. Podra imprimir informes completos de cada empresa para saber el estado de cada movil, ingresos y egresos. También podra imprimir sus recibos de sueldo personalizados para entregar a sus choferes y completos resúmenes para entregar a los propietarios de los móviles.</p>
-	</div>
-	<div class="col-md-4">
-		<h3>Costos</h3>
-		<p>Actualmente TaxiAdmin es gratis y permanecerá asi por un buen tiempo mas. Luego que nuestro sistema cumpla con los requisitos de los usuarios y esten todas sus funcionalidades implementadas y funcionando correctamente el periodo de prueba llegara a su fin. El costo sera de acuerdo a la cantidad e móviles que el usuario administra.
-			Si tiene alguna consulta o sugerencia no dude en comunicarse.
-		</p>
-		<button class="btn btn-default" data-toggle="modal" data-target="#contacto"> Contacto </button>
-	</div>
+    <div class="col-md-4">
+        <h3>Cómo acceder?</h3>
+        <p>TaxiaAdmin aún esta en desarrollo, esto quiere decir que hay alguas funciones que aún no estan disponibles. Por tal motivo estamos brindando a todos los que deseen la posibilidad de registrarse en nuestro sistema y utilizarlo en su totalidad por un tiempo determiando.</p>
+        <button class="btn btn-default" data-toggle="modal" data-target="#registro"> Registrarme </button>
+    </div>
+    <div class="col-md-4">
+        <h3>Cómo funciona?</h3>
+        <p>Simple, luego de registrarse va a poder ingresar toda la información relacionada a las empresas, propietarios, móviles y choferes que administra. Para cada uno podra ingresar gastos mensuales o puntuales, multas, accidentes, trabajos de taller mecánico, adelantos, y las recaudaciones diarias. De esta manera a fin de mes podra obtener listados completos de lo recaudado por cada chofer o movil. Podra imprimir informes completos de cada empresa para saber el estado de cada movil, ingresos y egresos. También podra imprimir sus recibos de sueldo personalizados para entregar a sus choferes y completos resúmenes para entregar a los propietarios de los móviles.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Costos</h3>
+        <p>Actualmente TaxiAdmin es gratis y permanecerá asi por un buen tiempo mas. Luego que nuestro sistema cumpla con los requisitos de los usuarios y esten todas sus funcionalidades implementadas y funcionando correctamente el periodo de prueba llegara a su fin. El costo sera de acuerdo a la cantidad e móviles que el usuario administra.
+            Si tiene alguna consulta o sugerencia no dude en comunicarse.
+        </p>
+        <button class="btn btn-default" data-toggle="modal" data-target="#contacto"> Contacto </button>
+    </div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Estás a un paso de usar TaxiAdmin</h4>
-			</div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Estás a un paso de usar TaxiAdmin</h4>
+            </div>
 
-			<div class="modal-body">
-				<form class="form-horizontal form-style" action="{{ path("usuario_create") }}" method="post" role="form">
+            <div class="modal-body">
+                <form class="form-horizontal form-style" action="{{ path("usuario_create") }}" method="post" role="form">
 
-					<div class="form-group">
-						{{ form_widget(formUsuario.nombre) }}
-					</div>
-					<div class="form-group">
-						{{ form_widget(formUsuario.apellido )}}
-					</div>
-					<div class="form-group">
-						{{ form_widget(formUsuario.email )}}
-					</div>
-					<div class="form-group">
-						{{ form_widget(formUsuario.password )}}
-					</div>
-					<div class="form-group">
-						{{ form_widget(formUsuario.telefono )}}
-					</div>
-					<div class="form-group">
-						{{ form_widget(formUsuario.celular )}}
-					</div>
-					<div class="form-group">
-						{{ form_widget(formUsuario.direccion )}}
-					</div>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        {{ form_widget(formUsuario.nombre) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        {{ form_widget(formUsuario.apellido )}}
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        {{ form_widget(formUsuario.email )}}
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        {{ form_widget(formUsuario.password )}}
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        {{ form_widget(formUsuario.telefono )}}
+                    </div>
+                    <div class="form-group">
+                        <label>Celular</label>
+                        {{ form_widget(formUsuario.celular )}}
+                    </div>
+                    <div class="form-group">
+                        <label>Dirección</label>
+                        {{ form_widget(formUsuario.direccion )}}
+                    </div>
 
-					{{ form_widget(formUsuario._token) }}
+                    {{ form_widget(formUsuario._token) }}
 
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">Enviar</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="modal fade" id="contacto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Contacto</h4>
-			</div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Contacto</h4>
+            </div>
 
-			<div class="modal-body">
-				<form class="form-horizontal form-style" action="{{ path("home_contacto") }}" method="post" role="form">
+            <div class="modal-body">
+                <form class="form-horizontal form-style" action="{{ path("home_contacto") }}" method="post" role="form">
 
-					<div class="form-group">
-						<label>Email *</label>
-						<input type="email" name="email" required class="form-control" placeholder="ej: jperez@taxiadmin.com " />
-					</div>
-					<div class="form-group">
-						<label>Asunto</label>
-						<input type="text" name="asunto" maxlength="150" required class="form-control" placeholder="Ingrese el asunto del email" />
-					</div>
-					<div class="form-group">
-						<label>Mensaje</label>
-						<textarea name="mensaje" required class="form-control" placeholder="Ingrese el mensaje"></textarea>
-					</div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required class="form-control" placeholder="ej: jperez@taxiadmin.com " />
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto</label>
+                        <input type="text" name="asunto" maxlength="150" required class="form-control" placeholder="Ingrese el asunto del email" />
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea name="mensaje" required class="form-control" placeholder="Ingrese el mensaje"></textarea>
+                    </div>
 
-					{{ form_widget(formUsuario._token) }}
+                    {{ form_widget(formUsuario._token) }}
 
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">Enviar</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

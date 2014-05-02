@@ -9,6 +9,7 @@
 
     {% if not isMensual %}
     <div class="form-group">
+        <label>Monto</label>
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
             {{ form_widget(form.costo) }}
@@ -17,28 +18,33 @@
     {% endif %}
 
     <div class="form-group">
+        <label>Rubro</label>
         {{ form_widget(form.rubro) }}
     </div>
     
     <div class="form-group">
+        <label>Descripción</label>
         {{ form_widget(form.descripcion) }}
     </div>
 
     {% if not isMensual %}
 
-    <label>En caso que ya se haya pago, ingrese la fecha</label>
-    <div class="input-group form-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-        {{ form_widget(form.fechaPago) }}
-        <span class="input-group-addon">
-            <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO del gasto"></i>
-        </span>
+    <div class="form-group">
+    <label>Fecha de Pago (en caso de que ya este pago)</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            {{ form_widget(form.fechaPago) }}
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-question-sign help-tooltip" data-placement="left" data-toggle="tooltip" title="Ingrese la fecha de PAGO del gasto"></i>
+            </span>
+        </div>
     </div>
     {% endif %}
     
     {% if isMensual %}
     <label>Ingrese el dia de Vencimiento del gasto</label>
     <div class="form-group">
+        <label>Día de Vencimiento</label>
         {{ form_widget(form.diaVencimiento) }}
     </div>
     {% endif %}
