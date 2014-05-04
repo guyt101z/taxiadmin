@@ -1,10 +1,10 @@
 <?php
 
-namespace TaxiAdmin\MovilBundle\Tests\Controller;
+namespace TaxiAdmin\GastoBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MantenimientoControllerTest extends WebTestCase
+class GastoMovilControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -13,13 +13,13 @@ class MantenimientoControllerTest extends WebTestCase
         $client = static::createClient();
 
         // Create a new entry in the database
-        $crawler = $client->request('GET', '/mantenimiento/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /mantenimiento/");
+        $crawler = $client->request('GET', '/gastomovil/');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /gastomovil/");
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'taxiadmin_movilbundle_mantenimientotype[field_name]'  => 'Test',
+            'taxiadmin_gastobundle_gastomoviltype[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class MantenimientoControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'taxiadmin_movilbundle_mantenimientotype[field_name]'  => 'Foo',
+            'taxiadmin_gastobundle_gastomoviltype[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PagoGastoEmpresaType extends AbstractType {
+class PagoGastoMovilType extends AbstractType {
     
     /**
      * @param FormBuilderInterface $builder
@@ -24,7 +24,7 @@ class PagoGastoEmpresaType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'TaxiAdmin\GastoBundle\Entity\PagoGastoEmpresa'
+            'data_class' => 'TaxiAdmin\GastoBundle\Entity\PagoGastoMovil'
         ));
     }
 
@@ -32,6 +32,6 @@ class PagoGastoEmpresaType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'taxiadmin_gastobundle_pagogastoempresa';
+        return 'pagogastomovil_';
     }
 }

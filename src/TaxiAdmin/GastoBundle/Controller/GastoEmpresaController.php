@@ -148,7 +148,6 @@ class GastoEmpresaController extends Controller {
 
         if ( $this->getRequest()->isXmlHttpRequest()) {
             $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn btn-default')));
-            echo 'brus';
             return array(
                 'form' => $form->createView(),
                 );

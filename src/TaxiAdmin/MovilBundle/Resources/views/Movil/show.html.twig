@@ -10,7 +10,8 @@
             <a href="{{ path('accidente_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#accidente">Agregar Accidente</a>
             <a href="{{ path('multa_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#multa">Agregar Multa</a>
             <a href="{{ path('mantenimiento_create', { 'idMovil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#mantenimiento">Agregar Mantenimiento</a>
-            {# <a href="{{ path('gasto_create', { 'movil': entity.id }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto</a> #}
+            <a href="{{ path('gasto_movil_create', { 'movil': entity.id, 'mensual': 0 }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto</a>
+            <a href="{{ path('gasto_movil_create', { 'movil': entity.id, 'mensual': 1 }) }}" class="list-group-item" data-toggle="modal" data-target="#addGasto">Agregar Gasto Mensual</a>
 
             <a href="#" class="list-group-item">Imprimir Información</a>
         </div>
@@ -143,6 +144,59 @@
                     </table>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3>Gastos</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Fecha Pago</th>
+                            <th>Día Vencimiento</th>
+                            <th>Costo</th>
+                            <th>Rubro</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gasto in entity.gastos %}
+                        <tr>
+                            {% if gasto.isMensual %}
+                                <td>Gasto Mensual</td>
+                            {% elseif (gasto.fechaPago == null) %}
+                                <td>Pendiente de pago</td>
+                            {% else %}
+                                <td>{{ gasto.fechaPago|date("d/m/Y") }}</td>
+                            {% endif %}
+                            <td>{{ gasto.diaVencimiento }}</td>
+                            {% if gasto.isMensual %}
+                                <td></td>
+                            {% else %}
+                                <td>{{ gasto.costo }}</td>
+                            {% endif %}
+                            <td>{{ gasto.rubro }}</td>
+                            <td style="text-align:right;">
+                                <a href="{{ path('gasto_movil_show', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" title="Ver Gasto"></i>
+                                </a>
+                                <a href="{{ path('gasto_movil_update', { 'id': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                    <i class="glyphicon glyphicon-edit help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
+                                </a>
+                                {% if gasto.isMensual %}
+                                    <a href="{{ path('gasto_movil_addpago', { 'gasto': gasto.id }) }}" data-toggle="modal" data-target="#updateGasto">
+                                        <i class="glyphicon glyphicon-plus help-tooltip" data-placement="left" data-toggle="tooltip" title="Agregar Pago"></i>
+                                    </a>
+                                {% endif %}
+                                <a href="{{ path('gasto_movil_remove', { 'id': gasto.id }) }}" onclick="return confirm('¿Estas seguro?');">
+                                    <i class="glyphicon glyphicon-remove help-tooltip" data-placement="left" data-toggle="tooltip" title="Editar Gasto"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -313,12 +367,13 @@
 <!-- MODIFICAR -->
 
 <!-- ACCIDENTE -->
-<div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<div class="modal fade" id="accidente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <!-- MULTA -->
-<div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<div class="modal fade" id="multa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <!-- MANTENIMIENTO -->
-<div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<div class="modal fade" id="mantenimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 <!-- GASTO -->
-<div class="modal fade" id="addGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> </div>
+<div class="modal fade" id="addGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+<div class="modal fade" id="updateGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
 {% endblock %}

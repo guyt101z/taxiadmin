@@ -2,7 +2,11 @@
 {% block contenido %}
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title" id="myModalLabel">Ingresar Gasto</h4>
+    {% if form.vars.value.id > 0 %}
+        <h4 class="modal-title" id="myModalLabel">Modificar Gasto</h4>
+    {% else %}
+        <h4 class="modal-title" id="myModalLabel">Ingresar Gasto</h4>
+    {% endif %}
 </div>
 <div class="modal-body">
     {{ form_start(form) }}

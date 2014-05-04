@@ -27,6 +27,27 @@ class GastoMovil extends Gasto {
      */
     private $movil;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TaxiAdmin\GastoBundle\Entity\PagoGastoMovil", mappedBy="gastoMovil")
+     */
+    private $pagos;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pagos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set movil
@@ -37,7 +58,7 @@ class GastoMovil extends Gasto {
     public function setMovil(\TaxiAdmin\MovilBundle\Entity\Movil $movil = null)
     {
         $this->movil = $movil;
-
+    
         return $this;
     }
 
@@ -51,34 +72,33 @@ class GastoMovil extends Gasto {
         return $this->movil;
     }
 
-
     /**
-     * Get id
+     * Add pagos
      *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set pagos
-     *
-     * @param \TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos
+     * @param \TaxiAdmin\GastoBundle\Entity\PagoGastoMovil $pagos
      * @return GastoMovil
      */
-    public function setPagos(\TaxiAdmin\GastoBundle\Entity\PagoGasto $pagos = null)
+    public function addPago(\TaxiAdmin\GastoBundle\Entity\PagoGastoMovil $pagos)
     {
-        $this->pagos = $pagos;
+        $this->pagos[] = $pagos;
     
         return $this;
     }
 
     /**
+     * Remove pagos
+     *
+     * @param \TaxiAdmin\GastoBundle\Entity\PagoGastoMovil $pagos
+     */
+    public function removePago(\TaxiAdmin\GastoBundle\Entity\PagoGastoMovil $pagos)
+    {
+        $this->pagos->removeElement($pagos);
+    }
+
+    /**
      * Get pagos
      *
-     * @return \TaxiAdmin\GastoBundle\Entity\PagoGasto 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getPagos()
     {
