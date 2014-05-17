@@ -1,19 +1,21 @@
-$(function(){
+$(function() {
 
-	// actualizo el menu activo
-	var url = window.location.pathname, urlRegExp = new RegExp(url.replace(/\/$/,''));
-	$('#menu a').each(function(){
-		if(urlRegExp.test($(this).attr('href'))){
-			$(this).parent().addClass('active');
-		}
-	});
+    // actualizo el menu activo
+    var url = window.location.pathname;
 
-	// agrego todos los tooltips
-	jQuery('.help-tooltip').tooltip();
+    $('#menu a').each(function() {
+        urlRegExp = new RegExp(url.replace(/\/$/, ''));
+        if (url.indexOf($(this).attr('href')) == 0) {
+            $(this).parent().addClass('active');
+        }
+    });
 
-	// refresca el modal asi se utiliza uno solo por pagina 
-	$('body').on('hidden.bs.modal', '.modal', function () {
-		$(this).removeData('bs.modal');
-	});
+    // agrego todos los tooltips
+    jQuery('.help-tooltip').tooltip();
+
+    // refresca el modal asi se utiliza uno solo por pagina 
+    $('body').on('hidden.bs.modal', '.modal', function() {
+        $(this).removeData('bs.modal');
+    });
 
 });

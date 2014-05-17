@@ -20,38 +20,34 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Razón Social</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for entity in entities %}
-                            <tr>
-                                <td>{{ entity.nombre }}</td>
-                                <td>{{ entity.razonSocial }}</td>
-                                <td>
-                                    <a href="{{ path('empresa_show', { 'razonSocial': entity.razonSocial }) }}">
-                                        <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                               <th>{{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombre') }}</th>
+                               <th>{{ knp_pagination_sortable(pagination, 'Razón Social', 'e.razonSocial') }}</th>
+                               <th></th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                        {% for entity in pagination %}
+                        <tr>
+                            <td>{{ entity.nombre }}</td>
+                            <td>{{ entity.razonSocial }}</td>
+                            <td>
+                                <a href="{{ path('empresa_show', { 'razonSocial': entity.razonSocial }) }}">
+                                    <i class="glyphicon glyphicon-eye-open help-tooltip" data-placement="left" data-toggle="tooltip" title="Ver Detalles"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-                <ul class="pagination pull-right">
-                  <li><a href="#">&laquo;</a></li>
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">&raquo;</a></li>
-                </ul>
-                
-          </div>
-      </div>
-  </div>
+            <div class="paginacion">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+
+        </div>
+    </div>
+</div>
 </div>
 
 

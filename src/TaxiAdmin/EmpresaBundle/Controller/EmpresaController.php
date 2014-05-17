@@ -28,12 +28,19 @@ class EmpresaController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
-        $entities = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();        
+        $query = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->getIndexDQL($idUsuario);
+
+        // Añadimos el paginador (En este caso el parámetro "1" es la página actual, y parámetro "10" es el número de páginas a mostrar)
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)
+            );
 
         return array(
-            'form'     => $this->createCreateForm(new Empresa())->createView(),
-            'entities' => $entities,
+            'form'       => $this->createCreateForm(new Empresa())->createView(),
+            'pagination' => $pagination
             );
     }
 
