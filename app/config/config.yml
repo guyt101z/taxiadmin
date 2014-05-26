@@ -69,6 +69,7 @@ swiftmailer:
 parameters:
     radios: ['Ninguna', '141', 'Celeritas', 'La Española', 'Fono Taxi', 'Carrasco', 'Punta Gorda', 'Teletaxi']
     combustible: ['Nafta', 'Diesel']
+    pagination: 15
 
 knp_paginator:
     page_range: 15  # número de páginas a mostrar
@@ -80,3 +81,8 @@ knp_paginator:
     template:
         pagination: TaxiAdminSitioBundle:Sitio:pagination.html.twig # plantilla utilizada en la paginación
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # plantilla utilizada en la paginación para ordenar los resultados
+
+services:
+    ta_pagination:
+        class:     TaxiAdmin\ServiciosBundle\PaginationManager
+        arguments: ["@knp_paginator", %pagination%]
