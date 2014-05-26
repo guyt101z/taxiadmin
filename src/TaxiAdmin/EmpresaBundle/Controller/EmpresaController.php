@@ -31,9 +31,8 @@ class EmpresaController extends Controller {
         $query = $this->getDoctrine()->getManager()->getRepository('TaxiAdminEmpresaBundle:Empresa')->getIndexDQL($idUsuario);
         $sortOrder = array('defaultSortFieldName' => 'e.nombre', 'defaultSortDirection' => 'asc');
         $page = $this->get('request')->query->get('page', 1);
-        $elemPagina = $this->container->getParameter('pagination');
         
-        $pagination = $this->get('ta_pagination')->getPagination($query, $page, $sortOrder, $elemPagina);
+        $pagination = $this->get('ta_pagination')->getPagination($query, $page, $sortOrder);
 
         return array(
             'form'       => $this->createCreateForm(new Empresa())->createView(),

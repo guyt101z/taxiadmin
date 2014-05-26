@@ -11,7 +11,7 @@ class PaginationManager {
 
 	public function __construct(Paginator $knp, $elemPagina) {
 		$this->knp = $knp;
-		$this->$elemPagina = $elemPagina;
+		$this->elemPagina = $elemPagina;
 	}
 
 	public function getPagination($query, $pagina, $sortOrder, $elemPagina = null){
@@ -19,7 +19,7 @@ class PaginationManager {
 		return $this->knp->paginate(
 			$query, 
 			$pagina, 
-			$elemPagina = null ? $this->$elemPagina : $elemPagina, 
+			$elemPagina == null ? $this->elemPagina : $elemPagina, 
 			$sortOrder
 			);
 	}
