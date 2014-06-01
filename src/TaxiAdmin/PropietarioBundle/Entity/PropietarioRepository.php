@@ -12,26 +12,44 @@ use Doctrine\ORM\EntityRepository;
  */
 class PropietarioRepository extends EntityRepository {
 
-	public function getPropietariosByUsuario($userId){
-		return $this->getEntityManager()->createQuery(
-			'SELECT p.nombre, p.apellido, p.id FROM TaxiAdminPropietarioBundle:Propietario p WHERE p.idUsuario = :user ORDER BY p.nombre ASC'
-			)->setParameter('user', $userId)->getResult();
-	}
+    /**
+     * obtengo todas los propietarios para paginado
+     */
+    public function getIndexDQL($idUsuario){
+        $sql = 'SELECT p
+        FROM TaxiAdminPropietarioBundle:Propietario p
+        WHERE p.idUsuario = :idUsuario'; 
 
-	/**
-	 * obtengo todos los propietarios que aún no estan asignados a esa empresa
-	 */
-	public function getPropietariosSinEmpresa($idUsuario, $razonSocial){
-		$sql = 		'SELECT p.id, p.nombre, p.apellido 
-		FROM Propietario p 
-		WHERE p.idUsuario = :idUsuario AND p.id  NOT IN 
-		( SELECT pe.propietario_id FROM Empresa e, empresa_propietario pe WHERE e.razonSocial = :razonSocial AND pe.empresa_id = e.id )
-		ORDER BY p.nombre ASC'; 
-		$params = array(
-			'idUsuario' => $idUsuario,
-			'razonSocial' => $razonSocial,
-			);
+        $params = array(
+            'idUsuario' => $idUsuario,
+            );
 
-		return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
-	}
+        $query = $this->getEntityManager()->createQuery($sql);
+        $query->setParameters($params);
+
+        return $query;
+    }
+
+    public function getPropietariosByUsuario($userId){
+        return $this->getEntityManager()->createQuery(
+            'SELECT p.nombre, p.apellido, p.id FROM TaxiAdminPropietarioBundle:Propietario p WHERE p.idUsuario = :user ORDER BY p.nombre ASC'
+            )->setParameter('user', $userId)->getResult();
+    }
+
+    /**
+     * obtengo todos los propietarios que aún no estan asignados a esa empresa
+     */
+    public function getPropietariosSinEmpresa($idUsuario, $razonSocial){
+        $sql =      'SELECT p.id, p.nombre, p.apellido 
+        FROM Propietario p 
+        WHERE p.idUsuario = :idUsuario AND p.id  NOT IN 
+        ( SELECT pe.propietario_id FROM Empresa e, empresa_propietario pe WHERE e.razonSocial = :razonSocial AND pe.empresa_id = e.id )
+        ORDER BY p.nombre ASC'; 
+        $params = array(
+            'idUsuario' => $idUsuario,
+            'razonSocial' => $razonSocial,
+            );
+
+        return $this->getEntityManager()->getConnection()->executeQuery($sql, $params)->fetchAll();
+    }
 }

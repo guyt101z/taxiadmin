@@ -25,14 +25,16 @@ class PropietarioController extends Controller {
      * @Template()
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
-
-        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
-        $entities = $em->getRepository('TaxiAdminPropietarioBundle:Propietario')->findBy(array('idUsuario' => $idUsuario));
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();        
+        $query = $this->getDoctrine()->getManager()->getRepository('TaxiAdminPropietarioBundle:Propietario')->getIndexDQL($idUsuario);
+        $sortOrder = array('defaultSortFieldName' => 'p.nombre', 'defaultSortDirection' => 'asc');
+        $page = $this->get('request')->query->get('page', 1);
+        
+        $pagination = $this->get('ta_pagination')->getPagination($query, $page, $sortOrder);
 
         return array(
-            'form'     => $this->createCreateForm(new Propietario())->createView(),
-            'entities' => $entities,
+            'form'       => $this->createCreateForm(new Propietario())->createView(),
+            'pagination' => $pagination
             );
     }
 
