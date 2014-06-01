@@ -27,13 +27,17 @@ class ChoferController extends Controller {
      * @Template()
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
 
-        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
-        $entities = $em->getRepository('TaxiAdminChoferBundle:Chofer')->findBy(array('idUsuario' => $idUsuario));
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();        
+        $query = $this->getDoctrine()->getManager()->getRepository('TaxiAdminChoferBundle:Chofer')->getIndexDQL($idUsuario);
+        $sortOrder = array('defaultSortFieldName' => 'c.nombre', 'defaultSortDirection' => 'asc');
+        $page = $this->get('request')->query->get('page', 1);
+        
+        $pagination = $this->get('ta_pagination')->getPagination($query, $page, $sortOrder);
+
         return array(
-            'form'     => $this->createCreateForm(new Chofer())->createView(),
-            'entities' => $entities,
+            'form'       => $this->createCreateForm(new Chofer())->createView(),
+            'pagination' => $pagination
             );
     }
 
