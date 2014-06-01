@@ -26,7 +26,6 @@ class EmpresaController extends Controller {
      * @Template()
      */
     public function indexAction() {
-
         $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();        
         $query = $this->getDoctrine()->getManager()->getRepository('TaxiAdminEmpresaBundle:Empresa')->getIndexDQL($idUsuario);
         $sortOrder = array('defaultSortFieldName' => 'e.nombre', 'defaultSortDirection' => 'asc');
