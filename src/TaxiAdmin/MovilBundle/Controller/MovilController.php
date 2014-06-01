@@ -25,20 +25,26 @@ class MovilController extends Controller {
      * @Template()
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
 
-        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();
-        $moviles = $em->getRepository('TaxiAdminMovilBundle:Movil')->findBy(array('idUsuario' => $idUsuario));
-        $empresas = $em->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
+        $idUsuario = $this->get('security.context')->getToken()->getUser()->getId();        
+        $query = $this->getDoctrine()->getManager()->getRepository('TaxiAdminMovilBundle:Movil')->getIndexDQL($idUsuario);
+        $sortOrder = array('defaultSortFieldName' => 'm.matricula', 'defaultSortDirection' => 'asc');
+        $page = $this->get('request')->query->get('page', 1);
+
+        $pagination = $this->get('ta_pagination')->getPagination($query, $page, $sortOrder);
+
+        $empresas = $this->getDoctrine()->getManager()->getRepository('TaxiAdminEmpresaBundle:Empresa')->findBy(array('idUsuario' => $idUsuario));
         $radios = $this->container->getParameter('radios');
         $combustible = $this->container->getParameter('combustible');
 
+
         return array(
             'form'        => $this->createCreateForm(new Movil(), $empresas, $radios, $combustible)->createView(),
-            'entities'    => $moviles,
+            'pagination' => $pagination,
             'combustible' => $combustible,
             );
     }
+
     /**
      * Creates a new Movil entity.
      *

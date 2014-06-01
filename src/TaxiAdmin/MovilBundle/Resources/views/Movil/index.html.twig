@@ -20,17 +20,17 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Matrícula</th>
+                                <th>{{ knp_pagination_sortable(pagination, 'Matrícula', 'm.matricula') }}</th>
                                 <th>Marca</th>
                                 <th>Modelo</th>
                                 <th>Combustible</th>
-                                <th>Num. Móvil</th>
-                                <th>Despacho</th>
+                                <th>{{ knp_pagination_sortable(pagination, 'Num. Móvil', 'm.numMovil') }}</th>
+                                <th>{{ knp_pagination_sortable(pagination, 'Despacho', 'm.despacho') }}</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for entity in entities %}
+                            {% for entity in pagination %}
                             <tr>
                                 <td>{{ entity.matricula }}</td>
                                 <td>{{ entity.marca }}</td>
@@ -47,6 +47,10 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                </div>
+
+                <div class="paginacion">
+                    {{ knp_pagination_render(pagination) }}
                 </div>
 
             </div>
